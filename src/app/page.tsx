@@ -1,3 +1,4 @@
+import About from '@/components/About/About';
 import { Section } from '@/components/layout';
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
           </p>
         </div>
       </Section>
+      <About />
     </main>
   );
 }
