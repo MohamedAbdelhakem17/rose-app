@@ -1,4 +1,5 @@
 import About from '@/components/About/About';
+import Gallery from '@/components/Gallery/Gallery';
 import { Section } from '@/components/layout';
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         </div>
       </Section>
       <About />
+      <Gallery />
     </main>
   );
 }

@@ -1,4 +1,3 @@
-// components/Highlight.tsx
 interface HighlightProps {
   children: React.ReactNode;
   color?: string; // optional to let you reuse with different colors

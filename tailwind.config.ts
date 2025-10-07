@@ -191,7 +191,7 @@ const config: Config = {
       // Headings
       'h-1': ['3rem', { lineHeight: '1.2', fontWeight: '700' }], // ~48px
       'h-2': ['2.5rem', { lineHeight: '1.25', fontWeight: '700' }], // ~40px
-      'h-3': ['2rem', { lineHeight: '1.3', fontWeight: '700' }], // ~32px
+      'h-3': ['2.25rem', { lineHeight: '1.3', fontWeight: '700' }], // ~36px
       'h-4': ['1.5rem', { lineHeight: '1.4', fontWeight: '700' }], // ~24px
       'h-5': ['1.25rem', { lineHeight: '1.4', fontWeight: '700' }], // ~20px
       'h-6': ['1rem', { lineHeight: '1.5', fontWeight: '700' }], // ~16px

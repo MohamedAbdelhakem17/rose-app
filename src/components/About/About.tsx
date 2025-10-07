@@ -2,8 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import { Section } from '../layout/Section';
 import { Button } from '../shared/Button';
-import Highlight from './components/highlight';
+import Highlight from '../shared/highlight';
 import { ArrowRight, Check } from 'lucide-react';
+import SmallSectionHeading from '../shared/small-section-heading';
 
 export default function About() {
   return (
@@ -14,7 +15,7 @@ export default function About() {
 
           <div className='grid grid-cols-2 '>
             {/* Big image */}
-            <div className="relative flex justify-center items-center before:content-[''] before:absolute before:w-[90%] before:h-[105%] before:bg-transparent before:border-4 before:border-maroon-600 before:rounded-ss-[30px] before:rounded-es-[100px] before:rounded-e-[50px] before:rounded-se-[200px] before:rounded-ee-[150px] before:-start-4 before:-top-4 before:-skew-x-3 before:-z-10">
+            <div className="relative flex justify-center items-center before:content-[''] before:absolute before:w-[90%] before:h-[105%] before:bg-transparent before:border-4   before:border-maroon-600 before:rounded-ss-[30px] before:rounded-es-[100px] before:rounded-e-[50px] before:rounded-se-[200px] before:rounded-ee-[150px] before:-start-4 before:-top-4 before:-skew-x-3 before:-z-10">
               <Image
                 src='/assets/images/about/gift-img.svg'
                 alt='Rose Logo'
@@ -45,9 +46,7 @@ export default function About() {
           {/* Right: Text/Content */}
           <div className='flex flex-col justify-center items-start '>
             {/* Heading */}
-            <h1 className=' text-h-6 tracking-widest uppercase py-element-lg  text-soft-pink-500'>
-              About
-            </h1>
+            <SmallSectionHeading heading='About' />
             {/* Main Text */}
             <h2 className='text-maroon-700 text-h-3'>
               Delivering the
