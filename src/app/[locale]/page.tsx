@@ -3,6 +3,7 @@ import SectionTitle from '@/components/shared/sedtion-title';
 import AutoSlider from './_components/testimonials/auto-slider';
 import { apiFetch } from '@/lib/apis/api-client';
 import { TestimonialsResponse } from '@/lib/types/payload';
+import SectionName from '@/components/shared/section-name';
 
 export default async function Home() {
   // Fetching Testimonials Data
@@ -25,11 +26,11 @@ export default async function Home() {
           </p>
         </div>
       </Section>
+
       {/* Testimonials Section */}
       <Section fullScreen={true}>
-        <h1 className=' text-center font-bold text-soft-pink-600 tracking-widest dark:text-maroon-400 '>
-          Testimonials
-        </h1>
+        <SectionName title='Testimonials' />
+
         <SectionTitle title='Real Words from Happy Customers' />
 
         <section className=' mt-10 flex justify-center items-center w-full bg-maroon-50 dark:bg-zinc-700 py-16'>
