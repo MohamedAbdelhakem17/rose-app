@@ -1,8 +1,6 @@
 import type { Config } from 'tailwindcss';
 import tailwindcssAnimate from 'tailwindcss-animate';
 
-document.documentElement.classList.toggle('dark');
-
 const config: Config = {
   darkMode: ['class'],
   content: [

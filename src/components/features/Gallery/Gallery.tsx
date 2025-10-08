@@ -1,7 +1,7 @@
 import React from 'react';
-import { Section } from '../layout';
-import SmallSectionHeading from '../shared/small-section-heading';
-import SectionTitle from '../shared/sedtion-title';
+import { Section } from '../../layout';
+import SmallSectionHeading from '../../shared/small-section-heading';
+import SectionTitle from '../../shared/sedtion-title';
 import Image from 'next/image';
 
 export default function Gallery() {

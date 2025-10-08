@@ -1,6 +1,6 @@
-import About from '@/components/About/About';
-import Companies from '@/components/Companies/Companies';
-import Gallery from '@/components/Gallery/Gallery';
+import About from '@/components/features/About/About';
+import Companies from '@/components/features/Companies/Companies';
+import Gallery from '@/components/features/Gallery/Gallery';
 import { Section } from '@/components/layout';
 
 export default function Home() {
