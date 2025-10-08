@@ -5,6 +5,7 @@ import { Button } from '../shared/Button';
 import Highlight from '../shared/highlight';
 import { ArrowRight, Check } from 'lucide-react';
 import SmallSectionHeading from '../shared/small-section-heading';
+import { cn } from '../../lib/utils/utils';
 
 export default function About() {
   return (
@@ -15,7 +16,16 @@ export default function About() {
 
           <div className='grid grid-cols-2 '>
             {/* Big image */}
-            <div className="relative flex justify-center items-center before:content-[''] before:absolute before:w-[90%] before:h-[105%] before:bg-transparent before:border-4   before:border-maroon-600 before:rounded-ss-[30px] before:rounded-es-[100px] before:rounded-e-[50px] before:rounded-se-[200px] before:rounded-ee-[150px] before:-start-4 before:-top-4 before:-skew-x-3 before:-z-10">
+            <div
+              className={cn(
+                "relative flex justify-center items-center before:content-[''] before:absolute",
+                'before:w-[90%] before:h-[105%] before:bg-transparent before:border-4 before:border-maroon-600 dark:before:border-soft-pink-400',
+                'before:rounded-ss-[30px] before:rounded-es-[100px] before:rounded-e-[50px]',
+                'before:rounded-se-[200px] before:rounded-ee-[150px]',
+                'before:-start-4 before:-top-4 before:-skew-x-3 before:-z-10'
+              )}
+            >
+              {' '}
               <Image
                 src='/assets/images/about/gift-img.svg'
                 alt='Rose Logo'
@@ -48,7 +58,7 @@ export default function About() {
             {/* Heading */}
             <SmallSectionHeading heading='About' />
             {/* Main Text */}
-            <h2 className='text-maroon-700 text-h-3'>
+            <h2 className='text-maroon-700 text-h-3 dark:text-soft-pink-200'>
               Delivering the
               <Highlight>Finest</Highlight>
               Gift Boxes for Your
@@ -72,20 +82,32 @@ export default function About() {
             {/* features of the about section */}
             <ul className='grid grid-cols-2 text-p-3  gap-y-element-md gap-x-element-lg'>
               <li className='flex items-center gap-element-sm  '>
-                <Check className='text-maroon-700' size={16} /> Competetive
-                Prices and Easy Shopping
+                <Check
+                  className='text-maroon-700 dark:text-soft-pink-400'
+                  size={16}
+                />{' '}
+                Competetive Prices and Easy Shopping
               </li>
               <li className='flex items-center gap-element-sm'>
-                <Check className='text-maroon-700' size={16} /> Premium Quality
-                & Elegant Packaging
+                <Check
+                  className='text-maroon-700 dark:text-soft-pink-400'
+                  size={16}
+                />{' '}
+                Premium Quality & Elegant Packaging
               </li>
               <li className='flex items-center gap-element-sm'>
-                <Check className='text-maroon-700' size={16} /> Perfect for
-                Every Occasion
+                <Check
+                  className='text-maroon-700 dark:text-soft-pink-400'
+                  size={16}
+                />{' '}
+                Perfect for Every Occasion
               </li>
               <li className='flex items-center gap-element-sm'>
-                <Check className='text-maroon-700' size={16} /> Fast & Reliable
-                Delivery
+                <Check
+                  className='text-maroon-700 dark:text-soft-pink-400'
+                  size={16}
+                />{' '}
+                Fast & Reliable Delivery
               </li>
             </ul>
           </div>

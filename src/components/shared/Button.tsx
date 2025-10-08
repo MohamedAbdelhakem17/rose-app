@@ -13,7 +13,7 @@ const buttonVariants = cva(
         // Primary variants
         // changed the primary main color and hover state to match with the design
         primary:
-          'bg-maroon-600  text-white hover:bg-maroon-500 text-sm active:bg-maroon-700',
+          'bg-maroon-600  text-white hover:bg-maroon-500 text-sm active:bg-maroon-700 dark:bg-soft-pink-200 dark:text-zinc-800',
         'primary-light':
           'bg-soft-pink-200 text-maroon-600 hover:bg-soft-pink-300 active:bg-soft-pink-400',
         'primary-outline':

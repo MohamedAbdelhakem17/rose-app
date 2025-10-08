@@ -1,4 +1,5 @@
 import About from '@/components/About/About';
+import Companies from '@/components/Companies/Companies';
 import Gallery from '@/components/Gallery/Gallery';
 import { Section } from '@/components/layout';
 
@@ -18,6 +19,7 @@ export default function Home() {
       </Section>
       <About />
       <Gallery />
+      <Companies />
     </main>
   );
 }

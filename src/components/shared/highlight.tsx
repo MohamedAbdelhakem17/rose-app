@@ -5,7 +5,7 @@ interface HighlightProps {
 
 export default function Highlight({
   children,
-  color = 'text-soft-pink-500',
+  color = 'text-soft-pink-500 dark:text-maroon-400',
 }: HighlightProps) {
   return <span className={`${color} px-element-sm`}>{children}</span>;
 }
