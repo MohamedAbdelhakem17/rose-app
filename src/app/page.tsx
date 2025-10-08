@@ -2,6 +2,7 @@ import About from '@/components/features/About/About';
 import Companies from '@/components/features/Companies/Companies';
 import Gallery from '@/components/features/Gallery/Gallery';
 import { Section } from '@/components/layout';
+import SectionTitle from '@/components/shared/sedtion-title';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
             A modern Next.js application with a comprehensive design system and
             reusable UI components.
           </p>
+          <SectionTitle title='Welcome to Rose App' />
         </div>
       </Section>
       <About />
