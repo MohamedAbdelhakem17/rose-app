@@ -11,18 +11,18 @@ import companyImage6 from '../../../../public/assets/images/companies/6.svg';
 
 export default function Companies() {
   const companyImages = [
-    companyImage1,
-    companyImage2,
-    companyImage3,
-    companyImage4,
-    companyImage5,
-    companyImage6,
+    { id: 1, img: companyImage1 },
+    { id: 2, img: companyImage2 },
+    { id: 3, img: companyImage3 },
+    { id: 4, img: companyImage4 },
+    { id: 5, img: companyImage5 },
+    { id: 6, img: companyImage6 },
   ];
   return (
     <Section
-      className={cn(
+      className={
         '  flex flex-col items-center justify-center   transition-colors'
-      )}
+      }
     >
       <div className='flex flex-col gap-section-xs bg-maroon-50 dark:bg-zinc-700 p-section-xs rounded-xl'>
         <h1 className='text-h-3 md:text-h-3 font-poppins font-semibold  text-maroon-700 dark:text-soft-pink-200  text-center'>
@@ -30,13 +30,13 @@ export default function Companies() {
         </h1>
 
         <div className='flex  justify-center gap-8 '>
-          {companyImages.map((src, i) => (
+          {companyImages.map((imgObject, i) => (
             <Image
-              key={i}
-              src={src}
+              key={imgObject.id}
+              src={imgObject.img}
               alt={`Company logo ${i + 1}`}
               width={130}
-              height={100}
+              height={130}
               className='opacity-80 hover:opacity-100 transition'
             />
           ))}

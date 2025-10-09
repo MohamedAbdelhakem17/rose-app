@@ -1,6 +1,6 @@
-import About from '@/components/features/About/About';
-import Companies from '@/components/features/Companies/Companies';
-import Gallery from '@/components/features/Gallery/Gallery';
+import About from '@/components/features/about/about';
+import Companies from '@/components/features/companies/companies';
+import Gallery from '@/components/features/gallery/gallery';
 import { Section } from '@/components/layout';
 import SectionTitle from '@/components/shared/sedtion-title';
 

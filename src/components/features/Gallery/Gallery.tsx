@@ -18,19 +18,19 @@ export default function Gallery() {
           <div className='grid grid-rows-3 gap-4'>
             <div className='row-span-2'>
               <Image
-                src='assets/images/gallery/1.svg'
+                src='/assets/images/gallery/1.png'
                 alt=''
-                width={200}
-                height={200}
+                width={800}
+                height={800}
                 className='object-cover w-full h-full '
               />
             </div>
             <div className='row-span-1'>
               <Image
-                src='assets/images/gallery/2.svg'
+                src='/assets/images/gallery/2.png'
                 alt=''
-                width={200}
-                height={200}
+                width={800}
+                height={800}
                 className='object-cover w-full h-full '
               />
             </div>
@@ -39,17 +39,17 @@ export default function Gallery() {
           {/* Second column */}
           <div className='grid grid-rows-2 gap-4'>
             <Image
-              src='assets/images/gallery/3.svg'
+              src='/assets/images/gallery/3.png'
               alt=''
-              width={200}
-              height={200}
+              width={800}
+              height={800}
               className='object-cover w-full h-full '
             />
             <Image
-              src='assets/images/gallery/4.svg'
+              src='/assets/images/gallery/4.png'
               alt=''
-              width={200}
-              height={200}
+              width={800}
+              height={800}
               className='object-cover w-full h-full '
             />
           </div>
@@ -57,17 +57,17 @@ export default function Gallery() {
           {/* Third column */}
           <div className='grid grid-rows-2 gap-4'>
             <Image
-              src='assets/images/gallery/5.svg'
+              src='/assets/images/gallery/5.png'
               alt=''
-              width={200}
-              height={200}
+              width={800}
+              height={800}
               className='object-cover w-full h-full '
             />
             <Image
-              src='assets/images/gallery/6.svg'
+              src='/assets/images/gallery/6.png'
               alt=''
-              width={200}
-              height={200}
+              width={800}
+              height={800}
               className='object-cover w-full h-full '
             />
           </div>
