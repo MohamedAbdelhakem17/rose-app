@@ -1,4 +1,4 @@
-import { NewsletterForm } from '@/components/shared/NewsletterForm';
+import { NewsletterForm } from '@/components/shared/newsletter-form';
 import { cn } from '@/lib/utils/utils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,7 +7,7 @@ interface FooterProps {
   className?: string;
 }
 
-import { navigationLinks } from '@/lib/data/footer-navigation';
+import { navigationLinks } from '@/lib/constants/footer-navigation';
 
 export function Footer({ className }: FooterProps) {
   return (

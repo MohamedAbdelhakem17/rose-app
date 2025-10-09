@@ -18,7 +18,7 @@ interface HeaderProps {
   className?: string;
 }
 
-import { navigationItems } from '@/lib/data/navigation';
+import { navigationItems } from '@/lib/constants/navigation';
 
 export function Header({ className }: HeaderProps) {
   const [searchQuery, setSearchQuery] = React.useState('');

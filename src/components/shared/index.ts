@@ -11,4 +11,4 @@ export {
 export { Input } from '../ui/Input';
 export { Label } from '../ui/Label';
 export { Textarea } from '../ui/Textarea';
-export { NewsletterForm } from './NewsletterForm';
+export { NewsletterForm } from './newsletter-form';
