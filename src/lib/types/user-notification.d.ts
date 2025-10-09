@@ -3,13 +3,13 @@
 // --------------------------------------
 
 /** Single notification item */
-type NotificationType = {
+declare type NotificationType = {
   _id: string;
   recipient: string;
   title: string;
   body: string;
   type: string;
-  priority: string;
+  priority: 'high' | 'medium' | 'low';
   isRead: boolean;
   actionLink: string;
   relatedId: string;
@@ -50,8 +50,33 @@ type GetUserNotificationsResponse = ApiResponse<
 type GetUnreadNotificationUserCountResponse =
   ApiResponse<UnreadNotificationUserCount>;
 
+/** Response: Delete single notification */
+type DeleteSingleNotificationResponseType = ApiResponse<{ data: null }>;
+
+/** Response: Delete single notification */
+type DeleteAllNotificationResponseType = ApiResponse<{ deletedCount: number }>;
+
+/** Response: Toggle notification read/unread */
+type ToggleNotificationResponseType = ApiResponse<{
+  notification: NotificationType;
+  unreadCount: number;
+}>;
+
+/** Response: Make  notification readd */
+type MakeNotificationReaddResponseType = ApiResponse<{
+  modifiedCount: number;
+  unreadCount: number;
+}>;
+
 // --------------------------------------
 //  Exports
 // --------------------------------------
 
-export { GetUserNotificationsResponse, GetUnreadNotificationUserCountResponse };
+export {
+  GetUserNotificationsResponse,
+  GetUnreadNotificationUserCountResponse,
+  DeleteSingleNotificationResponseType,
+  ToggleNotificationResponseType,
+  MakeNotificationReaddResponseType,
+  DeleteAllNotificationResponseType,
+};
