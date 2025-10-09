@@ -1,4 +1,7 @@
 import { Section } from '@/components/layout';
+import FeaturesSection from '@/components/features/FeaturesSection';
+import HeroSection from '@/components/features/hero-section/hero-section';
+import OccasionsSection from '@/components/features/OccasionsSection';
 
 export default function Home() {
   return (
@@ -13,6 +16,14 @@ export default function Home() {
             reusable UI components.
           </p>
         </div>
+      </Section>
+
+      {/* Occasions & Features Sections */}
+
+      <Section className='w-[1279px] mx-auto mt-10 '>
+        <HeroSection />
+        <OccasionsSection />
+        <FeaturesSection />
       </Section>
     </main>
   );
