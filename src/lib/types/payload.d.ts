@@ -1,4 +1,4 @@
-export type Testimonials = {
+declare type Testimonials = {
   _id: string;
   user: {
     _id: string;
@@ -14,7 +14,7 @@ export type Testimonials = {
   updatedAt: string;
   __v: number;
 };
-export type TestimonialsResponse = {
+declare type TestimonialsResponse = {
   metadata: {
     currentPage: number;
     totalPages: number;

@@ -4,7 +4,7 @@ type RatingIconProps = {
   rate: number;
 };
 
-function RatingIcon({ rate }: RatingIconProps) {
+export default function RatingIcon({ rate }: RatingIconProps) {
   const fullStars = Math.floor(rate);
   const hasHalfStar = !Number.isInteger(rate);
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
@@ -26,5 +26,3 @@ function RatingIcon({ rate }: RatingIconProps) {
     </div>
   );
 }
-
-export default RatingIcon;

@@ -46,7 +46,7 @@ export async function generateMetadata({
   params,
 }: Pick<LocaleLayoutProps, 'params'>) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'metadata' });
+  const t = await getTranslations({ locale });
 
   return {
     title: t('metadata-title'),
@@ -62,7 +62,10 @@ export function generateStaticParams() {
   return routing.locales.map(locale => ({ locale }));
 }
 
-function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
+export default function LocaleLayout({
+  children,
+  params: { locale },
+}: LocaleLayoutProps) {
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -84,5 +87,3 @@ function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
     </html>
   );
 }
-
-export default LocaleLayout;
