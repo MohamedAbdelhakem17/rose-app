@@ -3,7 +3,7 @@
 // --------------------------------------
 
 /** Single notification item */
-declare type NotificationType = {
+type NotificationType = {
   _id: string;
   recipient: string;
   title: string;
@@ -79,4 +79,5 @@ export {
   ToggleNotificationResponseType,
   MakeNotificationReaddResponseType,
   DeleteAllNotificationResponseType,
+  NotificationType,
 };
