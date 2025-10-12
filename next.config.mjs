@@ -1,4 +1,7 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   images: {
     domains: ['localhost', 'flower.elevateegy.com'],
@@ -11,4 +14,5 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+export default withNextIntl(nextConfig);

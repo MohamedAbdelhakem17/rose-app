@@ -5,13 +5,15 @@ import { Loader2 } from 'lucide-react';
 import * as React from 'react';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  // removed the font-weight property to match with the design
+  'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm  transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
         // Primary variants
+        // changed the primary main color and hover state to match with the design
         primary:
-          'bg-maroon-500 text-white hover:bg-maroon-600 active:bg-maroon-700',
+          'bg-maroon-600  text-white hover:bg-maroon-500 text-sm active:bg-maroon-700 dark:bg-soft-pink-200 dark:text-zinc-800',
         'primary-light':
           'bg-soft-pink-200 text-maroon-600 hover:bg-soft-pink-300 active:bg-soft-pink-400',
         'primary-outline':
@@ -61,7 +63,7 @@ const buttonVariants = cva(
       },
       size: {
         sm: 'h-8 px-3 text-xs',
-        default: 'h-10 px-4 text-sm',
+        default: 'py-2 px-6 text-sm',
         lg: 'h-12 px-6 text-base',
         xl: 'h-14 px-8 text-lg',
         icon: 'h-10 w-10',

@@ -1,5 +1,5 @@
-export { Badge, badgeVariants } from './Badge';
-export { Button, buttonVariants } from './Button';
+export { Badge, badgeVariants } from '../ui/Badge';
+export { Button, buttonVariants } from '../ui/Button';
 export {
   Card,
   CardContent,
@@ -7,8 +7,8 @@ export {
   CardFooter,
   CardHeader,
   CardTitle,
-} from './Card';
-export { Input } from './Input';
-export { Label } from './Label';
-export { NewsletterForm } from './NewsletterForm';
-export { Textarea } from './Textarea';
+} from '../ui/Card';
+export { Input } from '../ui/Input';
+export { Label } from '../ui/Label';
+export { Textarea } from '../ui/Textarea';
+export { NewsletterForm } from './newsletter-form';

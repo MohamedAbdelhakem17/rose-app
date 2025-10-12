@@ -1,9 +1,19 @@
+import { cn } from '@/lib/utils/utils';
+
 export default function SectionTitle({ title }: { title: string }) {
   return (
-    <div className='relative flex justify-center'>
-      <h2 className='text-3xl text-center md:text-4xl text-maroon-700 relative after:absolute after:content-["_"] after:w-36 after:-bottom-0.5 after:h-0.5 after:left-0 after:bg-soft-pink-600  font-semibold font-poppins before:absolute before:content-["_"] before:w-[402px] before:rounded-r-full before:h-4 before:bg-soft-pink-100 before:bottom-0  before:-z-10 w-fit'>
+    <main className='relative'>
+      <h2
+        className={cn(
+          'relative w-fit text-h-3 md:text-h-3 text-maroon-700 dark:text-soft-pink-200 font-semibold font-poppins',
+          "before:absolute before:content-[''] before:w-[75%] before:h-5 before:rounded-full",
+          'before:bg-soft-pink-100 before:bottom-0 before:left-0 before:-z-10 dark:before:bg-zinc-700',
+          "after:absolute after:content-[''] after:w-[30%] after:h-[3px] after:bg-soft-pink-600 dark:after:bg-soft-pink-500",
+          'after:bottom-0 after:left-0 after:rounded-full'
+        )}
+      >
         {title}
       </h2>
-    </div>
+    </main>
   );
 }

@@ -13,6 +13,7 @@ interface HeaderProps {
 
 import { navigationItems } from '@/lib/data/navigation';
 import Notifications from './user-notifications';
+import { navigationItems } from '@/lib/constants/navigation';
 
 export function Header({ className }: HeaderProps) {
   const [searchQuery, setSearchQuery] = React.useState('');
