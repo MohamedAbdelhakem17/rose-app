@@ -69,6 +69,27 @@ type MakeNotificationReaddResponseType = ApiResponse<{
 }>;
 
 // --------------------------------------
+// API Context Types
+// --------------------------------------
+
+/** function : user notification read one and delete one  or read all and delete all*/
+type NotificationActionParams = {
+  type: 'all' | 'single';
+  id?: string;
+};
+
+/** function: user notification provider*/
+type NotificationContextType = {
+  unreadCount: number;
+  isMenuOpen: boolean;
+  activeOptionId: string | null;
+  toggleMenu: () => void;
+  toggleOptions: (id: string) => void;
+  deleteNotificationRead: (params: NotificationActionParams) => void;
+  markNotificationRead: (params: NotificationActionParams) => void;
+};
+
+// --------------------------------------
 //  Exports
 // --------------------------------------
 
@@ -80,4 +101,5 @@ export {
   MakeNotificationReaddResponseType,
   DeleteAllNotificationResponseType,
   NotificationType,
+  NotificationContextType,
 };

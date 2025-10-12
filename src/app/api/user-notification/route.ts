@@ -24,9 +24,5 @@ export async function GET(req: NextRequest) {
 
   const payload: GetUserNotificationsResponse = await response.json();
 
-  if ('error' in payload) {
-    return;
-  }
-
   return NextResponse.json(payload);
 }

@@ -4,16 +4,20 @@ import { Loader2Icon } from 'lucide-react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useGetAllNotifications from './_hooks/use-get-all-notification';
 import { NotificationType } from '@/lib/types/user-notification';
+import { useMemo } from 'react';
 
 export default function Notifications() {
   const { data, fetchNextPage, hasNextPage, isLoading } =
     useGetAllNotifications();
 
   // collect All Notification
-  const allNotifications: NotificationType[] =
-    data?.pages.flatMap(page =>
-      'notifications' in page ? page.notifications : []
-    ) || [];
+  const allNotifications = useMemo<NotificationType[]>(() => {
+    return (
+      data?.pages.flatMap(page =>
+        'notifications' in page ? page.notifications : []
+      ) || []
+    );
+  }, [data]);
 
   // Initial loading state
   if (isLoading)

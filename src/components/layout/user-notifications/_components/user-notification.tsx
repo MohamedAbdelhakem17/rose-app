@@ -1,4 +1,5 @@
 'use client';
+
 import React, { createContext, useContext, useState } from 'react';
 import {
   Bell,
@@ -10,29 +11,13 @@ import {
   Trash2,
 } from 'lucide-react';
 import { cn } from '@/lib/utils/utils';
-import { NotificationType } from '@/lib/types/user-notification';
+import {
+  NotificationContextType,
+  NotificationType,
+} from '@/lib/types/user-notification';
 import useGetNotificationCount from '../_hooks/use-get-notification-count';
 import useDeleteNotification from '../_hooks/use-delete-notification';
 import useMarkNotificationRead from '../_hooks/use-read-notification';
-
-// --------------------------------------
-//  Context Types
-// --------------------------------------
-
-type NotificationActionParams = {
-  type: 'all' | 'single';
-  id?: string;
-};
-
-type NotificationContextType = {
-  unreadCount: number;
-  isMenuOpen: boolean;
-  activeOptionId: string | null;
-  toggleMenu: () => void;
-  toggleOptions: (id: string) => void;
-  deleteNotificationRead: (params: NotificationActionParams) => void;
-  markNotificationRead: (params: NotificationActionParams) => void;
-};
 
 // --------------------------------------
 //  Context Setup
