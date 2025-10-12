@@ -3,12 +3,12 @@
 import { cookies } from 'next/headers';
 
 // get token (for server components or API calls)
-export function getToken() {
+export async function getToken() {
   return cookies().get('token')?.value || null;
 }
 
 // set token (you can call this after login)
-export function setToken(token: string) {
+export async function setToken(token: string) {
   cookies().set('token', token, {
     httpOnly: true,
     secure: true,
@@ -18,6 +18,6 @@ export function setToken(token: string) {
 }
 
 // delete token (for logout)
-export function clearToken() {
+export async function clearToken() {
   cookies().delete('token');
 }
