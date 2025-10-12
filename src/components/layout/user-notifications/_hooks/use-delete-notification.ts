@@ -1,0 +1,40 @@
+import {
+  clearAllNotificationsAction,
+  deleteNotificationAction,
+} from '@/lib/actions/user-notification.action';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+type FunctionType = {
+  type: 'all' | 'single';
+  id?: string;
+};
+
+export default function useDeleteNotification() {
+  const queryClient = useQueryClient();
+
+  const { mutate: deleteNotificationRead } = useMutation({
+    mutationFn: async ({ type, id }: FunctionType) => {
+      switch (type) {
+        case 'all':
+          return await clearAllNotificationsAction();
+
+        case 'single':
+          if (!id)
+            throw new Error('Notification ID is required for single type');
+
+          return await deleteNotificationAction(id);
+
+        default:
+          throw new Error(`Unknown type: ${type}`);
+      }
+    },
+
+    onSuccess: () => {
+      queryClient.refetchQueries({
+        queryKey: ['notifications', 'unread-notification-count'],
+      });
+    },
+  });
+
+  return { deleteNotificationRead };
+}

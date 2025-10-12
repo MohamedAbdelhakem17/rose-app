@@ -1,9 +1,21 @@
-declare type ErrorResponse = {
-  message: string;
+type ErrorResponse = {
+  error: 'string';
 };
 
-declare type SuccessResponse<T> = {
-  message: string;
+type SuccessResponse<T> = {
+  message: string | 'success';
 } & T;
 
-declare type ApiResponse<T> = SuccessResponse<T> | ErrorResponse;
+declare type Metadata = {
+  totalPages: number;
+  totalItems: number;
+  currentPage: number;
+  limit: number;
+  nextPage: number;
+};
+
+declare type PaginatedResponse<T, M = Metadata> = {
+  metadata: M;
+} & T;
+
+declare type ApiResponse<T> = ErrorResponse | SuccessResponse<T>;

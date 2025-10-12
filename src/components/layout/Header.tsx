@@ -2,14 +2,7 @@
 
 import { Button } from '@/components/shared';
 import { cn } from '@/lib/utils/utils';
-import {
-  Bell,
-  Heart,
-  LocationEdit,
-  Search,
-  ShoppingCart,
-  User,
-} from 'lucide-react';
+import { Heart, LocationEdit, Search, ShoppingCart, User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
@@ -18,6 +11,8 @@ interface HeaderProps {
   className?: string;
 }
 
+import { navigationItems } from '@/lib/data/navigation';
+import Notifications from './user-notifications';
 import { navigationItems } from '@/lib/constants/navigation';
 
 export function Header({ className }: HeaderProps) {
@@ -102,12 +97,7 @@ export function Header({ className }: HeaderProps) {
               <div className='h-6 w-px bg-zinc-300' />
 
               {/* Notifications */}
-              <Link
-                href='/notifications'
-                className='text-zinc-700 hover:text-pink-500 transition-colors'
-              >
-                <Bell className='h-5 w-5' />
-              </Link>
+              <Notifications />
 
               {/* Divider */}
               <div className='h-6 w-px bg-zinc-300' />
