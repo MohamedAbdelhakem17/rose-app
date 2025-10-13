@@ -1,7 +1,6 @@
-
 import { Section } from '@/components/layout';
 import SectionTitle from '@/components/shared/sedtion-title';
-import AutoSlider from './_components/testimonials/auto-slider';
+import AutoSlider from '../_components/testimonials/auto-slider';
 import SectionName from '@/components/shared/section-name';
 import HeroSection from '@/components/features/hero-section/hero-section';
 import OccasionsSection from '@/components/features/OccasionsSection';
@@ -13,7 +12,6 @@ import Companies from '@/components/features/Companies/Companies';
 export default async function Home() {
   return (
     <main className=''>
- 
       {/* Occasions & Features Sections */}
 
       <Section className='max-w-7xl mx-auto '>
