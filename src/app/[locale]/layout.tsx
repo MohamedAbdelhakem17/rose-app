@@ -1,7 +1,6 @@
 import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { Header, Footer } from '@/components/layout';
 import Providers from '@/components/providers';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Sarabun, Tajawal } from 'next/font/google';
@@ -78,11 +77,7 @@ export default function LocaleLayout({
       <body
         className={`${sarabun.variable} ${tajawal.variable} font-sarabun antialiased`}
       >
-        <Providers>
-          <Header />
-          {children}
-          <Footer />
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

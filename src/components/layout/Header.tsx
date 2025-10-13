@@ -6,14 +6,13 @@ import { Heart, LocationEdit, Search, ShoppingCart, User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
+import Notifications from './user-notifications';
+import { navigationItems } from '@/lib/constants/navigation';
 
 interface HeaderProps {
   className?: string;
 }
 
-import { navigationItems } from '@/lib/data/navigation';
-import Notifications from './user-notifications';
-import { navigationItems } from '@/lib/constants/navigation';
 
 export function Header({ className }: HeaderProps) {
   const [searchQuery, setSearchQuery] = React.useState('');
