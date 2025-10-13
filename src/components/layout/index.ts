@@ -1,4 +1,4 @@
 export { Footer } from './Footer';
 export { Header } from './Header';
-export { MainLayout } from './MainLayout';
+export { MainLayout } from './main-layout';
 export { Section } from './Section';

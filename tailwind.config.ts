@@ -170,6 +170,37 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+
+      spacing: {
+        //spacing for elements
+        'element-xs': '0.25rem',
+        'element-sm': '0.5rem',
+        'element-md': '0.75rem',
+        'element-lg': '1rem',
+        'element-xl': '1.5rem',
+
+        //spacing for sections
+        'section-xs': '2rem',
+        'section-sm': '4rem',
+        'section-md': '6rem',
+        'section-lg': '8rem',
+        'section-xl': '10rem',
+      },
+    },
+    fontSize: {
+      // Headings
+      'h-1': ['3rem', { lineHeight: '1.2', fontWeight: '700' }], // ~48px
+      'h-2': ['2.5rem', { lineHeight: '1.25', fontWeight: '700' }], // ~40px
+      'h-3': ['2.25rem', { lineHeight: '1.3', fontWeight: '700' }], // ~36px
+      'h-4': ['1.5rem', { lineHeight: '1.4', fontWeight: '700' }], // ~24px
+      'h-5': ['1.25rem', { lineHeight: '1.4', fontWeight: '700' }], // ~20px
+      'h-6': ['1rem', { lineHeight: '1.5', fontWeight: '700' }], // ~16px
+
+      // Paragraphs
+      'p-1': ['1.125rem', { lineHeight: '1.7' }], // ~18px
+      'p-2': ['1rem', { lineHeight: '1.7' }], // ~16px
+      'p-3': ['0.875rem', { lineHeight: '1.6' }], // ~14px
+      'p-4': ['0.75rem', { lineHeight: '1.5' }], // ~12px
     },
   },
   plugins: [tailwindcssAnimate],
