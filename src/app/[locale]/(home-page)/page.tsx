@@ -3,24 +3,22 @@ import Companies from '@/components/features/Companies/companies-component';
 import Gallery from '@/components/features/Gallery/gallery-component';
 import { Section } from '@/components/layout';
 import SectionTitle from '@/components/shared/sedtion-title';
-import AutoSlider from './_components/testimonials/auto-slider';
+import AutoSlider from '../_components/testimonials/auto-slider';
 import SectionName from '@/components/shared/section-name';
+import HeroSection from '@/components/features/hero-section/hero-section';
+import OccasionsSection from '@/components/features/OccasionsSection';
+import FeaturesSection from '@/components/features/FeaturesSection';
 
 export default async function Home() {
   return (
-    <main className='py-8'>
-      <Section>
-        <div className='text-center mb-12'>
-          <h2 className='text-4xl font-bold text-foreground mb-4'>
-            Welcome to Rose App
-          </h2>
-          <p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
-            A modern Next.js application with a comprehensive design system and
-            reusable UI components.
-          </p>
-        </div>
-      </Section>
+    <main className=''>
+      {/* Occasions & Features Sections */}
 
+      <Section className='max-w-7xl mx-auto '>
+        <HeroSection />
+        <OccasionsSection />
+        <FeaturesSection />
+      </Section>
       <About />
       <Gallery />
       <Companies />

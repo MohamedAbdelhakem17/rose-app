@@ -1,12 +1,12 @@
 import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { Header, Footer } from '@/components/layout';
 import Providers from '@/components/providers';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Sarabun, Tajawal } from 'next/font/google';
 import { NextFontWithVariable } from 'next/dist/compiled/@next/font';
 import { Toaster } from '../../components/ui/sonner';
+import { Footer, Header } from '@/components/layout';
 
 // Sarabun font for English (all weights: 100-800)
 const sarabun: NextFontWithVariable = Sarabun({
