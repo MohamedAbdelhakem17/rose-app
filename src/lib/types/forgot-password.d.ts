@@ -1,4 +1,6 @@
 // API Response Types
 
 /** Response: otp verification  */
-type OtpVerificationResponse = ApiResponse<{ null }>;
+type OtpVerificationResponse = ApiResponse<''>;
+
+export { OtpVerificationResponse };
