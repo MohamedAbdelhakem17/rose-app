@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         // Primary variants
         primary:
-          'bg-maroon-500 text-white hover:bg-maroon-600 active:bg-maroon-700',
+          'bg-maroon-600 text-white hover:bg-maroon-700 active:bg-maroon-700',
         'primary-light':
           'bg-soft-pink-200 text-maroon-600 hover:bg-soft-pink-300 active:bg-soft-pink-400',
         'primary-outline':

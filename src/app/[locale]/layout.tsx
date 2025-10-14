@@ -6,6 +6,7 @@ import Providers from '@/components/providers';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Sarabun, Tajawal } from 'next/font/google';
 import { NextFontWithVariable } from 'next/dist/compiled/@next/font';
+import { Toaster } from '../../components/ui/sonner';
 
 // Sarabun font for English (all weights: 100-800)
 const sarabun: NextFontWithVariable = Sarabun({
@@ -80,6 +81,8 @@ export default function LocaleLayout({
       >
         <Providers>
           <Header />
+          <Toaster richColors position='bottom-right' />
+
           {children}
           <Footer />
         </Providers>
