@@ -11,7 +11,6 @@ interface HeaderProps {
   className?: string;
 }
 
-import { navigationItems } from '@/lib/data/navigation';
 import Notifications from './user-notifications';
 import { navigationItems } from '@/lib/constants/navigation';
 

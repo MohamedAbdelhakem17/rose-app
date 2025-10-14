@@ -1,6 +1,6 @@
-import About from '@/components/features/about/about';
-import Companies from '@/components/features/companies/companies';
-import Gallery from '@/components/features/gallery/gallery';
+import About from '@/components/features/about/about-component';
+import Companies from '@/components/features/Companies/companies-component';
+import Gallery from '@/components/features/Gallery/gallery-component';
 import { Section } from '@/components/layout';
 import SectionTitle from '@/components/shared/sedtion-title';
 import AutoSlider from './_components/testimonials/auto-slider';
