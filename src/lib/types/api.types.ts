@@ -198,3 +198,46 @@ export const API_ENDPOINTS = {
   },
 } as const;
 
+// ApiResponse
+export type ApiResponse<T> = {
+  message: string;
+} & T;
+
+// bestselller types
+export interface BestSellerResponse {
+  message: string,
+  products: {
+    _id: string,
+    title: string,
+    imgCover: string,
+    price: number,
+    priceAfterDiscount: number,
+    quantity: number,
+    id: string,
+    rateCount: number,
+    rateAvg: number,
+    category: string,
+    occasion: string,
+
+  }[]
+}
+
+// most popular products
+export interface MostPopularResponse {
+  message: string,
+  metadata: {
+    currentPage: number,
+    limit: number,
+    totalPages: number,
+    totalItems: number,
+
+  },
+  occasions: {
+    _id: string,
+    name: string,
+    slug: string,
+    image: string,
+    productsCount: number,
+  }[]
+
+}

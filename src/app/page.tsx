@@ -1,3 +1,5 @@
+import BestSelling from '@/components/features/best-selling/best-selling';
+import MostPopular from '@/components/features/most-popular/most-popular';
 import { Section } from '@/components/layout';
 
 export default function Home() {
@@ -14,6 +16,8 @@ export default function Home() {
           </p>
         </div>
       </Section>
+      <BestSelling />
+      <MostPopular />
     </main>
   );
 }
