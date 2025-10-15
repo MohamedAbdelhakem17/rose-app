@@ -16,7 +16,6 @@ export function ForgotPasswordForm({
   isPending = false,
   buttonText = 'Continue',
 }: ForgotPasswordFormProps) {
-  
   //hooks
   const {
     register,

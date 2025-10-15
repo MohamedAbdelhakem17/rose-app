@@ -5,8 +5,8 @@ import { Link } from '@/i18n/navigation';
 import { useForgotPassword } from './_hooks/use-forgot-password';
 import { useResetPassword } from './_hooks/use-reset-password';
 import AuthenticationHeading from '../_components/_layout/authentication-heading';
-import { ForgotPasswordForm } from './_components/forgot-password-step';
-import { ResetPasswordForm } from './_components/reset-password-step';
+import { ForgotPasswordForm } from './_components/steps/forgot-password-step';
+import { ResetPasswordForm } from './_components/steps/reset-password-step';
 import { AuthRedirect } from './_components/_shared/auth-redirect';
 
 export default function ForgotPassword() {
