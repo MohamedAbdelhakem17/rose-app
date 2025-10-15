@@ -7,7 +7,7 @@ type PropsType = {
     href: string;
   };
   message: string;
-};
+} & React.HTMLAttributes<HTMLParagraphElement>;
 
 /**
  * AuthenticationLink Component
@@ -31,9 +31,13 @@ type PropsType = {
 export default function AuthenticationLink({
   message,
   link,
+  ...props
 }: PropsType): JSX.Element {
   return (
-    <p className='border-t border-t-zinc-200 dark:border-t-zinc-600 pt-9 dark:text-white text-zinc-800'>
+    <p
+      className='border-t border-t-zinc-200 dark:border-t-zinc-600 pt-5 dark:text-white text-zinc-800 my-9 text-center'
+      {...props}
+    >
       {message}
       <Link
         href={link.href}
