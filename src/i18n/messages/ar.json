@@ -1,4 +1,10 @@
 {
   "metadata-title": "تطبيق روز",
-  "metadata-description": "تطبيق روز للتجارة الإلكترونية"
+  "metadata-description": "تطبيق روز للتجارة الإلكترونية",
+  "email-label": "البريد الاليكتروني",
+  "password-label": "الرقم السري",
+  "forgot-password-paragraph": "هل نسيت رقمك السري ؟",
+  "login-button": "تسجيل الدخول",
+  "register-paragraph": "هل ليس لديك اي حساب ؟",
+  "register-paragraph-action": "قم بعمل حساب الان !"
 }

@@ -15,13 +15,18 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Button, Input } from '@/components/shared';
 import ErrorApi from '../../_components/error-api';
-import Link from 'next/link'; 
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export default function LoginForm() {
+  // For Api error
   const [error, setError] = useState<string | null>();
+
+  // For disable button submit
   const [loading, setLoading] = useState<boolean>(false);
-  const router = useRouter();
+
+  // For translate
+  const t = useTranslations();
 
   // Form
   const form = useForm<LoginValues>({
@@ -50,51 +55,55 @@ export default function LoginForm() {
 
     if (response?.url) {
       // hard redirect
-      location.href = new URLSearchParams(location.search).get('callbackUrl') || '/'
+      location.href =
+        new URLSearchParams(location.search).get('callbackUrl') || '/';
       setLoading(false);
     }
   };
 
   return (
     <Form {...form}>
-      <form className=' w-[404px]' onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        className='capitalize font-inter font-medium w-[404px]'
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         {/* Email */}
-        <div className=' font-inter'>
-          <FormField
-            name='email'
-            control={form.control}
-            render={({ field }) => (
-              <FormItem>
-                {/* Label */}
-                <FormLabel className=' font-medium text-gray-800'>
-                  Email
-                </FormLabel>
+        <FormField
+          name='email'
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              {/* Label */}
+              <FormLabel className='text-gray-800'>
+                {t('email-label')}
+              </FormLabel>
 
-                {/* Field */}
-                <FormControl>
-                  <Input
-                    type='text'
-                    placeholder='user@example.com'
-                    className={`${form.formState.errors.email?.message && 'border-red-600 focus:ring-red-600'}`}
-                    {...field}
-                  />
-                </FormControl>
+              {/* Field */}
+              <FormControl>
+                <Input
+                  type='text'
+                  placeholder='user@example.com'
+                  className={`${form.formState.errors.email?.message && 'border-red-600 focus:ring-red-600'}`}
+                  {...field}
+                />
+              </FormControl>
 
-                {/* Feedback */}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+              {/* Feedback */}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <div className='font-geistMono font-medium pt-4'>
+        <div className='pt-4'>
           <FormField
             name='password'
             control={form.control}
             render={({ field }) => (
               <FormItem>
                 {/* Label */}
-                <FormLabel className='text-gray-800 '>Password</FormLabel>
+                <FormLabel className='text-gray-800 '>
+                  {t('password-label')}
+                </FormLabel>
 
                 {/* Field */}
                 <FormControl>
@@ -114,12 +123,12 @@ export default function LoginForm() {
         </div>
 
         {/* Forgot Password */}
-        <div className='flex flex-col items-end w-full'>
+        <div className='flex flex-col items-end w-full font-sarabun'>
           <Link
             href={'/forgot-password'}
             className=' font-medium text-sm font-geistMono text-maroon-700 pt-2.5 pb-10 '
           >
-            Forgot you password?
+            {t('forgot-password-paragraph')}
           </Link>
         </div>
 
@@ -131,10 +140,17 @@ export default function LoginForm() {
           type='submit'
           variant={'primary'}
           disabled={loading || form.formState.isSubmitting}
-          className=' w-full'
+          className='font-sarabun w-full'
         >
-          Login
+          {t('login-button')}
         </Button>
+
+        <p className='w-full border-t pt-5 mt-9 font-sarabun border-zinc-200 text-zinc-800 text-center'>
+          {t('register-paragraph')}
+          <Link href={'/register'} className='text-maroon-800'>
+            {t('register-paragraph-action')}
+          </Link>
+        </p>
       </form>
     </Form>
   );
