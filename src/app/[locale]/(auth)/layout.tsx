@@ -15,8 +15,8 @@ export default function AuthLayout({
             {' '}
             <Button
               variant='ghost'
-              size='sm'
-              className='text-zinc-700 hover:text-maroon-600 p-0 h-auto'
+              size='lg'
+              className='text-zinc-700 hover:text-maroon-600 p-0 mt-7 h-auto'
             >
               العربية
             </Button>
