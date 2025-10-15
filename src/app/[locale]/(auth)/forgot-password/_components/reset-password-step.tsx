@@ -16,6 +16,7 @@ export function ResetPasswordForm({
   isPending = false,
   buttonText = 'Reset Password',
 }: ResetPasswordFormProps) {
+  // Hooks
   const {
     register,
     handleSubmit,
@@ -32,7 +33,7 @@ export function ResetPasswordForm({
       {/* Password */}
       <div className='flex flex-col space-y-2'>
         <Label htmlFor='password' className='text-sm font-medium capitalize'>
-          New Password
+          new password
         </Label>
         <Input
           id='password'
@@ -51,7 +52,7 @@ export function ResetPasswordForm({
           htmlFor='confirmPassword'
           className='text-sm font-medium capitalize'
         >
-          Confirm Password
+          confirm password
         </Label>
         <Input
           id='confirmPassword'
@@ -74,8 +75,8 @@ export function ResetPasswordForm({
       >
         {isPending ? (
           <>
-            <div className='h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin' />
-            <span>Submitting...</span>
+            <div className='h-4 w-4 border-2 capitalize border-white border-t-transparent rounded-full animate-spin' />
+            <span>submitting...</span>
           </>
         ) : (
           buttonText
