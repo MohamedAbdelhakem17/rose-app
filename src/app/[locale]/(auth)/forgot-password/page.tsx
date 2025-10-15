@@ -7,6 +7,7 @@ import { useResetPassword } from './_hooks/use-reset-password';
 import AuthenticationHeading from '../_components/_layout/authentication-heading';
 import { ForgotPasswordForm } from './_components/forgot-password-step';
 import { ResetPasswordForm } from './_components/reset-password-step';
+import { AuthRedirect } from './_components/_shared/auth-redirect';
 
 export default function ForgotPassword() {
   // hooks
@@ -41,16 +42,12 @@ export default function ForgotPassword() {
           onSubmit={data => resetMutate(data)} // pass the object { password, confirmPassword }
         />
 
-
-      {/* already made a reusable component by my colleague but we're waiting to publish the pr as you mentioned */}
-        <div className='flex justify-center items-center mt-4'>
-          <p className='flex gap-2'>
-            Don&apos;t have an account yet?
-            <span className='text-maroon-700 dark:text-pink-300 font-semibold hover:text-maroon-900 dark:hover:text-pink-500'>
-              <Link href='/create-account'>create one now!</Link>
-            </span>
-          </p>
-        </div>
+        {/* can be rendered using different props depends on the current rendered component also will be handled by colleague */}
+        <AuthRedirect
+          message='Already have an account?'
+          linkText='Sign in'
+          href='/login'
+        />
       </Section>
     </main>
   );
