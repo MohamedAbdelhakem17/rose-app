@@ -1,5 +1,5 @@
 import { otpVerification } from '@/lib/actions/otp-verification-action';
-import { OtpVerificationResponse } from '@/lib/types/forgot-password';
+import { OtpVerificationResponse } from '@/lib/types/auth/forgot-password';
 import { useMutation } from '@tanstack/react-query';
 
 export default function useOtpVerify() {

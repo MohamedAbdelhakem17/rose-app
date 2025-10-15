@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { forgotPasswordAction } from '@/lib/actions/forgot-password-action';
-import { ForgotPasswordResponse } from '@/lib/types/forgot-password';
+import { ForgotPasswordResponse } from '@/lib/types/auth/forgot-password';
 import useCookie from '@/hooks/use-cookie';
 
 export function useForgotPassword() {

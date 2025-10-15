@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { resetPasswordAction } from '@/lib/actions/reset-password-action';
-import { ResetPasswordResponse } from '@/lib/types/reset-password';
+import { ResetPasswordResponse } from '@/lib/types/auth/reset-password';
 
 export function useResetPassword() {
   const mutationFn = async ({
