@@ -19,6 +19,7 @@ import { Button } from '@/components/shared/Button';
 import { ForgotPasswordStep } from '@/lib/types/auth';
 import { FORGOT_PASSWORD_STEEP } from '@/lib/constants/auth.constant';
 import TimeCount from './../time-count';
+import { useTranslations } from 'next-intl';
 
 type OtpVerificationStepProps = {
   setStep: React.Dispatch<React.SetStateAction<ForgotPasswordStep>>;
@@ -27,6 +28,9 @@ type OtpVerificationStepProps = {
 export default function OtpVerificationStep({
   setStep,
 }: OtpVerificationStepProps) {
+  // Localization
+  const t = useTranslations();
+
   // Hooks
   const { verifyOtp, isPending } = useOtpVerify();
 
@@ -73,7 +77,7 @@ export default function OtpVerificationStep({
               <FormControl>
                 <>
                   {/* Label */}
-                  <FormLabel className='sr-only'>Verify OTP</FormLabel>
+                  <FormLabel className='sr-only'>{t('verify-otp')}</FormLabel>
 
                   {/* Input */}
                   <InputOTP
@@ -108,10 +112,10 @@ export default function OtpVerificationStep({
           variant='primary'
           disabled={(isSubmitted && !isValid) || isPending}
           loading={isPending}
-          loadingText='Verifying...'
+          loadingText={t('verifying-otp')}
           className='w-full'
         >
-          Verify Code
+          {t('verify-otp-action')}
         </Button>
       </form>
     </Form>

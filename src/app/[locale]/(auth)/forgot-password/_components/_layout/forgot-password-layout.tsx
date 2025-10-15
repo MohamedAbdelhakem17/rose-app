@@ -8,8 +8,12 @@ import AuthenticationHeading from '@/app/[locale]/(auth)/_components/_layout/aut
 import { Button } from '@/components/shared/Button';
 import { Input } from '@/components/ui/Input';
 import AuthenticationLink from './../../../_components/_layout/authentication-link';
+import { useTranslations } from 'next-intl';
 
 export default function ForgotPasswordLayout() {
+  // Localization
+  const t = useTranslations();
+
   // Email entered by user in step 1
   const [email, setEmail] = useState<string | null>(null);
   void setEmail;
@@ -78,29 +82,33 @@ export default function ForgotPasswordLayout() {
       heading: {
         title: (
           <AuthenticationHeading.title>
-            Enter the OTP Code
+            {t('enter-otp-label')}
           </AuthenticationHeading.title>
         ),
         description: (
           <AuthenticationHeading.description>
-            We have sent a 6-digit code to {email}
-            <Button
-              type={'button'}
-              onClick={() => setStep(FORGOT_PASSWORD_STEEP.EMAIL)}
-              variant={'link'}
-              className='p-0 text-blue-600 underline text-base font-medium ms-1'
-            >
-              Edit
-            </Button>
+            {t.rich('otp-edit-email', {
+              email: email as string,
+              edit: (chunks: React.ReactNode) => (
+                <Button
+                  type='button'
+                  onClick={() => setStep(FORGOT_PASSWORD_STEEP.EMAIL)}
+                  variant='link'
+                  className='p-0 text-blue-600 underline text-base font-medium ms-1'
+                >
+                  {chunks}
+                </Button>
+              ),
+            })}
           </AuthenticationHeading.description>
         ),
       },
       element: <OtpVerificationStep setStep={setStep} />,
       footer: (
         <AuthenticationLink
-          message='Need help?'
+          message={t('need-help')}
           link={{
-            label: 'Contact us',
+            label: t('contact-us-label'),
             href: '/contact-us',
           }}
         />

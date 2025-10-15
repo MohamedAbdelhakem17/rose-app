@@ -1,4 +1,13 @@
 {
   "metadata-title": "تطبيق روز",
-  "metadata-description": "تطبيق روز للتجارة الإلكترونية"
+  "metadata-description": "تطبيق روز للتجارة الإلكترونية",
+  "send-otp-button": "إرسال رمز جديد",
+  "send-otp-button-time-count": "أرسل رمزًا جديدًا خلال: {{timeLeft}} ثانية",
+  "enter-otp-label": "أدخل رمز OTP",
+  "otp-description": "تم إرسال رمز مكون من ٦ أرقام إلى {email} <edit>تعديل</edit>",
+  "need-help": "بحاجة الى مساعدة؟",
+  "contact-us-label": "اتصل بنا",
+  "verify-otp": "التحقق من كلمة المرور لمرة واحدة (OTP).",
+  "verify-otp-action": "التحقق من الرمز",
+  "verifying-otp": "جارٍ التحقق..."
 }
