@@ -6,16 +6,17 @@ import { FORGOT_PASSWORD_STEEP } from '@/lib/constants/auth.constant';
 import { ForgotPasswordStep } from '@/lib/types/auth';
 import AuthenticationHeading from '@/app/[locale]/(auth)/_components/_layout/authentication-heading';
 import { Button } from '@/components/shared/Button';
+import { Input } from '@/components/ui/Input';
 import AuthenticationLink from './../../../_components/_layout/authentication-link';
 
 export default function ForgotPasswordLayout() {
   // Email entered by user in step 1
-  const [email, setEmail] = useState<string | null>('user@example.com');
+  const [email, setEmail] = useState<string | null>(null);
   void setEmail;
 
   // Current step in forgot password flow
   const [step, setStep] = useState<ForgotPasswordStep>(
-    FORGOT_PASSWORD_STEEP.OTP
+    FORGOT_PASSWORD_STEEP.EMAIL
   );
 
   //  Forgat password  steps
@@ -33,7 +34,35 @@ export default function ForgotPasswordLayout() {
           </AuthenticationHeading.description>
         ),
       },
-      element: <h1>Send Email</h1>,
+      element: (
+        <div className='w-96 p-5'>
+          <label htmlFor='forgot-email' className='sr-only'>
+            Email address
+          </label>
+
+          <Input
+            id='forgot-email'
+            type='email'
+            placeholder='Enter your email'
+            value={email || ''}
+            onChange={e => setEmail(e.target.value)}
+            className='w-full'
+          />
+
+          <Button
+            type='button'
+            className='w-full mt-4'
+            onClick={() => {
+              if (email) {
+                setStep(FORGOT_PASSWORD_STEEP.OTP);
+              }
+            }}
+            disabled={!email}
+          >
+            Send Email
+          </Button>
+        </div>
+      ),
       footer: (
         <AuthenticationLink
           message='Don’t have an account yet?'
@@ -105,7 +134,7 @@ export default function ForgotPasswordLayout() {
   };
 
   return (
-    <div>
+    <>
       {/* Header */}
       <AuthenticationHeading>
         {/* Title  */}
@@ -120,6 +149,6 @@ export default function ForgotPasswordLayout() {
 
       {/* Footer */}
       {STEPS[step].footer}
-    </div>
+    </>
   );
 }

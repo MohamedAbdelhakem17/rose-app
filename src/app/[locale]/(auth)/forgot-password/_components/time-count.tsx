@@ -1,53 +1,57 @@
 'use client';
 
+import { useRef } from 'react';
 import { Button } from '@/components/shared/Button';
 import useCounterManagement from './../_hooks/use-mange-counter';
-// import { Button } from '@/components/ui/button';
 
 type Props = {
-  initialTime?: number;
+  initialTimeInSeconds?: number;
 };
 
-export default function TimeCount({ initialTime = 1 }: Props) {
-  // Query
+// TODO :
+// Handle resend OTP logic with timer reset.
+//   [1] Call the restartTimer function inside the onSuccess callback of the resendOTP mutation.
+//   [2] In onSuccess, call restartTimer() to restart the countdown.
+
+export default function TimeCount({ initialTimeInSeconds = 60 }: Props) {
+  // Ref
+  const isClient = useRef(typeof window !== 'undefined');
 
   // Hook
-  const { timeLeft, clearTimerFromCookie } = useCounterManagement({
-    initialTime,
+  const { timeLeft, restartTimer } = useCounterManagement({
+    initialTimeInSeconds,
   });
 
-  // Variable
+  // Check if not in server
+  if (!isClient.current) return null;
 
-  const content = {
-    available: (
-      <>
-        {/* onClick handel reset otp */}
+  // Variable
+  const canSendNewCode = timeLeft === 0;
+
+  return (
+    // Actions
+    <div className='text-end py-3'>
+      {canSendNewCode ? (
+        //  Resend code
         <Button
+          type='button'
           variant='ghost'
-          className='hover:bg-transparent active:bg-transparent ring-0'
-          onClick={clearTimerFromCookie}
+          onClick={restartTimer}
+          className='hover:bg-transparent text-primary font-medium select-none'
         >
           Send a new code
         </Button>
-      </>
-    ),
-    notAvailable: (
-      <>
+      ) : (
+        // Counter ruining
         <Button
+          type='button'
           variant='ghost'
-          className='hover:bg-transparent active:bg-transparent p-0 '
-          disabled={timeLeft !== 0}
+          disabled
+          className='hover:bg-transparent text-muted-foreground p-0 cursor-default select-none'
         >
-          Send a new code in : {timeLeft} s
+          Send a new code in: {timeLeft}s
         </Button>
-      </>
-    ),
-  };
-
-  return (
-    <div>
-      {timeLeft === 0 ? content.available : content.notAvailable}
-      <hr />
+      )}
     </div>
   );
 }

@@ -18,6 +18,7 @@ import { toast } from 'sonner';
 import { Button } from '@/components/shared/Button';
 import { ForgotPasswordStep } from '@/lib/types/auth';
 import { FORGOT_PASSWORD_STEEP } from '@/lib/constants/auth.constant';
+import TimeCount from './../time-count';
 
 type OtpVerificationStepProps = {
   setStep: React.Dispatch<React.SetStateAction<ForgotPasswordStep>>;
@@ -29,31 +30,28 @@ export default function OtpVerificationStep({
   // Hooks
   const { verifyOtp, isPending } = useOtpVerify();
 
-  // Form and validations
+  // Form and validation
   const form = useForm<OtpValues>({
     defaultValues: { resetCode: '' },
     resolver: zodResolver(otpSchema),
   });
 
-  // Function
+  // Functions
   const onSubmit: SubmitHandler<OtpValues> = ({ resetCode }) => {
     verifyOtp(resetCode, {
-      // otp success verify
       onSuccess: message => {
         toast.success(message || 'OTP verified successfully!');
 
         // Go to next step create password
         setStep(FORGOT_PASSWORD_STEEP.CREATE_PASSWORD);
       },
-
-      // otp failed verify
       onError: error => {
         toast.error(error.message || 'Invalid OTP. Please try again.');
       },
     });
   };
 
-  // Variables
+  // Variable
   const {
     isValid,
     isSubmitted,
@@ -95,8 +93,8 @@ export default function OtpVerificationStep({
                 </>
               </FormControl>
 
-              {/* New code */}
-              <p className='text-end py-4 mt-4 mb-9'>Send a new code</p>
+              {/* resend new code */}
+              <TimeCount initialTimeInSeconds={60} />
 
               {/* Error Feedback */}
               <FormMessage className='text-center' />
@@ -104,7 +102,7 @@ export default function OtpVerificationStep({
           )}
         />
 
-        {/* Submit Button */}
+        {/* submit Button */}
         <Button
           type='submit'
           variant='primary'

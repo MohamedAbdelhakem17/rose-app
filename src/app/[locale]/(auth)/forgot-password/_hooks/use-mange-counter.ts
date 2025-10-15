@@ -1,78 +1,78 @@
 'use client';
 
-import useCookie from '@/hooks/use-cookie';
 import { useEffect, useRef, useState } from 'react';
+import useCookie from '@/hooks/use-cookie';
 
 type Props = {
-  initialTime: number;
+  initialTimeInSeconds: number;
 };
 
-const useCounterManagement = ({ initialTime }: Props) => {
-  // Constant
+export default function useCounterManagement({ initialTimeInSeconds }: Props) {
+  // Constants
   const COOKIE_NAME = 'timer_end';
 
   // Hooks
   const { clearValue, setCookieValue, getCookieValue } = useCookie({
     name: COOKIE_NAME,
-    expireInMinutes: initialTime,
+    expireInMinutes: initialTimeInSeconds / 60,
   });
 
   // State
-  const [timeLeft, setTimeLeft] = useState(() => {
-    const value = getCookieValue();
-    const savedEndTime = value ? parseInt(value, 10) : null;
-
-    if (savedEndTime) {
-      const diff = Math.max(0, Math.floor((savedEndTime - Date.now()) / 1000));
-      return diff;
-    }
-
-    return initialTime;
-  });
+  const [timeLeft, setTimeLeft] = useState<number>(0);
 
   // Ref
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Function
-  const tickCount = (
-    endTime: number,
-    intervalRef: React.MutableRefObject<NodeJS.Timeout | null>
-  ) => {
-    const diff = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
+  // Functions
+  const restartTimer = () => {
+    const newEndTime = Date.now() + initialTimeInSeconds * 1000;
+    setCookieValue(newEndTime.toString());
+    setTimeLeft(initialTimeInSeconds);
+  };
+
+  const updateCountdown = (endTime: number) => {
+    const diff = Math.max(0, Math.ceil((endTime - Date.now()) / 1000));
+
     setTimeLeft(diff);
 
-    if (diff === 0 && intervalRef.current) {
-      clearInterval(intervalRef.current);
+    if (diff === 0) {
+      clearValue();
+
+      // Delete  interval if exist
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
     }
   };
 
   // Effect
   useEffect(() => {
-    const value = getCookieValue();
     let endTime: number;
+    const value = getCookieValue();
 
-    if (!value) {
-      endTime = Date.now() + initialTime * 1000;
+    if (value) {
+      // Set time if exist
+      endTime = parseInt(value, 10);
+    } else {
+      // Set new time if not exist
+      endTime = Date.now() + initialTimeInSeconds * 1000;
 
       setCookieValue(endTime.toString());
-    } else {
-      endTime = parseInt(value, 10);
     }
 
-    tickCount(endTime, intervalRef);
+    updateCountdown(endTime);
 
-    intervalRef.current = setInterval(
-      () => tickCount(endTime!, intervalRef),
-      1000
-    );
+    intervalRef.current = setInterval(() => updateCountdown(endTime), 1000);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialTime]);
+  }, [initialTimeInSeconds]);
 
-  return { timeLeft, clearTimerFromCookie: clearValue };
-};
-
-export default useCounterManagement;
+  return {
+    timeLeft,
+    restartTimer,
+  };
+}
