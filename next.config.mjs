@@ -4,7 +4,6 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig = {
   images: {
-    domains: ['localhost', 'flower.elevateegy.com'],
     remotePatterns: [
       {
         protocol: 'https',

@@ -1,7 +1,11 @@
+'use client';
+import ForgotPasswordLayout from './_components/_layout/forgot-password-layout';
+
 export default function page() {
   return (
-    <div>
-      <h3> Forgot Password</h3>
-    </div>
+    <main>
+      {/* Render current step of forgot password steps */}
+      <ForgotPasswordLayout />
+    </main>
   );
 }
