@@ -60,6 +60,9 @@ const buttonVariants = cva(
         // Ghost variants
         ghost: 'text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200',
         'ghost-disabled': 'text-zinc-400 cursor-not-allowed',
+
+        // Link variants
+        link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {
         sm: 'h-8 px-3 text-xs',

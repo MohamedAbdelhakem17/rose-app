@@ -13,20 +13,21 @@ export const registerSchema = z
     email: z.string().email('Invalid email address'),
     phone: z
       .string()
-      .min(8, 'Phone number must be at least 8 digits')
-      .max(15, 'Phone number is too long'),
+      .regex(/^\+201[0-2,5][0-9]{8}$/, 'Invalid Egyptian phone number'),
     gender: z.string().min(1, 'Please select a gender'),
     password: z
       .string()
-      .min(8, 'Password must be at least 8 characters long')
-      .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
-      .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
-      .regex(/[0-9]/, 'Password must contain at least one number'),
+      .min(8, 'Password must be at least 8 characters')
+      .regex(/[A-Z]/, 'Must contain at least one uppercase letter')
+      .regex(/[a-z]/, 'Must contain at least one lowercase letter')
+      .regex(/[0-9]/, 'Must contain at least one number')
+      .regex(/[@$!%*?&]/, 'Must contain at least one special character'),
+
     rePassword: z.string(),
   })
   .refine(data => data.password === data.rePassword, {
     message: 'Passwords do not match',
-    path: ['confirmPassword'],
+    path: ['rePassword'],
   });
 
 export type RegisterFormData = z.infer<typeof registerSchema>;

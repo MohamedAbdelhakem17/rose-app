@@ -54,4 +54,5 @@ export default function AuthLayout({
       </div>
     </div>
   );
+  return <div>{children}</div>;
 }
