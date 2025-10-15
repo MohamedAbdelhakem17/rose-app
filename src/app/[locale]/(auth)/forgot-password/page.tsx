@@ -1,73 +1,56 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { Section } from '@/components/layout';
-import { Button } from '@/components/ui/Button';
-import { Label } from '@/components/ui/Label';
-import { Input } from '@/components/ui/Input';
 import { Link } from '@/i18n/navigation';
 import { useForgotPassword } from './_hooks/use-forgot-password';
-import { toast } from 'sonner';
+import { useResetPassword } from './_hooks/use-reset-password';
+import AuthenticationHeading from '../_components/_layout/authentication-heading';
+import { ForgotPasswordForm } from './_components/forgot-password-step';
+import { ResetPasswordForm } from './_components/reset-password-step';
 
 export default function ForgotPassword() {
-  const [email, setEmail] = useState('');
-  const { mutate, isPending } = useForgotPassword();
+  // hooks
+  const { mutate: forgotMutate, isPending: isForgotPending } =
+    useForgotPassword();
+  const { mutate: resetMutate, isPending: isResetPending } = useResetPassword();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    mutate(email, {
-      onSuccess: (data: { message: string; info: string }) => {
-        toast.success(data.info || 'Email sent successfully!');
-      },
-      onError: (error: any) => {
-        toast.error(error?.message || 'Something went wrong');
-      },
-    });
-  };
   return (
     <main>
-      <Section className='max-w-md mx-auto mt-12 rounded-2xl p-6'>
-        <h1 className='text-h-4 text-zinc-800 capitalize dark:text-zinc-50 mb-2'>
-          forgot password?
-        </h1>
+      <Section className='max-w-md mx-auto rounded-2xl py-6'>
+        <AuthenticationHeading>
+          <AuthenticationHeading.title className='capitalize'>
+            forgot password
+          </AuthenticationHeading.title>
 
-        <p className='text-p-3 text-zinc-600 dark:text-zinc-300 mb-2'>
-          worry not, we&apos;ll send you instructions to help you reset it.
-        </p>
-        <hr className='mb-4' />
+          <AuthenticationHeading.description className='first-letter:capitalize'>
+            worry not, we&apos;ll send you instructions to help you reset it.
+          </AuthenticationHeading.description>
+        </AuthenticationHeading>
 
-        <form onSubmit={handleSubmit} className='space-y-5'>
-          <div className='flex flex-col space-y-2'>
-            <Label htmlFor='email' className='text-sm font-medium capitalize'>
-              email
-            </Label>
-            <Input
-              id='email'
-              type='email'
-              placeholder='user@example.com'
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
-            />
-          </div>
+        {/* the forms are rendered like this for now until my colleague conditionally renders them after he implements the otp */}
 
-          <Button
-            type='submit'
-            disabled={isPending}
-            className='w-full capitalize'
-          >
-            {isPending ? 'Sending...' : 'Continue'}
-          </Button>
+        {/* Forgot Password Form */}
+        <ForgotPasswordForm
+          isPending={isForgotPending}
+          onSubmit={email => forgotMutate(email)}
+        />
 
-          <hr />
-          <div className='flex justify-center items-center'>
-            <p className='flex gap-2'>
-              Don&apos;t have an account yet?
-              <span className='text-maroon-700 dark:text-pink-300 font-semibold hover:text-maroon-900 dark:hover:text-pink-500'>
-                <Link href='#'>create one now</Link>
-              </span>
-            </p>
-          </div>
-        </form>
+        {/* Reset Password Form */}
+        <ResetPasswordForm
+          isPending={isResetPending}
+          onSubmit={data => resetMutate(data)} // pass the object { password, confirmPassword }
+        />
+
+
+      {/* already made a reusable component by my colleague but we're waiting to publish the pr as you mentioned */}
+        <div className='flex justify-center items-center mt-4'>
+          <p className='flex gap-2'>
+            Don&apos;t have an account yet?
+            <span className='text-maroon-700 dark:text-pink-300 font-semibold hover:text-maroon-900 dark:hover:text-pink-500'>
+              <Link href='/create-account'>create one now!</Link>
+            </span>
+          </p>
+        </div>
       </Section>
     </main>
   );

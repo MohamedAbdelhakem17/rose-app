@@ -80,11 +80,17 @@ export default function LocaleLayout({
         className={`${sarabun.variable} ${tajawal.variable} font-sarabun antialiased`}
       >
         <Providers>
-          <Header />
-          <Toaster richColors position='bottom-right' />
-
+          {/* <Header /> */}
+          <Toaster
+            richColors
+            position='bottom-right'
+            theme='dark'
+            toastOptions={{
+              className: '!bg-emerald-50 !text-zinc-800 border border-gray-700',
+            }}
+          />
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </Providers>
       </body>
     </html>

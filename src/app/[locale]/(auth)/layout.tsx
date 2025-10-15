@@ -12,7 +12,7 @@ export default function AuthLayout({
       <div className='h-full flex flex-col justify-center '>
         <div className='w-[406px] mx-auto'>
           <div className='flex justify-end'>
-            {' '}
+            {/* language switcher button */}
             <Button
               variant='ghost'
               size='sm'
@@ -21,8 +21,8 @@ export default function AuthLayout({
               العربية
             </Button>
           </div>
+          {/* first separator image */}
           <div className='flex justify-center'>
-            {' '}
             <Image
               src='/images/auth-separator.webp'
               alt=''
@@ -31,9 +31,10 @@ export default function AuthLayout({
               className='my-10 text-center'
             />
           </div>
+          {/* page content */}
           {children}
+          {/* second separator image */}
           <div className='flex justify-center'>
-            {' '}
             <Image
               src='/images/auth-separator.webp'
               alt=''
@@ -44,6 +45,7 @@ export default function AuthLayout({
           </div>
         </div>
       </div>
+      {/* side image */}
       <div className=' h-full relative'>
         <Image
           src='/images/auth-image.webp'
