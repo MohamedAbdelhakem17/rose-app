@@ -18,6 +18,7 @@ export default function ForgotPassword() {
   return (
     <main>
       <Section className='max-w-md mx-auto rounded-2xl py-6'>
+        {/* reusable section heading */}
         <AuthenticationHeading>
           <AuthenticationHeading.title className='capitalize'>
             forgot password

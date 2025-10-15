@@ -32,10 +32,12 @@ export function useResetPassword() {
     mutationFn,
 
     onSuccess: data => {
+      // show success message
       toast.success(data.message || 'Password reset successful!');
     },
 
     onError: error => {
+      // show error message
       toast.error(error?.message || 'Something went wrong');
     },
   });

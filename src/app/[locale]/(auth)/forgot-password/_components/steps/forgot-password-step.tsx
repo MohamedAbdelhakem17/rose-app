@@ -30,6 +30,7 @@ export function ForgotPasswordForm({
       onSubmit={handleSubmit(data => onSubmit(data.email))}
       className='space-y-5 pb-3'
     >
+      {/* email field */}
       <div className='flex flex-col space-y-2'>
         <Label htmlFor='email' className='text-sm font-medium capitalize'>
           Email
@@ -44,7 +45,7 @@ export function ForgotPasswordForm({
           <p className='text-sm text-red-500'>{errors.email.message}</p>
         )}
       </div>
-
+      {/* submit button */}
       <Button
         type='submit'
         disabled={isPending}
@@ -52,6 +53,7 @@ export function ForgotPasswordForm({
       >
         {isPending ? (
           <>
+            {/* loader  */}
             <div className='h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin' />
             <span>Sending...</span>
           </>
