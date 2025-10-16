@@ -1,14 +1,19 @@
+import { useTranslations } from 'next-intl';
 import z from 'zod';
 
-// Otp schema
-const otpSchema = z.object({
-  resetCode: z
-    .string()
-    .min(6, 'OTP code must be 6 digits')
-    .max(6, 'OTP code must be 6 digits'),
-});
+const useOtpSchema = () => {
+  // Localization
+  const t = useTranslations();
+  // Otp schema
+  return z.object({
+    resetCode: z
+      .string()
+      .min(6, t('otp-validation-message'))
+      .max(6, t('otp-validation-message')),
+  });
+};
 
 // Otp type
-export type OtpValues = z.infer<typeof otpSchema>;
+export type OtpValues = z.infer<ReturnType<typeof useOtpSchema>>;
 
-export { otpSchema };
+export { useOtpSchema };

@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/form';
 import { InputOTP, InputOTPSlot } from '@/components/ui/input-otp';
 import { REGEXP_ONLY_DIGITS } from 'input-otp';
-import { otpSchema, OtpValues } from '@/lib/schemes/auth.schema';
+import { useOtpSchema, OtpValues } from '@/lib/schemes/auth.schema';
 import useOtpVerify from './../../_hooks/use-otp-verify';
 import { toast } from 'sonner';
 import { Button } from '@/components/shared/Button';
@@ -33,6 +33,7 @@ export default function OtpVerificationStep({
 
   // Hooks
   const { verifyOtp, isPending } = useOtpVerify();
+  const otpSchema = useOtpSchema();
 
   // Form and validation
   const form = useForm<OtpValues>({
