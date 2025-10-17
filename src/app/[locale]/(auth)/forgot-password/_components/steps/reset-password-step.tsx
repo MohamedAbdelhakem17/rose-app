@@ -10,19 +10,25 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/Button';
-import { PasswordInput } from '@/components/shared/password-input'; // the reusable component we made
+import { PasswordInput } from '@/components/shared/password-input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ResetPasswordInputs, ResetPasswordFormProps } from '@/lib/types/auth';
-import { resetPasswordSchema } from '@/lib/schemes/auth.schemes';
+import {
+  ResetPasswordFields,
+  useResetPasswordSchema,
+} from '@/hooks/use-reset-password-schema';
+import { useTranslations } from 'next-intl';
+import { ResetPasswordFormProps } from '@/lib/types/auth';
 
 export function ResetPasswordForm({
   onSubmit,
   isPending = false,
-  buttonText = 'Reset Password',
+  buttonText,
 }: ResetPasswordFormProps) {
-  //form hook
-  const form = useForm<ResetPasswordInputs>({
-    resolver: zodResolver(resetPasswordSchema),
+  const t = useTranslations();
+  const schema = useResetPasswordSchema();
+
+  const form = useForm<ResetPasswordFields>({
+    resolver: zodResolver(schema),
     mode: 'onBlur',
     defaultValues: {
       password: '',
@@ -42,10 +48,10 @@ export function ResetPasswordForm({
           name='password'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>New Password</FormLabel>
+              <FormLabel>{t('reset-password-label')}</FormLabel>
               <FormControl>
                 <PasswordInput
-                  placeholder='Enter your new password'
+                  placeholder={t('reset-password-placeholder')}
                   {...field}
                 />
               </FormControl>
@@ -60,10 +66,10 @@ export function ResetPasswordForm({
           name='confirmPassword'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Confirm Password</FormLabel>
+              <FormLabel>{t('reset-confirm-label')}</FormLabel>
               <FormControl>
                 <PasswordInput
-                  placeholder='Confirm your new password'
+                  placeholder={t('reset-confirm-placeholder')}
                   {...field}
                 />
               </FormControl>
@@ -81,10 +87,10 @@ export function ResetPasswordForm({
           {isPending ? (
             <>
               <div className='h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin' />
-              <span>Submitting...</span>
+              <span>{t('reset-button-loading')}</span>
             </>
           ) : (
-            buttonText
+            buttonText || t('reset-button-text')
           )}
         </Button>
       </form>

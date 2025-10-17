@@ -11,25 +11,26 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForgotPasswordSchema } from '@/hooks/use-forgot-password-schema';
+import { useTranslations } from 'next-intl';
 import {
   ForgotPasswordInputs,
   ForgotPasswordFormProps,
 } from '@/lib/types/auth';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { forgotPasswordSchema } from '@/lib/schemes/auth.schemes';
 
 export function ForgotPasswordForm({
   onSubmit,
   isPending = false,
-  buttonText = 'Continue',
+  buttonText,
 }: ForgotPasswordFormProps) {
-  //form hook
+  const t = useTranslations();
+  const schema = useForgotPasswordSchema();
+
   const form = useForm<ForgotPasswordInputs>({
-    resolver: zodResolver(forgotPasswordSchema),
+    resolver: zodResolver(schema),
     mode: 'onBlur',
-    defaultValues: {
-      email: '',
-    },
+    defaultValues: { email: '' },
   });
 
   return (
@@ -44,9 +45,9 @@ export function ForgotPasswordForm({
           name='email'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>{t('forgot-email-label')}</FormLabel>
               <FormControl>
-                <Input placeholder='user@example.com' {...field} />
+                <Input placeholder={t('forgot-email-placeholder')} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -62,10 +63,10 @@ export function ForgotPasswordForm({
           {isPending ? (
             <>
               <div className='h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin' />
-              <span>Sending...</span>
+              <span>{t('forgot-button-loading')}</span>
             </>
           ) : (
-            buttonText
+            buttonText || t('forgot-button-text')
           )}
         </Button>
       </form>

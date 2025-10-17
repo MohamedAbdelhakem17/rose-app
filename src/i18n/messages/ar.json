@@ -1,4 +1,42 @@
 {
   "metadata-title": "تطبيق روز",
-  "metadata-description": "تطبيق روز للتجارة الإلكترونية"
+  "metadata-description": "تطبيق روز للتجارة الإلكترونية",
+
+  "forgot-password-title": "نسيت كلمة المرور",
+  "forgot-password-description": "لا تقلق، سنرسل لك تعليمات لإعادة تعيين كلمة المرور.",
+  "forgot-password-redirect-message": "هل لديك حساب بالفعل؟",
+  "forgot-password-redirect-link": "تسجيل الدخول",
+
+  "forgot-email-label": "البريد الإلكتروني",
+  "forgot-email-placeholder": "user@example.com",
+  "forgot-button-text": "متابعة",
+  "forgot-button-loading": "جارٍ الإرسال...",
+
+  "reset-password-title": "إعادة تعيين كلمة المرور",
+  "reset-password-description": "أدخل كلمة المرور الجديدة وأكّدها أدناه.",
+  "reset-password-label": "كلمة المرور الجديدة",
+  "reset-password-placeholder": "أدخل كلمة المرور الجديدة",
+  "reset-confirm-label": "تأكيد كلمة المرور",
+  "reset-confirm-placeholder": "أعد إدخال كلمة المرور الجديدة",
+  "reset-button-text": "إعادة تعيين كلمة المرور",
+  "reset-button-loading": "جارٍ الإرسال...",
+
+  "auth-redirect-message": "ليس لديك حساب بعد؟",
+  "auth-redirect-link": "أنشئ حسابًا الآن!",
+
+  "reset-success-message": "تمت إعادة تعيين كلمة المرور بنجاح.",
+  "reset-error-email-missing": "البريد الإلكتروني غير موجود في الكوكيز",
+  "reset-error-password-missing": "كلمة المرور الجديدة مطلوبة",
+  "reset-error-generic": "حدث خطأ ما",
+
+  "email-required": "البريد الإلكتروني مطلوب",
+  "email-invalid": "عنوان البريد الإلكتروني غير صالح",
+  "password-min-length": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+  "password-uppercase": "يجب أن تحتوي على حرف كبير واحد على الأقل",
+  "password-lowercase": "يجب أن تحتوي على حرف صغير واحد على الأقل",
+  "password-required": "كلمة المرور مطلوبة",
+  "password-number": "يجب أن تحتوي على رقم واحد على الأقل",
+  "password-special-char": "يجب أن تحتوي على رمز خاص واحد على الأقل",
+  "passwords-mismatch": "كلمتا المرور غير متطابقتين",
+  "password-confirm-required": "يرجى تأكيد كلمة المرور"
 }

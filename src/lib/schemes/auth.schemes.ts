@@ -1,24 +1,39 @@
 import * as z from 'zod';
 
-export const forgotPasswordSchema = z.object({
-  email: z.string().min(1, 'Email is required').email('Invalid email address'),
-});
+// Forgot Password Schema
 
-export const resetPasswordSchema = z
-  .object({
-    password: z
-      // Password validation rules
-      .string()
-      // At least 8 characters, one uppercase, one lowercase, one number, one special character
-      .min(8, 'Password must be at least 8 characters long')
-      .regex(/[A-Z]/, 'Must contain at least one uppercase letter')
-      .regex(/[a-z]/, 'Must contain at least one lowercase letter')
-      .regex(/[0-9]/, 'Must contain at least one number')
-      .regex(/[@$!%*?&]/, 'Must contain at least one special character'),
-    confirmPassword: z.string(),
-  })
-  .refine(data => data.password === data.confirmPassword, {
-    //feedback message
-    message: "Passwords don't match",
-    path: ['confirmPassword'], // set the path of the error to confirmPassword field
+/**
+ * Forgot Password Schema
+ * @param {t: Record<string, string>} Record type for forgot password schema
+ * @returns {z.object} Forgot password schema object
+ * @description Forgot password schema object with email field
+ */
+export const forgotPasswordSchema = (t: Record<string, string>) =>
+  z.object({
+    email: z.string().min(1, t.email_required).email(t.email_invalid),
   });
+
+// Reset Password Schema
+
+/**
+ * Reset Password Schema
+ * @param {t: Record<string, string>} Record type for reset password schema
+ * @returns {z.object} Reset password schema object
+ * @description Reset password schema object with password and confirmPassword fields
+ */
+export const resetPasswordSchema = (t: Record<string, string>) =>
+  z
+    .object({
+      password: z
+        .string()
+        .min(8, t.password_min_length)
+        .regex(/[A-Z]/, t.password_uppercase)
+        .regex(/[a-z]/, t.password_lowercase)
+        .regex(/[0-9]/, t.password_number)
+        .regex(/[@$!%*?&]/, t.password_special_char),
+      confirmPassword: z.string(),
+    })
+    .refine(data => data.password === data.confirmPassword, {
+      message: t.passwords_mismatch,
+      path: ['confirmPassword'],
+    });

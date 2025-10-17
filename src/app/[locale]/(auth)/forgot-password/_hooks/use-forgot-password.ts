@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { forgotPasswordAction } from '@/lib/actions/forgot-password-action';
-import { ForgotPasswordResponse } from '@/lib/types/auth/forgot-password';
+import { ForgotPasswordResponse } from '@/lib/types/auth';
 import useCookie from '@/hooks/use-cookie';
 
 export function useForgotPassword() {
@@ -14,11 +14,8 @@ export function useForgotPassword() {
 
   // main mutation
   const mutationFn = async (email: string): Promise<ForgotPasswordResponse> => {
-    const formData = new FormData();
-    formData.append('email', email);
-    return await forgotPasswordAction(formData);
+    return await forgotPasswordAction({ email });
   };
-
   return useMutation<ForgotPasswordResponse, Error, string>({
     mutationFn,
 
