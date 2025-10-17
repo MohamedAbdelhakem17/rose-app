@@ -1,5 +1,6 @@
-// types/auth.ts
+import { FORGOT_PASSWORD_STEEP } from '@/lib/constants/auth.constant';
 
+// types/auth.ts
 /** API Response Types */
 type ForgotPasswordResponse = {
   message: string;
@@ -14,15 +15,13 @@ type ResetPasswordResponse = {
 
 /** Form Props */
 type ForgotPasswordFormProps = {
-  onSubmit: (email: string) => void;
-  isPending?: boolean;
-  buttonText?: string;
+  email: string | null;
+  setEmail: (email: string) => void;
+  setStep: (step: ForgotPasswordStep) => void;
 };
 
 type ResetPasswordFormProps = {
-  onSubmit: (data: { password: string; confirmPassword: string }) => void;
-  isPending?: boolean;
-  buttonText?: string;
+  email: string | null;
 };
 
 /** Form Inputs */
@@ -38,6 +37,9 @@ type ResetPasswordInputs = {
 /** OTP Verification Response */
 type OtpVerificationResponse = ApiResponse<''>;
 
+type ForgotPasswordStep =
+  (typeof FORGOT_PASSWORD_STEEP)[keyof typeof FORGOT_PASSWORD_STEEP];
+
 /** Export all at once */
 export {
   ForgotPasswordResponse,
@@ -47,4 +49,5 @@ export {
   ForgotPasswordInputs,
   ResetPasswordInputs,
   OtpVerificationResponse,
+  ForgotPasswordStep,
 };

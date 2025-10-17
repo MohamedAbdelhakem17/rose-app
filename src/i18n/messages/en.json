@@ -38,5 +38,15 @@
   "password-number": "Must contain at least one number",
   "password-special-char": "Must contain at least one special character",
   "passwords-mismatch": "Passwords don't match",
-  "password-confirm-required": "Please confirm your password"
+  "password-confirm-required": "Please confirm your password",
+  "send-otp-button": "Send a new code",
+  "send-otp-button-time-count": "Send a new code in: {timeLeft}s",
+  "enter-otp-label": "Enter the OTP Code",
+  "otp-edit-email": "We have sent a 6-digit code to {email} <edit> Edit </edit>",
+  "need-help": "Need help?",
+  "contact-us-label": "Contact us",
+  "verify-otp": "Verify OTP",
+  "verify-otp-action": "Verify Code",
+  "verifying-otp": "Verifying...",
+  "otp-validation-message": "OTP code must be 6 digits"
 }

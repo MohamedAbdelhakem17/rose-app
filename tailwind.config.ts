@@ -170,7 +170,6 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
-
       spacing: {
         //spacing for elements
         'element-xs': '0.25rem',

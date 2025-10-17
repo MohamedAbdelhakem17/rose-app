@@ -13,6 +13,8 @@ export const forgotPasswordSchema = (t: Record<string, string>) =>
     email: z.string().min(1, t.email_required).email(t.email_invalid),
   });
 
+export type ForgotPasswordInputs = z.infer<typeof forgotPasswordSchema>;
+
 // Reset Password Schema
 
 /**
@@ -37,3 +39,5 @@ export const resetPasswordSchema = (t: Record<string, string>) =>
       message: t.passwords_mismatch,
       path: ['confirmPassword'],
     });
+
+export type ResetPasswordInputs = z.infer<typeof resetPasswordSchema>;

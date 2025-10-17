@@ -1,4 +1,7 @@
 'use client';
+import ForgotPasswordLayout from './_components/_layout/forgot-password-layout';
+
+'use client';
 import React from 'react';
 import { Section } from '@/components/layout';
 import { useForgotPassword } from './_hooks/use-forgot-password';
@@ -18,33 +21,8 @@ export default function ForgotPassword() {
 
   return (
     <main>
-      <Section className='max-w-md mx-auto rounded-2xl py-6'>
-        <AuthenticationHeading>
-          <AuthenticationHeading.title className='capitalize'>
-            {t('forgot-password-title')}
-          </AuthenticationHeading.title>
-
-          <AuthenticationHeading.description className='first-letter:capitalize'>
-            {t('forgot-password-description')}
-          </AuthenticationHeading.description>
-        </AuthenticationHeading>
-
-        <ForgotPasswordForm
-          isPending={isForgotPending}
-          onSubmit={email => forgotMutate(email)}
-        />
-
-        <ResetPasswordForm
-          isPending={isResetPending}
-          onSubmit={data => resetMutate(data)}
-        />
-
-        <AuthRedirect
-          message={t('forgot-password-redirect-message')}
-          linkText={t('forgot-password-redirect-link')}
-          href='/login'
-        />
-      </Section>
+      {/* Render current step of forgot password steps */}
+      <ForgotPasswordLayout />
     </main>
   );
 }

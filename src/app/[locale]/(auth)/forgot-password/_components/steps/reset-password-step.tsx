@@ -1,6 +1,6 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import {
   Form,
   FormField,
@@ -18,15 +18,19 @@ import {
 } from '@/hooks/use-reset-password-schema';
 import { useTranslations } from 'next-intl';
 import { ResetPasswordFormProps } from '@/lib/types/auth';
+import { ResetPasswordInputs } from '@/lib/types/auth';
+import { useResetPassword } from '../../_hooks/use-reset-password';
+import { toast } from 'sonner';
 
-export function ResetPasswordForm({
-  onSubmit,
-  isPending = false,
-  buttonText,
-}: ResetPasswordFormProps) {
+export function ResetPasswordForm({ email }: ResetPasswordFormProps) {
+  // Translations
   const t = useTranslations();
   const schema = useResetPasswordSchema();
 
+  //Mutations
+  const { mutate: resetMutate, isPending } = useResetPassword();
+
+  //  Form and validations
   const form = useForm<ResetPasswordFields>({
     resolver: zodResolver(schema),
     mode: 'onBlur',
@@ -35,6 +39,23 @@ export function ResetPasswordForm({
       confirmPassword: '',
     },
   });
+
+  const onSubmit: SubmitHandler<ResetPasswordInputs> = ({
+    password,
+    confirmPassword,
+  }) => {
+    resetMutate(
+      { email: email as string, password, confirmPassword },
+      {
+        onSuccess: message => {
+          toast.success(message.message || 'OTP verified successfully!');
+        },
+        onError: error => {
+          toast.error(error.message || 'Invalid OTP. Please try again.');
+        },
+      }
+    );
+  };
 
   return (
     <Form {...form}>
@@ -90,7 +111,7 @@ export function ResetPasswordForm({
               <span>{t('reset-button-loading')}</span>
             </>
           ) : (
-            buttonText || t('reset-button-text')
+            t('reset-button-text')
           )}
         </Button>
       </form>

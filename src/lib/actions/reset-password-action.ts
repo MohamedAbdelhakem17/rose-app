@@ -8,8 +8,7 @@ export async function resetPasswordAction(formData: FormData) {
   const t = await getTranslations();
   // Extract form data
   const newPassword = formData.get('newPassword');
-  const cookieStore = cookies();
-  const email = cookieStore.get('reset_email')?.value;
+  const email = formData.get('email');
 
   const baseUrl =
     process.env.NEXT_PUBLIC_API_BASE_URL || 'https://flower.elevateegy.com';

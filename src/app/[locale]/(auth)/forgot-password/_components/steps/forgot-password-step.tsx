@@ -1,6 +1,6 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import {
   Form,
   FormField,
@@ -18,27 +18,47 @@ import {
   ForgotPasswordInputs,
   ForgotPasswordFormProps,
 } from '@/lib/types/auth';
+import { useForgotPassword } from '../../_hooks/use-forgot-password';
+import { toast } from 'sonner';
+import { FORGOT_PASSWORD_STEEP } from '@/lib/constants/auth.constant';
 
 export function ForgotPasswordForm({
-  onSubmit,
-  isPending = false,
-  buttonText,
+  email,
+  setEmail,
+  setStep,
 }: ForgotPasswordFormProps) {
+  // Translations
   const t = useTranslations();
   const schema = useForgotPasswordSchema();
+
+  //Mutations
+  const { mutate: forgotMutate, isPending } = useForgotPassword();
+
+  //Functions
+  const onSubmit: SubmitHandler<ForgotPasswordInputs> = ({ email }) => {
+    forgotMutate(email, {
+      onSuccess: message => {
+        toast.success(message.message || 'OTP sent successfully!');
+        // set email
+        setEmail(email);
+        // Go to next step OTP page
+        setStep(FORGOT_PASSWORD_STEEP.OTP);
+      },
+      onError: error => {
+        toast.error(error.message || "Couldn't send OTP");
+      },
+    });
+  };
 
   const form = useForm<ForgotPasswordInputs>({
     resolver: zodResolver(schema),
     mode: 'onBlur',
-    defaultValues: { email: '' },
+    defaultValues: { email: email || '' },
   });
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(data => onSubmit(data.email))}
-        className='space-y-5 pb-3'
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-5 pb-3'>
         {/* email field */}
         <FormField
           control={form.control}
@@ -66,7 +86,7 @@ export function ForgotPasswordForm({
               <span>{t('forgot-button-loading')}</span>
             </>
           ) : (
-            buttonText || t('forgot-button-text')
+            t('forgot-button-text')
           )}
         </Button>
       </form>

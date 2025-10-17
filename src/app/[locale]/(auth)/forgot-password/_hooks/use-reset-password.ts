@@ -5,9 +5,11 @@ import { ResetPasswordResponse } from '@/lib/types/auth';
 
 export function useResetPassword() {
   const mutationFn = async ({
+    email,
     password,
     confirmPassword,
   }: {
+    email: string;
     password: string;
     confirmPassword: string;
   }): Promise<ResetPasswordResponse> => {
@@ -19,6 +21,7 @@ export function useResetPassword() {
     // Prepare form data
     const formData = new FormData();
     formData.append('newPassword', password);
+    formData.append('email', email);
 
     return await resetPasswordAction(formData);
   };
@@ -27,7 +30,7 @@ export function useResetPassword() {
   return useMutation<
     ResetPasswordResponse,
     Error,
-    { password: string; confirmPassword: string }
+    { password: string; confirmPassword: string; email: string }
   >({
     mutationFn,
 
