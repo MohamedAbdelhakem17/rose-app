@@ -21,11 +21,16 @@ import { ResetPasswordFormProps } from '@/lib/types/auth';
 import { ResetPasswordInputs } from '@/lib/types/auth';
 import { useResetPassword } from '../../_hooks/use-reset-password';
 import { toast } from 'sonner';
+import { useRouter } from '@/i18n/navigation';
 
 export function ResetPasswordForm({ email }: ResetPasswordFormProps) {
   // Translations
   const t = useTranslations();
   const schema = useResetPasswordSchema();
+
+  // Navigation
+
+  const router = useRouter();
 
   //Mutations
   const { mutate: resetMutate, isPending } = useResetPassword();
@@ -49,6 +54,7 @@ export function ResetPasswordForm({ email }: ResetPasswordFormProps) {
       {
         onSuccess: message => {
           toast.success(message.message || 'OTP verified successfully!');
+          router.push('/login');
         },
         onError: error => {
           toast.error(error.message || 'Invalid OTP. Please try again.');
