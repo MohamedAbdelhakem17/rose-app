@@ -9,6 +9,8 @@ import { Button } from '@/components/shared/Button';
 import { Input } from '@/components/ui/Input';
 import AuthenticationLink from './../../../_components/_layout/authentication-link';
 import { useTranslations } from 'next-intl';
+import { ForgotPasswordForm } from '../steps/forgot-password-step';
+import { ResetPasswordForm } from '../steps/reset-password-step';
 
 export default function ForgotPasswordLayout() {
   // Localization
@@ -16,7 +18,6 @@ export default function ForgotPasswordLayout() {
 
   // Email entered by user in step 1
   const [email, setEmail] = useState<string | null>(null);
-  void setEmail;
 
   // Current step in forgot password flow
   const [step, setStep] = useState<ForgotPasswordStep>(
@@ -28,51 +29,30 @@ export default function ForgotPasswordLayout() {
     [FORGOT_PASSWORD_STEEP.EMAIL]: {
       heading: {
         title: (
-          <AuthenticationHeading.title>
-            Forgot Password?
+          <AuthenticationHeading.title className='capitalize'>
+            {t('forgot-password-title')}
           </AuthenticationHeading.title>
         ),
         description: (
-          <AuthenticationHeading.description>
-            Worry not, we’ll send you instructions to help you reset it.
+          <AuthenticationHeading.description className='first-letter:capitalize'>
+            {t('forgot-password-description')}
           </AuthenticationHeading.description>
         ),
       },
       element: (
-        <div className='w-96 p-5'>
-          <label htmlFor='forgot-email' className='sr-only'>
-            Email address
-          </label>
-
-          <Input
-            id='forgot-email'
-            type='email'
-            placeholder='Enter your email'
-            value={email || ''}
-            onChange={e => setEmail(e.target.value)}
-            className='w-full'
-          />
-
-          <Button
-            type='button'
-            className='w-full mt-4'
-            onClick={() => {
-              if (email) {
-                setStep(FORGOT_PASSWORD_STEEP.OTP);
-              }
-            }}
-            disabled={!email}
-          >
-            Send Email
-          </Button>
-        </div>
+        <ForgotPasswordForm
+          email={email}
+          setEmail={setEmail}
+          setStep={setStep}
+        />
       ),
+
       footer: (
         <AuthenticationLink
-          message='Don’t have an account yet?'
+          message={t('forgot-password-redirect-message')}
           link={{
-            label: ' Create one now!',
-            href: '/register',
+            label: t('forgot-password-redirect-link'),
+            href: '/login',
           }}
         />
       ),
@@ -118,17 +98,17 @@ export default function ForgotPasswordLayout() {
     [FORGOT_PASSWORD_STEEP.CREATE_PASSWORD]: {
       heading: {
         title: (
-          <AuthenticationHeading.title>
-            Create a new password
+          <AuthenticationHeading.title className='capitalize'>
+            {t('reset-password-title')}
           </AuthenticationHeading.title>
         ),
         description: (
-          <AuthenticationHeading.description>
-            Set a strong password to secure your account.
+          <AuthenticationHeading.description className='first-letter:capitalize'>
+            {t('reset-password-description')}
           </AuthenticationHeading.description>
         ),
       },
-      element: <h1>Create Password</h1>,
+      element: <ResetPasswordForm email={email} />,
       footer: (
         <AuthenticationLink
           message='Need help?'

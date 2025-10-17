@@ -1,0 +1,222 @@
+[33mcommit 45a2a2d5fba1161aa546358ab7de2faf92e91da2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeat/Fortgot-Password+Create-New-Password-Flow[m[33m)[m
+Merge: 390be6b 8dda9e5
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Fri Oct 17 21:57:17 2025 +0300
+
+    Merge branch 'dev' into feat/Fortgot-Password+Create-New-Password-Flow
+
+[33mcommit 390be6b8046211384e06220d9434e384ff03922b[m[33m ([m[1;31morigin/feat/Fortgot-Password+Create-New-Password-Flow[m[33m)[m
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Fri Oct 17 21:42:34 2025 +0300
+
+    feat/ translations
+    
+    - added translations for forgot-password and reset-password components
+    - added translations for the zod schema
+
+[33mcommit 8dda9e58273e4cefa338dd214cabbc7a336c68be[m[33m ([m[1;31morigin/dev[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mdev[m[33m)[m
+Merge: 916f7a8 98685dd
+Author: Mohamed Abdelhakem <107258224+MohamedAbdelhakem17@users.noreply.github.com>
+Date:   Fri Oct 17 15:46:02 2025 +0300
+
+    Merge pull request #16 from MohamedAbdelhakem17/feat/otp-verification
+    
+    feat: implement OTP verification step in forgot password flow
+
+[33mcommit 98685dd2dc9282f87ce20fd75e388a8f86ed532f[m[33m ([m[1;31morigin/feat/otp-verification[m[33m)[m
+Author: = <=>
+Date:   Fri Oct 17 15:45:31 2025 +0300
+
+    refactor(forgot-password): replace cookie management with session storage for timer functionality
+
+[33mcommit 41b9fa97a8a19cb147957c85196cb356b87e6880[m
+Merge: 26ce994 9bb074b
+Author: = <=>
+Date:   Fri Oct 17 00:20:57 2025 +0300
+
+    Merge branch 'feat/otp-verification' of https://github.com/MohamedAbdelhakem17/rose-app into feat/otp-verification
+
+[33mcommit 26ce994c50b5087a7d9a914df159d7e03eea6f76[m
+Author: = <=>
+Date:   Fri Oct 17 00:20:52 2025 +0300
+
+    refactor(otp-verification): refactor OTP schema and validation messages for improved localization
+
+[33mcommit 9bb074b08318083016dbb3f29847bc8c111f87e0[m
+Author: Mohamed Abdelhakem <107258224+MohamedAbdelhakem17@users.noreply.github.com>
+Date:   Thu Oct 16 17:56:32 2025 +0300
+
+    refactor(auth) : change defualt
+
+[33mcommit 87d4fecca8914ead21043be8b53d0c32e31e1954[m
+Author: = <=>
+Date:   Wed Oct 15 22:57:13 2025 +0300
+
+    feat(forgot-password): enhance localization for OTP verification and related components
+
+[33mcommit b338e74e163037c1b193d5e5ac4e7f3a8dbf6948[m
+Author: = <=>
+Date:   Wed Oct 15 22:20:09 2025 +0300
+
+    feat(forgot-password): add and enable countdown timer in OTP verification step
+
+[33mcommit 7798ad2aaecc86e3399f3e5b2660f874df2d0566[m[33m ([m[1;32morigin/feat/Fortgot-Password+Create-New-Password-Flow[m[33m)[m
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Wed Oct 15 16:43:51 2025 +0300
+
+    fix/ used the form from shadcn
+    
+    - used shadCN forms
+    - restructured the folder structures
+
+[33mcommit c5888f271782bfab6783c4385869e5c2a853984e[m
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Wed Oct 15 16:12:43 2025 +0300
+
+    fix/ made the code cleaner
+
+[33mcommit e392c41eb948987f6754ece584164f7ff9a6b8ab[m
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Wed Oct 15 14:58:43 2025 +0300
+
+    restrucutre/ created steps folder
+    
+    - created the steps folder to be easily integrated with the layout
+
+[33mcommit eb7255a9e1919c8311f27329d580bd024dbb8261[m
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Wed Oct 15 12:16:18 2025 +0300
+
+    fix/minimal fixes
+
+[33mcommit bf5eae187edce96c3d3dd9f223fc07f0ce9da09b[m
+Author: = <=>
+Date:   Wed Oct 15 04:04:34 2025 +0300
+
+    feat(authentication): add cookie management and timer functionality for OTP verification
+
+[33mcommit 087d0abde7b5441e86dfb8ae9b110f6f6f010b6f[m
+Author: = <=>
+Date:   Wed Oct 15 04:04:10 2025 +0300
+
+    feat(forgot-password): implement forgot password flow with OTP verification and layout components
+
+[33mcommit 834d5dcec49239752733995439c9b6a237f915bd[m
+Author: = <=>
+Date:   Wed Oct 15 04:02:44 2025 +0300
+
+    refactor(authentication): adjust styling and props handling in AuthenticationHeading and AuthenticationLink components
+
+[33mcommit 81bc4eafcac4a61c06d4c37073f52ac6b0d4d778[m
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Wed Oct 15 03:37:26 2025 +0300
+
+    add/ reusable component
+    
+    - added reusable component for link
+
+[33mcommit db653d9eb9a41e1527ebbef3f5e575e4a125bd55[m
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Wed Oct 15 03:28:14 2025 +0300
+
+    add/reset-password and forgot-password
+    
+    added reset password and forgot password functions flow
+    - server action for each one
+    - reusable hook to save the logic
+    - rendered them as components and had them ready to be conditionally rendered
+
+[33mcommit c614d99eff217f05fb54d5eb5ec29ed105565217[m
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Tue Oct 14 20:40:08 2025 +0300
+
+    merge/ otp and layout code
+    
+    - merged my current code with the layout and the otp code to complete the flow
+
+[33mcommit fa22df038e204f13535eccbdbe6e34dc5079782b[m
+Merge: d26f280 31ab4e7
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Tue Oct 14 20:34:37 2025 +0300
+
+    Merge remote-tracking branch 'origin/feat/register' into feat/Fortgot-Password+Create-New-Password-Flow
+    Integraring the Layout with the rest of the app
+
+[33mcommit d26f280bdd77ffa89cee333bfde3c4e220b315ec[m
+Merge: 55de707 aa6bd5a
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Tue Oct 14 20:09:12 2025 +0300
+
+    Merge remote-tracking branch 'origin/feat/otp-verification' into feat/Fortgot-Password+Create-New-Password-Flow
+
+[33mcommit 55de707e89220ef572afb85efec5307c9a92ad7f[m
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Tue Oct 14 20:03:46 2025 +0300
+
+    add/ forgot-password-page-implementations
+    
+    - implemented the forgot password ui
+    - created the server action
+    - created a reusable where the logic lies
+
+[33mcommit aa6bd5a4a0530bb661dc4db61cd4882f96a77e95[m
+Author: Mohamed Abdelhakem <mohamed.abdelgakem3200@gimal.com>
+Date:   Tue Oct 14 17:21:00 2025 +0300
+
+    feat(forgot-password): implement OTP verification hook
+
+[33mcommit f6054b5851f0adf97021dfefb84107954befc608[m
+Author: Mohamed Abdelhakem <mohamed.abdelgakem3200@gimal.com>
+Date:   Tue Oct 14 13:39:13 2025 +0300
+
+    feat(authentication): add AuthenticationLink component for rendering messages with links
+
+[33mcommit ea871834f24a6adde1eb069fd7b240454e98d89f[m
+Author: Mohamed Abdelhakem <mohamed.abdelgakem3200@gimal.com>
+Date:   Tue Oct 14 13:38:57 2025 +0300
+
+    refactor(authentication): add AuthenticationHeading component with title and description sub components and change dir
+
+[33mcommit d3eb5f43abb89ee726fae619ed54291860fdc8a4[m
+Author: Mohamed Abdelhakem <mohamed.abdelgakem3200@gimal.com>
+Date:   Tue Oct 14 12:51:28 2025 +0300
+
+    feat(forgot-password): implement ForgotPasswordHeading component
+
+[33mcommit a3d39d20740babb5dedae6a64bc5e62ce7231473[m
+Author: Mohamed Abdelhakem <mohamed.abdelgakem3200@gimal.com>
+Date:   Tue Oct 14 11:14:34 2025 +0300
+
+     chore: add useCookie hook for managing browser cookies
+
+[33mcommit 554ffbdefa994a2ed0d0e19d4bbf74ae079a8790[m
+Author: OmarQussas <omarqussas@gmail.com>
+Date:   Tue Oct 14 10:15:15 2025 +0300
+
+    add/ setup for the forgot-password
+    
+    - fixed a  few bugs generated after merging with dev
+    - created setup for the forgot-password
+
+[33mcommit 1d6a53f7aec5524b9c9e09d9d35c7e719583bd25[m
+Author: = <=>
+Date:   Tue Oct 14 01:56:01 2025 +0300
+
+    feat(otp-verification): implement otp verification functionality and add input-otp component
+
+[33mcommit 31ab4e76ae5ea8ef4081bc16078373860eb1c367[m
+Author: Abdelrahman Mabrouk <abdelrahman@Abdelrahmans-MacBook-Pro.local>
+Date:   Tue Oct 14 00:15:46 2025 +0300
+
+    (feat): create the auth layout
+
+[33mcommit 916f7a863a9cdb9f99ec67e43735bd456792f094[m
+Merge: 96bcee6 f22a968
+Author: Abdelrahman Mabrouk <75909022+AbdelrahmanMabrouk@users.noreply.github.com>
+Date:   Mon Oct 13 23:42:06 2025 +0300
+
+    Merge pull request #8 from MohamedAbdelhakem17/implement/first-3-sections
+    
+    feat(first 3 sections): implemant the first 3 section with reusable c…
+
+[33mcommit f22a968ba1a504339f0e9d89db485d59e9e7a30f[m[33m ([m[1;31morigin/implement/first-

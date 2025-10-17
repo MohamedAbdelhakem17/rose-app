@@ -1,11 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import { Section } from '../../layout/Section';
-import { Button } from '../../shared/Button';
+
 import Highlight from '../../shared/highlight';
 import { ArrowRight, Check } from 'lucide-react';
 import SmallSectionHeading from '../../shared/small-section-heading';
 import { cn } from '../../../lib/utils/utils';
+import { Button } from '@/components/shared';
 
 export default function About() {
   return (

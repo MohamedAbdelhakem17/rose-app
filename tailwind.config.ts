@@ -193,7 +193,7 @@ const config: Config = {
         'h-4': ['1.5rem', { lineHeight: '1.4', fontWeight: '700' }], // ~24px
         'h-5': ['1.25rem', { lineHeight: '1.4', fontWeight: '700' }], // ~20px
         'h-6': ['1rem', { lineHeight: '1.5', fontWeight: '700' }], // ~16px
-
+          
         // Paragraphs
         'p-1': ['1.125rem', { lineHeight: '1.7' }], // ~18px
         'p-2': ['1rem', { lineHeight: '1.7' }], // ~16px

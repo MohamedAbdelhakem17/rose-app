@@ -28,7 +28,7 @@ export default function AuthenticationHeading({
   return (
     <div
       className={cn(
-        'border-b border-b-zinc-200 dark:border-b-zinc-600 space-y-1 mb-6 pb-4',
+        'border-b border-b-zinc-200 dark:border-b-zinc-600 space-y-1 pb-2 mb-6',
         className
       )}
       {...props}
@@ -56,7 +56,7 @@ AuthenticationHeading.title = ({
   return (
     <h2
       className={cn(
-        'text-zinc-800 dark:text-zinc-50 font-semibold text-2xl',
+        'text-zinc-800 dark:text-zinc-50 font-semibold text-2xl   ',
         className
       )}
       {...props}
@@ -87,7 +87,7 @@ AuthenticationHeading.description = ({
   return (
     <p
       className={cn(
-        'text-zinc-700 dark:text-zinc-50 font-normal text-base',
+        'text-zinc-800 dark:text-zinc-50 mb-2 font-medium  text-sm',
         className
       )}
       {...props}
