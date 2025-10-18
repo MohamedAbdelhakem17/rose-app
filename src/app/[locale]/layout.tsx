@@ -80,7 +80,7 @@ export default function LocaleLayout({
         className={`${sarabun.variable} ${tajawal.variable} font-sarabun antialiased`}
       >
         <Providers>
-          {/* <Header /> */}
+          {/* Toaster */}
           <Toaster
             richColors
             position='bottom-right'
@@ -89,8 +89,14 @@ export default function LocaleLayout({
               className: '!bg-emerald-50 !text-zinc-800 border border-gray-700',
             }}
           />
+          {/* Header */}
+          <Header />
+
+          {/* Content */}
           {children}
-          {/* <Footer /> */}
+
+          {/* Footer */}
+          <Footer />
         </Providers>
       </body>
     </html>

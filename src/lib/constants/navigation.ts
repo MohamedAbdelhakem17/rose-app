@@ -1,7 +1,7 @@
 import { Gift, Headphones, Home, Info, List, PartyPopper } from 'lucide-react';
 
 export const navigationItems = [
-  { name: 'Home', href: '/', icon: Home, isActive: true },
+  { name: 'Home', href: '/', icon: Home },
   { name: 'Products', href: '/products', icon: Gift },
   { name: 'Categories', href: '/categories', icon: List },
   { name: 'Occasions', href: '/occasions', icon: PartyPopper },
