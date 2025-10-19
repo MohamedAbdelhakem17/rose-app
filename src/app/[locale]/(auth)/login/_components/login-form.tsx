@@ -19,14 +19,12 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 export default function LoginForm() {
-  // For Api error
-  const [error, setError] = useState<string | null>();
-
-  // For disable button submit
-  const [loading, setLoading] = useState<boolean>(false);
-
-  // For translate
+  // Translate
   const t = useTranslations();
+
+  // State
+  const [error, setError] = useState<string | null>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   // Form
   const form = useForm<LoginValues>({
@@ -36,7 +34,6 @@ export default function LoginForm() {
     },
     resolver: zodResolver(loginSchema),
   });
-
   // Submit function
   const onSubmit: SubmitHandler<LoginValues> = async values => {
     setLoading(true);
