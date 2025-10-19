@@ -1,8 +1,8 @@
-type ErrorResponse = {
+declare interface ErrorResponse {
   error: 'string';
-};
+}
 
-type SuccessResponse<T> = {
+declare type SuccessResponse<T> = {
   message: string | 'success';
 } & T;
 

@@ -1,7 +1,13 @@
 {
   "metadata-title": "تطبيق روز",
   "metadata-description": "تطبيق روز للتجارة الإلكترونية",
-
+  "email-label": "البريد الاليكتروني",
+  "password-label": "الرقم السري",
+  "forgot-password-paragraph": "هل نسيت رقمك السري ؟",
+  "login-button": "تسجيل الدخول",
+  "register-paragraph": "هل ليس لديك اي حساب ؟",
+  "register-paragraph-action": "قم بعمل حساب الان !",
+  
   "forgot-password-title": "نسيت كلمة المرور",
   "forgot-password-description": "لا تقلق، سنرسل لك تعليمات لإعادة تعيين كلمة المرور.",
   "forgot-password-redirect-message": "هل لديك حساب بالفعل؟",

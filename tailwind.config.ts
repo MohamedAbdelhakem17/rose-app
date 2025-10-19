@@ -201,6 +201,12 @@ const config: Config = {
         'p-4': ['0.75rem', { lineHeight: '1.5' }], // ~12px
       },
     },
+    fontFamily: {
+      // Font family
+      sarabun: ['var(--font-sarabun)'],
+      tajawal: ['var(--font-tajawal)'],
+      inter: ['var(--font-inter)'],
+    },
   },
   plugins: [tailwindcssAnimate],
 };

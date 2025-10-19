@@ -1,6 +1,12 @@
 {
   "metadata-title": "Rose App",
   "metadata-description": "Rose App E-Commerce",
+  "email-label": "email",
+  "password-label": "password",
+  "forgot-password-paragraph": "Forgot your password?",
+  "login-button": "login",
+  "register-paragraph": "Don’t have an account yet?",
+  "register-paragraph-action": "Create one now!",
 
   "forgot-password-title": "Forgot Password",
   "forgot-password-description": "Don’t worry, we’ll send you instructions to reset your password.",

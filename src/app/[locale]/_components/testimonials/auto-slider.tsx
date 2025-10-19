@@ -9,7 +9,7 @@ import {
 import { useRef, useState } from 'react';
 import RatingIcon from '@/components/shared/rating-icon';
 import { formatDateFull } from '@/lib/utils/date-format';
-import { TESTIMONIALS_DATA } from '@/constants/testimonials-data.constant';
+import { TESTIMONIALS_DATA } from '@/lib/constants/testimonials-data.constant';
 import { cn } from '@/lib/utils/utils';
 
 export default function AutoSlider() {
