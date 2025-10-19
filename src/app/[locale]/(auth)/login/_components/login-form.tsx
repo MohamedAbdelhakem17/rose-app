@@ -12,19 +12,34 @@ import { loginSchema, LoginValues } from '@/lib/schemes/auth.schema';
 import { signIn } from 'next-auth/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useState } from 'react';
 import { Button, Input } from '@/components/shared';
 import ErrorApi from '../../_components/error-api';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { useMutation } from '@tanstack/react-query';
 
 export default function LoginForm() {
   // Translate
   const t = useTranslations();
 
-  // State
-  const [error, setError] = useState<string | null>();
-  const [loading, setLoading] = useState<boolean>(false);
+  // Mutation
+  const { error, isPending, mutate } = useMutation({
+    mutationFn: async (values: LoginValues) => {
+      const response = await signIn('credentials', {
+        email: values.email,
+        password: values.password,
+        redirect: false,
+      });
+
+      if (response?.error) throw new Error(response.error);
+      if (response?.url) {
+        window.location.href =
+          new URLSearchParams(location.search).get('callbackUrl') || '/';
+      }
+
+      return response;
+    },
+  });
 
   // Form
   const form = useForm<LoginValues>({
@@ -34,28 +49,10 @@ export default function LoginForm() {
     },
     resolver: zodResolver(loginSchema),
   });
-  // Submit function
+
+  // Functions
   const onSubmit: SubmitHandler<LoginValues> = async values => {
-    setLoading(true);
-    setError(null);
-
-    const response = await signIn('credentials', {
-      email: values.email,
-      password: values.password,
-      redirect: false,
-    });
-
-    if (response?.error) {
-      setError(response.error);
-      setLoading(false);
-    }
-
-    if (response?.url) {
-      // hard redirect
-      location.href =
-        new URLSearchParams(location.search).get('callbackUrl') || '/';
-      setLoading(false);
-    }
+    mutate(values);
   };
 
   return (
@@ -130,13 +127,13 @@ export default function LoginForm() {
         </div>
 
         {/* Api Error */}
-        {error && <ErrorApi error={error} />}
+        {error && <ErrorApi error={error.message} />}
 
         {/* Submit */}
         <Button
           type='submit'
           variant={'primary'}
-          disabled={loading || form.formState.isSubmitting}
+          disabled={isPending || form.formState.isSubmitting}
           className='font-sarabun w-full'
         >
           {t('login-button')}

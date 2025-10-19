@@ -28,7 +28,7 @@ export const authOptions: NextAuthOptions = {
         );
 
         const payload: ApiResponse<LoginResponse> = await response.json();
-        if ("error" in payload) throw new Error(payload.error);
+        if ('error' in payload) throw new Error(payload.error);
 
         return {
           id: payload.user._id,
@@ -40,8 +40,6 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     jwt: ({ token, user }) => {
-      console.log(token);
-
       if (user) {
         token.email = user.email;
         token.token = user.token;
@@ -54,7 +52,6 @@ export const authOptions: NextAuthOptions = {
       session.role = token.role;
       session.firstName = token.firstName;
       session.lastName = token.lastName;
-
       return session;
     },
   },

@@ -17,9 +17,9 @@ export default function middleware(req: NextRequest) {
   const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
 
   if (isPublicPage) {
-    return handleI18nRouting(req);
-  } else {
     return NextResponse.redirect(new URL('/login', req.nextUrl.origin));
+  } else {
+    return handleI18nRouting(req);
   }
 }
 
