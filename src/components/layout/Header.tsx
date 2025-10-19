@@ -13,7 +13,6 @@ interface HeaderProps {
   className?: string;
 }
 
-
 export function Header({ className }: HeaderProps) {
   const [searchQuery, setSearchQuery] = React.useState('');
 

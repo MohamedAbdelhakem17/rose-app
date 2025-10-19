@@ -5,6 +5,8 @@ import Providers from '@/components/providers';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Inter, Sarabun, Tajawal } from 'next/font/google';
 import { NextFontWithVariable } from 'next/dist/compiled/@next/font';
+import { Toaster } from '../../components/ui/sonner';
+import { Footer, Header } from '@/components/layout';
 
 // Sarabun font for English (all weights: 100-800)
 const sarabun: NextFontWithVariable = Sarabun({
@@ -87,7 +89,19 @@ export default function LocaleLayout({
       <body
         className={`${sarabun.variable} ${tajawal.variable}  ${locale === 'ar' ? 'font-tajawal' : 'font-sarabun'}antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {/* <Header /> */}
+          <Toaster
+            richColors
+            position='bottom-right'
+            theme='dark'
+            toastOptions={{
+              className: '!bg-emerald-50 !text-zinc-800 border border-gray-700',
+            }}
+          />
+          {children}
+          {/* <Footer /> */}
+        </Providers>
       </body>
     </html>
   );

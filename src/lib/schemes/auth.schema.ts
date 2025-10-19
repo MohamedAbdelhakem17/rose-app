@@ -1,4 +1,5 @@
 import z from 'zod';
+import { useTranslations } from 'next-intl';
 
 export const loginSchema = z.object({
   email: z.email('Invalid email address').nonempty('Your email is required'),
@@ -15,4 +16,21 @@ export const loginSchema = z.object({
     .nonempty('Your password is required'),
 });
 
+const useOtpSchema = () => {
+  // Localization
+  const t = useTranslations();
+  // Otp schema
+  return z.object({
+    resetCode: z
+    .string()
+    .min(6, t('otp-validation-message'))
+    .max(6, t('otp-validation-message')),
+  });
+};
+
+// Otp type
+export type OtpValues = z.infer<ReturnType<typeof useOtpSchema>>;
+export { useOtpSchema };
+
+// Login type
 export type LoginValues = z.infer<typeof loginSchema>;

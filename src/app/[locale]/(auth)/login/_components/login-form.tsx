@@ -17,6 +17,7 @@ import ErrorApi from '../../_components/error-api';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useMutation } from '@tanstack/react-query';
+import { PasswordInput } from '@/components/shared/password-input';
 
 export default function LoginForm() {
   // Translate
@@ -101,12 +102,14 @@ export default function LoginForm() {
 
                 {/* Field */}
                 <FormControl>
+                  {/* <PasswordInput> */}
                   <Input
                     type='password'
                     placeholder='********'
                     className={`${form.formState.errors.password?.message && 'border-red-600 focus:ring-red-600'}`}
                     {...field}
                   />
+                  {/* </PasswordInput> */}
                 </FormControl>
 
                 {/* Feedback */}
