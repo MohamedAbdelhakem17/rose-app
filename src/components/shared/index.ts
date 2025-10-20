@@ -1,4 +1,4 @@
-export { Badge, badgeVariants } from '../ui/Badge';
+// export { Badge, badgeVariants } from '../ui/badge';
 export { Button, buttonVariants } from '../ui/Button';
 export {
   Card,
