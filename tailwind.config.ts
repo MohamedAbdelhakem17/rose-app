@@ -17,6 +17,9 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        edwardian: ['"Edwardian Script ITC"', 'cursive'],
+      },
       colors: {
         // Design System Colors
         maroon: {

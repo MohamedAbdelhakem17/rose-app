@@ -72,3 +72,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+@font-face {
+  font-family: 'Edwardian Script ITC';
+  src:
+    url('/fonts/EdwardianScriptITC.woff2') format('woff2'),
+    url('/fonts/EdwardianScriptITC.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
