@@ -56,4 +56,11 @@ type GetProductResponse = ApiResponse<
 /** Response: Get all mapped products */
 type MappedProductResponse = Omit<GetProductResponse, 'products'> & {
   products: MappingProductType[];
+  metadata: Metadata;
+};
+
+type GetProductsParams = {
+  limit?: number;
+  page?: number;
+  [key: string]: string | number | undefined;
 };

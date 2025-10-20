@@ -77,7 +77,7 @@ export default function LocaleLayout({
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <body
-        className={`${sarabun.variable} ${tajawal.variable} font-sarabun antialiased`}
+        className={`${sarabun.className} ${tajawal.variable} font-sarabun antialiased`}
       >
         <Providers>
           {/* Toaster */}

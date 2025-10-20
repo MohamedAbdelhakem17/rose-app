@@ -1,17 +1,14 @@
 {
   "metadata-title": "Rose App",
   "metadata-description": "Rose App E-Commerce",
-
   "forgot-password-title": "Forgot Password",
   "forgot-password-description": "Don’t worry, we’ll send you instructions to reset your password.",
   "forgot-password-redirect-message": "Already have an account?",
   "forgot-password-redirect-link": "Sign in",
-
   "forgot-email-label": "Email",
   "forgot-email-placeholder": "user@example.com",
   "forgot-button-text": "Continue",
   "forgot-button-loading": "Sending...",
-
   "reset-password-title": "Reset Password",
   "reset-password-description": "Enter and confirm your new password below.",
   "reset-password-label": "New Password",
@@ -20,15 +17,12 @@
   "reset-confirm-placeholder": "Confirm your new password",
   "reset-button-text": "Reset Password",
   "reset-button-loading": "Submitting...",
-
   "auth-redirect-message": "Don’t have an account yet?",
   "auth-redirect-link": "Create one now!",
-
   "reset-success-message": "Your password has been successfully reset.",
   "reset-error-email-missing": "Email not found in cookies",
   "reset-error-password-missing": "New password is required",
   "reset-error-generic": "Something went wrong",
-
   "email-required": "Email is required",
   "email-invalid": "Invalid email address",
   "password-min-length": "Password must be at least 8 characters long",
@@ -48,5 +42,8 @@
   "verify-otp": "Verify OTP",
   "verify-otp-action": "Verify Code",
   "verifying-otp": "Verifying...",
-  "otp-validation-message": "OTP code must be 6 digits"
+  "otp-validation-message": "OTP code must be 6 digits",
+  "new-product-label": "NEW",
+  "hot-product-label": "HOT",
+  "out-of-stock--product-label": "OUT OF STOCK"
 }
