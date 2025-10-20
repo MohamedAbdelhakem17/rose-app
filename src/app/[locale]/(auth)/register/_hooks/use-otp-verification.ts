@@ -1,4 +1,4 @@
-import { otpVerification } from '@/lib/actions/forgot-password.action';
+import { otpVerification } from '@/lib/actions/otp-verification-action';
 import { useMutation } from '@tanstack/react-query';
 
 export default function useMarkNotificationRead(resetCode: string) {

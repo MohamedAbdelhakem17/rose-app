@@ -12,13 +12,14 @@ import {
 } from '@/components/ui/form';
 import { InputOTP, InputOTPSlot } from '@/components/ui/input-otp';
 import { REGEXP_ONLY_DIGITS } from 'input-otp';
-import { otpSchema, OtpValues } from '@/lib/schemes/auth.schema';
+import { useOtpSchema, OtpValues } from '@/lib/schemes/auth.schema';
 import useOtpVerify from './../../_hooks/use-otp-verify';
 import { toast } from 'sonner';
 import { Button } from '@/components/shared/Button';
 import { ForgotPasswordStep } from '@/lib/types/auth';
 import { FORGOT_PASSWORD_STEEP } from '@/lib/constants/auth.constant';
 import TimeCount from './../time-count';
+import { useTranslations } from 'next-intl';
 
 type OtpVerificationStepProps = {
   setStep: React.Dispatch<React.SetStateAction<ForgotPasswordStep>>;
@@ -27,8 +28,12 @@ type OtpVerificationStepProps = {
 export default function OtpVerificationStep({
   setStep,
 }: OtpVerificationStepProps) {
+  // Localization
+  const t = useTranslations();
+
   // Hooks
   const { verifyOtp, isPending } = useOtpVerify();
+  const otpSchema = useOtpSchema();
 
   // Form and validation
   const form = useForm<OtpValues>({
@@ -73,7 +78,7 @@ export default function OtpVerificationStep({
               <FormControl>
                 <>
                   {/* Label */}
-                  <FormLabel className='sr-only'>Verify OTP</FormLabel>
+                  <FormLabel className='sr-only'>{t('verify-otp')}</FormLabel>
 
                   {/* Input */}
                   <InputOTP
@@ -108,10 +113,10 @@ export default function OtpVerificationStep({
           variant='primary'
           disabled={(isSubmitted && !isValid) || isPending}
           loading={isPending}
-          loadingText='Verifying...'
+          loadingText={t('verifying-otp')}
           className='w-full'
         >
-          Verify Code
+          {t('verify-otp-action')}
         </Button>
       </form>
     </Form>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import useCookie from '@/hooks/use-cookie';
+import useSessionStorage from '@/hooks/use-session-storage';
 
 type Props = {
   initialTimeInSeconds: number;
@@ -9,12 +9,11 @@ type Props = {
 
 export default function useCounterManagement({ initialTimeInSeconds }: Props) {
   // Constants
-  const COOKIE_NAME = 'timer_end';
+  const SESSION_NAME = 'timer_end';
 
   // Hooks
-  const { clearValue, setCookieValue, getCookieValue } = useCookie({
-    name: COOKIE_NAME,
-    expireInMinutes: initialTimeInSeconds / 60,
+  const { clearValue, getValue, setValue } = useSessionStorage({
+    name: SESSION_NAME,
   });
 
   // State
@@ -26,7 +25,8 @@ export default function useCounterManagement({ initialTimeInSeconds }: Props) {
   // Functions
   const restartTimer = () => {
     const newEndTime = Date.now() + initialTimeInSeconds * 1000;
-    setCookieValue(newEndTime.toString());
+
+    setValue(newEndTime.toString());
     setTimeLeft(initialTimeInSeconds);
   };
 
@@ -48,7 +48,7 @@ export default function useCounterManagement({ initialTimeInSeconds }: Props) {
   // Effect
   useEffect(() => {
     let endTime: number;
-    const value = getCookieValue();
+    const value = getValue();
 
     if (value) {
       // Set time if exist
@@ -57,7 +57,7 @@ export default function useCounterManagement({ initialTimeInSeconds }: Props) {
       // Set new time if not exist
       endTime = Date.now() + initialTimeInSeconds * 1000;
 
-      setCookieValue(endTime.toString());
+      setValue(endTime.toString());
     }
 
     updateCountdown(endTime);

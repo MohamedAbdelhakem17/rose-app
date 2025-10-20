@@ -1,0 +1,154 @@
+'use client';
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { loginSchema, LoginValues } from '@/lib/schemes/auth.schema';
+import { signIn } from 'next-auth/react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Button, Input } from '@/components/shared';
+import ErrorApi from '../../_components/error-api';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { useMutation } from '@tanstack/react-query';
+import { PasswordInput } from '@/components/shared/password-input';
+
+export default function LoginForm() {
+  // Translate
+  const t = useTranslations();
+
+  // Mutation
+  const { error, isPending, mutate } = useMutation({
+    mutationFn: async (values: LoginValues) => {
+      const response = await signIn('credentials', {
+        email: values.email,
+        password: values.password,
+        redirect: false,
+      });
+
+      if (response?.error) throw new Error(response.error);
+      if (response?.url) {
+        window.location.href =
+          new URLSearchParams(location.search).get('callbackUrl') || '/';
+      }
+
+      return response;
+    },
+  });
+
+  // Form
+  const form = useForm<LoginValues>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    resolver: zodResolver(loginSchema),
+  });
+
+  // Functions
+  const onSubmit: SubmitHandler<LoginValues> = async values => {
+    mutate(values);
+  };
+
+  return (
+    <Form {...form}>
+      <form
+        className='capitalize font-inter font-medium w-[404px]'
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
+        {/* Email */}
+        <FormField
+          name='email'
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              {/* Label */}
+              <FormLabel className='text-gray-800'>
+                {t('email-label')}
+              </FormLabel>
+
+              {/* Field */}
+              <FormControl>
+                <Input
+                  type='text'
+                  placeholder='user@example.com'
+                  className={`${form.formState.errors.email?.message && 'border-red-600 focus:ring-red-600'}`}
+                  {...field}
+                />
+              </FormControl>
+
+              {/* Feedback */}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div className='pt-4'>
+          <FormField
+            name='password'
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                {/* Label */}
+                <FormLabel className='text-gray-800 '>
+                  {t('password-label')}
+                </FormLabel>
+
+                {/* Field */}
+                <FormControl>
+                  {/* <PasswordInput> */}
+                  <Input
+                    type='password'
+                    placeholder='********'
+                    className={`${form.formState.errors.password?.message && 'border-red-600 focus:ring-red-600'}`}
+                    {...field}
+                  />
+                  {/* </PasswordInput> */}
+                </FormControl>
+
+                {/* Feedback */}
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        {/* Forgot Password */}
+        <div className='flex flex-col items-end w-full font-sarabun'>
+          <Link
+            href={'/forgot-password'}
+            className=' font-medium text-sm font-geistMono text-maroon-700 pt-2.5 pb-10 '
+          >
+            {t('forgot-password-paragraph')}
+          </Link>
+        </div>
+
+        {/* Api Error */}
+        {error && <ErrorApi error={error.message} />}
+
+        {/* Submit */}
+        <Button
+          type='submit'
+          variant={'primary'}
+          disabled={isPending || form.formState.isSubmitting}
+          className='font-sarabun w-full'
+        >
+          {t('login-button')}
+        </Button>
+
+        <p className='w-full border-t pt-5 mt-9 font-sarabun border-zinc-200 text-zinc-800 text-center'>
+          {t('register-paragraph')}
+          <Link href={'/register'} className='text-maroon-800'>
+            {t('register-paragraph-action')}
+          </Link>
+        </p>
+      </form>
+    </Form>
+  );
+}

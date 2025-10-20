@@ -17,9 +17,9 @@ import {
 } from '@/lib/schemas/auth/register-schema';
 import { useRegister } from '../_hooks/use-register';
 import { toast } from 'sonner';
-import { Form } from '@/components/ui/form';
 import FormInput from '@/components/shared/form-input';
-import { PasswordInput } from '@/components/shared/password-input';
+import { PasswordInput } from './register-form-password-input';
+// import { PasswordInput } from '@/components/shared/password-input';
 
 export default function RegisterForm() {
   //react query mutation hook
