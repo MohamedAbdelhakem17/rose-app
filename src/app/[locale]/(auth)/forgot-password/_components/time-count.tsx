@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { Button } from '@/components/shared/Button';
+import { Button } from '@/components/ui/button';
 import useCounterManagement from './../_hooks/use-mange-counter';
 import { useTranslations, useFormatter } from 'next-intl';
 

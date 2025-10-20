@@ -5,7 +5,7 @@ import OtpVerificationStep from './../steps/otp-verification-step';
 import { FORGOT_PASSWORD_STEEP } from '@/lib/constants/auth.constant';
 import { ForgotPasswordStep } from '@/lib/types/auth';
 import AuthenticationHeading from '@/app/[locale]/(auth)/_components/_layout/authentication-heading';
-import { Button } from '@/components/shared/Button';
+import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/Input';
 import AuthenticationLink from './../../../_components/_layout/authentication-link';
 import { useTranslations } from 'next-intl';

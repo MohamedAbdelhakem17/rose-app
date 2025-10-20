@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/shared';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils/utils';
 import { Heart, LocationEdit, Search, ShoppingCart, User } from 'lucide-react';
 import Image from 'next/image';

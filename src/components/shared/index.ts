@@ -1,5 +1,3 @@
-export { Badge, badgeVariants } from '../ui/Badge';
-export { Button, buttonVariants } from '../ui/Button';
 export {
   Card,
   CardContent,

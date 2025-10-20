@@ -79,7 +79,7 @@ export default function LocaleLayout({
     notFound();
   }
 
-   const messages = useMessages();
+  const messages = useMessages();
 
   // Enable static rendering
   setRequestLocale(locale);

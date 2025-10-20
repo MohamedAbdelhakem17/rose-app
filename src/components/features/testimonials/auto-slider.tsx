@@ -11,6 +11,7 @@ import RatingIcon from '@/components/shared/rating-icon';
 import { formatDateFull } from '@/lib/utils/date-format';
 import { TESTIMONIALS_DATA } from '@/lib/constants/testimonials-data.constant';
 import { cn } from '@/lib/utils/utils';
+import UserImage from '@/components/shared/user-image';
 
 export default function AutoSlider() {
   // Carousel Setting
@@ -42,11 +43,7 @@ export default function AutoSlider() {
             key={value.content}
             className=' relative min-h-72 flex flex-col justify-center items-center gap-3 bg-white text-zinc-800 rounded-3xl p-5 mx-10'
           >
-            <div className='flex justify-center items-center absolute -top-20 right-28 w-32 h-32 rounded-full border-white border-4 z-50 bg-slate-500'>
-              <p className=' text-2xl text-white'>
-                {value.user.name.split(' ').map(word => word[0])}
-              </p>
-            </div>
+            <UserImage username={value.user.name} color='bg-red-500' />
             <h3 className=' font-semibold text-center capitalize pt-14'>{`${value.user.name}`}</h3>
             <div className='flex flex-col justify-center items-center gap-2.5 my-6 '>
               <RatingIcon rate={value.rating} />

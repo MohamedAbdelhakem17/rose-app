@@ -1,6 +1,6 @@
 'use client';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Button } from '@/components/shared';
+import { Button } from '@/components/ui/button';
 import React from 'react';
 import {
   Select,
