@@ -39,6 +39,12 @@ export default function useSearchFilter(): FilterChangeHandler {
   // Function
   const handleFilterChange = useCallback(
     (page: string, key: string, value: string) => {
+      // Clear all Filters
+      if (key === 'reset') {
+        router.push(`/${page}`);
+        return;
+      }
+
       // Create a copy of current search params
       const params = new URLSearchParams(searchParams);
 

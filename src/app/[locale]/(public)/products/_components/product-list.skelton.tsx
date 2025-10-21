@@ -1,4 +1,4 @@
-import ProductSkelton from '@/components/features/products/product.skelton';
+import { ProductSkelton } from '@/components/skeleton';
 
 export default function ProductListSkelton() {
   return (
