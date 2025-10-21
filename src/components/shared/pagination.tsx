@@ -139,7 +139,7 @@ const Pages = () => {
   const format = useFormatter();
 
   // Hooks
-  const { currentPage, totalPages, setCurrentPage } = usePagination();
+  const { currentPage, totalPages, setCurrentPage, isRtl } = usePagination();
 
   // Function
   const getPageNumbers = (): (number | string)[] => {
@@ -169,7 +169,7 @@ const Pages = () => {
             active={currentPage === page}
           >
             {format.number(page as number, {
-              numberingSystem: 'arab',
+              numberingSystem: `${isRtl ? 'arab' : 'latn'}`,
             })}
           </PaginationButton>
         )
