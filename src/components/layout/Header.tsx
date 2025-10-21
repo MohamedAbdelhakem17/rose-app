@@ -8,13 +8,17 @@ import Link from 'next/link';
 import * as React from 'react';
 import Notifications from './user-notifications';
 import { navigationItems } from '@/lib/constants/navigation';
+import { usePathname } from '@/i18n/navigation';
 
 interface HeaderProps {
   className?: string;
 }
 
 export function Header({ className }: HeaderProps) {
+  // State
   const [searchQuery, setSearchQuery] = React.useState('');
+
+  const pathName = usePathname();
 
   return (
     <header className={cn('bg-white border-b border-zinc-200', className)}>
@@ -119,13 +123,15 @@ export function Header({ className }: HeaderProps) {
           <nav className='flex items-center justify-center space-x-8 py-3'>
             {navigationItems.map(item => {
               const Icon = item.icon;
+              const isActive = pathName === item.href;
+
               return (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
                     'flex items-center space-x-2 text-white hover:text-pink-300 transition-colors py-2 px-3 rounded-md',
-                    item.isActive && 'border-b-2 border-soft-pink-200'
+                    isActive && 'border-b-2 border-soft-pink-200'
                   )}
                 >
                   <Icon className='h-5 w-5' />

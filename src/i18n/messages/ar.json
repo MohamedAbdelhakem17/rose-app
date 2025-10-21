@@ -12,12 +12,10 @@
   "forgot-password-description": "لا تقلق، سنرسل لك تعليمات لإعادة تعيين كلمة المرور.",
   "forgot-password-redirect-message": "هل لديك حساب بالفعل؟",
   "forgot-password-redirect-link": "تسجيل الدخول",
-
   "forgot-email-label": "البريد الإلكتروني",
   "forgot-email-placeholder": "user@example.com",
   "forgot-button-text": "متابعة",
   "forgot-button-loading": "جارٍ الإرسال...",
-
   "reset-password-title": "إعادة تعيين كلمة المرور",
   "reset-password-description": "أدخل كلمة المرور الجديدة وأكّدها أدناه.",
   "reset-password-label": "كلمة المرور الجديدة",
@@ -26,15 +24,12 @@
   "reset-confirm-placeholder": "أعد إدخال كلمة المرور الجديدة",
   "reset-button-text": "إعادة تعيين كلمة المرور",
   "reset-button-loading": "جارٍ الإرسال...",
-
   "auth-redirect-message": "ليس لديك حساب بعد؟",
   "auth-redirect-link": "أنشئ حسابًا الآن!",
-
   "reset-success-message": "تمت إعادة تعيين كلمة المرور بنجاح.",
   "reset-error-email-missing": "البريد الإلكتروني غير موجود في الكوكيز",
   "reset-error-password-missing": "كلمة المرور الجديدة مطلوبة",
   "reset-error-generic": "حدث خطأ ما",
-
   "email-required": "البريد الإلكتروني مطلوب",
   "email-invalid": "عنوان البريد الإلكتروني غير صالح",
   "password-min-length": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
@@ -53,5 +48,8 @@
   "contact-us-label": "اتصل بنا",
   "verify-otp": "التحقق من كلمة المرور لمرة واحدة (OTP).",
   "verify-otp-action": "التحقق من الرمز",
-  "verifying-otp": "جارٍ التحقق..."
+  "verifying-otp": "جارٍ التحقق...",
+  "new-product-label": "جديد",
+  "out-of-stock--product-label": "إنتهى من المخزن",
+  "hot-product-label": "أكثر مبيعا"
 }

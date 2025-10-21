@@ -87,6 +87,8 @@ export default function LocaleLayout({
               className: '!bg-emerald-50 !text-zinc-800 border border-gray-700',
             }}
           />
+
+          {/* Content */}
           {children}
         </Providers>
       </body>

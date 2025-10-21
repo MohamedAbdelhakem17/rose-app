@@ -10,18 +10,20 @@ export default function RatingIcon({ rate }: RatingIconProps) {
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
   return (
-    <div className='flex items-center gap-1'>
+    <div className='flex items-center gap-1 mb-2'>
       {/* Full stars */}
       {Array.from({ length: fullStars }).map((_, i) => (
-        <Star key={i} className='fill-yellow-500 text-yellow-500' />
+        <Star key={i} className='fill-yellow-500 text-yellow-500' size={16} />
       ))}
 
       {/* Half star */}
-      {hasHalfStar && <StarHalf className='fill-yellow-500 text-yellow-500' />}
+      {hasHalfStar && (
+        <StarHalf className='fill-yellow-500 text-yellow-500' size={16} />
+      )}
 
       {/* Empty stars */}
       {Array.from({ length: emptyStars }).map((_, i) => (
-        <Star key={i} className='text-yellow-500' />
+        <Star key={i} className='text-yellow-500' size={16} />
       ))}
     </div>
   );
