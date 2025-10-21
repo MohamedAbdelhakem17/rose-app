@@ -53,7 +53,7 @@ export default function useSearchFilter(): FilterChangeHandler {
       if (key !== 'page') params.set('page', '1');
 
       // Navigate to the new URL
-      router.push(`/${page}?${params.toString()}`);
+      router.push(`${page}?${params.toString()}`);
     },
     [router, searchParams]
   );

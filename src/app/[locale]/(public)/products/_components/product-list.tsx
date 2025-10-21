@@ -1,27 +1,25 @@
-import { getProducts } from '@/lib/apis/product.api';
 import ProductItem from '@/components/features/products/product-item';
-import PaginationWrapper from './pagination-wrapper';
-
-interface GetProductsParams {
-  limit?: number;
-  page?: number;
-  [key: string]: string | number | undefined;
-}
+import Pagination from '@/components/shared/pagination';
+import { getProducts } from '@/lib/apis/product/product.api';
 
 export default async function ProductList({
   searchParams,
 }: {
   searchParams?: GetProductsParams;
 }) {
-  const response: MappedProductResponse = await getProducts(searchParams);
+  // Query
+  const { products, metadata }: MappedProductResponse =
+    await getProducts(searchParams);
 
   return (
-    <div className='grid grid-cols-3 gap-4'>
-      {response?.products?.map((product: MappingProductType) => (
+    <section className='grid grid-cols-3 gap-4'>
+      {/* Display product */}
+      {products?.map((product: MappingProductType) => (
         <ProductItem key={product._id} product={product} />
       ))}
 
-      <PaginationWrapper totalPages={response?.metadata?.totalPages} />
-    </div>
+      {/* Pagination */}
+      <Pagination totalPages={metadata?.totalPages} pathname='products' />
+    </section>
   );
 }

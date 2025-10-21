@@ -1,8 +1,7 @@
 'use server';
-import { REQUEST_HEADERS } from '../constants/request-headers.constant';
-import { getTranslations } from 'next-intl/server';
 import { mappingProducts } from '@/lib/utils/mapping-products';
-
+import { getTranslations } from 'next-intl/server';
+import { REQUEST_HEADERS } from '../../constants/request-headers.constant';
 
 export async function getProducts(
   params: GetProductsParams = {}

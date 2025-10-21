@@ -4,12 +4,12 @@ import AuthenticationHeading from '@/app/[locale]/(auth)/_components/_layout/aut
 import { Button } from '@/components/ui/button';
 import { FORGOT_PASSWORD_STEEP } from '@/lib/constants/auth.constant';
 import { ForgotPasswordStep } from '@/lib/types/auth';
-import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { ForgotPasswordForm } from '../steps/forgot-password-step';
 import { ResetPasswordForm } from '../steps/reset-password-step';
 import AuthenticationLink from './../../../_components/_layout/authentication-link';
 import OtpVerificationStep from './../steps/otp-verification-step';
+import { useTranslations } from 'next-intl';
 
 export default function ForgotPasswordLayout() {
   // Localization
