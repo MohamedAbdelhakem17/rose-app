@@ -1,10 +1,9 @@
-import React from 'react';
-import CategoriesFilter from './_components/categories-filter';
+import React, { Suspense } from 'react';
+import CategoriesWrapper from './_components/categories/categories-wrapper';
+import RatingIcon from '@/components/shared/rating-icon';
 
 export default function page() {
-  return (
-    <section>
-      <h1>page</h1>
-    </section>
-  );
+  return <section>
+
+  </section>;
 }

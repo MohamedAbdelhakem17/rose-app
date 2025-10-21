@@ -7,7 +7,7 @@
   "login-button": "تسجيل الدخول",
   "register-paragraph": "هل ليس لديك اي حساب ؟",
   "register-paragraph-action": "قم بعمل حساب الان !",
-  
+
   "forgot-password-title": "نسيت كلمة المرور",
   "forgot-password-description": "لا تقلق، سنرسل لك تعليمات لإعادة تعيين كلمة المرور.",
   "forgot-password-redirect-message": "هل لديك حساب بالفعل؟",
@@ -53,5 +53,11 @@
   "contact-us-label": "اتصل بنا",
   "verify-otp": "التحقق من كلمة المرور لمرة واحدة (OTP).",
   "verify-otp-action": "التحقق من الرمز",
-  "verifying-otp": "جارٍ التحقق..."
+  "verifying-otp": "جارٍ التحقق...",
+
+  "categories-title": "الصنف",
+  "reset-filters": "إعادة التعيين",
+
+  "ratings-title": "التقييم",
+  "reset-all": "إعادة التعيين الكل "
 }

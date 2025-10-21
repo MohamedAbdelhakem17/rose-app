@@ -1,12 +1,20 @@
-import React from 'react';
-import CategoriesFilter from './_components/categories-filter';
+import React, { Suspense } from 'react';
+import CategoriesWrapper from './_components/categories/categories-wrapper';
+import CategoriesListSkeleton from '../../../../components/skeletons/categories-skeleton';
+import RatingFilter from './_components/ratings/rating-filter';
+import ResetAll from './_components/reset-all';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className='flex min-h-screen'>
       {/* Sidebar */}
       <aside className='w-96 bg-muted p-4 border-r'>
-        <CategoriesFilter />
+        <Suspense fallback={<CategoriesListSkeleton />}>
+          <CategoriesWrapper />
+        </Suspense>
+
+        <RatingFilter />
+        <ResetAll />
       </aside>
 
       {/* Main Content */}
