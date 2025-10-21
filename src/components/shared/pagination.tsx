@@ -1,20 +1,21 @@
 'use client';
 
+import useSearchFilter from '@/hooks/use-search-filter';
+import { cn } from '@/lib/utils/utils';
 import {
   ChevronLeft,
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
 } from 'lucide-react';
+import { useFormatter, useLocale } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
 import { createContext, useContext } from 'react';
-import { cn } from '@/lib/utils/utils';
-import { useLocale } from 'next-intl';
-import { useRouter, useSearchParams } from 'next/navigation';
 
 type PaginationContextType = {
   currentPage: number;
   totalPages: number;
-  setCurrentPage: (page: number) => void;
+  setCurrentPage: (_page: number) => void;
   isRtl?: boolean;
 };
 
@@ -29,22 +30,28 @@ const usePagination = () => {
 
 const Root = ({
   totalPages,
+  pathname,
   children,
 }: React.PropsWithChildren<{
   totalPages: number;
+  pathname: string;
 }>) => {
+  // Localization
   const locale = useLocale();
   const isRtl = locale === 'ar';
-  const router = useRouter();
+
+  // Navigation
   const searchParams = useSearchParams();
 
-  // استخرج الصفحة الحالية من الـ URL مباشرة
+  // Hooks
+  const handleFilterChange = useSearchFilter();
+
+  // Get current page from url
   const currentPage = Number(searchParams.get('page')) || 1;
 
+  // Functions
   const setCurrentPage = (page: number) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set('page', page.toString());
-    router.push(`?${params.toString()}`);
+    handleFilterChange(pathname, 'page', String(page));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -128,8 +135,13 @@ const Last = () => {
 
 /* ----------------- Pages ----------------- */
 const Pages = () => {
+  // Localization
+  const format = useFormatter();
+
+  // Hooks
   const { currentPage, totalPages, setCurrentPage } = usePagination();
 
+  // Function
   const getPageNumbers = (): (number | string)[] => {
     if (currentPage < 3) return [1, 2, 3, '...', totalPages];
     if (currentPage >= totalPages - 2)
@@ -156,7 +168,9 @@ const Pages = () => {
             onClick={() => setCurrentPage(page as number)}
             active={currentPage === page}
           >
-            {page}
+            {format.number(page as number, {
+              numberingSystem: 'arab',
+            })}
           </PaginationButton>
         )
       )}
@@ -166,7 +180,7 @@ const Pages = () => {
 
 /* ----------------- Export Compound ----------------- */
 const Pagination = Object.assign(
-  (props: { totalPages: number }) => (
+  (props: { totalPages: number; pathname: string }) => (
     <Root {...props}>
       <First />
       <Previous />

@@ -1,6 +1,7 @@
 'use client';
 
 import ProductCard from '@/components/features/products/product-card';
+import { Link } from '@/i18n/navigation';
 
 export default function ProductItem({
   product,
@@ -38,7 +39,9 @@ export default function ProductItem({
         {/* Product content */}
         <ProductCard.Content>
           {/* Product title */}
-          <ProductCard.Title>{product.title}</ProductCard.Title>
+          <ProductCard.Title>
+            <Link href={`products/${product._id}`}>{product.title}</Link>
+          </ProductCard.Title>
 
           {/* Cart footer */}
           <ProductCard.Footer>
