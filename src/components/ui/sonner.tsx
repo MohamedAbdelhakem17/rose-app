@@ -2,7 +2,6 @@
 
 import {
   Check,
-  CircleCheckIcon,
   InfoIcon,
   Loader2Icon,
   OctagonXIcon,

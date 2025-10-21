@@ -4,10 +4,10 @@ import { Section } from '@/components/layout';
 import RatingIcon from '@/components/shared/rating-icon';
 import SectionTitle from '@/components/shared/sedtion-title';
 import { useParams } from 'next/navigation';
-import React from 'react';
 
 export default function ProductReview() {
-  let { product_id } = useParams();
+  const { product_id } = useParams();
+  void product_id;
   return (
     <Section>
       <div className=' border-b border-b-zinc-200 dark:border-b-zinc-700'>

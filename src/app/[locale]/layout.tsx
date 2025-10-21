@@ -1,26 +1,17 @@
-import { hasLocale, useMessages } from 'next-intl';
-import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
 import Providers from '@/components/providers';
+import { routing } from '@/i18n/routing';
+import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Inter, Sarabun, Tajawal } from 'next/font/google';
 import { NextFontWithVariable } from 'next/dist/compiled/@next/font';
+import { Sarabun, Tajawal } from 'next/font/google';
+import { notFound } from 'next/navigation';
 import { Toaster } from '../../components/ui/sonner';
-import { Footer, Header } from '@/components/layout';
 
 // Sarabun font for English (all weights: 100-800)
 const sarabun: NextFontWithVariable = Sarabun({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
   variable: '--font-sarabun',
-  display: 'swap',
-});
-
-// Inter font for label field (all weights: 100-800)
-const inter: NextFontWithVariable = Inter({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
-  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -79,8 +70,6 @@ export default function LocaleLayout({
     notFound();
   }
 
-  const messages = useMessages();
-
   // Enable static rendering
   setRequestLocale(locale);
 
@@ -90,7 +79,6 @@ export default function LocaleLayout({
         className={`${sarabun.variable} ${tajawal.variable}  ${locale === 'ar' ? 'font-tajawal' : 'font-sarabun'}antialiased`}
       >
         <Providers>
-          {/* <Header /> */}
           <Toaster
             richColors
             position='bottom-right'
@@ -100,7 +88,6 @@ export default function LocaleLayout({
             }}
           />
           {children}
-          {/* <Footer /> */}
         </Providers>
       </body>
     </html>

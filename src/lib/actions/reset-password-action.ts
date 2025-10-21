@@ -1,6 +1,5 @@
 'use server';
 
-import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 
 export async function resetPasswordAction(formData: FormData) {
@@ -34,6 +33,7 @@ export async function resetPasswordAction(formData: FormData) {
       message: data.message,
       token: data.token,
     };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error('Create New Password Error:', err.message);
     throw new Error(err.message || t('reset-error-generic'));

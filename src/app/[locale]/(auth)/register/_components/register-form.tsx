@@ -1,7 +1,6 @@
 'use client';
-import { FormProvider, useForm } from 'react-hook-form';
+import FormInput from '@/components/shared/form-input';
 import { Button } from '@/components/ui/button';
-import React from 'react';
 import {
   Select,
   SelectContent,
@@ -9,21 +8,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import Link from 'next/link';
-import { zodResolver } from '@hookform/resolvers/zod';
 import {
   RegisterFormData,
   registerSchema,
 } from '@/lib/schemas/auth/register-schema';
-import { useRegister } from '../_hooks/use-register';
+import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
+import { FormProvider, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
-import FormInput from '@/components/shared/form-input';
+import { useRegister } from '../_hooks/use-register';
 import { PasswordInput } from './register-form-password-input';
 // import { PasswordInput } from '@/components/shared/password-input';
 
 export default function RegisterForm() {
   //react query mutation hook
-  const { isPending, error, signUp } = useRegister();
+  const { isPending, signUp } = useRegister();
 
   const methods = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
