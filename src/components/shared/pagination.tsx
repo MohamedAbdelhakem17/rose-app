@@ -143,18 +143,30 @@ const Pages = () => {
 
   // Function
   const getPageNumbers = (): (number | string)[] => {
-    if (currentPage < 3) return [1, 2, 3, '...', totalPages];
-    if (currentPage >= totalPages - 2)
-      return [1, '...', totalPages - 2, totalPages - 1, totalPages];
-    return [
-      1,
-      '...',
-      currentPage - 1,
-      currentPage,
-      currentPage + 1,
-      '...',
-      totalPages,
-    ];
+    if (totalPages <= 5) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    const pages: (number | string)[] = [];
+    const showLeftDots = currentPage > 3;
+    const showRightDots = currentPage < totalPages - 2;
+
+    pages.push(1);
+
+    if (showLeftDots) pages.push('...');
+
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+
+    if (showRightDots) pages.push('...');
+
+    pages.push(totalPages);
+
+    return pages;
   };
 
   return (
@@ -180,15 +192,19 @@ const Pages = () => {
 
 /* ----------------- Export Compound ----------------- */
 const Pagination = Object.assign(
-  (props: { totalPages: number; pathname: string }) => (
-    <Root {...props}>
-      <First />
-      <Previous />
-      <Pages />
-      <Next />
-      <Last />
-    </Root>
-  ),
+  ({ totalPages, pathname }: { totalPages: number; pathname: string }) => {
+    if (totalPages <= 1) return null;
+
+    return (
+      <Root totalPages={totalPages} pathname={pathname}>
+        <First />
+        <Previous />
+        <Pages />
+        <Next />
+        <Last />
+      </Root>
+    );
+  },
   { Root, First, Previous, Pages, Next, Last }
 );
 

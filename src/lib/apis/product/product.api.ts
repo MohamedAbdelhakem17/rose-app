@@ -10,7 +10,7 @@ export async function getProducts(
   const t = await getTranslations();
 
   // Default params
-  const { limit = 2, page = 1, ...filters } = params;
+  const { limit = 6, page = 1, ...filters } = params;
 
   // Build query string dynamically
   const query = new URLSearchParams({
