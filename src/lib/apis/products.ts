@@ -5,7 +5,7 @@ export async function fetchProductById(productId: string) {
   //--- Fetch Product Data from API ---
   try {
     const response = await fetch(
-      `http://localhost:3000/api/products/${productId}`
+      `https://flower.elevateegy.com/api/v1/products/${productId}`
     );
     //--- Handle Response Errors ---
     if (!response.ok) {
