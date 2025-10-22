@@ -1,15 +1,23 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import useSearchFilter from '@/hooks/use-search-filter';
-import { Filter, RefreshCw } from 'lucide-react';
+import { AlertTriangle, RefreshCw } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-export default function ProductNotFound() {
+export default function ProductError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   // Translation
   const t = useTranslations();
-  // Hooks
-  const handleFilterChange = useSearchFilter();
+
+  const handleReload = () => {
+    reset();
+    window.location.reload();
+  };
 
   return (
     <div className='min-h-[50vh] flex items-center justify-center bg-background px-4 col-span-3 transition-colors duration-300'>
@@ -17,9 +25,9 @@ export default function ProductNotFound() {
         {/* Icon */}
         <div className='flex justify-center'>
           <div className='relative'>
-            <div className='absolute inset-0 bg-muted/10 dark:bg-muted/20 rounded-full blur-2xl' />
+            <div className='absolute inset-0 bg-red-500/10 dark:bg-red-400/20 rounded-full blur-2xl' />
             <div className='relative bg-muted/5 dark:bg-muted/10 p-6 rounded-full'>
-              <Filter className='w-16 h-16 text-maroon-600 dark:text-soft-pink-200' />
+              <AlertTriangle className='w-16 h-16 text-red-600 dark:text-red-400' />
             </div>
           </div>
         </div>
@@ -27,10 +35,14 @@ export default function ProductNotFound() {
         {/* Content */}
         <div className='space-y-3'>
           <h1 className='text-3xl font-bold text-foreground dark:text-foreground'>
-            {t('not-found-product-title')}
+            {error.message ||
+              t('error-title', { defaultMessage: 'Something went wrong' })}
           </h1>
           <p className='text-muted-foreground dark:text-muted-foreground text-base leading-relaxed'>
-            {t('product-not-found-info')}
+            {t('error-description', {
+              defaultMessage:
+                'An unexpected error occurred. Please try again or reload the page.',
+            })}
           </p>
         </div>
 
@@ -39,13 +51,11 @@ export default function ProductNotFound() {
           <Button
             className='w-full'
             size='lg'
-            variant='primary'
-            onClick={() => {
-              handleFilterChange('products', 'reset', '');
-            }}
+            variant='destructive'
+            onClick={handleReload}
           >
             <RefreshCw className='w-4 h-4 me-2' />
-            {t('reset-filters-button')}
+            {t('reload-button', { defaultMessage: 'Reload Page' })}
           </Button>
         </div>
       </div>

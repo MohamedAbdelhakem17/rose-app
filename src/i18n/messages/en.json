@@ -54,5 +54,8 @@
   "out-of-stock--product-label": "OUT OF STOCK",
   "not-found-product-title": "No Matching Results",
   "product-not-found-info": "We couldn’t find any products that match your selected filters. Try adjusting or resetting your filters to see more products.",
-  "reset-filters-button": "Reset Filters"
+  "reset-filters-button": "Reset Filters",
+  "error-title": "An unexpected error occurred",
+  "error-description": "Something went wrong while loading the data. Please try again or reload the page.",
+  "reload-button": "Reload Page"
 }
