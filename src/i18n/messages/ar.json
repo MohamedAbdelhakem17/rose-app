@@ -50,5 +50,8 @@
   "verifying-otp": "جارٍ التحقق...",
   "new-product-label": "جديد",
   "out-of-stock--product-label": "إنتهى من المخزن",
-  "hot-product-label": "أكثر مبيعا"
+  "hot-product-label": "أكثر مبيعا",
+  "not-found-product-title": "لا توجد نتائج مطابقة",
+  "reset-filters-button": "إعادة تعيين المرشحات",
+  "product-not-found-info": "لم نتمكن من العثور على أي منتجات تطابق عوامل التصفية التي حددتها. \nحاول تعديل أو إعادة ضبط الفلاتر الخاصة بك لرؤية المزيد من المنتجات."
 }

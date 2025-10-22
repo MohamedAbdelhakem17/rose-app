@@ -56,7 +56,7 @@ export default function useSearchFilter(): FilterChangeHandler {
       }
 
       // Reset page number when filter changes
-      if (key !== 'page') params.set('page', '1');
+      if (key !== 'page') params.delete('page');
 
       // Navigate to the new URL
       router.push(`${page}?${params.toString()}`);

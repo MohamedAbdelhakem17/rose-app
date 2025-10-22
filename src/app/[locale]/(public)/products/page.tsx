@@ -1,5 +1,5 @@
-import ProductList from '@/app/[locale]/(public)/products/_components/product-list';
-import ProductListSkelton from '@/app/[locale]/(public)/products/_components/product-list.skelton';
+import ProductList from './_components/product-list';
+import { ProductSkelton } from '@/components/skeleton';
 import { Suspense } from 'react';
 
 export default function Page({
@@ -15,7 +15,15 @@ export default function Page({
       {/* Product list */}
       <section className='col-span-3'>
         {/* Loading skelton */}
-        <Suspense fallback={<ProductListSkelton />}>
+        <Suspense
+          fallback={
+            <div className='grid grid-cols-3 gap-4'>
+              {Array.from({ length: 6 }).map((_, index) => (
+                <ProductSkelton key={index} />
+              ))}
+            </div>
+          }
+        >
           {/* Display data */}
           <ProductList searchParams={searchParams} />
         </Suspense>

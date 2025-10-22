@@ -7,7 +7,6 @@
   "login-button": "login",
   "register-paragraph": "Don’t have an account yet?",
   "register-paragraph-action": "Create one now!",
-
   "forgot-password-title": "Forgot Password",
   "forgot-password-description": "Don’t worry, we’ll send you instructions to reset your password.",
   "forgot-password-redirect-message": "Already have an account?",
@@ -52,5 +51,8 @@
   "otp-validation-message": "OTP code must be 6 digits",
   "new-product-label": "NEW",
   "hot-product-label": "HOT",
-  "out-of-stock--product-label": "OUT OF STOCK"
+  "out-of-stock--product-label": "OUT OF STOCK",
+  "not-found-product-title": "No Matching Results",
+  "product-not-found-info": "We couldn’t find any products that match your selected filters. Try adjusting or resetting your filters to see more products.",
+  "reset-filters-button": "Reset Filters"
 }

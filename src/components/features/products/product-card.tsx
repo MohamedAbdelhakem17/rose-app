@@ -170,7 +170,7 @@ function Title({
   return (
     <h3
       className={cn(
-        'text-maroon-700 text-lg font-semibold line-clamp-2 my-4',
+        'text-maroon-700 text-lg font-semibold line-clamp-2 my-4 dark:text-soft-pinck-200',
         className
       )}
       {...props}
@@ -201,7 +201,7 @@ function Price({
 
   return (
     <div className={cn('flex items-center gap-2', className)}>
-      <span className='text-maroon-700 font-medium'>
+      <span className='text-maroon-700 font-medium dark:text-soft-pink-200'>
         {format.number(Number(current.toFixed(2)), {
           style: 'currency',
           currency: currency,
@@ -209,7 +209,7 @@ function Price({
       </span>
 
       {old && (
-        <span className='text-gray-400 line-through text-sm'>
+        <span className='text-gray-400 line-through text-sm dark:text-zinc-500'>
           {format.number(Number(old.toFixed(2)), {
             style: 'currency',
             currency: currency,
