@@ -57,5 +57,9 @@
   "reset-filters-button": "Reset Filters",
   "error-title": "An unexpected error occurred",
   "error-description": "Something went wrong while loading the data. Please try again or reload the page.",
-  "reload-button": "Reload Page"
+  "reload-button": "Reload Page",
+  "best-selling-sub-title": "Best Selling",
+  "best-selling-title": "<span1>Check Out</span1> What Everyone’s <span2>Buying</span2> Right Now",
+  "best-selling-description": "Not sure what to choose? <chunk></chunk>Start with our best sellers — these are the gifts our customers keep coming back for. Whether you're celebrating a birthday, anniversary, or wedding, our top picks are guaranteed to leave a lasting impression.",
+  "best-selling-link": "Explore gifts"
 }

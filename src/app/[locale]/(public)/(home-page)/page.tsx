@@ -1,13 +1,14 @@
 import About from '@/components/features/about/about-component';
 import Companies from '@/components/features/Companies/companies-component';
+import FeaturesSection from '@/components/features/FeaturesSection';
 import Gallery from '@/components/features/Gallery/gallery-component';
-import { Section } from '@/components/layout';
-import SectionTitle from '@/components/shared/sedtion-title';
-import AutoSlider from '../../../../components/features/testimonials/auto-slider';
-import SectionName from '@/components/shared/section-name';
 import HeroSection from '@/components/features/hero-section/hero-section';
 import OccasionsSection from '@/components/features/OccasionsSection';
-import FeaturesSection from '@/components/features/FeaturesSection';
+import { Section } from '@/components/layout';
+import SectionName from '@/components/shared/section-name';
+import SectionTitle from '@/components/shared/sedtion-title';
+import AutoSlider from '../../../../components/features/testimonials/auto-slider';
+import BestSelling from './_components/best-selling';
 
 export default async function Home() {
   return (
@@ -18,6 +19,8 @@ export default async function Home() {
         <HeroSection />
         <OccasionsSection />
         <FeaturesSection />
+        {/* Best selling section */}
+        <BestSelling />
       </Section>
       <About />
       <Gallery />
