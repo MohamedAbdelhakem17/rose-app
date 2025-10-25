@@ -3,20 +3,27 @@
 import { Button } from '@/components/ui/Button';
 import { useTranslations } from 'next-intl';
 import React from 'react';
-import { useRouter, usePathname } from '@/i18n/navigation';
-import { RefreshCcw, RotateCcw } from 'lucide-react';
+import { RotateCcw } from 'lucide-react';
 import useSearchFilter from '@/hooks/use-search-filter';
+import { useSearchParams } from 'next/navigation';
 
 export default function ResetAll() {
   const t = useTranslations();
-
   const searchFilter = useSearchFilter();
+  const searchParams = useSearchParams();
+
+  // Check if there are filters excluding "page"
+  const hasFilters = Array.from(searchParams.entries()).some(
+    ([key, value]) => key !== 'page' && value
+  );
+
+  if (!hasFilters) return null;
 
   return (
     <Button
       variant='destructive'
       onClick={() => searchFilter('products', 'reset', '')}
-      className=' w-full flex gap-3'
+      className='w-full flex gap-3'
     >
       <RotateCcw size={14} />
       {t('reset-all')}

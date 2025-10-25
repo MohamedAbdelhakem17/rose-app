@@ -1,10 +1,10 @@
-export type FilterHeaderProps = {
+export declare interface FilterHeaderProps {
   title: string;
   onReset: () => void;
   className?: string;
-};
+}
 
-export type Category = {
+export declare interface Category {
   _id: string;
   name: string;
   slug: string;
@@ -13,9 +13,9 @@ export type Category = {
   updatedAt: string;
   isSuperAdmin: boolean;
   productsCount: number;
-};
+}
 
-export type RatingFilterProps = {
+export declare interface RatingFilterProps {
   max?: number;
   initial?: number;
-};
+}

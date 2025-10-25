@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/Button';
 import { useTranslations } from 'next-intl';
 import { FilterHeaderProps } from '@/lib/types/filters';
 import { X } from 'lucide-react';
+import { cn } from '@/lib/utils/utils';
 
 type ExtendedFilterHeaderProps = FilterHeaderProps & {
   showReset?: boolean; // controls reset button visibility
@@ -16,7 +17,7 @@ export default function FilterHeader({
   const t = useTranslations();
 
   return (
-    <div className={`flex items-center justify-between ${className}`}>
+    <div className={cn('flex items-center justify-between', className)}>
       {/* title */}
       <h2 className='font-semibold dark:text-zinc-50 text-zinc-800 text-xl'>
         {title}
