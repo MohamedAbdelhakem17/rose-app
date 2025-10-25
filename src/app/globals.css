@@ -73,11 +73,25 @@
   }
 }
 
-@font-face {
-  font-family: 'Edwardian Script ITC';
-  src:
-    url('/fonts/EdwardianScriptITC.woff2') format('woff2'),
-    url('/fonts/EdwardianScriptITC.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+/* scrollbar styles */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* thin scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f0f0f0; /* light background track */
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #800000; /* maroon thumb */
+  border-radius: 9999px;
+  border: 1px solid #f0f0f0; /* optional padding around thumb */
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #800000 #f0f0f0;
 }

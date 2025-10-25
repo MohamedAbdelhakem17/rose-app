@@ -5,15 +5,13 @@ import { Loader2 } from 'lucide-react';
 import React from 'react';
 
 const buttonVariants = cva(
-  // removed the font-weight property to match with the design
-  'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm  transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
         // Primary variants
-        // changed the primary main color and hover state to match with the design
         primary:
-          'bg-maroon-600  text-white hover:bg-maroon-500 text-sm active:bg-maroon-700 dark:bg-soft-pink-200 dark:text-zinc-800',
+          'bg-maroon-600 text-white hover:bg-maroon-500 active:bg-maroon-700 dark:bg-soft-pink-200 dark:text-zinc-800',
         'primary-light':
           'bg-soft-pink-200 text-maroon-600 hover:bg-soft-pink-300 active:bg-soft-pink-400',
         'primary-outline':
@@ -63,6 +61,12 @@ const buttonVariants = cva(
 
         // Link variants
         link: 'text-primary underline-offset-4 hover:underline',
+
+        //  destructive made for the reset filters button
+        destructive:
+          'bg-maroon-50 text-maroon-600 hover:bg-maroon-100  active:bg-zinc-200 ' +
+          'dark:bg-zinc-700 dark:text-soft-pink-300 dark:hover:bg-zinc-600 dark:active:bg-zinc-500 ' +
+          'rounded-lg border border-transparent',
       },
       size: {
         sm: 'h-8 px-3 text-xs',

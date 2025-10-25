@@ -57,5 +57,9 @@
   "reset-filters-button": "Reset Filters",
   "error-title": "An unexpected error occurred",
   "error-description": "Something went wrong while loading the data. Please try again or reload the page.",
-  "reload-button": "Reload Page"
+  "reload-button": "Reload Page",
+  "categories-title": "Category",
+  "reset-filters": "Reset",
+  "ratings-title": "Rating",
+  "reset-all": "Reset All "
 }

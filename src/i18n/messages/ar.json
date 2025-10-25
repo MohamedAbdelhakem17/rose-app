@@ -47,14 +47,5 @@
   "contact-us-label": "اتصل بنا",
   "verify-otp": "التحقق من كلمة المرور لمرة واحدة (OTP).",
   "verify-otp-action": "التحقق من الرمز",
-  "verifying-otp": "جارٍ التحقق...",
-  "new-product-label": "جديد",
-  "out-of-stock--product-label": "إنتهى من المخزن",
-  "hot-product-label": "أكثر مبيعا",
-  "not-found-product-title": "لا توجد نتائج مطابقة",
-  "reset-filters-button": "إعادة تعيين المرشحات",
-  "product-not-found-info": "لم نتمكن من العثور على أي منتجات تطابق عوامل التصفية التي حددتها. \nحاول تعديل أو إعادة ضبط الفلاتر الخاصة بك لرؤية المزيد من المنتجات.",
-  "error-title": "حدث خطأ غير متوقع",
-  "error-description": "حدث خطأ أثناء تحميل البيانات. من فضلك أعد المحاولة أو قم بتحديث الصفحة.",
-  "reload-button": "إعادة تحميل الصفحة"
+  "verifying-otp": "جارٍ التحقق..."
 }
