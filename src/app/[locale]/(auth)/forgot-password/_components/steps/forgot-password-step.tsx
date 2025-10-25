@@ -10,7 +10,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForgotPasswordSchema } from '@/hooks/use-forgot-password-schema';
 import { useTranslations } from 'next-intl';

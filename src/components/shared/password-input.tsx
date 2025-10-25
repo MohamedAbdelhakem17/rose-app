@@ -1,12 +1,11 @@
 'use client';
 
-import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { Eye, EyeOff } from 'lucide-react';
+import { useState } from 'react';
 
-interface PasswordInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+type PasswordInputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 export function PasswordInput({ className, ...props }: PasswordInputProps) {
   const [show, setShow] = useState(false);

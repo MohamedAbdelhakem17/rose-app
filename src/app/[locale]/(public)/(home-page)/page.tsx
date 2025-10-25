@@ -3,7 +3,7 @@ import Companies from '@/components/features/Companies/companies-component';
 import Gallery from '@/components/features/Gallery/gallery-component';
 import { Section } from '@/components/layout';
 import SectionTitle from '@/components/shared/sedtion-title';
-import AutoSlider from '../_components/testimonials/auto-slider';
+import AutoSlider from '../../../../components/features/testimonials/auto-slider';
 import SectionName from '@/components/shared/section-name';
 import HeroSection from '@/components/features/hero-section/hero-section';
 import OccasionsSection from '@/components/features/OccasionsSection';

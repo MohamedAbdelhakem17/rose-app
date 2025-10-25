@@ -4,8 +4,6 @@ import { useRouter } from '@/i18n/navigation';
 import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
-// That hook was not made by me, but by (Mohamed Abdulhakim) but I had to use it so I statically copied it
-
 type FilterChangeHandler = (
   _page: string,
   _key: string,
@@ -58,7 +56,7 @@ export default function useSearchFilter(): FilterChangeHandler {
       }
 
       // Reset page number when filter changes
-      if (key !== 'page') params.set('page', '1');
+      if (key !== 'page') params.delete('page');
 
       // Navigate to the new URL
       router.push(`${page}?${params.toString()}`);

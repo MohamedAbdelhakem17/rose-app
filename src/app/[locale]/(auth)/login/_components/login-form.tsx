@@ -1,5 +1,6 @@
 'use client';
 
+import { Input } from '@/components/shared';
 import {
   Form,
   FormControl,
@@ -9,15 +10,15 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { loginSchema, LoginValues } from '@/lib/schemes/auth.schema';
-import { signIn } from 'next-auth/react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { Button, Input } from '@/components/shared';
-import ErrorApi from '../../_components/error-api';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
 import { useMutation } from '@tanstack/react-query';
-import { PasswordInput } from '@/components/shared/password-input';
+import { signIn } from 'next-auth/react';
+
+import { Button } from '@/components/ui/button';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import ErrorApi from '../../_components/error-api';
 
 export default function LoginForm() {
   // Translate

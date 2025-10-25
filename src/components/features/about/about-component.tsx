@@ -6,7 +6,7 @@ import Highlight from '../../shared/highlight';
 import { ArrowRight, Check } from 'lucide-react';
 import SmallSectionHeading from '../../shared/small-section-heading';
 import { cn } from '../../../lib/utils/utils';
-import { Button } from '@/components/shared';
+import { Button } from '@/components/ui/button';
 
 export default function About() {
   return (

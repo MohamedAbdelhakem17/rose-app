@@ -1,27 +1,26 @@
 'use client';
 
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { PasswordInput } from '@/components/shared/password-input';
+import { Button } from '@/components/ui/button';
 import {
   Form,
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormControl,
   FormMessage,
 } from '@/components/ui/form';
-import { Button } from '@/components/ui/Button';
-import { PasswordInput } from '@/components/shared/password-input';
-import { zodResolver } from '@hookform/resolvers/zod';
 import {
   ResetPasswordFields,
   useResetPasswordSchema,
 } from '@/hooks/use-reset-password-schema';
-import { useTranslations } from 'next-intl';
-import { ResetPasswordFormProps } from '@/lib/types/auth';
-import { ResetPasswordInputs } from '@/lib/types/auth';
-import { useResetPassword } from '../../_hooks/use-reset-password';
-import { toast } from 'sonner';
 import { useRouter } from '@/i18n/navigation';
+import { ResetPasswordFormProps, ResetPasswordInputs } from '@/lib/types/auth';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { useResetPassword } from '../../_hooks/use-reset-password';
 
 export function ResetPasswordForm({ email }: ResetPasswordFormProps) {
   // Translations

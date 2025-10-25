@@ -7,7 +7,7 @@ type UseSessionStorageOptions = {
 
 type UseSessionStorageReturn = {
   getValue: () => string | null;
-  setValue: (value: string) => void;
+  setValue: (_value: string) => void;
   clearValue: () => void;
 };
 

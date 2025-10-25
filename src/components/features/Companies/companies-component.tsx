@@ -1,13 +1,12 @@
 import Image from 'next/image';
-import { cn } from '../../../lib/utils/utils';
-import Highlight from '../../shared/highlight';
-import { Section } from '../../layout';
 import companyImage1 from '../../../../public/assets/images/companies/1.svg';
 import companyImage2 from '../../../../public/assets/images/companies/2.svg';
 import companyImage3 from '../../../../public/assets/images/companies/3.svg';
 import companyImage4 from '../../../../public/assets/images/companies/4.svg';
 import companyImage5 from '../../../../public/assets/images/companies/5.svg';
 import companyImage6 from '../../../../public/assets/images/companies/6.svg';
+import { Section } from '../../layout';
+import Highlight from '../../shared/highlight';
 
 export default function Companies() {
   const companyImages = [

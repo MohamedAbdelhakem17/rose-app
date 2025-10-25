@@ -1,8 +1,8 @@
-import { Button } from '@/components/ui/Button';
-import { useTranslations } from 'next-intl';
+import { Button } from '@/components/ui/button';
 import { FilterHeaderProps } from '@/lib/types/filters';
-import { X } from 'lucide-react';
 import { cn } from '@/lib/utils/utils';
+import { X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 type ExtendedFilterHeaderProps = FilterHeaderProps & {
   showReset?: boolean; // controls reset button visibility
