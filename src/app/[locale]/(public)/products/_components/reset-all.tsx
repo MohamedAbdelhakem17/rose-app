@@ -1,10 +1,9 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import { useTranslations } from 'next-intl';
-import React from 'react';
-import { RotateCcw } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import useSearchFilter from '@/hooks/use-search-filter';
+import { RotateCcw } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
 export default function ResetAll() {

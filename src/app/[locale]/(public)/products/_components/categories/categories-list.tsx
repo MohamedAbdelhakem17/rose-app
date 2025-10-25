@@ -1,12 +1,12 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import { useSearchParams } from 'next/navigation';
-import { Card } from '@/components/ui/Card';
-import Image from 'next/image';
-import FilterHeader from '../_shared/filter-header';
-import { Category } from '@/lib/types/filters';
+import { Card } from '@/components/ui/card';
 import useSearchFilter from '@/hooks/use-search-filter';
+import { Category } from '@/lib/types/filters';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+import FilterHeader from '../_shared/filter-header';
 
 type Props = {
   categories: Category[];

@@ -5,7 +5,7 @@ export {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '../ui/Card';
+} from '../ui/card';
 export { Input } from '../ui/Input';
 export { Label } from '../ui/Label';
 export { Textarea } from '../ui/Textarea';
