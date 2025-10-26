@@ -67,5 +67,10 @@
   "no-orders-info": "It looks like you haven’t placed any orders yet. Start shopping now and discover our products!",
   "shop-now-button": "Shop Now",
   "orders-error-title": "An error occurred while loading orders",
-  "orders-error-description": "An unexpected error occurred while fetching your orders. Please try reloading the page."
+  "orders-error-description": "An unexpected error occurred while fetching your orders. Please try reloading the page.",
+  "pending": "Pending",
+  "canceled": "Canceled",
+  "delivered": "Delivered",
+  "unknown": "unKnown",
+  "orders": "Orders"
 }

@@ -57,5 +57,9 @@
   "new-product-label": "جديد",
   "orders-error-title": "حدث خطأ أثناء تحميل الطلبات",
   "orders-error-description": "حدث خطأ غير متوقع أثناء جلب بيانات الطلبات. حاول إعادة تحميل الصفحة.",
-  "reload-button": "إعادة تحميل الصفحة"
+  "reload-button": "إعادة تحميل الصفحة",
+  "pending": "قيد الانتظار",
+  "canceled": "تم الإلغاء",
+  "delivered": "تم التوصيل",
+  "unknown": "مجهول"
 }
