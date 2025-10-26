@@ -61,5 +61,11 @@
   "categories-title": "Category",
   "reset-filters": "Reset",
   "ratings-title": "Rating",
-  "reset-all": "Reset All "
+  "reset-all": "Reset All ",
+  "orders-page-title": "Orders",
+  "no-orders-title": "No Orders Yet",
+  "no-orders-info": "It looks like you haven’t placed any orders yet. Start shopping now and discover our products!",
+  "shop-now-button": "Shop Now",
+  "orders-error-title": "An error occurred while loading orders",
+  "orders-error-description": "An unexpected error occurred while fetching your orders. Please try reloading the page."
 }

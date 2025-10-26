@@ -1,4 +1,4 @@
-import { ProductSkelton } from '@/components/skeleton';
+import { ProductSkelton } from '@/components/skeletons';
 import { Suspense } from 'react';
 import ProductList from './_components/product-list';
 
