@@ -2,9 +2,14 @@
 
 import { REQUEST_HEADERS } from '@/lib/constants/request-headers.constant';
 import { getToken } from '@/lib/utils/get-token';
+import { mappingOrders } from '@/lib/utils/mapping-order';
+import { getTranslations } from 'next-intl/server';
 
-export async function getOrders() {
+export async function getOrders(): Promise<
+  MappedOrderResponse | { error: string }
+> {
   try {
+    const t = await getTranslations();
     //  Get user token
     // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
     const token = await getToken();
@@ -26,22 +31,28 @@ export async function getOrders() {
       },
     });
 
-    // Try parsing the response
-    const payload = await response.json().catch(() => null);
-
     //  Handle API error
     if (!response.ok) {
       // Get error message
-      const errorMessage =
-        payload?.message ||
-        payload?.error ||
-        `Failed to fetch orders (status: ${response.status})`;
+      const errorMessage = `Failed to fetch orders (status: ${response.status})`;
 
       return { error: errorMessage };
     }
 
+    // Try parsing the response
+    const payload: GetOrdersResponse = await response.json();
+
+    if ('error' in payload) {
+      return { error: payload.error };
+    }
+
+    // Map products
+    const mappedPayload: MappedOrderResponse = {
+      ...payload,
+      orders: mappingOrders(payload.orders, t),
+    };
     //  Return successful payload
-    return payload;
+    return mappedPayload;
   } catch (error) {
     void error;
     return { error: 'Something went wrong while fetching orders.' };
