@@ -10,14 +10,17 @@ export default function OccasionsList({
 }: {
   occasions: OccasionsType[];
 }) {
+  // Navigation
   const searchParams = useSearchParams();
+
+  // Hooks
   const handleSearchFilter = useSearchFilter({ scroll: false });
 
-  console.log(searchParams);
-
   return (
+    // Occasions filter container
     <div className='flex items-center justify-end gap-6'>
       {occasions?.map((occasion: OccasionsType) => (
+        // Occasion Button
         <Button
           key={occasion._id}
           variant='link'

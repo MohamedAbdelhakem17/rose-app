@@ -1,12 +1,12 @@
-import { ProductSkelton } from '@/components/skeleton';
+import { Link } from '@/i18n/navigation';
 import { getOccasions } from '@/lib/apis/occasions/occasions.api';
 import { cn } from '@/lib/utils/utils';
 import { MoveRight } from 'lucide-react';
 import { getLocale, getTranslations } from 'next-intl/server';
-import Link from 'next/link';
 import { Suspense } from 'react';
 import MostPopularHeader from './_components/most-popular-header';
 import MostPopularProduct from './_components/most-popular-product';
+import MostPopularSkeleton from './_components/most-popular.skeleton';
 
 export default async function MostPopular({
   searchParams,
@@ -25,11 +25,7 @@ export default async function MostPopular({
         <MostPopularHeader />
 
         {/* Products */}
-        <Suspense
-          fallback={Array.from({ length: 6 }).map((_, index) => (
-            <ProductSkelton key={index} />
-          ))}
-        >
+        <Suspense fallback={<MostPopularSkeleton />}>
           <MostPopularProduct searchParams={searchParams} />
         </Suspense>
       </section>
