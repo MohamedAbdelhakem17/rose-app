@@ -5,7 +5,6 @@ import { Badge, badgeVariants } from '@/components/ui/badge';
 import { Button, ButtonProps } from '@/components/ui/button';
 import { cn } from '@/lib/utils/utils';
 import { HeartMinus, HeartPlus, ShoppingCart } from 'lucide-react';
-import { useFormatter } from 'next-intl';
 import Image, { ImageProps } from 'next/image';
 import React from 'react';
 
@@ -197,23 +196,20 @@ function Price({
   className?: string;
 }): JSX.Element {
   // Localization
-  const format = useFormatter();
+  const priceFormatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: currency,
+  });
 
   return (
     <div className={cn('flex items-center gap-2', className)}>
       <span className='text-maroon-700 font-medium dark:text-soft-pink-200'>
-        {format.number(Number(current.toFixed(2)), {
-          style: 'currency',
-          currency: currency,
-        })}
+        {priceFormatter.format(current)}
       </span>
 
       {old && (
         <span className='text-gray-400 line-through text-sm dark:text-zinc-500'>
-          {format.number(Number(old.toFixed(2)), {
-            style: 'currency',
-            currency: currency,
-          })}
+          {priceFormatter.format(old)}
         </span>
       )}
     </div>

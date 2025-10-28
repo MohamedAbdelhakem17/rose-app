@@ -47,5 +47,21 @@
   "contact-us-label": "اتصل بنا",
   "verify-otp": "التحقق من كلمة المرور لمرة واحدة (OTP).",
   "verify-otp-action": "التحقق من الرمز",
+  "verifying-otp": "جارٍ التحقق...",
+  "new-product-label": "جديد",
+  "out-of-stock--product-label": "إنتهى من المخزن",
+  "hot-product-label": "أكثر مبيعا",
+  "not-found-product-title": "لا توجد نتائج مطابقة",
+  "reset-filters-button": "إعادة تعيين المرشحات",
+  "product-not-found-info": "لم نتمكن من العثور على أي منتجات تطابق عوامل التصفية التي حددتها. \nحاول تعديل أو إعادة ضبط الفلاتر الخاصة بك لرؤية المزيد من المنتجات.",
+  "error-title": "حدث خطأ غير متوقع",
+  "error-description": "حدث خطأ أثناء تحميل البيانات. من فضلك أعد المحاولة أو قم بتحديث الصفحة.",
+  "reload-button": "إعادة تحميل الصفحة",
+  "best-selling-sub-title": "الأكثر مبيعا",
+  "best-selling-title": "<span1>تعرّف على</span1> ما يشتريه <span2>الجميع</span2> الآن",
+  "best-selling-description": "لست متأكداً ماذا تختار؟ <chunk></chunk>ابدأ بالأكثر مبيعًا لدينا، فهذه هي الهدايا التي يعود عملاؤنا دائمًا للحصول عليها. سواء كنت تحتفل بعيد ميلاد، أو ذكرى سنوية، أو زفاف — اختياراتنا المميزة ستترك انطباعًا لا يُنسى.",
+  "best-selling-link": "استكشاف الهدايا",
+  "view-more-link": "عرض المزيد",
+  "most-popular-title": "الأكثر شعبية"
   "verifying-otp": "جارٍ التحقق..."
 }
