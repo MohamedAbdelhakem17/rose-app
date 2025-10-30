@@ -15,7 +15,7 @@ import { REGEXP_ONLY_DIGITS } from 'input-otp';
 import { useOtpSchema, OtpValues } from '@/lib/schemes/auth.schema';
 import useOtpVerify from './../../_hooks/use-otp-verify';
 import { toast } from 'sonner';
-import { Button } from '@/components/shared/Button';
+import { Button } from '@/components/ui/button';
 import { ForgotPasswordStep } from '@/lib/types/auth';
 import { FORGOT_PASSWORD_STEEP } from '@/lib/constants/auth.constant';
 import TimeCount from './../time-count';

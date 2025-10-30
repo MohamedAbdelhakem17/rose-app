@@ -84,9 +84,9 @@ type NotificationContextType = {
   isMenuOpen: boolean;
   activeOptionId: string | null;
   toggleMenu: () => void;
-  toggleOptions: (id: string) => void;
-  deleteNotificationRead: (params: NotificationActionParams) => void;
-  markNotificationRead: (params: NotificationActionParams) => void;
+  toggleOptions: (_id: string) => void;
+  deleteNotificationRead: (_params: NotificationActionParams) => void;
+  markNotificationRead: (_params: NotificationActionParams) => void;
 };
 
 // --------------------------------------
@@ -94,12 +94,12 @@ type NotificationContextType = {
 // --------------------------------------
 
 export {
-  GetUserNotificationsResponse,
-  GetUnreadNotificationUserCountResponse,
-  DeleteSingleNotificationResponseType,
-  ToggleNotificationResponseType,
-  MakeNotificationReaddResponseType,
   DeleteAllNotificationResponseType,
-  NotificationType,
+  DeleteSingleNotificationResponseType,
+  GetUnreadNotificationUserCountResponse,
+  GetUserNotificationsResponse,
+  MakeNotificationReaddResponseType,
   NotificationContextType,
+  NotificationType,
+  ToggleNotificationResponseType,
 };

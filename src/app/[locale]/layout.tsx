@@ -1,96 +1,68 @@
-import { hasLocale, useMessages } from 'next-intl';
-import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
 import Providers from '@/components/providers';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Inter, Sarabun, Tajawal } from 'next/font/google';
-import { NextFontWithVariable } from 'next/dist/compiled/@next/font';
+import { routing } from '@/i18n/routing';
+import { hasLocale } from 'next-intl';
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from 'next-intl/server';
+import { Sarabun, Tajawal } from 'next/font/google';
+import { notFound } from 'next/navigation';
 import { Toaster } from '../../components/ui/sonner';
-import { Footer, Header } from '@/components/layout';
 
-// Sarabun font for English (all weights: 100-800)
-const sarabun: NextFontWithVariable = Sarabun({
+const sarabun = Sarabun({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
   variable: '--font-sarabun',
   display: 'swap',
 });
 
-// Inter font for label field (all weights: 100-800)
-const inter: NextFontWithVariable = Inter({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-// Tajawal font for Arabic (all weights: 200-900)
-const tajawal: NextFontWithVariable = Tajawal({
+const tajawal = Tajawal({
   subsets: ['arabic'],
   weight: ['200', '300', '400', '500', '700', '800', '900'],
   variable: '--font-tajawal',
   display: 'swap',
 });
 
-/* ******** IMPORTANT *********
-
-  * We must add generateStaticParams () for all routes and layout to make SSG
-  * Notes: This layout is already made page.tsx SSG
-
-  export function generateStaticParams() {
-  return routing.locales.map(locale => ({ locale }));
-}
-  
-  ****************************
-*/
-
-// props type
-type LocaleLayoutProps = {
-  children: React.ReactNode;
-  params: { locale: string };
-};
-
-// Metadata
 export async function generateMetadata({
   params,
-}: Pick<LocaleLayoutProps, 'params'>) {
-  const { locale } = await params;
+}: {
+  params: { locale: string };
+}) {
+  const { locale } = params;
   const t = await getTranslations({ locale });
 
   return {
     title: t('metadata-title'),
     description: t('metadata-description'),
-    icons: {
-      icon: '/assets/logo1.svg',
-    },
+    icons: { icon: '/assets/logo1.svg' },
   };
 }
 
-// To make SSG
 export function generateStaticParams() {
   return routing.locales.map(locale => ({ locale }));
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params: { locale },
-}: LocaleLayoutProps) {
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  if (!hasLocale(routing.locales, locale)) notFound();
 
-   const messages = useMessages();
-
-  // Enable static rendering
   setRequestLocale(locale);
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <body
-        className={`${sarabun.variable} ${tajawal.variable}  ${locale === 'ar' ? 'font-tajawal' : 'font-sarabun'}antialiased`}
+        className={`${sarabun.variable} ${tajawal.variable} ${
+          locale === 'ar' ? 'font-tajawal' : 'font-sarabun'
+        } antialiased`}
       >
-        <Providers>
-          {/* <Header /> */}
+        <Providers locale={locale} messages={messages}>
           <Toaster
             richColors
             position='bottom-right'
@@ -100,7 +72,6 @@ export default function LocaleLayout({
             }}
           />
           {children}
-          {/* <Footer /> */}
         </Providers>
       </body>
     </html>

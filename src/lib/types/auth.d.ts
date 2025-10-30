@@ -28,13 +28,12 @@ export interface RegisterErrorResponse {
 // Final union type
 export type RegisterResponse = RegisterSuccessResponse | RegisterErrorResponse;
 
-
 // types/auth.ts
 /** API Response Types */
 export interface LoginResponse {
   user: User;
   token: string;
-};
+}
 
 type ForgotPasswordResponse = {
   message: string;
@@ -50,8 +49,8 @@ type ResetPasswordResponse = {
 /** Form Props */
 type ForgotPasswordFormProps = {
   email: string | null;
-  setEmail: (email: string) => void;
-  setStep: (step: ForgotPasswordStep) => void;
+  setEmail: (_email: string) => void;
+  setStep: (_step: ForgotPasswordStep) => void;
 };
 
 type ResetPasswordFormProps = {
@@ -76,12 +75,12 @@ type ForgotPasswordStep =
 
 /** Export all at once */
 export {
-  ForgotPasswordResponse,
-  ResetPasswordResponse,
   ForgotPasswordFormProps,
-  ResetPasswordFormProps,
   ForgotPasswordInputs,
-  ResetPasswordInputs,
-  OtpVerificationResponse,
+  ForgotPasswordResponse,
   ForgotPasswordStep,
+  OtpVerificationResponse,
+  ResetPasswordFormProps,
+  ResetPasswordInputs,
+  ResetPasswordResponse,
 };

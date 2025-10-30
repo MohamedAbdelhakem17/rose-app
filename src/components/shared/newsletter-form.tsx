@@ -1,7 +1,8 @@
 'use client';
 import { ArrowRight } from 'lucide-react';
 import * as React from 'react';
-import { Button, Input } from './index';
+import { Input } from './index';
+import { Button } from '../ui/button';
 
 export function NewsletterForm() {
   const [email, setEmail] = React.useState('');
