@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 import React from 'react';
 
 export default function ProductReview() {
-  let { idProduct } = useParams();
+  let { id } = useParams();
   return (
     <Section>
       <SectionTitle title='Product Review' />

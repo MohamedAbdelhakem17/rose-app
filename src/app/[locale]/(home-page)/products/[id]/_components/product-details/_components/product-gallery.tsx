@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/utils/utils';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
@@ -36,19 +37,20 @@ export default function ProductImages({
         {/* --- Cover Images --- */}
         <button
           onClick={() => handelActiveImage(imgCover)}
-          className={`thumbnail-image w-[91px] h-[111px] relative flex-shrink-0 rounded-lg overflow-hidden ${
+          className={cn ('thumbnail-image w-[91px] h-[111px] relative flex-shrink-0 rounded-lg overflow-hidden ',
             activeImage !== imgCover
               ? 'after:absolute after:inset-0 after:bg-[#0000004D] after:rounded-lg'
-              : ''
-          }`}
+              : '',
+              'hover:after:bg-transparent hover:scale-105 transition-all duration-300'
+          )}
         >
           <Image
             src={imgCover}
             fill
             alt='product image'
-            className={`object-cover rounded-lg ${
-              activeImage === imgCover ? 'border-2 border-maroon-600' : ''
-            }`}
+            className={cn ( 'object-cover rounded-lg ',
+              activeImage === imgCover ? 'border-2 border-maroon-600 ' : ''
+            )}
           />
         </button>
         {/* --- Other Images --- */}
@@ -56,19 +58,20 @@ export default function ProductImages({
           <button
             onClick={() => handelActiveImage(img)}
             key={idx}
-            className={`thumbnail-image w-[91px] h-[111px] relative flex-shrink-0 rounded-lg overflow-hidden ${
+            className={cn ('thumbnail-image w-24 h-28 relative flex-shrink-0 rounded-lg overflow-hidden ',
               activeImage !== img
-                ? 'after:absolute after:inset-0 after:bg-[#0000004D] after:rounded-lg'
-                : ''
-            }`}
+                ? 'after:absolute after:inset-0 after:bg-[#0000004D] after:rounded-lg '
+                : '',
+                'hover:after:bg-transparent hover:scale-105 transition-all duration-300'
+            )}
           >
             <Image
               src={img}
               fill
               alt='product image'
-              className={`object-cover rounded-lg ${
-                activeImage === img ? 'border-2 border-maroon-600' : ''
-              }`}
+              className={cn( 'object-cover rounded-lg',
+                activeImage === img ? 'border-2 border-maroon-600 ' : ''
+              )}
             />
           </button>
         ))}

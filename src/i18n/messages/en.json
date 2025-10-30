@@ -54,5 +54,6 @@
   "verify-otp": "Verify OTP",
   "verify-otp-action": "Verify Code",
   "verifying-otp": "Verifying...",
-  "otp-validation-message": "OTP code must be 6 digits"
+  "otp-validation-message": "OTP code must be 6 digits",
+  "out-of-stock":"Out of stock"
 }
