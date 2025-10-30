@@ -48,6 +48,7 @@
   "verify-otp": "التحقق من كلمة المرور لمرة واحدة (OTP).",
   "verify-otp-action": "التحقق من الرمز",
   "verifying-otp": "جارٍ التحقق...",
+  "out-of-stock":"غير متوفر في المخزون",
   "new-product-label": "جديد",
   "out-of-stock--product-label": "إنتهى من المخزن",
   "hot-product-label": "أكثر مبيعا",
