@@ -21,7 +21,7 @@ export default function ProductItem({
     <>
       <ProductCard
         key={product._id}
-        className='bg-white rounded-xl shadow-sm flex flex-col h-full'
+        className='bg-white dark:bg-zinc-800 rounded-xl shadow-sm flex flex-col h-full'
       >
         {/* 🖼️ Product Image */}
         <ProductCard.Cover src={product.imgCover} alt={product.title}>

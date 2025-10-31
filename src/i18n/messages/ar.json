@@ -62,5 +62,25 @@
   "best-selling-description": "لست متأكداً ماذا تختار؟ <chunk></chunk>ابدأ بالأكثر مبيعًا لدينا، فهذه هي الهدايا التي يعود عملاؤنا دائمًا للحصول عليها. سواء كنت تحتفل بعيد ميلاد، أو ذكرى سنوية، أو زفاف — اختياراتنا المميزة ستترك انطباعًا لا يُنسى.",
   "best-selling-link": "استكشاف الهدايا",
   "view-more-link": "عرض المزيد",
-  "most-popular-title": "الأكثر شعبية"
+  "most-popular-title": "الأكثر شعبية",
+  "home-link": "الرئيسية",
+  "products-link": "منتجات",
+  "categories-link": "فئات",
+  "occasions-link": "مناسبات",
+  "contact-link": "اتصال",
+  "about-link": "عنا",
+  "terms-link": "شروط",
+  "privacy-link": "سياسة الخصوصية",
+  "faqs-link": "الأسئلة الشائعة",
+  "login": "تسجيل الدخول",
+  "search-placeholder": "ما هي الهدية الرائعة التي تبحث عنها؟",
+  "deliver-to": "<title>تسليم الى  </title><address>{city}</address>",
+  "hello-user": "<title>مرحبا </title><name>{username}</name>",
+  "profile-menu": {
+    "profile": "ملفي الشخصي",
+    "orders": "طلباتي",
+    "addresses": "عناويني",
+    "logout": "تسجيل الخروج",
+    "dashboard": "لوحة التحكم"
+  }
 }

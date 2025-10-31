@@ -67,5 +67,25 @@
   "categories-title": "Category",
   "reset-filters": "Reset",
   "ratings-title": "Rating",
-  "reset-all": "Reset All "
+  "reset-all": "Reset All ",
+  "home-link": "Home",
+  "products-link": "Products",
+  "categories-link": "Categories",
+  "occasions-link": "Occasions",
+  "contact-link": "Contact",
+  "about-link": "About",
+  "terms-link": "Terms & Conditions",
+  "privacy-link": "Privacy Policy",
+  "faqs-link": "FAQs",
+  "login": "Login",
+  "search-placeholder": "What awesome gift are you looking for?",
+  "deliver-to": "<title>Deliver to </title><address>{city}</address>",
+  "hello-user": "<title>Hello</title><name>{username}</name>",
+  "profile-menu": {
+    "profile": "My Profile",
+    "addresses": "My Addresses",
+    "orders": "My Orders",
+    "dashboard": "Dashboard",
+    "logout": "Log out"
+  }
 }

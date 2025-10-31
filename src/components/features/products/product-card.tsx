@@ -157,7 +157,10 @@ function Content({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
   return (
-    <div className={cn('flex flex-col gap-1 p-3', className)} {...props} />
+    <div
+      className={cn('flex flex-col gap-1 p-3', className)}
+      {...props}
+    />
   );
 }
 
@@ -169,7 +172,7 @@ function Title({
   return (
     <h3
       className={cn(
-        'text-maroon-700 text-lg font-semibold line-clamp-2 my-4 dark:text-soft-pinck-200',
+        'text-maroon-700 text-lg font-semibold line-clamp-2 my-4 dark:text-soft-pink-200',
         className
       )}
       {...props}
@@ -208,7 +211,7 @@ function Price({
       </span>
 
       {old && (
-        <span className='text-gray-400 line-through text-sm dark:text-zinc-500'>
+        <span className='text-gray-400 line-through text-sm dark:text-zinc-200'>
           {priceFormatter.format(old)}
         </span>
       )}
@@ -221,7 +224,7 @@ function CartButton({ onClick }: { onClick?: () => void }): JSX.Element {
   return (
     <Button
       size='icon-lg'
-      className='rounded-full bg-maroon-600 hover:bg-maroon-700'
+      className='rounded-full bg-maroon-600 hover:bg-maroon-700 dark:bg-maroon-600 dark:hover:bg-maroon-700'
       onClick={onClick}
     >
       <ShoppingCart

@@ -1,4 +1,6 @@
+'use client';
 import { NewsletterForm } from '@/components/shared/newsletter-form';
+import { useNavigationLinks } from '@/lib/constants/navigation';
 import { cn } from '@/lib/utils/utils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,9 +9,8 @@ interface FooterProps {
   className?: string;
 }
 
-import { navigationLinks } from '@/lib/constants/footer-navigation';
-
 export function Footer({ className }: FooterProps) {
+  const navigationLinks = useNavigationLinks('footer');
   return (
     <footer
       className={cn(

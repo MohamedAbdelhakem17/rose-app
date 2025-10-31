@@ -1,7 +1,11 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
 import { GetUserNotificationsResponse } from '@/lib/types/user-notification';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
-export default function useGetAllNotifications() {
+export default function useGetAllNotifications({
+  isAuth,
+}: {
+  isAuth: boolean;
+}) {
   // Get all notification
   const getNotification = async (page: number = 1) => {
     const apiUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/user-notification?page=${page}&limit=2`;
@@ -36,6 +40,8 @@ export default function useGetAllNotifications() {
       if ('error' in lastPage || !lastPage.metadata) return undefined;
       return lastPage.metadata.nextPage ?? undefined;
     },
+    staleTime: 1000 * 60 * 2,
+    enabled: isAuth,
   });
 
   return {
