@@ -70,9 +70,7 @@ export default function LoginForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className='text-gray-800'>
-                {t('email-label')}
-              </FormLabel>
+              <FormLabel>{t('email-label')}</FormLabel>
 
               {/* Field */}
               <FormControl>
@@ -97,20 +95,16 @@ export default function LoginForm() {
             render={({ field }) => (
               <FormItem>
                 {/* Label */}
-                <FormLabel className='text-gray-800 '>
-                  {t('password-label')}
-                </FormLabel>
+                <FormLabel>{t('password-label')}</FormLabel>
 
                 {/* Field */}
                 <FormControl>
-                  {/* <PasswordInput> */}
                   <Input
                     type='password'
                     placeholder='********'
                     className={`${form.formState.errors.password?.message && 'border-red-600 focus:ring-red-600'}`}
                     {...field}
                   />
-                  {/* </PasswordInput> */}
                 </FormControl>
 
                 {/* Feedback */}
