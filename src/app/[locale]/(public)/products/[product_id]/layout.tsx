@@ -1,15 +1,19 @@
-import React from 'react';
+import { ReviewSkeleton } from '@/components/skeleton';
+import React, { Suspense } from 'react';
 
 type LayoutProps = {
   related: React.ReactNode;
   review: React.ReactNode;
   children: React.ReactNode;
 };
-export default function layout({ related, review, children }: LayoutProps) {
+
+export default function Layout({ related, review, children }: LayoutProps) {
   return (
     <>
       {children}
-      {review}
+
+      <Suspense fallback={<ReviewSkeleton />}>{review}</Suspense>
+
       {related}
     </>
   );

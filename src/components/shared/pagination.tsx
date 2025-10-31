@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { useFormatter, useLocale } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 
 type PaginationContextType = {
   currentPage: number;
@@ -52,9 +52,12 @@ const Root = ({
   // Functions
   const setCurrentPage = (page: number) => {
     handleFilterChange(pathname, 'page', String(page));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // makes sure that the current page changes then it scrolls to top
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
   return (
     <PaginationContext.Provider
       value={{ currentPage, totalPages, setCurrentPage, isRtl }}
@@ -92,19 +95,22 @@ const PaginationButton = ({
 );
 
 const First = () => {
-  const { setCurrentPage, isRtl } = usePagination();
+  const { currentPage, setCurrentPage, isRtl } = usePagination();
   return (
-    <PaginationButton onClick={() => setCurrentPage(1)}>
+    <PaginationButton
+      onClick={() => setCurrentPage(1)}
+      disabled={currentPage === 1}
+    >
       <ChevronsLeft className={cn(isRtl && '-scale-x-100')} />
     </PaginationButton>
   );
 };
-
 const Previous = () => {
   const { currentPage, setCurrentPage, isRtl } = usePagination();
   return (
     <PaginationButton
       onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+      // if  the current page is the first page make this button disabled
       disabled={currentPage === 1}
     >
       <ChevronLeft className={cn(isRtl && '-scale-x-100')} />
@@ -125,14 +131,17 @@ const Next = () => {
 };
 
 const Last = () => {
-  const { totalPages, setCurrentPage, isRtl } = usePagination();
+  const { currentPage, totalPages, setCurrentPage, isRtl } = usePagination();
   return (
-    <PaginationButton onClick={() => setCurrentPage(totalPages)}>
+    <PaginationButton
+      onClick={() => setCurrentPage(totalPages)}
+      // if the current page is the last page disable the button
+      disabled={currentPage === totalPages}
+    >
       <ChevronsRight className={cn(isRtl && '-scale-x-100')} />
     </PaginationButton>
   );
 };
-
 /* ----------------- Pages ----------------- */
 const Pages = () => {
   // Localization

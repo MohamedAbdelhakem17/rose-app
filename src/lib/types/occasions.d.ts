@@ -1,8 +1,7 @@
 // --------------------------------------
-//  occasions Types
+//  Occasions Types
 // --------------------------------------
-/** Single occasion item (from API) */
-declare type OccasionsType = {
+export type OccasionType = {
   _id: string;
   name: string;
   slug: string;
@@ -14,10 +13,10 @@ declare type OccasionsType = {
 };
 
 // --------------------------------------
-//  API Response Types
+//  API Response Type
 // --------------------------------------
-
-/** Response: Get all occasions */
-type GetOccasionsTypeResponse = ApiResponse<
-  PaginatedResponse<{ occasions: OccasionsType[] }>
->;
+export type GetOccasionsTypeResponse = {
+  message: string;
+  status: string;
+  occasions: OccasionType[];
+};

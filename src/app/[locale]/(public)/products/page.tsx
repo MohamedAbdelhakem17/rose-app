@@ -1,6 +1,13 @@
 import { ProductSkelton } from '@/components/skeleton';
+import CategoriesWrapper from './_components/categories/categories-wrapper';
+import OccasionsWrapper from './_components/occasions/occasions-wrapper';
+import RatingFilter from './_components/ratings/rating-filter';
+import ResetAll from './_components/reset-all';
+import CategoriesListSkeleton from '@/components/skeletons/categories-skeleton';
 import { Suspense } from 'react';
 import ProductList from './_components/product-list';
+import OccasionsListSkeleton from '@/components/skeletons/occasions-skeleton';
+import PriceFilter from './_components/price-filter/price-filter';
 
 export default function Page({
   searchParams,
@@ -8,20 +15,39 @@ export default function Page({
   searchParams: GetProductsParams;
 }) {
   return (
-    <>
-      {/* Loading skelton */}
-      <Suspense
-        fallback={
-          <div className='grid grid-cols-3 gap-4'>
-            {Array.from({ length: 6 }).map((_, index) => (
-              <ProductSkelton key={index} />
-            ))}
-          </div>
-        }
-      >
-        {/* Display data */}
-        <ProductList searchParams={searchParams} />
-      </Suspense>
-    </>
+    <main className='grid grid-cols-4 gap-x-6 py-16 px-20'>
+      {/* Product filter */}
+      <div className='col-span-1 border-e-1 border-gray-100 space-y-6'>
+        {/* Categories */}
+        <Suspense fallback={<CategoriesListSkeleton />}>
+          <CategoriesWrapper />
+        </Suspense>
+
+        {/* Occasions */}
+        <Suspense fallback={<OccasionsListSkeleton />}>
+          <OccasionsWrapper />
+        </Suspense>
+
+        {/* Ratings + Reset */}
+        <RatingFilter />
+        <PriceFilter />
+        <ResetAll />
+      </div>
+
+      {/* Product list */}
+      <section className='col-span-3'>
+        <Suspense
+          fallback={
+            <div className='grid grid-cols-3 gap-4'>
+              {Array.from({ length: 6 }).map((_, index) => (
+                <ProductSkelton key={index} />
+              ))}
+            </div>
+          }
+        >
+          <ProductList searchParams={searchParams} />
+        </Suspense>
+      </section>
+    </main>
   );
 }
