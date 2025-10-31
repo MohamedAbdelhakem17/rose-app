@@ -82,5 +82,14 @@
     "addresses": "عناويني",
     "logout": "تسجيل الخروج",
     "dashboard": "لوحة التحكم"
-  }
+  },
+  "firstname-label": "الاسم الأول",
+  "first-name-placeholder": "محمد",
+  "lastname-label": "اسم العائلة",
+  "repassword-label": "تأكيد كلمة المرور",
+  "gender-label": "جنس",
+  "select-gender": "حدد الجنس",
+  "male": "ذكر",
+  "female": "أنثى",
+  "register-page-heading": "تصبح جزءا من عائلتنا!"
 }

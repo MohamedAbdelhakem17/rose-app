@@ -1,6 +1,16 @@
 'use client';
-import FormInput from '@/components/shared/form-input';
+
+import { Input } from '@/components/shared';
 import { Button } from '@/components/ui/button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { PhoneInput } from '@/components/ui/phone-input';
 import {
   Select,
   SelectContent,
@@ -13,18 +23,21 @@ import {
   registerSchema,
 } from '@/lib/schemas/auth/register-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Link from 'next/link';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
+import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { useRegister } from '../_hooks/use-register';
-import { PasswordInput } from './register-form-password-input';
 // import { PasswordInput } from '@/components/shared/password-input';
 
 export default function RegisterForm() {
-  //react query mutation hook
+  // Translation
+  const t = useTranslations();
+
+  // Hooks
   const { isPending, signUp } = useRegister();
 
-  const methods = useForm<RegisterFormData>({
+  // Form and Validation
+  const form = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       firstName: '',
@@ -33,16 +46,16 @@ export default function RegisterForm() {
       password: '',
       rePassword: '',
       phone: '',
-      gender: '',
+      gender: 'male',
     },
   });
-  const {
-    setValue,
-    handleSubmit,
-    formState: { errors },
-  } = methods;
 
+  // Variables
+  const { isSubmitting, errors } = form.formState;
+
+  // Functions
   const onSubmit = async (data: RegisterFormData) => {
+    console.log(data, 'data');
     await signUp(data, {
       onSuccess: () => {
         toast.success('Registration successful!');
@@ -55,103 +68,156 @@ export default function RegisterForm() {
 
   return (
     <>
-      <FormProvider {...methods}>
+      <Form {...form}>
         <form
           noValidate
-          onSubmit={handleSubmit(onSubmit)}
-          className='mt-4 py-6 border-t border-b border-zinc-200 flex flex-col gap-4'
+          onSubmit={form.handleSubmit(onSubmit)}
+          className='mt-4 py-2 grid grid-cols-2 gap-4'
         >
-          {/* first name */}
-          <div className='grid grid-cols-2 gap-4'>
-            <FormInput
-              label='First Name'
-              name='firstName'
-              required
-              type='text'
-              placeholder='Jonathan'
-            />
-
-            {/* last name */}
-            <FormInput
-              label='Last name'
-              name='lastName'
-              required
-              type='text'
-              placeholder='Adrian'
-            />
-          </div>
-
-          {/* email */}
-          <FormInput
-            label='Email'
-            name='email'
-            required
-            type='email'
-            placeholder='user@example.com'
+          {/* First Name */}
+          <FormField
+            name='firstName'
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('firstname-label')}</FormLabel>
+                <FormControl>
+                  <Input
+                    type='text'
+                    placeholder={t('first-name-placeholder')}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-          {/* phone */}
-          <FormInput
-            label='Phone'
+
+          {/* Last Name */}
+          <FormField
+            name='lastName'
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('lastname-label')}</FormLabel>
+                <FormControl>
+                  <Input
+                    type='text'
+                    placeholder={t('last-name-placeholder')}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Email */}
+          <FormField
+            name='email'
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className='col-span-full'>
+                <FormLabel>{t('email-label')}</FormLabel>
+                <FormControl>
+                  <Input
+                    type='email'
+                    placeholder='user@example.com'
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Phone */}
+          <FormField
+            control={form.control}
             name='phone'
-            required
-            type='tel'
-            placeholder='+20123456789'
+            render={({ field }) => (
+              <FormItem className='col-span-full'>
+                {/* Label */}
+                <FormLabel>Phone</FormLabel>
+
+                {/* Field */}
+                <FormControl>
+                  <PhoneInput
+                    type='text'
+                    placeholder='01012345678'
+                    error={!!errors.phone}
+                    {...field}
+                  />
+                </FormControl>
+                {/* Feedback */}
+                <FormMessage />
+              </FormItem>
+            )}
           />
 
           {/* Gender */}
-          <div>
-            <label className='block text-sm font-medium text-zinc-800 mb-1.5'>
-              Gender
-            </label>
-            <Select onValueChange={value => setValue('gender', value)}>
-              <SelectTrigger className='w-full'>
-                <SelectValue placeholder='Select Gender' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='male'>Male</SelectItem>
-                <SelectItem value='female'>Female</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.gender && (
-              <p className='text-red-500 text-sm mt-1'>
-                {errors.gender.message}
-              </p>
+          <FormField
+            name='gender'
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className='col-span-full'>
+                <FormLabel>{t('gender-label')}</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue placeholder={t('select-gender')} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value='male'>{t('male')}</SelectItem>
+                      <SelectItem value='female'>{t('female')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
-          </div>
-          {/* password */}
-          <PasswordInput
-            label='Password'
+          />
+
+          {/* Password */}
+          <FormField
             name='password'
-            required
-            placeholder='Your password'
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className='col-span-full'>
+                <FormLabel>{t('password-label')}</FormLabel>
+                <FormControl>
+                  <Input type='password' placeholder='*******' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
 
-          {/* re-password */}
-          <PasswordInput
-            label='Confirm Password'
+          {/* Confirm Password */}
+          <FormField
             name='rePassword'
-            required
-            placeholder='Confirm your password'
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className='col-span-full'>
+                <FormLabel>{t('repassword-label')}</FormLabel>
+                <FormControl>
+                  <Input type='password' placeholder='*******' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
 
-          {/* button */}
+          {/* Submit Button */}
           <Button
             type='submit'
-            disabled={isPending}
-            className='mt-4 mb-3 w-full bg-maroon-700 text-white py-2 px-4 rounded-md hover:bg-maroon-800 transition-colors'
+            disabled={isPending || isSubmitting}
+            className='mt-4 mb-3 col-span-full bg-maroon-700 text-white py-2 px-4 rounded-md hover:bg-maroon-800 transition-colors'
           >
             {isPending ? 'Registering...' : 'Register'}
           </Button>
         </form>
-      </FormProvider>
-      <div className='mt-5'>
-        <p className='text-center text-zinc-800 font-medium text-sm'>
-          Already have an account?{' '}
-          <Link href='/login' className='font-bold'>
-            Login
-          </Link>
-        </p>
-      </div>
+      </Form>
     </>
   );
 }

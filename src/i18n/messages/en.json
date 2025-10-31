@@ -87,5 +87,14 @@
     "orders": "My Orders",
     "dashboard": "Dashboard",
     "logout": "Log out"
-  }
+  },
+  "firstname-label": "First Name ",
+  "first-name-placeholder": "Mohamed",
+  "lastname-label": "Last Name",
+  "repassword-label": "Password confiarm",
+  "gender-label": "Gender",
+  "select-gender": "select gender",
+  "female": "Femal",
+  "male": "Male",
+  "register-page-heading": "Become part of our family!"
 }
