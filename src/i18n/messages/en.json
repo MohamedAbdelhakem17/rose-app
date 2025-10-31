@@ -96,5 +96,6 @@
   "select-gender": "select gender",
   "female": "Femal",
   "male": "Male",
-  "register-page-heading": "Become part of our family!"
+  "register-page-heading": "Become part of our family!",
+  "login-page-heading": "Welcome Back"
 }

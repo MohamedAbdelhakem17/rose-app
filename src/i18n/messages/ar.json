@@ -91,5 +91,6 @@
   "select-gender": "حدد الجنس",
   "male": "ذكر",
   "female": "أنثى",
-  "register-page-heading": "تصبح جزءا من عائلتنا!"
+  "register-page-heading": "تصبح جزءا من عائلتنا!",
+  "login-page-heading": "مرحبًا بعودتك"
 }
