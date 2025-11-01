@@ -21,7 +21,7 @@ export default function ProductItem({
     <>
       <ProductCard
         key={product._id}
-        className='bg-white rounded-xl shadow-sm flex flex-col h-full'
+        className='bg-white dark:bg-zinc-800 rounded-xl shadow-sm flex flex-col h-full'
       >
         {/* 🖼️ Product Image */}
         <ProductCard.Cover src={product.imgCover} alt={product.title}>
@@ -42,7 +42,7 @@ export default function ProductItem({
         {/*  Product content */}
         <ProductCard.Content className='flex flex-col flex-1'>
           {/*  Product title */}
-          <ProductCard.Title className='line-clamp-2 min-h-[3rem]'>
+          <ProductCard.Title className='line-clamp-2 min-h-[3rem] dark:text-soft-pink-200'>
             <Link href={`products/${product._id}`}>{product.title}</Link>
           </ProductCard.Title>
 

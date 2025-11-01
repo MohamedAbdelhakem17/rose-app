@@ -4,7 +4,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export default function ProductSkelton() {
   return (
-    <ProductCard className='bg-white rounded-xl shadow-sm'>
+    <ProductCard className='bg-white dark:bg-zinc-600 rounded-xl shadow-sm'>
       <ProductCard.Content>
         <Skeleton className='h-72 w-full rounded-t-xl' />
         <br />

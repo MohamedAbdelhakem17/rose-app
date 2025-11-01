@@ -32,15 +32,16 @@ export default async function Home({
 
       <About />
       <Gallery />
-      <Companies />
 
-      <Section fullScreen>
+      <Section fullScreen className=' justify-center items-center'>
         <SectionName title='Testimonials' />
         <SectionTitle title='Real Words from Happy Customers' />
         <section className='mt-10 flex justify-center items-center w-full bg-maroon-50 dark:bg-zinc-700 py-16'>
           <AutoSlider />
         </section>
       </Section>
+
+      <Companies />
     </main>
   );
 }

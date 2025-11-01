@@ -13,7 +13,7 @@ export function Footer({ className }: FooterProps) {
   return (
     <footer
       className={cn(
-        'bg-zinc-900 text-zinc-100 border-t border-zinc-800',
+        'bg-zinc-800 dark:bg-zinc-900 text-zinc-100 border-t border-zinc-800',
         className
       )}
     >

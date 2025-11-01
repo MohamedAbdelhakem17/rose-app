@@ -33,10 +33,12 @@ export default function Notifications() {
           next={fetchNextPage}
           hasMore={hasNextPage || false}
           loader={
-            <p className='text-center text-zinc-500 text-sm p-2'>Loading ..</p>
+            <p className='text-center text-zinc-500 dark:text-white  text-sm p-2'>
+              Loading ..
+            </p>
           }
           endMessage={
-            <p className='text-center text-zinc-500 text-sm p-2'>
+            <p className='text-center text-zinc-500 dark:text-white text-sm p-2'>
               No more notifications
             </p>
           }
