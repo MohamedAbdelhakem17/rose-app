@@ -1,6 +1,6 @@
-import CategoriesWrapper from './_components/categories/categories-wrapper';
-import RatingFilter from './_components/ratings/rating-filter';
-import ResetAll from './_components/reset-all';
+import CategoriesWrapper from '../_components/categories/categories-wrapper';
+import RatingFilter from '../_components/ratings/rating-filter';
+import ResetAll from '../_components/reset-all';
 import CategoriesListSkeleton from '@/components/skeletons/categories-skeleton';
 import React, { Suspense } from 'react';
 
@@ -9,6 +9,8 @@ export default function ProductLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+  
   return (
     <main className='grid grid-cols-4 gap-x-6 py-16 px-20'>
       {/* Product filter */}

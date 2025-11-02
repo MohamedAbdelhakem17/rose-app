@@ -72,7 +72,7 @@ export default function HeroCarousel() {
         </CarouselContent>
 
         {/* Navigation Buttons */}
-        <div className='absolute bottom-8 right-9 transform -translate-y-1/2 w-20 h-9 bg-maroon-50 rounded-full flex justify-between items-center px-1'>
+        <div className='absolute bottom-8 end-9 transform -translate-y-1/2 w-20 h-9 bg-maroon-50 rounded-full flex justify-between items-center px-1'>
           <Button
             variant='ghost'
             size='icon'
@@ -92,7 +92,7 @@ export default function HeroCarousel() {
         </div>
 
         {/* dots navigation */}
-        <div className='absolute top-7 right-0 transform -translate-x-1/2 flex space-x-2'>
+        <div className='absolute top-7 end-0 transform -translate-x-1/2 flex space-x-2'>
           {slides.map((_, idx) => (
             <button
               key={idx}

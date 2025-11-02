@@ -1,8 +1,8 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function SpecialGift() {
+export default function SpecialGift({ locale }: { locale: string }) {
   return (
     <div className=' mb-6 w-[301px] h-full relative'>
       <Image
@@ -11,7 +11,7 @@ export default function SpecialGift() {
         fill
         className='rounded-2xl'
       />
-      <div className='absolute bottom-6 left-6 rounded-lg  '>
+      <div className='absolute bottom-6 start-6 rounded-lg  '>
         <span className='bg-maroon-50 w-36 text-maroon-600 font-medium text-xs px-2 py-0.5 rounded-2xl'>
           Staring from 10.99 EGP
         </span>
@@ -24,7 +24,11 @@ export default function SpecialGift() {
           hover:bg-maroon-700 hover:text-white transition-all duration-300 hover:scale-105 '
         >
           Shop Now
-          <ArrowRight size={16} className='ms-0.5 pt-0.5' />
+          {locale === 'en' ? (
+            <ArrowRight size={16} className='ms-0.5 pt-0.5' />
+          ) : (
+            <ArrowLeft size={16} className='me-0.5' />
+          )}
         </Link>
       </div>
     </div>

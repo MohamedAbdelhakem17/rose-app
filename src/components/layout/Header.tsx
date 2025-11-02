@@ -57,7 +57,7 @@ export function Header({ className }: HeaderProps) {
                   placeholder='What awesome gift are you looking for?'
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  className='w-full pl-10 pr-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-zinc-700 placeholder:text-zinc-400'
+                  className='w-full pl-10 pr-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:border-transparent text-zinc-700 placeholder:text-zinc-400 bg-white dark:bg-zinc-700 dark:border-zinc-600 dark:focus:ring-zinc-500 dark:placeholder:text-zinc-400 dark:text-zinc-200' 
                 />
               </div>
             </div>

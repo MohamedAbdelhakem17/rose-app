@@ -13,13 +13,15 @@ import MostPopular from './_components/most-popular/index';
 
 export default async function Home({
   searchParams,
+  params,
 }: {
   searchParams?: Record<string, string>;
+  params: { locale: string };
 }) {
   return (
     <main>
       <Section className='max-w-7xl mx-auto '>
-        <HeroSection />
+        <HeroSection params={params}/>
         <OccasionsSection />
         <FeaturesSection />
 
@@ -34,13 +36,13 @@ export default async function Home({
       <Gallery />
       <Companies />
 
-      <Section fullScreen>
-        <SectionName title='Testimonials' />
-        <SectionTitle title='Real Words from Happy Customers' />
-        <section className='mt-10 flex justify-center items-center w-full bg-maroon-50 dark:bg-zinc-700 py-16'>
-          <AutoSlider />
-        </section>
-      </Section>
+    <Section fullScreen>
+      <SectionName title='Testimonials' />
+      <SectionTitle title='Real Words from Happy Customers' />
+      <section className='mt-10 flex justify-center items-center w-full bg-maroon-50 dark:bg-zinc-700 py-16'>
+        <AutoSlider />
+      </section>
+    </Section>
     </main>
   );
 }

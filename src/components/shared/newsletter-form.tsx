@@ -3,14 +3,27 @@ import { ArrowRight } from 'lucide-react';
 import * as React from 'react';
 import { Input } from './index';
 import { Button } from '../ui/button';
+import {
+  NewsletterResponse,
+  subscribeToNewsletter,
+} from '@/lib/actions/newsletter-action';
+import { toast } from 'sonner';
 
 export function NewsletterForm() {
   const [email, setEmail] = React.useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle newsletter subscription
-    console.log('Newsletter subscription:', email);
+    console.log('before Subscribed email:', email);
+    const payload: NewsletterResponse = await subscribeToNewsletter(email);
+    if ('message' in payload) {
+      toast.success(payload.message);
+    } else {
+      toast.error(payload.error);
+    }
+    console.log('Subscribed payload:', payload);
+
     setEmail('');
   };
 
@@ -26,7 +39,7 @@ export function NewsletterForm() {
       </div>
       <form onSubmit={handleSubmit} className='flex gap-2 relative'>
         <Input
-          type='email'
+          type='text'
           placeholder='Enter Your Email'
           value={email}
           onChange={e => setEmail(e.target.value)}
