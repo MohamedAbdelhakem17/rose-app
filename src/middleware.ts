@@ -1,30 +1,43 @@
+import { getToken } from 'next-auth/jwt';
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 
-// Variables
-const privatePages = ['/wishlist'];
+const privatePages = ['/wishlist', '/orders', '/profile'];
+const authPages = ['/login', '/forgot-password', '/register'];
+
 const handleI18nRouting = createMiddleware(routing);
 
-// Functions
-export default function middleware(req: NextRequest) {
-  const publicPathnameRegex = RegExp(
-    `^(/(${routing.locales.join('|')}))?(${privatePages
-      .flatMap(p => (p === '/' ? ['', '/'] : p))
-      .join('|')})/?$`,
-    'i'
-  );
-  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
+export default async function middleware(req: NextRequest) {
+  const token = await getToken({ req });
+  const pathname = req.nextUrl.pathname;
 
-  if (isPublicPage) {
-    return NextResponse.redirect(new URL('/login', req.nextUrl.origin));
-  } else {
-    return handleI18nRouting(req);
+  //  Normalize path to remove locale prefix (e.g. /en/wishlist → /wishlist)
+  const normalizedPath = (() => {
+    const localePattern = new RegExp(
+      `^/(${routing.locales.join('|')})(/|$)`,
+      'i'
+    );
+    return pathname.replace(localePattern, '/');
+  })();
+
+  //  Redirect unauthenticated users trying to access private pages
+  if (!token && privatePages.includes(normalizedPath)) {
+    const url = new URL('/login', req.nextUrl.origin);
+    url.searchParams.set('callbackUrl', normalizedPath);
+
+    return NextResponse.redirect(url);
   }
+
+  // Redirect logged-in users trying to access auth pages
+  if (token && authPages.includes(normalizedPath)) {
+    return NextResponse.redirect(new URL('/', req.nextUrl.origin));
+  }
+
+  //  Otherwise, continue with i18n routing
+  return handleI18nRouting(req);
 }
 
-// Configuration matcher
 export const config = {
-  // Match only internationalized pathnames
   matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
 };

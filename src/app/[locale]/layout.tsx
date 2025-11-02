@@ -56,9 +56,9 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale });
 
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <body
-        className={`${sarabun.variable} ${tajawal.variable} ${
+        className={`${sarabun.variable} ${tajawal.variable} dark:bg-zinc-800 ${
           locale === 'ar' ? 'font-tajawal' : 'font-sarabun'
         } antialiased`}
       >

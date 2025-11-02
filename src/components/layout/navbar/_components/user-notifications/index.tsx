@@ -1,14 +1,19 @@
 'use client';
-import { UserNotifications } from './_components/user-notification';
-import { Loader2Icon } from 'lucide-react';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import useGetAllNotifications from './_hooks/use-get-all-notification';
 import { NotificationType } from '@/lib/types/user-notification';
+import { Loader2Icon } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import { useMemo } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { UserNotifications } from './_components/user-notification';
+import useGetAllNotifications from './_hooks/use-get-all-notification';
 
 export default function Notifications() {
+  // Hooks
+  const { status } = useSession();
+  const isAuth = status === 'authenticated';
+
   const { data, fetchNextPage, hasNextPage, isLoading } =
-    useGetAllNotifications();
+    useGetAllNotifications({ isAuth: Boolean(isAuth) });
 
   // collect All Notification
   const allNotifications = useMemo<NotificationType[]>(() => {
@@ -19,12 +24,13 @@ export default function Notifications() {
     );
   }, [data]);
 
+  if (!isAuth) return null;
+
   // Initial loading state
-  if (isLoading)
-    return <Loader2Icon className='animate-spin w-6 h-6 mx-auto' />;
+  if (isLoading) return <Loader2Icon className='animate-spin h-8 w-8 me-1 ' />;
 
   return (
-    <UserNotifications>
+    <UserNotifications id={'notificationContainer'}>
       <UserNotifications.Trigger />
       <UserNotifications.Menu>
         <UserNotifications.Header />
@@ -36,10 +42,15 @@ export default function Notifications() {
             <p className='text-center text-zinc-500 text-sm p-2'>Loading ..</p>
           }
           endMessage={
-            <p className='text-center text-zinc-500 text-sm p-2'>
-              No more notifications
-            </p>
+            allNotifications.length !== 0 ? (
+              <p className='text-center text-zinc-500 text-sm p-2'>
+                No more notifications
+              </p>
+            ) : (
+              ''
+            )
           }
+          scrollableTarget='notificationContainer'
         >
           <UserNotifications.List notifications={allNotifications} />
         </InfiniteScroll>

@@ -1,8 +1,8 @@
+import CategoriesListSkeleton from '@/components/skeletons/categories-skeleton';
+import React, { Suspense } from 'react';
 import CategoriesWrapper from './_components/categories/categories-wrapper';
 import RatingFilter from './_components/ratings/rating-filter';
 import ResetAll from './_components/reset-all';
-import CategoriesListSkeleton from '@/components/skeletons/categories-skeleton';
-import React, { Suspense } from 'react';
 
 export default function ProductLayout({
   children,

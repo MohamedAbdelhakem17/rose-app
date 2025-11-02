@@ -60,7 +60,7 @@ export default function LoginForm() {
   return (
     <Form {...form}>
       <form
-        className='capitalize font-inter font-medium w-[404px]'
+        className='capitalize font-inter font-medium w-[404px] py-4'
         onSubmit={form.handleSubmit(onSubmit)}
       >
         {/* Email */}
@@ -70,9 +70,7 @@ export default function LoginForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className='text-gray-800'>
-                {t('email-label')}
-              </FormLabel>
+              <FormLabel>{t('email-label')}</FormLabel>
 
               {/* Field */}
               <FormControl>
@@ -97,20 +95,16 @@ export default function LoginForm() {
             render={({ field }) => (
               <FormItem>
                 {/* Label */}
-                <FormLabel className='text-gray-800 '>
-                  {t('password-label')}
-                </FormLabel>
+                <FormLabel>{t('password-label')}</FormLabel>
 
                 {/* Field */}
                 <FormControl>
-                  {/* <PasswordInput> */}
                   <Input
                     type='password'
                     placeholder='********'
                     className={`${form.formState.errors.password?.message && 'border-red-600 focus:ring-red-600'}`}
                     {...field}
                   />
-                  {/* </PasswordInput> */}
                 </FormControl>
 
                 {/* Feedback */}
@@ -142,13 +136,6 @@ export default function LoginForm() {
         >
           {t('login-button')}
         </Button>
-
-        <p className='w-full border-t pt-5 mt-9 font-sarabun border-zinc-200 text-zinc-800 text-center'>
-          {t('register-paragraph')}
-          <Link href={'/register'} className='text-maroon-800'>
-            {t('register-paragraph-action')}
-          </Link>
-        </p>
       </form>
     </Form>
   );

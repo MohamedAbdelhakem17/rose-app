@@ -1,4 +1,5 @@
-import { Footer, Header } from '@/components/layout';
+import { Footer } from '@/components/layout/footer/Footer';
+import { Header } from '@/components/layout/navbar';
 import React from 'react';
 
 export default function RouteLayout({

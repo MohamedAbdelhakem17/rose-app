@@ -19,49 +19,50 @@ type FilterChangeHandler = (
  * - Keeps existing query parameters unless explicitly changed.
  * - Removes parameters if the value is empty or equals "all".
  * - Resets the `page` parameter to "1" when a non-page filter changes.
- * - Uses `useCallback` for stable reference and performance.
+ * - Supports smooth navigation by disabling automatic scroll-to-top.
  *
  * @example
  * ```tsx
- * const handleFilterChange = useSearchFilter();
- *
- * // Example: Update the "category" filter and navigate to page 1
- * handleFilterChange('products', 'category', 'electronics');
+ * const handleFilterChange = useSearchFilter({ scroll: false });
+ * handleFilterChange('/', 'occasions', '673b34c21159920171827ae0');
  * ```
- *
- * @returns {FilterChangeHandler} A memoized function that updates URL filters and navigates accordingly.
  */
-export default function useSearchFilter(): FilterChangeHandler {
+export default function useSearchFilter(options?: {
+  scroll?: boolean;
+}): FilterChangeHandler {
   // Navigation
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Function
+  // Variables
+  const scroll = options?.scroll ?? false;
+
+  // function
   const handleFilterChange = useCallback(
     (page: string, key: string, value: string) => {
-      // Clear all Filters
+      // Reset all filters
       if (key === 'reset') {
-        router.push(`/${page}`);
+        router.push(`/${page}`, { scroll: scroll });
         return;
       }
 
-      // Create a copy of current search params
+      // Clone current search params
       const params = new URLSearchParams(searchParams);
 
-      // Handle filter update
+      // Handle filter change
       if (!value || value === 'all') {
         params.delete(key);
       } else {
         params.set(key, value);
       }
 
-      // Reset page number when filter changes
+      // Reset page number if not the page filter
       if (key !== 'page') params.delete('page');
 
-      // Navigate to the new URL
-      router.push(`${page}?${params.toString()}`);
+      // Navigate with updated params
+      router.push(`${page}?${params.toString()}`, { scroll: scroll });
     },
-    [router, searchParams]
+    [router, searchParams, scroll]
   );
 
   return handleFilterChange;
