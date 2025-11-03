@@ -3,15 +3,19 @@ import { Section } from '../../layout';
 import SmallSectionHeading from '../../shared/small-section-heading';
 import SectionTitle from '../../shared/sedtion-title';
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 
-export default function Gallery() {
+export default async function Gallery() {
+  // Translate
+  const t = await getTranslations();
+
   return (
     <Section>
       <section className='flex flex-col justify-center items-center '>
         {/* small heading above */}
-        <SmallSectionHeading heading='Gallery' />
+        <SmallSectionHeading heading={t('gallery-section-title')} />
         {/* descritption   */}
-        <SectionTitle title='Check Out our Wonderful Gallery' />
+        <SectionTitle title={t('gallery-header')} />
 
         <div className='grid grid-cols-3 gap-4 w-full py-section-xs'>
           {/* First column */}

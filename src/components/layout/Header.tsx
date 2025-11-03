@@ -1,23 +1,16 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils/utils';
-import {
-  Heart,
-  LocationEdit,
-  Moon,
-  Search,
-  ShoppingCart,
-  Sun,
-  User,
-} from 'lucide-react';
+import { Heart, LocationEdit, Search, ShoppingCart, User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
 import Notifications from './user-notifications';
 import { navigationItems } from '@/lib/constants/navigation';
 import { usePathname } from '@/i18n/navigation';
-import { useTheme } from 'next-themes';
+import { useLocale, useTranslations } from 'next-intl';
+import Theme from '../shared/theme';
+import LanguageToggle from '../shared/language-toggle';
 
 interface HeaderProps {
   className?: string;
@@ -29,17 +22,11 @@ export function Header({ className }: HeaderProps) {
 
   const pathName = usePathname();
 
-  // Theme
-  const { theme, setTheme } = useTheme();
+  // Locale
+  const locale = useLocale();
 
-  // Functions
-  function toggleTheme() {
-    if (theme === 'dark') {
-      setTheme('light');
-    } else {
-      setTheme('dark');
-    }
-  }
+  // Translate
+  const t = useTranslations();
 
   return (
     <header
@@ -65,7 +52,7 @@ export function Header({ className }: HeaderProps) {
               </div>
               <div>
                 <p className=' font-medium text-base text-zinc-500'>
-                  Dliver to :
+                  {t('home-address')}
                 </p>
                 <span className='flex items-center gap-3 text-maroon-700 dark:text-soft-pink-200 text-md font-medium'>
                   <LocationEdit />
@@ -80,7 +67,7 @@ export function Header({ className }: HeaderProps) {
                 <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400 dark:text-white h-5 w-5' />
                 <input
                   type='text'
-                  placeholder='What awesome gift are you looking for?'
+                  placeholder={t('search-placeholder')}
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   className='w-full pl-10 pr-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-zinc-700 dark:text-white placeholder:text-zinc-400'
@@ -96,7 +83,7 @@ export function Header({ className }: HeaderProps) {
                 className='flex items-center space-x-2  hover:text-maroon-600 transition-colors'
               >
                 <User className='h-5 w-5' />
-                <span className='text-sm font-medium'>Login</span>
+                <span className='text-sm font-medium'>{t('login-header')}</span>
               </Link>
 
               {/* Divider */}
@@ -131,27 +118,10 @@ export function Header({ className }: HeaderProps) {
               <div className='h-6 w-px bg-zinc-300' />
 
               {/* Language */}
-              <Button
-                variant='ghost'
-                size='sm'
-                className='dark:text-white dark:hover:bg-zinc-500 hover:text-maroon-600 p-0 h-auto font-tajawal'
-              >
-                العربية
-              </Button>
+              <LanguageToggle />
 
               {/* Theme */}
-              <Button
-                variant='ghost'
-                size='sm'
-                onClick={() => toggleTheme()}
-                className='dark:text-white dark:hover:bg-zinc-500 hover:text-maroon-600 p-0 h-auto font-tajawal'
-              >
-                {theme === 'dark' ? (
-                  <Sun className='h-5 w-5' />
-                ) : (
-                  <Moon className='h-5 w-5' />
-                )}
-              </Button>
+              <Theme />
             </div>
           </div>
         </div>
@@ -170,13 +140,15 @@ export function Header({ className }: HeaderProps) {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    'flex items-center space-x-2 text-white dark:text-zinc-800 hover:text-pink-300 transition-colors py-2 px-3 rounded-md',
+                    'flex items-center space-x-2 text-white dark:text-zinc-800 hover:text-pink-300 transition-colors py-2 px-3 rounded-md ',
                     isActive &&
                       'border-b-2  border-soft-pink-200 dark:border-maroon-700 dark:text-maroon-700'
                   )}
                 >
                   <Icon className='h-5 w-5' />
-                  <span className='text-sm font-medium'>{item.name}</span>
+                  <span className='text-sm font-medium'>
+                    {locale === 'en' ? item.name : item.ar}
+                  </span>
                 </Link>
               );
             })}

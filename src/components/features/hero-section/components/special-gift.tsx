@@ -1,8 +1,16 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { getLocale, getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function SpecialGift() {
+export default async function SpecialGift() {
+  //Locale
+  const locale = await getLocale();
+
+  // Translate
+  const t = await getTranslations();
+
+  const isRTL: boolean = locale === 'ar';
   return (
     <div className=' mb-6 w-[301px] h-full relative'>
       <Image
@@ -23,8 +31,12 @@ export default function SpecialGift() {
           className='flex justify-center items-center bg-maroon-50 text-maroon-700 w-32 p-0.5 rounded-lg gap-1 h-9 mt-2.5
           hover:bg-maroon-700 hover:text-white transition-all duration-300 hover:scale-105 '
         >
-          Shop Now
-          <ArrowRight size={16} className='ms-0.5 pt-0.5' />
+          {t('special-gift-button')}
+          {isRTL ? (
+            <ArrowLeft size={16} className='ms-0.5 pt-0.5' />
+          ) : (
+            <ArrowRight size={16} className='ms-0.5 pt-0.5' />
+          )}
         </Link>
       </div>
     </div>

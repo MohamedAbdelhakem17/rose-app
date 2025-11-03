@@ -7,12 +7,19 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
 import { useState } from 'react';
+import { useLocale } from 'next-intl';
 import HeroCarouselItem from './hero-carousel-item';
 
 export default function HeroCarousel() {
   const [index, setIndex] = useState(0);
+  
+  // Locale
+  const locale = useLocale();
+  
+  // Variables
+  const isRTL = locale === 'ar';
+
   const slides = [
     {
       id: 1,
@@ -51,11 +58,17 @@ export default function HeroCarousel() {
   };
 
   return (
-    <div className='relative w-full h-[440px] overflow-hidden'>
+    <div
+      className={`relative w-full h-[440px] overflow-hidden ${
+        isRTL ? 'direction-rtl' : ''
+      }`}
+      dir={isRTL ? 'rtl' : 'ltr'}
+    >
       <Carousel className='w-full h-full'>
         <CarouselContent
           style={{
             display: 'flex',
+            flexDirection: isRTL ? 'row-reverse' : 'row',
             transform: `translateX(-${index * 100}%)`,
             transition: 'transform 0.5s ease-in-out',
           }}
@@ -72,31 +85,49 @@ export default function HeroCarousel() {
         </CarouselContent>
 
         {/* Navigation Buttons */}
-        <div className='absolute bottom-8 right-9 transform -translate-y-1/2 w-20 h-9 bg-maroon-50 rounded-full flex justify-between items-center px-1'>
+        <div
+          className={`absolute bottom-8 ${
+            isRTL ? 'left-9 flex-row' : 'right-9 flex-row'
+          } transform -translate-y-1/2 w-20 h-9 bg-maroon-50 rounded-full flex justify-between items-center px-1`}
+        >
+          {/* When RTL, left arrow should *go forward*, right arrow goes *backward* */}
           <Button
             variant='ghost'
             size='icon'
             className='rounded-2xl'
-            onClick={handlePrev}
+            onClick={isRTL ? handleNext : handlePrev}
           >
-            <ChevronLeft size={24} className='text-zinc-500' />
+            {isRTL ? (
+              <ChevronRight size={24} className='text-zinc-500' />
+            ) : (
+              <ChevronLeft size={24} className='text-zinc-500' />
+            )}
           </Button>
+
           <Button
             variant='ghost'
             size='icon'
             className='rounded-2xl'
-            onClick={handleNext}
+            onClick={isRTL ? handlePrev : handleNext}
           >
-            <ChevronRight size={24} className='text-maroon-900' />
+            {isRTL ? (
+              <ChevronLeft size={24} className='text-maroon-900' />
+            ) : (
+              <ChevronRight size={24} className='text-maroon-900' />
+            )}
           </Button>
         </div>
 
-        {/* dots navigation */}
-        <div className='absolute top-7 right-0 transform -translate-x-1/2 flex space-x-2'>
+        {/* Dots navigation */}
+        <div
+          className={`absolute top-7 ${
+            isRTL ? 'left-28 flex-row-reverse' : 'right-0'
+          } transform -translate-x-1/2 flex space-x-2 rtl:space-x-reverse`}
+        >
           {slides.map((_, idx) => (
             <button
               key={idx}
-              className={`w-9 h-2.5 rounded-full ${
+              className={`w-9 h-2.5 rounded-full transition-all ${
                 idx === index ? 'bg-maroon-700' : 'w-2.5 bg-gray-300'
               }`}
               onClick={() => setIndex(idx)}

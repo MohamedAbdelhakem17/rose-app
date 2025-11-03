@@ -70,7 +70,7 @@ export default function LoginForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className='text-gray-800'>
+              <FormLabel className='text-gray-800 dark:text-white'>
                 {t('email-label')}
               </FormLabel>
 
@@ -79,7 +79,7 @@ export default function LoginForm() {
                 <Input
                   type='text'
                   placeholder='user@example.com'
-                  className={`${form.formState.errors.email?.message && 'border-red-600 focus:ring-red-600'}`}
+                  className={`${form.formState.errors.email?.message && 'border-red-600 dark:border-soft-pink-500 focus:ring-red-600 dark:focus:ring-soft-pink-600'}`}
                   {...field}
                 />
               </FormControl>
@@ -97,7 +97,7 @@ export default function LoginForm() {
             render={({ field }) => (
               <FormItem>
                 {/* Label */}
-                <FormLabel className='text-gray-800 '>
+                <FormLabel className='text-gray-800 dark:text-white'>
                   {t('password-label')}
                 </FormLabel>
 
@@ -107,7 +107,7 @@ export default function LoginForm() {
                   <Input
                     type='password'
                     placeholder='********'
-                    className={`${form.formState.errors.password?.message && 'border-red-600 focus:ring-red-600'}`}
+                    className={`${form.formState.errors.password?.message && 'border-red-600 dark:border-soft-pink-500 focus:ring-red-600 dark:focus:ring-soft-pink-600'}`}
                     {...field}
                   />
                   {/* </PasswordInput> */}
@@ -124,7 +124,7 @@ export default function LoginForm() {
         <div className='flex flex-col items-end w-full font-sarabun'>
           <Link
             href={'/forgot-password'}
-            className=' font-medium text-sm font-geistMono text-maroon-700 pt-2.5 pb-10 '
+            className=' font-medium text-sm font-geistMono text-maroon-700 dark:text-soft-pink-300 pt-2.5 pb-10 '
           >
             {t('forgot-password-paragraph')}
           </Link>
@@ -143,9 +143,12 @@ export default function LoginForm() {
           {t('login-button')}
         </Button>
 
-        <p className='w-full border-t pt-5 mt-9 font-sarabun border-zinc-200 text-zinc-800 text-center'>
+        <p className='w-full border-t pt-5 mt-9 font-sarabun border-zinc-200 text-zinc-800 dark:text-white text-center'>
           {t('register-paragraph')}
-          <Link href={'/register'} className='text-maroon-800'>
+          <Link
+            href={'/register'}
+            className='text-maroon-800 dark:text-soft-pink-300'
+          >
             {t('register-paragraph-action')}
           </Link>
         </p>

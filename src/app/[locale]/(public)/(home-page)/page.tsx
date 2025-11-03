@@ -10,12 +10,16 @@ import SectionTitle from '@/components/shared/sedtion-title';
 import AutoSlider from '../../../../components/features/testimonials/auto-slider';
 import BestSelling from './_components/best-selling';
 import MostPopular from './_components/most-popular/index';
+import { getTranslations } from 'next-intl/server';
 
 export default async function Home({
   searchParams,
 }: {
   searchParams?: Record<string, string>;
 }) {
+  // Translate
+  const t = await getTranslations();
+
   return (
     <main>
       <Section className='max-w-7xl mx-auto '>
@@ -33,9 +37,14 @@ export default async function Home({
       <About />
       <Gallery />
 
-      <Section fullScreen className=' justify-center items-center'>
-        <SectionName title='Testimonials' />
-        <SectionTitle title='Real Words from Happy Customers' />
+      <Section fullScreen>
+        <div className=' flex justify-center items-center'>
+          <SectionName title={t("testimonials-section-title")} />
+        </div>
+        <SectionTitle
+          title={t("testimonials-header")}
+          className='text-center'
+        />
         <section className='mt-10 flex justify-center items-center w-full bg-maroon-50 dark:bg-zinc-700 py-16'>
           <AutoSlider />
         </section>

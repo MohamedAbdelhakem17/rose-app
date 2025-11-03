@@ -1,3 +1,4 @@
+import LanguageToggle from '@/components/shared/language-toggle';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import React from 'react';
@@ -13,13 +14,7 @@ export default function AuthLayout({
         <div className='w-[406px] mx-auto'>
           <div className='flex justify-end'>
             {/* language switcher button */}
-            <Button
-              variant='ghost'
-              size='lg'
-              className='text-zinc-700 hover:text-maroon-600 p-0 mt-7 h-auto'
-            >
-              العربية
-            </Button>
+            <LanguageToggle />
           </div>
           {/* first separator image */}
           <div className='flex justify-center'>

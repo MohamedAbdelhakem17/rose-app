@@ -33,7 +33,7 @@ export default async function MostPopular({
       {/* Footer */}
       <Link
         href='/products'
-        className='text-maroon-700 text-base font-semibold flex justify-end hover:text-maroon-500'
+        className='text-maroon-700 dark:text-soft-pink-200 text-base font-semibold flex justify-end'
       >
         {t('view-more-link')}
         <MoveRight
