@@ -1,11 +1,11 @@
 import { ShoppingCart } from 'lucide-react';
 import React from 'react';
 import ProductRating from './product-rating';
-import { Button } from '@/components/shared/Button';
 import { Product } from '@/lib/types/products/products';
 import InStock from './in-stock';
 import OutOfStock from './out-of-stock';
 import WishlistBtn from './wishlist-btn';
+import { Button } from '@/components/ui/button';
 
 //-- Component Props ---
 interface ProductFeaturesProps {

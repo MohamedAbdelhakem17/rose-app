@@ -8,9 +8,11 @@ export default function RouteLayout({
 }) {
   return (
     <>
-      <Header />
-      {children}
-      <Footer />
+      <main className='min-h-screen flex flex-col justify-between'>
+        <Header />
+        {children}
+        <Footer />
+      </main>
     </>
   );
 }

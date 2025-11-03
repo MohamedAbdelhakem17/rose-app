@@ -1,6 +1,6 @@
 import { ProductSkelton } from '@/components/skeleton';
 import { Suspense } from 'react';
-import ProductList from './_components/product-list';
+import ProductList from '../_components/product-list';
 
 export default function Page({
   searchParams,

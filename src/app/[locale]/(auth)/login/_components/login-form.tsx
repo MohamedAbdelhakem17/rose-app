@@ -9,7 +9,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { loginSchema, LoginValues } from '@/lib/schemes/auth.schema';
+import { loginSchema, LoginValues } from '@/lib/schemas/auth/auth.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { signIn } from 'next-auth/react';
