@@ -92,5 +92,10 @@
   "male": "ذكر",
   "female": "أنثى",
   "register-page-heading": "تصبح جزءا من عائلتنا!",
-  "login-page-heading": "مرحبًا بعودتك"
+  "login-page-heading": "مرحبًا بعودتك",
+  "canceled": "تم الإلغاء",
+  "delivered": "تم التوصيل",
+  "pending": "قيد الانتظار",
+  "unknown": "غير معروف",
+  "orders": "طلبات"
 }

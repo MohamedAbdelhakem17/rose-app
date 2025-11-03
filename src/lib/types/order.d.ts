@@ -59,6 +59,7 @@ declare type MappedOrderType = Pick<
   | 'isPaid'
   | 'isDelivered'
   | 'createdAt'
+  | 'state'
 > & {
   deliveryStatus: {
     name: string;

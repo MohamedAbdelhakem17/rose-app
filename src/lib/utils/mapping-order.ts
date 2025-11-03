@@ -15,8 +15,6 @@ export function mappingOrders(
       LABEL_RULES.find(rule => rule.condition(order)) ??
       LABEL_RULES[LABEL_RULES.length - 1];
 
-    console.log(matchedStatus);
-
     return {
       _id: order._id,
       orderNumber: order.orderNumber,
@@ -25,6 +23,7 @@ export function mappingOrders(
       isPaid: order.isPaid,
       isDelivered: order.isDelivered,
       createdAt: order.createdAt,
+      state: order.state,
       deliveryStatus: {
         name: matchedStatus.name,
         color: matchedStatus.color,

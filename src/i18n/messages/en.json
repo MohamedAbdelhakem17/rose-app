@@ -97,5 +97,10 @@
   "female": "Femal",
   "male": "Male",
   "register-page-heading": "Become part of our family!",
-  "login-page-heading": "Welcome Back"
+  "login-page-heading": "Welcome Back",
+  "canceled": "Canceled",
+  "delivered": "Delivered",
+  "pending": "Pending",
+  "unknown": "unkown",
+  "orders": "Orders"
 }

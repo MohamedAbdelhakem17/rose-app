@@ -1,4 +1,4 @@
-import { ProductSkelton } from '@/components/skeleton';
+import { ProductSkelton } from '@/components/skeletons';
 
 export default function BestSellingSkeleton() {
   return (
