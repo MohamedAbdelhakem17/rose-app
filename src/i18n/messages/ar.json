@@ -49,6 +49,7 @@
   "verify-otp-action": "تحقق من الرمز",
   "verifying-otp": "جارٍ التحقق...",
   "otp-validation-message": "يجب أن يتكون رمز OTP من 6 أرقام",
+  "out-of-stock":"غير متوفر في المخزون",
   "new-product-label": "جديد",
   "hot-product-label": "الأكثر مبيعًا",
   "out-of-stock--product-label": "غير متوفر في المخزون",
