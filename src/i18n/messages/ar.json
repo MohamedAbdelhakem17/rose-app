@@ -80,5 +80,10 @@
   "gallery-section-title": "المعرض",
   "gallery-header": "تصفح معرضنا الرائع",
   "testimonials-section-title": "آراء العملاء",
-  "testimonials-header": "كلمات حقيقية من عملاء سعداء"
+  "testimonials-header": "كلمات حقيقية من عملاء سعداء",
+  "not-found-title": "الصفحة غير موجودة",
+  "not-found-description": "عذرًا! الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+  "not-found-button": "العودة إلى الصفحة الرئيسية",
+  "error-try-again-button": "إعادة المحاولة",
+  "error-go-home-button": "العودة إلى الرئيسية"
 }

@@ -85,5 +85,10 @@
   "gallery-section-title": "Gallery",
   "gallery-header": "Check Out our Wonderful Gallery",
   "testimonials-section-title": "Testimonials",
-  "testimonials-header": "Real Words from Happy Customers"
+  "testimonials-header": "Real Words from Happy Customers",
+  "not-found-title": "Page Not Found",
+  "not-found-description": "Oops! The page you’re looking for doesn’t exist or has been moved.",
+  "not-found-button": "Go Back Home",
+  "error-try-again-button": "Try Again",
+  "error-go-home-button": "Go Home"
 }

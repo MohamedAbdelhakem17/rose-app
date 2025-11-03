@@ -39,10 +39,10 @@ export default async function Home({
 
       <Section fullScreen>
         <div className=' flex justify-center items-center'>
-          <SectionName title={t("testimonials-section-title")} />
+          <SectionName title={t('testimonials-section-title')} />
         </div>
         <SectionTitle
-          title={t("testimonials-header")}
+          title={t('testimonials-header')}
           className='text-center'
         />
         <section className='mt-10 flex justify-center items-center w-full bg-maroon-50 dark:bg-zinc-700 py-16'>
