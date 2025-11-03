@@ -1,5 +1,6 @@
 'use server';
 
+import { GetOccasionsTypeResponse } from '@/lib/types/occasions';
 import { REQUEST_HEADERS } from '../../constants/request-headers.constant';
 
 /**
