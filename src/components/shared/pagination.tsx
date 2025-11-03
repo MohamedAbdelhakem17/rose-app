@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { useFormatter, useLocale } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
-import { createContext, useContext, useEffect } from 'react';
+import { createContext, useContext, useEffect, useRef } from 'react';
 
 type PaginationContextType = {
   currentPage: number;
@@ -54,9 +54,15 @@ const Root = ({
     handleFilterChange(pathname, 'page', String(page));
   };
 
+  //ref
+  const prevPageRef = useRef(currentPage);
+
   // makes sure that the current page changes then it scrolls to top
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (prevPageRef.current !== currentPage) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      prevPageRef.current = currentPage;
+    }
   }, [currentPage]);
   return (
     <PaginationContext.Provider

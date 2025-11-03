@@ -8,15 +8,18 @@ import { ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
 
 export function NewsletterForm() {
+  //hooks
   const { subscribe, loading } = useNewsletter();
+
+  //states
   const [email, setEmail] = useState('');
 
+  //functions
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await subscribe(email);
       toast.success('Subscribed successfully!');
-      console.log('Subscribed successfully');
       setEmail('');
     } catch (err: any) {
       toast.error(err.message || 'Failed to subscribe');

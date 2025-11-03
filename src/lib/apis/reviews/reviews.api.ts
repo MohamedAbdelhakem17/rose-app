@@ -11,8 +11,6 @@ export async function getReviews(productId?: string) {
     ? `${base}/reviews?product=${productId}`
     : `${base}/reviews`;
 
-  console.log('Fetching:', url);
-
   const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) throw new Error(`Failed to fetch reviews: ${res.status}`);
   return res.json();
