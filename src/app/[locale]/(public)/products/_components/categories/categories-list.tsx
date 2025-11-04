@@ -44,12 +44,16 @@ export default function CategoriesList({ categories }: Props) {
               key={_id}
               onClick={() => searchFilter('products', 'category', _id)}
               className={`flex items-center rounded gap-2 overflow-hidden cursor-pointer transition-colors ${
-                isSelected ? 'bg-maroon-50' : 'hover:bg-muted bg-zinc-200'
+                isSelected
+                  ? 'bg-maroon-50 dark:bg-soft-pink-100'
+                  : 'hover:bg-muted dark:bg-zinc-700'
               }`}
             >
               <div
                 className={`relative w-8 h-8 p-1 ${
-                  isSelected ? 'bg-maroon-600' : 'bg-zinc-500'
+                  isSelected
+                    ? 'bg-maroon-600 dark:bg-soft-pink-300'
+                    : 'bg-zinc-500'
                 }`}
               >
                 <Image

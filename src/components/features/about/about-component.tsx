@@ -1,14 +1,22 @@
 import React from 'react';
 import Image from 'next/image';
 import { Section } from '../../layout/Section';
-
 import Highlight from '../../shared/highlight';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import SmallSectionHeading from '../../shared/small-section-heading';
 import { cn } from '../../../lib/utils/utils';
 import { Button } from '@/components/ui/button';
+import { getLocale, getTranslations } from 'next-intl/server';
 
-export default function About() {
+export default async function About() {
+  // Locale
+  const locale = await getLocale();
+
+  // Variables
+  const isRTL: boolean = locale === 'ar';
+
+  // Translate
+  const t = await getTranslations();
   return (
     <main>
       <Section>
@@ -21,8 +29,9 @@ export default function About() {
               className={cn(
                 "relative flex justify-center items-center before:content-[''] before:absolute",
                 'before:w-[105%] before:h-[105%] before:bg-transparent before:border-4 before:border-maroon-600 dark:before:border-soft-pink-400',
-                'before:rounded-ss-[50px] before:rounded-es-[150px] before:rounded-e-[50px]',
-                'before:rounded-se-[200px] before:rounded-ee-[150px]',
+                isRTL
+                  ? 'before:rounded-ss-[200px] before:rounded-es-[150px] before:rounded-e-[50px] before:rounded-se-[50px] before:rounded-ee-[150px]'
+                  : 'before:rounded-ss-[50px] before:rounded-es-[150px] before:rounded-e-[50px] before:rounded-se-[200px] before:rounded-ee-[150px]',
                 'before:-start-4 before:-top-4 before:-skew-x-3 before:-z-10'
               )}
             >
@@ -32,7 +41,7 @@ export default function About() {
                 alt='Rose Logo'
                 width={400}
                 height={400}
-                className='relative  h-96 object-cover  object-bottom rounded-tl-[60px] rounded-tr-[140px] rounded-br-[130px] rounded-bl-[130px] '
+                className='relative h-96 object-cover object-bottom rounded-tl-[60px] rounded-tr-[140px] rounded-br-[130px] rounded-bl-[130px] '
               />
             </div>
             {/* Two stacked smaller images */}
@@ -59,30 +68,26 @@ export default function About() {
           {/* Right: Text/Content */}
           <div className='flex flex-col justify-center items-start '>
             {/* Heading */}
-            <SmallSectionHeading heading='About' />
+            <SmallSectionHeading heading={t('about-section-title')} />
             {/* Main Text */}
             <h2 className='text-maroon-700 text-h-3 dark:text-soft-pink-200'>
-              Delivering the
-              <Highlight>Finest</Highlight>
-              Gift Boxes for Your
-              <Highlight>Special</Highlight>
-              Moments
+              {t.rich('about-header', {
+                highlight1: chunks => <Highlight>{chunks}</Highlight>,
+                highlight2: chunks => <Highlight>{chunks}</Highlight>,
+              })}
             </h2>
             {/* Description */}
             <p className='text-p-2 py-element-xs text-zinc-500 leading-tight  '>
-              <span className='capitalize'>make</span> every moment memorable
-              with our premium gift boxes.
-              <span className='capitalize'>carefully</span> curated and
-              beautifully packaged, each box is filled with handpicked items
-              designed to impress.
-              <span className='capitalize'>whether</span> it&apos;s for a
-              birthday, wedding, or a simple “thank you,” our gift boxes are
-              crafted to leave a lasting impression — because thoughtful gifting
-              starts here.
+              {t.rich('about-description', {
+                span1: chunks => <span className='capitalize'>{chunks}</span>,
+                span2: chunks => <span className='capitalize'>{chunks}</span>,
+                span3: chunks => <span className='capitalize'>{chunks}</span>,
+              })}
             </p>
 
             <Button className='my-element-md flex gap-element-xs items-center justify-center'>
-              Discover <ArrowRight size={16} />
+              {t('about-button')}
+              {isRTL ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
             </Button>
 
             {/* features of the about section */}
@@ -92,28 +97,28 @@ export default function About() {
                   className='text-maroon-700 dark:text-soft-pink-400'
                   size={16}
                 />
-                Competetive Prices and Easy Shopping
+                {t('about-check-1')}
               </li>
               <li className='flex items-center gap-element-sm'>
                 <Check
                   className='text-maroon-700 dark:text-soft-pink-400'
                   size={16}
                 />
-                Premium Quality & Elegant Packaging
+                {t('about-check-2')}
               </li>
               <li className='flex items-center gap-element-sm'>
                 <Check
                   className='text-maroon-700 dark:text-soft-pink-400'
                   size={16}
                 />
-                Perfect for Every Occasion
+                {t('about-check-3')}
               </li>
               <li className='flex items-center gap-element-sm'>
                 <Check
                   className='text-maroon-700 dark:text-soft-pink-400'
                   size={16}
                 />
-                Fast & Reliable Delivery
+                {t('about-check-4')}
               </li>
             </ul>
           </div>

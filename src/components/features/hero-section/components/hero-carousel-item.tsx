@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,6 +11,7 @@ export default function HeroCarouselItem({
   subtitle: string;
   image: string;
 }) {
+  const t = useTranslations();
   return (
     <div className='w-full h-[440px] relative'>
       <Image
@@ -27,7 +29,7 @@ export default function HeroCarouselItem({
             href='#'
             className='flex justify-center items-center bg-maroon-50 text-maroon-700 w-32 p-1 rounded-lg gap-1 h-9 hover:bg-maroon-700 hover:text-white transition-all duration-300 hover:scale-105'
           >
-            I’m buying!
+            {t('hero-carousel-button')}
           </Link>
         </div>
       </div>

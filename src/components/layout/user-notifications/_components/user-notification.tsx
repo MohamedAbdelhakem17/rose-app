@@ -82,7 +82,7 @@ UserNotifications.Trigger = function Trigger() {
   return (
     <button
       onClick={toggleMenu}
-      className='relative text-zinc-700 hover:text-pink-500 transition-colors flex items-center justify-center'
+      className='relative text-zinc-700 dark:text-white hover:text-pink-500 transition-colors flex items-center justify-center'
     >
       {/* Notification icon */}
       <Bell className='size-5' />
@@ -112,7 +112,7 @@ UserNotifications.Menu = function Menu({
   if (!isMenuOpen) return null;
 
   return (
-    <div className='w-80 overflow-hidden rounded-2xl shadow-lg absolute top-6 end-1 bg-white'>
+    <div className='w-80 overflow-hidden rounded-2xl shadow-lg absolute top-6 end-1 bg-white dark:bg-zinc-900 dark:text-white'>
       {children}
     </div>
   );
@@ -133,12 +133,12 @@ UserNotifications.Header = function Header() {
   return (
     <>
       {/* Title */}
-      <h3 className='bg-maroon-600 p-4 text-xl font-bold text-white'>
+      <h3 className='bg-maroon-600 dark:bg-soft-pink-200 p-4 text-xl font-bold text-white dark:text-zinc-800'>
         Notifications {unreadCount > 0 && `(${unreadCount})`}
       </h3>
 
       {/* Action */}
-      <div className='p-3 flex items-center justify-between border-b border-b-zinc-300 font-medium'>
+      <div className='p-3 flex items-center justify-between border-b dark:zinc-700 border-b-zinc-300 font-medium'>
         {/* Clear action */}
         <UserNotifications.Button
           onClick={() => deleteNotificationRead({ type: 'all' })}
@@ -171,7 +171,7 @@ UserNotifications.List = function List({
   // Empty state
   if (notifications.length === 0)
     return (
-      <div className='flex flex-col items-center justify-center h-40 text-zinc-500 text-sm gap-2.5'>
+      <div className='flex flex-col items-center justify-center h-40 dark:bg-zinc-700 text-zinc-500 dark:text-zinc-400 text-sm gap-2.5'>
         <BellOff size={40} strokeWidth={1} />
         <p>No notifications to display</p>
       </div>
@@ -211,14 +211,16 @@ UserNotifications.Item = function Item({
   return (
     <li
       className={cn(
-        'p-4 border-b border-zinc-300 hover:bg-zinc-50 transition relative',
-        isRead ? 'bg-zinc-100' : 'bg-white'
+        'p-4 border-b border-zinc-300 dark:bg-zinc-900 hover:bg-zinc-50 transition relative',
+        isRead ? 'bg-zinc-100 dark:bg-zinc-800' : 'bg-white'
       )}
     >
       {/* Header */}
-      <div className='flex justify-between items-center'>
+      <div className='flex justify-between items-center '>
         {/* Title */}
-        <h4 className='font-semibold text-base text-zinc-800'>{title}</h4>
+        <h4 className='font-semibold text-base text-zinc-800 dark:text-zinc-50'>
+          {title}
+        </h4>
 
         {/* Option menu toggle */}
         <button onClick={() => toggleOptions(_id)}>
@@ -249,7 +251,9 @@ UserNotifications.Item = function Item({
       )}
 
       {/* Body */}
-      <p className='text-sm text-zinc-500 mt-1 line-clamp-2'>{body}</p>
+      <p className='text-sm text-zinc-500 dark:text-zinc-400 mt-1 line-clamp-2'>
+        {body}
+      </p>
     </li>
   );
 };

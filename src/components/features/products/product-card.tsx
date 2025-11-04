@@ -221,7 +221,7 @@ function CartButton({ onClick }: { onClick?: () => void }): JSX.Element {
   return (
     <Button
       size='icon-lg'
-      className='rounded-full bg-maroon-600 hover:bg-maroon-700'
+      className='rounded-full dark:bg-maroon-600 dark:hover:bg-maroon-700'
       onClick={onClick}
     >
       <ShoppingCart

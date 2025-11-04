@@ -33,8 +33,8 @@ export default function ProductError({
         </div>
 
         {/* Content */}
-        <div className='space-y-3'>
-          <h1 className='text-3xl font-bold text-foreground dark:text-foreground'>
+        <div className='space-y-3 '>
+          <h1 className='text-3xl font-bold text-foreground dark:text-foreground '>
             {error.message ||
               t('error-title', { defaultMessage: 'Something went wrong' })}
           </h1>
@@ -47,7 +47,7 @@ export default function ProductError({
         </div>
 
         {/* Actions */}
-        <div className='flex flex-col gap-3 pt-4'>
+        <div className='flex flex-col gap-3 pt-4 '>
           <Button
             className='w-full'
             size='lg'
