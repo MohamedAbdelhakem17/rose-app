@@ -64,7 +64,7 @@ declare type MappedOrderType = Pick<
   deliveryStatus: {
     name: string;
     color: string;
-    Icon: React.ComponentType<{ className?: string }>;
+    Icon: string;
   };
   items: MappedProductOrderItemType[];
 };
