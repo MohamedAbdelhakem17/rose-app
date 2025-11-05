@@ -15,12 +15,19 @@ import {
   TriangleAlert,
   Truck,
 } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useState } from 'react';
 
 export default function OrderCard({ order }: { order: MappedOrderType }) {
+  // Translation
+  const t = useTranslations();
   const locale = useLocale();
+
+  // State
+  const [showAll, setShowAll] = useState(false);
+
+  // Variables
   const dateLocale = locale === 'ar' ? 'ar-EG' : 'en-US';
 
   const formattedDate = new Date(order.createdAt).toLocaleString(dateLocale, {
@@ -38,10 +45,10 @@ export default function OrderCard({ order }: { order: MappedOrderType }) {
     pending: Truck,
     unknown: HelpCircle,
   };
+
   const StatusIcon = ICONS_MAP[order.deliveryStatus?.Icon] || Info;
 
-  const [showAll, setShowAll] = useState(false);
-
+  // Function
   const toggleShowAll = () => setShowAll(prev => !prev);
 
   return (
@@ -52,10 +59,14 @@ export default function OrderCard({ order }: { order: MappedOrderType }) {
       {/* Header */}
       <div className='flex items-center justify-between bg-maroon-700 px-5 py-3 text-white'>
         <h3 className='text-2xl font-semibold'>
-          Order #{order._id.slice(0, 5)}
+          {t('order-id', { order: order._id.slice(0, 5) })}
         </h3>
+
+        {/* Created att */}
         <p className='text-sm'>
-          Created in: <span className='font-semibold'>{formattedDate}</span>
+          {t.rich('order-created-in', {
+            date: () => <span className='font-semibold'>{formattedDate}</span>,
+          })}
         </p>
       </div>
 
@@ -64,23 +75,36 @@ export default function OrderCard({ order }: { order: MappedOrderType }) {
         {/* Price + status */}
         <div className='flex flex-wrap items-center justify-between border-b border-zinc-200 pb-3'>
           <div className='flex items-center gap-4'>
+            {/* Price  */}
             <h3 className='text-lg text-zinc-800'>
-              Total Price:{' '}
-              <span className='text-2xl font-bold text-zinc-900'>
-                {order.totalPrice.toLocaleString()} EGP
-              </span>
+              {t.rich('total-price', {
+                price: () => (
+                  <span className='text-2xl font-bold text-zinc-900'>
+                    <span className='text-2xl font-bold text-zinc-900'>
+                      {new Intl.NumberFormat(locale).format(order.totalPrice)}
+                    </span>
+                  </span>
+                ),
+              })}
             </h3>
 
+            {/* Paid status */}
             {order.isPaid && (
               <Badge className='flex items-center gap-1 bg-emerald-500 px-3 py-1 text-white hover:bg-emerald-600'>
                 <Check size={16} />
-                Paid
+                {t('is-paid')}
               </Badge>
             )}
           </div>
 
+          {/* Order status */}
           <div className='flex items-center gap-2'>
-            <span className='text-sm font-medium text-zinc-800'>Status:</span>
+            {/* Label */}
+            <span className='text-sm font-medium text-zinc-800'>
+              {t('order-status')}
+            </span>
+
+            {/* Status badge */}
             <Badge className='bg-blue-500 px-3 py-1 text-white hover:bg-blue-600'>
               {order.state}
             </Badge>
@@ -89,21 +113,27 @@ export default function OrderCard({ order }: { order: MappedOrderType }) {
 
         {/* Payment & Delivery */}
         <div className='space-y-1'>
+          {/* Payment status */}
           <div className='flex items-center gap-2 text-sm text-zinc-700'>
-            <span className='font-medium'>Payment Method:</span>
+            <span className='font-medium'>{t('payment-method')}:</span>
             {order.paymentType === 'cash' && <Banknote size={16} />}
             {order.paymentType === 'credit-card' && <CreditCard size={16} />}
             <span className='capitalize'>{order.paymentType}</span>
           </div>
 
+          {/* Delivery status */}
           <div className='flex items-center gap-2 text-sm text-zinc-700'>
-            <span className='font-medium'>Delivery Status:</span>
+            {/* Label */}
+            <span className='font-medium'>{t('delivery-status')}:</span>
+
+            {/* Status */}
             <span
               className={cn(
                 'flex items-center gap-2 font-medium',
                 order.deliveryStatus.color
               )}
             >
+              {/* Icon */}
               <StatusIcon className='size-6' />
               {order.deliveryStatus.name}
             </span>
@@ -112,7 +142,10 @@ export default function OrderCard({ order }: { order: MappedOrderType }) {
 
         {/* Order Items */}
         <div>
-          <p className='mt-2 text-sm font-medium text-zinc-800'>Order Items:</p>
+          {/* Labels */}
+          <p className='mt-2 text-sm font-medium text-zinc-800'>
+            {t('order-items')}:
+          </p>
 
           <div
             className={cn(
@@ -125,6 +158,7 @@ export default function OrderCard({ order }: { order: MappedOrderType }) {
                 key={product._id}
                 className='flex h-36 overflow-hidden rounded-md bg-zinc-50 shadow-sm'
               >
+                {/* Image */}
                 <Image
                   src={product.imgCover}
                   alt={product.title}
@@ -143,28 +177,47 @@ export default function OrderCard({ order }: { order: MappedOrderType }) {
                     </h3>
 
                     {/* Rate */}
-                    <p className='flex items-center gap-1 '>
+                    <p className='flex items-center gap-1'>
                       {/* Icon */}
                       <Star
                         className='text-yellow-500 fill-yellow-500'
                         size={14}
                       />
-                      {/* Content */}
+
+                      {/* Rating value */}
                       <span className='text-sm text-zinc-800 font-bold'>
-                        Rating: {product.rateAvg}/5
+                        {t.rich('rating-label', {
+                          value: () =>
+                            new Intl.NumberFormat(locale).format(
+                              product.rateAvg
+                            ),
+                        })}
                       </span>
 
                       {/* Rating count */}
                       <span className='text-blue-600 text-base'>
-                        ({product.rateCount} ratings)
+                        {t.rich('rating-count', {
+                          count: () =>
+                            new Intl.NumberFormat(locale).format(
+                              product.rateCount
+                            ),
+                        })}
                       </span>
                     </p>
                   </div>
+
+                  {/* Quantity and price */}
                   <p className='text-xl font-bold text-zinc-700'>
-                    <span className='text-maroon-500 text-sm me-2'>
-                      (×{quantity})
+                    {/* Quantity */}
+                    <span className='text-maroon-r00 text-sm me-2'>
+                      (×{new Intl.NumberFormat(locale).format(quantity)})
                     </span>
-                    {price} EGP
+                    {/* Price */}
+                    {new Intl.NumberFormat(locale, {
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 0,
+                    }).format(price)}{' '}
+                    {locale === 'ar' ? 'ج.م' : 'EGP'}
                   </p>
                 </div>
               </div>
@@ -182,7 +235,8 @@ export default function OrderCard({ order }: { order: MappedOrderType }) {
                     className='absolute bottom-2 left-1/2 -translate-x-1/2 text-sm font-medium text-maroon-700 text-center'
                     onClick={toggleShowAll}
                   >
-                    Show All <ChevronDown size={16} className='mx-auto' />
+                    {t('show-all')}{' '}
+                    <ChevronDown size={16} className='mx-auto' />
                   </button>
                 )}
               </>
@@ -196,7 +250,7 @@ export default function OrderCard({ order }: { order: MappedOrderType }) {
                 className='flex items-center gap-1 text-sm font-medium text-maroon-700 hover:underline'
                 onClick={toggleShowAll}
               >
-                Show Less <ChevronUp size={16} />
+                {t('show-less')} <ChevronUp size={16} />
               </button>
             </div>
           )}

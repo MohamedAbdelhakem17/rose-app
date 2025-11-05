@@ -8,9 +8,9 @@ export default function OrderLoading() {
       <Skeleton className='h-9 w-64 mb-6' />
 
       {/* Items */}
-      {/* {Array.from({ length: 2 }).map((_, index) => ( */}
-      <OrderSkeleton />
-      {/* ))} */}
+      {Array.from({ length: 2 }).map((_, index) => (
+        <OrderSkeleton key={index} />
+      ))}
     </main>
   );
 }

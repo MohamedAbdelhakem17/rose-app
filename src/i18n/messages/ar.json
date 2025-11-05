@@ -97,5 +97,17 @@
   "delivered": "تم التوصيل",
   "pending": "قيد الانتظار",
   "unknown": "غير معروف",
-  "orders": "طلبات"
+  "orders": "طلبات",
+  "order-created-in": "تم الإنشاء في: <date></date>",
+  "order-id": "طلب رقم #{order}",
+  "total-price": "السعر الإجمالي: <price></price> ج.م",
+  "is-paid": "مدفوع",
+  "order-status": "حالة",
+  "payment-method": "طريقة الدفع",
+  "delivery-status": "حالة التسليم",
+  "order-items": "عناصر الطلب",
+  "rating-label": "التقييم: <value></value> من 5",
+  "rating-count": "(<count></count> تقييم)",
+  "show-all": "إظهار الكل",
+  "show-less": "عرض أقل"
 }

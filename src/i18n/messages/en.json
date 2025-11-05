@@ -102,5 +102,17 @@
   "delivered": "Delivered",
   "pending": "Pending",
   "unknown": "unkown",
-  "orders": "Orders"
+  "orders": "Orders",
+  "order-created-in": "Created in: <date></date>",
+  "order-id": "Order # {order}",
+  "total-price": "Total Price: <price></price> EGP",
+  "is-paid": "Paid",
+  "order-status": "Status",
+  "payment-method": "Payment Method",
+  "delivery-status": "Delivery Status",
+  "order-items": "Order Items",
+  "rating-label": "Rating: <value></value>/5",
+  "rating-count": "(<count></count> ratings)",
+  "show-all": "Show All",
+  "show-less": "Show Less"
 }

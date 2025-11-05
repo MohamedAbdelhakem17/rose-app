@@ -4,9 +4,9 @@ export default function OrderSkeleton() {
   return (
     <div className='rounded-xl bg-white shadow-sm space-y-4 my-2'>
       {/* Header Bar */}
-      <div className='bg-red-600 text-white p-3 rounded-md flex items-center justify-between'>
-        <Skeleton className='h-4 w-28 bg-red-400' />
-        <Skeleton className='h-4 w-32 bg-red-400' />
+      <div className='bg-maroon-600 text-white p-4 rounded-md flex items-center justify-between'>
+        <Skeleton className='h-4 w-28 bg-maroon-400' />
+        <Skeleton className='h-4 w-32 bg-maroon-400' />
       </div>
 
       {/* Price & Status */}
