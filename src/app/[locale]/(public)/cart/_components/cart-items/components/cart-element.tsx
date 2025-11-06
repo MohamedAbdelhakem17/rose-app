@@ -9,7 +9,7 @@ interface CartElementProps {
   CartItem: CartItem;
 }
 export default function CartElement({ CartItem }: CartElementProps) {
-  const { _id, price, product, quantity } = CartItem;
+  const { price, product, quantity } = CartItem;
 
   return (
     <div className='flex gap-4'>
@@ -42,11 +42,11 @@ export default function CartElement({ CartItem }: CartElementProps) {
           </div>
           {/* remove button */}
 
-          <RemoveElement itemid={_id} productTitle={product.title} />
+          <RemoveElement itemid={product._id} productTitle={product.title} />
         </div>
 
         {/* price section */}
-        <ProductPrice price={price} quantity={quantity} />
+        <ProductPrice price={price} quantity={quantity} productId={product._id} productTitle={product.title} />
       </div>
     </div>
   );

@@ -1,14 +1,10 @@
-
 import React from 'react';
 import ClearCart from './clear-cart';
-
-
 
 export default function CartHeader({ numberOfItem }: { numberOfItem: number }) {
   return (
     //**  Cart Header Section */
     <section>
-
       <div className='flex justify-between items-center '>
         <div className='flex gap-2.5 items-end'>
           <h1 className='font-bold text-5xl text-zinc-800'>Cart</h1>
@@ -16,10 +12,9 @@ export default function CartHeader({ numberOfItem }: { numberOfItem: number }) {
             {numberOfItem} {numberOfItem === 1 ? 'product' : 'products'}
           </span>
         </div>
-       {/* // Clear Cart Button */}
-       <ClearCart />
+        {/* // Clear Cart Button */}
+        <ClearCart numberOfItem={numberOfItem}  />
       </div>
-      
     </section>
   );
 }

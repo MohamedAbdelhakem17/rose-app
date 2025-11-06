@@ -1,11 +1,10 @@
-import { ShoppingCart } from 'lucide-react';
 import React from 'react';
 import ProductRating from './product-rating';
 import { Product } from '@/lib/types/products/products';
 import InStock from './in-stock';
 import OutOfStock from './out-of-stock';
 import WishlistBtn from './wishlist-btn';
-import { Button } from '@/components/ui/button';
+import AddToCartBtn from './add-to-cart-btn';
 
 //-- Component Props ---
 interface ProductFeaturesProps {
@@ -50,14 +49,7 @@ export default function ProductFeatures({ product }: ProductFeaturesProps) {
         {/* -- Wishlist Button --- */}
         <WishlistBtn productId={_id} />
         {/* -- Add to Cart Button --- */}
-        <Button
-          className='flex-1 gap-2.5 px-4 py-2.5 flex justify-center items-center '
-          disabled={quantity <= 0}
-        >
-          {' '}
-          <ShoppingCart strokeWidth={1.5} />
-          Add to Cart
-        </Button>
+     <AddToCartBtn productId={_id} quantityOfItem={quantity} />
       </div>
     </section>
   );
