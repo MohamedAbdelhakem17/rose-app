@@ -1,6 +1,7 @@
 'use client';
 
 import { Badge } from '@/components/ui/badge';
+import useDateFormat, { LocaleType } from '@/hooks/use-date-format';
 import { cn } from '@/lib/utils/utils';
 import {
   Banknote,
@@ -22,23 +23,18 @@ import { useState } from 'react';
 export default function OrderCard({ order }: { order: MappedOrderType }) {
   // Translation
   const t = useTranslations();
-  const locale = useLocale();
+  const locale = useLocale() as LocaleType;
 
   // State
   const [showAll, setShowAll] = useState(false);
 
-  // Variables
-  const dateLocale = locale === 'ar' ? 'ar-EG' : 'en-US';
-
-  const formattedDate = new Date(order.createdAt).toLocaleString(dateLocale, {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: true,
+  // Hooks
+  const { formattedDate } = useDateFormat({
+    locale,
+    date: order.createdAt,
   });
 
+  // Variables
   const ICONS_MAP: Record<string, React.ElementType> = {
     check: CheckCheck,
     cancel: TriangleAlert,

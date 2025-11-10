@@ -11,13 +11,12 @@ export async function getOrders(): Promise<
   try {
     const t = await getTranslations();
     //  Get user token
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
     const token = await getToken();
 
     // If user not logged in
-    // if (!token) {
-    //   return { error: 'Invalid token. Please login again.' };
-    // }
+    if (!token) {
+      return { error: 'Invalid token. Please login again.' };
+    }
 
     //  Construct API endpoint
     const API_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/orders`;
@@ -27,7 +26,7 @@ export async function getOrders(): Promise<
       method: 'GET',
       headers: {
         ...REQUEST_HEADERS,
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjhlZDZkZGI3ZmVlNjhhNGMyZWI5NWQ3Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjE0NjE3MDN9.1OTe3mr1K5hjdhvTYhX5HEyan1MH8CdLZGnhbCorXcg`,
+        Authorization: `Bearer ${token.token}`,
       },
     });
 
