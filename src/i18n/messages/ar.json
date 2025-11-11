@@ -101,5 +101,15 @@
   "footer-discover": "تعرّف على موقعنا الإلكتروني",
   "footer-title": " احصل على كوبون خصم بنسبة <span>20%</span>",
   "footer-subtitle": "من خلال الاشتراك في نشرتنا الإخبارية",
-  "footer-subscribe-button": "اشترك الان"
+  "footer-subscribe-button": "اشترك الان",
+  "product-review-header": "مراجعة المنتج",
+  "general-rate": "التقييم العام:",
+  "no-comments": "لا تعليقات حتى الآن",
+  "rating-form-your-rating": "تقييمك:",
+  "rating-form-title": "عنوان:",
+  "rating-form-title-placeholder": "أدخل عنوان المراجعة الخاصة بك",
+  "rating-form-comment": "تعليق:",
+  "rating-form-comment-placeholder": "ما رأيك بهذا المنتج؟",
+  "rating-button": "اضف المراجعة",
+  "related-products-header": "المنتجات ذات الصلة"
 }

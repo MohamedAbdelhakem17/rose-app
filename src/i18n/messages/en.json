@@ -106,5 +106,15 @@
   "footer-discover": "Discover our website",
   "footer-title": "Get <span>20% </span> Off Discount Coupon",
   "footer-subtitle": "By subscribing to our newsletter",
-  "footer-subscribe-button": "Subscribe"
+  "footer-subscribe-button": "Subscribe",
+  "product-review-header": "Product Review",
+  "general-rate": "General rating:",
+  "no-comments": "no comments yet",
+  "rating-form-your-rating": "Your Rating:",
+  "rating-form-title": "Title:",
+  "rating-form-title-placeholder": "Enter review title",
+  "rating-form-comment": "Comment:",
+  "rating-form-comment-placeholder": "What do you think of this product?",
+  "rating-button": "Add Review",
+  "related-products-header": "Related Products"
 }

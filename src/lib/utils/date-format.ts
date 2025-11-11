@@ -19,3 +19,15 @@ export function formatDateFull(
     year: 'numeric',
   });
 }
+
+export function formatDateShort(
+  dateString: string | Date,
+  lang: 'en' | 'ar' = 'en'
+): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
