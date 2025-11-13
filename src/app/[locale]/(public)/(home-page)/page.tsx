@@ -11,7 +11,6 @@ import AutoSlider from '../../../../components/features/testimonials/auto-slider
 import BestSelling from './_components/best-selling';
 import MostPopular from './_components/most-popular/index';
 import { getTranslations } from 'next-intl/server';
-import AddressModel from '@/components/features/address-modal/address-model';
 
 export default async function Home({
   searchParams,
@@ -25,7 +24,6 @@ export default async function Home({
 
   return (
     <main>
-      <AddressModel />
 
       <Section className='max-w-7xl mx-auto '>
         <HeroSection params={params} />

@@ -1,9 +1,9 @@
 declare interface ErrorResponse {
-  error: 'string';
+  message: string;
 }
 
 declare type SuccessResponse<T> = {
-  message: string | 'success';
+  message: 'success';
 } & T;
 
 declare type Metadata = {

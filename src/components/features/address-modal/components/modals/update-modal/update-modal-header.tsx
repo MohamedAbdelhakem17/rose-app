@@ -1,7 +1,57 @@
-import React from 'react'
+import { StepState } from '@/lib/types/modal/step-state';
+import { useLocale, useTranslations } from 'next-intl';
+import React from 'react';
+import Steps from '../../state-step';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-export default function UpdateModalHeader() {
+type UpdateModalHeaderProps = {
+  step: StepState;
+  setStep: (_step: StepState) => void;
+};
+export default function UpdateModalHeader({
+  step,
+  setStep,
+}: UpdateModalHeaderProps) {
+  // Translate
+  const t = useTranslations();
+
+  // Locale
+  const locale = useLocale();
+
+  // Variables
+  const RTL: boolean = locale === 'ar';
+
   return (
-    <div>update-modal-header</div>
-  )
+    <div className=' flex flex-col justify-center items-start w-full'>
+      <h1 className=' font-bold text-3xl mb-6'> {t('update-modal-header')} </h1>
+      <Steps step={step} />
+
+      {step === 'form' ? (
+        <h2 className='font-medium text-maroon-600 dark:text-soft-pink-200 text-2xl'>
+          {t('update-modal-form-subheader')}
+        </h2>
+      ) : (
+        <div className=' flex justify-start items-center gap-4'>
+          {RTL ? (
+            <div
+              className=' flex justify-center items-center w-9 h-9 rounded-full cursor-pointer text-white bg-maroon-600 dark:bg-soft-pink-200 dark:text-zinc-900'
+              onClick={() => setStep('form')}
+            >
+              <ArrowRight />
+            </div>
+          ) : (
+            <div
+              className=' flex justify-center items-center w-9 h-9 rounded-full cursor-pointer text-white bg-maroon-600 dark:bg-soft-pink-200 dark:text-zinc-900'
+              onClick={() => setStep('form')}
+            >
+              <ArrowLeft />
+            </div>
+          )}
+          <h2 className='font-medium text-maroon-600 dark:text-soft-pink-200 text-2xl'>
+            {t('update-modal-map-subheader')}
+          </h2>
+        </div>
+      )}
+    </div>
+  );
 }

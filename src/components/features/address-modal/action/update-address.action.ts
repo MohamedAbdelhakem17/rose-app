@@ -2,30 +2,21 @@
 
 import { API_HEADER } from '@/lib/constants/api-header.constant';
 import { UserAddress } from '@/lib/types/modal/user-address';
-import { getToken } from 'next-auth/jwt';
 
-export async function addAddress(body: BodyAddModal) {
+export async function updateAddress(id: string, body: BodyAddModal) {
   try {
-    const token = await getToken({ req });
-    console.log('token :' + token); // null ??
-
-    const response = await fetch(`${process.env.BASE_URL}/addresses`, {
+    const response = await fetch(`${process.env.BASE_URL}/addresses/${id}`, {
       method: 'PATCH',
       headers: {
         ...API_HEADER,
         authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjhlZDAxZDc3ZmVlNjhhNGMyZWI3NzZlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjIzMTU5OTV9.B0kx-QA6YLX4RpKAaw0Md27W-wdIOK1qJJKU3M-iyeg`,
+        body: JSON.stringify(body),
       },
-      body: JSON.stringify(body),
     });
     // console.log(response);
-
     if (response.ok) {
       const data: ApiResponse<UserAddress> = await response.json();
       return data;
-    } else {
-      throw new Error(`${response.status} Unauthorized`);
     }
-  } catch (err: any) {
-    throw new Error(err.message);
-  }
+  } catch (err) {}
 }

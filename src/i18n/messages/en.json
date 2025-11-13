@@ -106,5 +106,41 @@
   "footer-discover": "Discover our website",
   "footer-title": "Get <span>20% </span> Off Discount Coupon",
   "footer-subtitle": "By subscribing to our newsletter",
-  "footer-subscribe-button": "Subscribe"
+  "footer-subscribe-button": "Subscribe",
+
+  "main-modal-header": "My Addresses",
+  "main-modal-button": "Add a New Address",
+
+  "add-modal-header": "Add a New Address",
+  "add-modal-form-subheader": "Enter address details",
+  "add-modal-form-city-label": "City",
+  "add-modal-form-city-placeholder": "Enter city name",
+  "add-modal-form-address-label": "Address",
+  "add-modal-form-address-placeholder": "Enter your full address",
+  "add-modal-form-phone-label": "Phone",
+  "add-modal-form-phone-placeholder": "Phone number",
+  "add-modal-form-button": "Next",
+
+  "update-modal-header": "Update Address Info",
+  "update-modal-form-subheader": "Enter address details",
+  "update-modal-form-city-label": "City",
+  "update-modal-form-city-placeholder": "Enter city name",
+  "update-modal-form-address-label": "Address",
+  "update-modal-form-address-placeholder": "Enter your full address",
+  "update-modal-form-phone-label": "Phone",
+  "update-modal-form-phone-placeholder": "Phone number",
+  "update-modal-form-button": "Next",
+  
+
+  "modal-address-schema-city-nonempty": "Your city is required",
+  "modal-address-schema-address-nonempty": "Your address is required",
+  "modal-address-schema-phone-nonempty": "Invalid Egyptian phone number\nlike (+201*********)",
+
+  "add-modal-map-subheader": "Find Your Location",
+  "add-modal-map-button": "Save Address",
+
+  "update-modal-map-subheader": "Find Your Location",
+  "update-modal-map-button": "Save Address"
+
+
 }

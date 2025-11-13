@@ -101,5 +101,38 @@
   "footer-discover": "تعرّف على موقعنا الإلكتروني",
   "footer-title": " احصل على كوبون خصم بنسبة <span>20%</span>",
   "footer-subtitle": "من خلال الاشتراك في نشرتنا الإخبارية",
-  "footer-subscribe-button": "اشترك الان"
+  "footer-subscribe-button": "اشترك الان",
+
+  "main-modal-header": "عنواني",
+  "main-modal-button": "إضافة عنوان جديد",
+
+  "add-modal-header": "إضافة عنوان جديد",
+  "add-modal-form-subheader": "أدخل تفاصيل العنوان",
+  "add-modal-form-city-label": "المدينة",
+  "add-modal-form-city-placeholder": "أدخل اسم المدينة",
+  "add-modal-form-address-label": "العنوان",
+  "add-modal-form-address-placeholder": "أدخل عنوانك الكامل",
+  "add-modal-form-phone-label": "رقم الهاتف",
+  "add-modal-form-phone-placeholder": "أدخل رقم الهاتف",
+  "add-modal-form-button": "التالي",
+
+  "update-modal-header": "تحديث معلومات العنوان",
+  "update-modal-form-subheader": "أدخل تفاصيل العنوان",
+  "update-modal-form-city-label": "المدينة",
+  "update-modal-form-city-placeholder": "أدخل اسم المدينة",
+  "update-modal-form-address-label": "العنوان",
+  "update-modal-form-address-placeholder": "أدخل عنوانك الكامل",
+  "update-modal-form-phone-label": "رقم الهاتف",
+  "update-modal-form-phone-placeholder": "أدخل رقم الهاتف",
+  "update-modal-form-button": "التالي",
+
+  "modal-address-schema-city-nonempty": "المدينة مطلوبة",
+  "modal-address-schema-address-nonempty": "العنوان مطلوب",
+  "modal-address-schema-phone-nonempty": "رقم الهاتف المصري غير صالح\nمثل (+201*********)",
+
+  "add-modal-map-subheader": "اعثر على موقعك",
+  "add-modal-map-button": "اضافه موقعك",
+
+  "update-modal-map-subheader": "اعثر على موقعك",
+  "update-modal-map-button": "اضافه موقعك"
 }

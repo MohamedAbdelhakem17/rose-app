@@ -1,14 +1,15 @@
 import { cn } from '@/lib/utils/utils';
 import React from 'react';
+import { StepState } from '../../../../lib/types/modal/step-state';
 
-type StateStepProps = {
-  step: 1 | 2;
+type StepsProps = {
+  step: StepState;
 };
-export default function StateStep({ step }: StateStepProps) {
+export default function Steps({ step }: StepsProps) {
   return (
     <div className='flex justify-start items-center w-full '>
       {/* Line */}
-      <div className='w-1/3 border-t-8 border-maroon-600 dark:border-soft-pink-400 rounded-l-full'></div>
+      <div className='w-1/3 border-t-4 border-maroon-600 dark:border-soft-pink-400 rounded-l-full'></div>
 
       {/* Step 1 */}
       <div className=' flex justify-center items-center px-2 rounded-full bg-maroon-600 text-white dark:bg-soft-pink-400'>
@@ -18,9 +19,9 @@ export default function StateStep({ step }: StateStepProps) {
       {/* Line */}
       <div
         className={cn(
-          'w-1/3 border-t-8',
-          step === 1 && 'border-zinc-200 dark:border-zinc-600',
-          step === 2 && 'border-maroon-600 dark:border-soft-pink-400'
+          'w-1/3 border-t-4',
+          step === 'form' && 'border-zinc-200 dark:border-zinc-600',
+          step === 'map' && 'border-maroon-600 dark:border-soft-pink-400'
         )}
       ></div>
 
@@ -28,21 +29,15 @@ export default function StateStep({ step }: StateStepProps) {
       <div
         className={cn(
           'flex justify-center items-center px-2 rounded-full',
-          step === 1 && 'bg-zinc-200 text-zinc-500 dark:bg-zinc-600',
-          step === 2 && 'bg-maroon-600 text-white dark:bg-soft-pink-400'
+          step === 'form' && 'bg-zinc-200 text-zinc-500 dark:bg-zinc-600',
+          step === 'map' && 'bg-maroon-600 text-white dark:bg-soft-pink-400'
         )}
       >
         <p>2</p>
       </div>
 
       {/* Line */}
-      <div
-        className={cn(
-          'w-1/3 border-t-8 rounded-r-full',
-          step === 1 && 'border-zinc-200 dark:border-zinc-600',
-          step === 2 && 'border-maroon-600 dark:border-soft-pink-400'
-        )}
-      ></div>
+      <div className='w-1/3 border-t-4 rounded-r-full border-zinc-200 dark:border-zinc-600'></div>
     </div>
   );
 }

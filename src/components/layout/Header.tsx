@@ -11,6 +11,7 @@ import { usePathname } from '@/i18n/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import Theme from '../shared/theme';
 import LanguageToggle from '../shared/language-toggle';
+import AddressModel from '../features/address-modal/address-model';
 
 interface HeaderProps {
   className?: string;
@@ -50,14 +51,17 @@ export function Header({ className }: HeaderProps) {
                   className='object-contain'
                 />
               </div>
+              {/* User location */}
               <div>
                 <p className=' font-medium text-base text-zinc-500'>
                   {t('home-address')}
                 </p>
-                <span className='flex items-center gap-3 text-maroon-700 dark:text-soft-pink-200 text-md font-medium'>
-                  <LocationEdit />
-                  Cairo
-                </span>
+                <AddressModel>
+                  <span className='flex items-center gap-3 text-maroon-700 dark:text-soft-pink-200 text-md font-medium'>
+                    <LocationEdit />
+                    Cairo
+                  </span>
+                </AddressModel>
               </div>
             </div>
 
