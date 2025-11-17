@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils/utils';
 import React, { ReactNode } from 'react';
 
+/* Props for StatisticsItem */
 interface Iprops {
   background: string;
   textColor: string;
@@ -9,6 +10,7 @@ interface Iprops {
   title: string;
 }
 
+/* Single statistic card */
 export default function StatisticsItem({
   background,
   icon,
@@ -26,7 +28,7 @@ export default function StatisticsItem({
     >
       {icon}
       <div className='flex flex-col gap-1 mt-3'>
-        <h2 className='text-2xl'>{number}</h2>
+        <h2 className='text-2xl'>{number} </h2>
         <p className='text-zinc-800 font-medium'>{title}</p>
       </div>
     </section>
