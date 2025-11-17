@@ -2,7 +2,7 @@
 
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import { removeCartItem } from '../_actions/remove-specific-cart-item';
+import { removeCartItem } from '../_actions/remove-specific-cart-item.action';
 
 export function useRemoveCartItem(itemId: string, productTitle: string) {
   return useMutation({

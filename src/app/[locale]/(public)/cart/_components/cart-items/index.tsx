@@ -12,7 +12,7 @@ export default function CartItems({items}: CartItemsProps) {
 
     <section className='border rounded-lg p-5 border-zinc-200 '>
       {items.map((item, index) => (
-        <div key={index}>
+        <div key={item._id}>
           <CartElement CartItem={item} />
           {index !== items.length - 1 && (
             <div className='h-px bg-zinc-200 my-5'></div>

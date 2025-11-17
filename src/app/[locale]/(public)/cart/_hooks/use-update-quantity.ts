@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation } from '@tanstack/react-query';
-import { updateQuantity } from '../_actions/update-quantity';
+import { updateQuantity } from '../_actions/update-quantity.action';
 import { toast } from 'sonner';
 
 interface updateQuantityArgs {
