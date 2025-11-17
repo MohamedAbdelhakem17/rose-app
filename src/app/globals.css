@@ -95,3 +95,12 @@
   scrollbar-width: thin;
   scrollbar-color: #800000 #f0f0f0;
 }
+
+/* Hide scrollbar but keep scrolling */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
