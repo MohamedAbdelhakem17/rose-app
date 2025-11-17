@@ -87,5 +87,6 @@
   "checkout-payment-card-description": "Pay securely using your credit card.",
   "stepper-back": "Back",
   "stepper-next": "Next",
-  "stepper-done": "Done"
+  "stepper-done": "Done",
+  "add-new-address": "Add a New Address"
 }

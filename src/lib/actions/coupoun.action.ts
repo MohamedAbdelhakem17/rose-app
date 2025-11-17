@@ -60,9 +60,6 @@ export async function applyCouponAction(
     // Parse successful response
     const responseData = await response.json();
 
-    // Log successful response for debugging
-    console.log('API success response:', responseData);
-
     return {
       success: true,
       data: {

@@ -91,6 +91,26 @@ export default function CustomStepper({ steps }: { steps: Step[] }) {
         {currentStep.content}
       </div>
 
+      {/* Add New Address Section */}
+
+      <div className='space-y-4'>
+        <div className='relative'>
+          <div className='absolute inset-0 flex items-center'>
+            <span className='w-full border-t' />
+          </div>
+          <div className='relative flex justify-center text-xs uppercase'>
+            <span className='bg-background px-2 text-muted-foreground'>OR</span>
+          </div>
+        </div>
+
+        <Button
+          variant='ghost'
+          className='w-full h-auto py-3 bg-pink-50 dark:bg-pink-900/20 text-maroon-700 dark:text-soft-pink-500 hover:bg-pink-100 dark:hover:bg-pink-900/30 relative'
+        >
+          <span className='font-medium'>{t('add-new-address')}</span>
+        </Button>
+      </div>
+
       {/* Controls */}
       <div className='flex justify-end'>
         <Button

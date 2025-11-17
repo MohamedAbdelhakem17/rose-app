@@ -5,9 +5,9 @@ import { useTranslations } from 'next-intl';
 import { CouponSummaryProps } from '@/lib/types/coupouns';
 import { useCouponDiscount } from '@/hooks/use-coupoun-discount';
 import { CouponInputSection } from './components/coupoun-input-section';
-import { AppliedCouponsList } from './components/applied-coupoun-list';
+import AppliedCouponsList from './components/applied-coupoun-list';
 import { PricingSummary } from './components/pricing-summary';
-import { CouponErrorAlert } from './components/coupoun-error-alert';
+import  CouponErrorAlert  from './components/coupoun-error-alert';
 
 // Sub-components
 

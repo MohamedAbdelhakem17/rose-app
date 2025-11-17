@@ -5,7 +5,7 @@ interface CouponErrorAlertProps {
   error: string | null;
 }
 
-export function CouponErrorAlert({ error }: CouponErrorAlertProps) {
+export default function CouponErrorAlert({ error }: CouponErrorAlertProps) {
   if (!error) return null;
   return (
     <Alert variant='destructive' className='mb-6'>

@@ -82,5 +82,6 @@
   "checkout-payment-card-description": "ادفع بأمان باستخدام بطاقتك الائتمانية.",
   "stepper-back": "رجوع",
   "stepper-next": "التالي",
-  "stepper-done": "تم"
+  "stepper-done": "تم",
+  "add-new-address": "أضف عنوان جديد"
 }

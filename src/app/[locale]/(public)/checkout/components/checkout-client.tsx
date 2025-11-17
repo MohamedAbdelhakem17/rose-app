@@ -63,7 +63,7 @@ export default function CheckoutClient({ addresses }: CheckoutClientProps) {
                 />
               ))
             )}
-          </div>
+            </div>
         ),
         // Disable "Next" if no address selected
         isNextDisabled: () => !selectedAddressId,

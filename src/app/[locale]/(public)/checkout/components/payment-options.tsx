@@ -25,8 +25,8 @@ export function PaymentOption({
       <Image
         src={imageSrc}
         alt={title}
-        width={180} // w-20 in Tailwind = 180px
-        height={180} // h-20 in Tailwind = 80px
+        width={180}
+        height={180}
         className='object-contain'
       />
       <h3

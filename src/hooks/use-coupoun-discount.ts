@@ -1,5 +1,3 @@
-'use client';
-
 import { applyCouponAction } from '@/lib/actions/coupoun.action';
 import {
   AppliedCoupon,
@@ -37,8 +35,6 @@ export function useCouponDiscount(
       try {
         const result = await applyCouponAction(couponCode);
 
-        // Log the full result for debugging
-        console.log('Coupon action result:', result);
 
         if (!result.success) {
           // Provide more detailed error information
