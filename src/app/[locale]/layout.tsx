@@ -60,7 +60,7 @@ export default async function LocaleLayout({
       <body
         className={`${sarabun.variable} ${tajawal.variable} ${
           locale === 'ar' ? 'font-tajawal' : 'font-sarabun'
-        } antialiased`}
+        } antialiased dark:bg-zinc-800`}
       >
         <Providers locale={locale} messages={messages}>
           <Toaster

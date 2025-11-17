@@ -6,7 +6,7 @@ import { Input } from '../ui/Input';
 
 type FormInputProps = {
   name: string;
-  label: string;
+  label?: string;
   type: string;
   placeholder?: string;
   required: boolean;

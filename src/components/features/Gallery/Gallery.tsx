@@ -9,7 +9,7 @@ export default function Gallery() {
     <Section>
       <section className='flex flex-col justify-center items-center '>
         {/* small heading above */}
-        <SmallSectionHeading heading='Gallery' />
+        <SmallSectionHeading heading='Gallery />
         {/* descritption   */}
         <SectionTitle title='Check Out our Wonderful Gallery' />
 

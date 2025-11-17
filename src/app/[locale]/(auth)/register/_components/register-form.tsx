@@ -18,9 +18,14 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { useRegister } from '../_hooks/use-register';
 import { PasswordInput } from './register-form-password-input';
+import { useTranslations } from 'next-intl';
+import { Loader2Icon } from 'lucide-react';
+import { cn } from '@/lib/utils/utils';
 // import { PasswordInput } from '@/components/shared/password-input';
 
 export default function RegisterForm() {
+  // Translate
+  const t = useTranslations();
   //react query mutation hook
   const { isPending, signUp } = useRegister();
 
@@ -59,37 +64,68 @@ export default function RegisterForm() {
         <form
           noValidate
           onSubmit={handleSubmit(onSubmit)}
-          className='mt-4 py-6 border-t border-b border-zinc-200 flex flex-col gap-4'
+          className='mt-4 py-6 border-t border-b border-zinc-200 flex flex-col gap-4 text-zinc-800 dark:text-white'
         >
           {/* first name */}
-          <div className='grid grid-cols-2 gap-4'>
-            <FormInput
-              label='First Name'
-              name='firstName'
-              required
-              type='text'
-              placeholder='Jonathan'
-            />
+          <div className='grid grid-cols-2 gap-4 '>
+            <div>
+              <label
+                className={cn(
+                  errors.firstName && 'text-red-500 dark:text-soft-pink-700'
+                )}
+              >
+                {t('register-first-name-label')}
+              </label>
+              <FormInput
+                name='firstName'
+                required
+                type='text'
+                placeholder='Jonathan'
+              />
+            </div>
 
             {/* last name */}
-            <FormInput
-              label='Last name'
-              name='lastName'
-              required
-              type='text'
-              placeholder='Adrian'
-            />
+            <div>
+              <label
+                className={cn(
+                  errors.lastName && 'text-red-500 dark:text-soft-pink-700'
+                )}
+              >
+                {t('register-last-name-label')}
+              </label>
+              <FormInput
+                name='lastName'
+                required
+                type='text'
+                placeholder='Adrian'
+              />
+            </div>
           </div>
 
           {/* email */}
+          <label
+            className={cn(
+              errors.email && 'text-red-500 dark:text-soft-pink-700'
+            )}
+          >
+            {' '}
+            {t('register-email-label')}
+          </label>
           <FormInput
-            label='Email'
             name='email'
             required
             type='email'
             placeholder='user@example.com'
           />
           {/* phone */}
+          <label
+            className={cn(
+              errors.phone && 'text-red-500 dark:text-soft-pink-700'
+            )}
+          >
+            {' '}
+            {t('register-phone-label')}
+          </label>
           <FormInput
             label='Phone'
             name='phone'
@@ -100,12 +136,17 @@ export default function RegisterForm() {
 
           {/* Gender */}
           <div>
-            <label className='block text-sm font-medium text-zinc-800 mb-1.5'>
-              Gender
+            <label
+              className={cn(
+                'block text-sm font-medium mb-1.5',
+                errors.gender && 'text-red-500 dark:text-soft-pink-700'
+              )}
+            >
+              {t('register-gender-label')}
             </label>
             <Select onValueChange={value => setValue('gender', value)}>
               <SelectTrigger className='w-full'>
-                <SelectValue placeholder='Select Gender' />
+                <SelectValue placeholder={t('register-gender-placeholder')} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value='male'>Male</SelectItem>
@@ -119,16 +160,24 @@ export default function RegisterForm() {
             )}
           </div>
           {/* password */}
-          <PasswordInput
-            label='Password'
-            name='password'
-            required
-            placeholder='Your password'
-          />
+          <label
+            className={cn(
+              errors.password && 'text-red-500 dark:text-soft-pink-700'
+            )}
+          >
+            {t('register-password-label')}
+          </label>
+          <PasswordInput name='password' required placeholder='Your password' />
 
           {/* re-password */}
+          <label
+            className={cn(
+              errors.rePassword && 'text-red-500 dark:text-soft-pink-700'
+            )}
+          >
+            {t('register-confirm-password-label')}
+          </label>
           <PasswordInput
-            label='Confirm Password'
             name='rePassword'
             required
             placeholder='Confirm your password'
@@ -140,15 +189,22 @@ export default function RegisterForm() {
             disabled={isPending}
             className='mt-4 mb-3 w-full bg-maroon-700 text-white py-2 px-4 rounded-md hover:bg-maroon-800 transition-colors'
           >
-            {isPending ? 'Registering...' : 'Register'}
+            {isPending ? (
+              <Loader2Icon className='animate-spin w-6 h-6 mx-auto' />
+            ) : (
+              t('register-button')
+            )}
           </Button>
         </form>
       </FormProvider>
       <div className='mt-5'>
-        <p className='text-center text-zinc-800 font-medium text-sm'>
-          Already have an account?{' '}
-          <Link href='/login' className='font-bold'>
-            Login
+        <p className='text-center text-zinc-800 dark:text-white font-medium text-sm'>
+          {t('register-p')}{' '}
+          <Link
+            href='/login'
+            className='font-bold text-maroon-700 dark:text-soft-pink-300'
+          >
+            {t('register-p-active')}
           </Link>
         </p>
       </div>

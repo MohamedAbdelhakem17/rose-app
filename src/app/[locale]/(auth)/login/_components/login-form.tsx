@@ -19,6 +19,8 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import ErrorApi from '../../_components/error-api';
+import { cn } from '@/lib/utils/utils';
+import { Loader2Icon } from 'lucide-react';
 
 export default function LoginForm() {
   // Translate
@@ -70,7 +72,13 @@ export default function LoginForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className='text-gray-800'>
+              <FormLabel
+                className={cn(
+                  'text-gray-800 dark:text-white',
+                  form.formState.errors.email &&
+                    'text-red-500 dark:text-soft-pink-700'
+                )}
+              >
                 {t('email-label')}
               </FormLabel>
 
@@ -79,7 +87,7 @@ export default function LoginForm() {
                 <Input
                   type='text'
                   placeholder='user@example.com'
-                  className={`${form.formState.errors.email?.message && 'border-red-600 focus:ring-red-600'}`}
+                  className={`${form.formState.errors.email?.message && 'border-red-600 dark:border-soft-pink-500 focus:ring-red-600 dark:focus:ring-soft-pink-600'}`}
                   {...field}
                 />
               </FormControl>
@@ -97,7 +105,13 @@ export default function LoginForm() {
             render={({ field }) => (
               <FormItem>
                 {/* Label */}
-                <FormLabel className='text-gray-800 '>
+                <FormLabel
+                  className={cn(
+                    'text-gray-800 dark:text-white',
+                    form.formState.errors.password &&
+                      'text-red-500 dark:text-soft-pink-700'
+                  )}
+                >
                   {t('password-label')}
                 </FormLabel>
 
@@ -107,7 +121,7 @@ export default function LoginForm() {
                   <Input
                     type='password'
                     placeholder='********'
-                    className={`${form.formState.errors.password?.message && 'border-red-600 focus:ring-red-600'}`}
+                    className={`${form.formState.errors.password?.message && 'border-red-600 dark:border-soft-pink-500 focus:ring-red-600 dark:focus:ring-soft-pink-600'}`}
                     {...field}
                   />
                   {/* </PasswordInput> */}
@@ -124,7 +138,7 @@ export default function LoginForm() {
         <div className='flex flex-col items-end w-full font-sarabun'>
           <Link
             href={'/forgot-password'}
-            className=' font-medium text-sm font-geistMono text-maroon-700 pt-2.5 pb-10 '
+            className=' font-medium text-sm font-geistMono text-maroon-700 dark:text-soft-pink-300 pt-2.5 pb-10 '
           >
             {t('forgot-password-paragraph')}
           </Link>
@@ -138,15 +152,22 @@ export default function LoginForm() {
           type='submit'
           variant={'primary'}
           disabled={isPending || form.formState.isSubmitting}
-          className='font-sarabun w-full'
+          className='capitalize font-sarabun w-full'
         >
-          {t('login-button')}
+          {isPending ? (
+            <Loader2Icon className='animate-spin w-6 h-6 mx-auto' />
+          ) : (
+            t('login-button')
+          )}
         </Button>
 
-        <p className='w-full border-t pt-5 mt-9 font-sarabun border-zinc-200 text-zinc-800 text-center'>
-          {t('register-paragraph')}
-          <Link href={'/register'} className='text-maroon-800'>
-            {t('register-paragraph-action')}
+        <p className='w-full border-t pt-5 mt-9 font-sarabun border-zinc-200 text-zinc-800 dark:text-white text-center'>
+          {t('login-p')}{' '}
+          <Link
+            href={'/register'}
+            className='text-maroon-800 dark:text-soft-pink-300'
+          >
+            {t('login-p-action')}
           </Link>
         </p>
       </form>

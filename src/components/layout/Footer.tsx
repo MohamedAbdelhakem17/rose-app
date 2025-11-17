@@ -1,19 +1,21 @@
 import { NewsletterForm } from '@/components/shared/newsletter-form';
 import { cn } from '@/lib/utils/utils';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { navigationLinks } from '@/lib/constants/footer-navigation';
+import { getTranslations } from 'next-intl/server';
 
 interface FooterProps {
   className?: string;
 }
 
-import { navigationLinks } from '@/lib/constants/footer-navigation';
-
-export function Footer({ className }: FooterProps) {
+export async function Footer({ className }: FooterProps) {
+  // Translate
+  const t = await getTranslations();
   return (
     <footer
       className={cn(
-        'bg-zinc-900 text-zinc-100 border-t border-zinc-800',
+        'bg-zinc-800 dark:bg-zinc-900 text-zinc-100 border-t border-zinc-800',
         className
       )}
     >
@@ -42,7 +44,7 @@ export function Footer({ className }: FooterProps) {
 
           <div className='space-y-2'>
             <h3 className='text-lg font-semibold text-soft-pink-300'>
-              Discover our website
+              {t('footer-discover')}
             </h3>
             <nav className='grid grid-cols-1 gap-2'>
               {navigationLinks.map(link => (
