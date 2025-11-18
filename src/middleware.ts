@@ -1,23 +1,40 @@
+import { getToken } from 'next-auth/jwt';
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 
-const privatePages = ['/wishlist', '/checkout'];
+const privatePages = ['/wishlist', '/orders', '/profile'];
+const authPages = ['/login', '/forgot-password', '/register'];
+
 const handleI18nRouting = createMiddleware(routing);
 
-export default function middleware(req: NextRequest) {
+export default async function middleware(req: NextRequest) {
+  const token = await getToken({ req });
   const pathname = req.nextUrl.pathname;
-  const isPrivatePage = privatePages.some(p => pathname.includes(p));
 
-  // Example: check if user has a token (customize this)
-  const token = req.cookies.get('token')?.value;
+  //  Normalize path to remove locale prefix (e.g. /en/wishlist → /wishlist)
+  const normalizedPath = (() => {
+    const localePattern = new RegExp(
+      `^/(${routing.locales.join('|')})(/|$)`,
+      'i'
+    );
+    return pathname.replace(localePattern, '/');
+  })();
 
-  if (isPrivatePage && !token) {
-    // user not logged in → redirect to login
-    return NextResponse.redirect(new URL('/login', req.nextUrl.origin));
+  //  Redirect unauthenticated users trying to access private pages
+  if (!token && privatePages.includes(normalizedPath)) {
+    const url = new URL('/login', req.nextUrl.origin);
+    url.searchParams.set('callbackUrl', normalizedPath);
+
+    return NextResponse.redirect(url);
   }
 
-  // user logged in or public page → continue
+  // Redirect logged-in users trying to access auth pages
+  if (token && authPages.includes(normalizedPath)) {
+    return NextResponse.redirect(new URL('/', req.nextUrl.origin));
+  }
+
+  //  Otherwise, continue with i18n routing
   return handleI18nRouting(req);
 }
 

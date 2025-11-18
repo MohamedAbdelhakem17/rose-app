@@ -1,17 +1,21 @@
+'use client';
 import { NewsletterForm } from '@/components/shared/newsletter-form';
-import { cn } from '@/lib/utils/utils';
-import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
-import { navigationLinks } from '@/lib/constants/footer-navigation';
-import { getTranslations } from 'next-intl/server';
+import { useNavigationLinks } from '@/lib/constants/navigation';
+import { cn } from '@/lib/utils/utils';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 interface FooterProps {
   className?: string;
 }
 
-export async function Footer({ className }: FooterProps) {
-  // Translate
-  const t = await getTranslations();
+export function Footer({ className }: FooterProps) {
+  // Translation
+  const t = useTranslations();
+
+  // Hooks
+  const navigationLinks = useNavigationLinks('footer');
   return (
     <footer
       className={cn(

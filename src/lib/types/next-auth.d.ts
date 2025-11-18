@@ -18,12 +18,8 @@ declare module 'next-auth' {
   /**
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
-  interface Session extends Omit<User, 'token'> {
-    user: {
-      /** The user's postal address. */
-      address: string;
-    };
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  interface Session extends Omit<User, 'token'> {}
 }
 declare module 'next-auth/jwt' {
   /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
