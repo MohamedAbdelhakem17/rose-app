@@ -1,5 +1,4 @@
 import LanguageToggle from '@/components/shared/language-toggle';
-import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import React from 'react';
 
@@ -12,7 +11,7 @@ export default function AuthLayout({
     <div className='min-h-screen grid grid-cols-2'>
       <div className='h-full flex flex-col justify-center '>
         <div className='w-[406px] mx-auto'>
-          <div className='flex justify-end'>
+          <div className='flex justify-end   '>
             {/* language switcher button */}
             <LanguageToggle />
           </div>
@@ -23,7 +22,7 @@ export default function AuthLayout({
               alt=''
               width={280}
               height={45}
-              className='my-10 text-center'
+              className='my-3 text-center'
             />
           </div>
           {/* page content */}
@@ -35,7 +34,7 @@ export default function AuthLayout({
               alt=''
               width={280}
               height={45}
-              className='my-10 text-center transform rotate-180'
+              className='my-3 text-center transform rotate-180'
             />
           </div>
         </div>

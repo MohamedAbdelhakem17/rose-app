@@ -1,7 +1,6 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -10,6 +9,16 @@ const nextConfig = {
         hostname: 'flower.elevateegy.com',
       },
     ],
+  },
+
+  async redirects() {
+    return [
+      {
+        source: '/allOrders',
+        destination: '/orders',
+        permanent: true,
+      },
+    ];
   },
 };
 

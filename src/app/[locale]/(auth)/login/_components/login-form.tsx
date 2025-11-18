@@ -15,12 +15,12 @@ import { useMutation } from '@tanstack/react-query';
 import { signIn } from 'next-auth/react';
 
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils/utils';
+import { Loader2Icon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import ErrorApi from '../../_components/error-api';
-import { cn } from '@/lib/utils/utils';
-import { Loader2Icon } from 'lucide-react';
 
 export default function LoginForm() {
   // Translate
@@ -62,7 +62,7 @@ export default function LoginForm() {
   return (
     <Form {...form}>
       <form
-        className='capitalize font-inter font-medium w-[404px]'
+        className='capitalize font-inter font-medium w-[404px] py-4'
         onSubmit={form.handleSubmit(onSubmit)}
       >
         {/* Email */}
@@ -72,22 +72,17 @@ export default function LoginForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel
-                className={cn(
-                  'text-gray-800 dark:text-white',
-                  form.formState.errors.email &&
-                    'text-red-500 dark:text-soft-pink-700'
-                )}
-              >
-                {t('email-label')}
-              </FormLabel>
+              <FormLabel>{t('email-label')}</FormLabel>
 
               {/* Field */}
               <FormControl>
                 <Input
                   type='text'
                   placeholder='user@example.com'
-                  className={`${form.formState.errors.email?.message && 'border-red-600 dark:border-soft-pink-500 focus:ring-red-600 dark:focus:ring-soft-pink-600'}`}
+                  className={cn([
+                    form.formState.errors.password?.message &&
+                      'border-red-600 focus:ring-red-600',
+                  ])}
                   {...field}
                 />
               </FormControl>
@@ -105,26 +100,19 @@ export default function LoginForm() {
             render={({ field }) => (
               <FormItem>
                 {/* Label */}
-                <FormLabel
-                  className={cn(
-                    'text-gray-800 dark:text-white',
-                    form.formState.errors.password &&
-                      'text-red-500 dark:text-soft-pink-700'
-                  )}
-                >
-                  {t('password-label')}
-                </FormLabel>
+                <FormLabel>{t('password-label')}</FormLabel>
 
                 {/* Field */}
                 <FormControl>
-                  {/* <PasswordInput> */}
                   <Input
                     type='password'
                     placeholder='********'
-                    className={`${form.formState.errors.password?.message && 'border-red-600 dark:border-soft-pink-500 focus:ring-red-600 dark:focus:ring-soft-pink-600'}`}
+                    className={cn([
+                      form.formState.errors.password?.message &&
+                        'border-red-600 focus:ring-red-600',
+                    ])}
                     {...field}
                   />
-                  {/* </PasswordInput> */}
                 </FormControl>
 
                 {/* Feedback */}
@@ -160,16 +148,6 @@ export default function LoginForm() {
             t('login-button')
           )}
         </Button>
-
-        <p className='w-full border-t pt-5 mt-9 font-sarabun border-zinc-200 text-zinc-800 dark:text-white text-center'>
-          {t('login-p')}{' '}
-          <Link
-            href={'/register'}
-            className='text-maroon-800 dark:text-soft-pink-300'
-          >
-            {t('login-p-action')}
-          </Link>
-        </p>
       </form>
     </Form>
   );

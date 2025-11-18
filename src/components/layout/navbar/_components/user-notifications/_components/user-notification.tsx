@@ -1,22 +1,22 @@
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
-import {
-  Bell,
-  BellOff,
-  BrushCleaning,
-  CheckCheck,
-  Check,
-  EllipsisVertical,
-  Trash2,
-} from 'lucide-react';
-import { cn } from '@/lib/utils/utils';
 import {
   NotificationContextType,
   NotificationType,
 } from '@/lib/types/user-notification';
-import useGetNotificationCount from '../_hooks/use-get-notification-count';
+import { cn } from '@/lib/utils/utils';
+import {
+  Bell,
+  BellOff,
+  BrushCleaning,
+  Check,
+  CheckCheck,
+  EllipsisVertical,
+  Trash2,
+} from 'lucide-react';
+import React, { createContext, useContext, useState } from 'react';
 import useDeleteNotification from '../_hooks/use-delete-notification';
+import useGetNotificationCount from '../_hooks/use-get-notification-count';
 import useMarkNotificationRead from '../_hooks/use-read-notification';
 
 // --------------------------------------
@@ -36,7 +36,13 @@ const useNotifications = () => {
 //  Provider
 // --------------------------------------
 
-export function UserNotifications({ children }: { children: React.ReactNode }) {
+export function UserNotifications({
+  children,
+  id,
+}: {
+  children: React.ReactNode;
+  id: string;
+}) {
   // State
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string | null>(null);
@@ -66,7 +72,9 @@ export function UserNotifications({ children }: { children: React.ReactNode }) {
         markNotificationRead,
       }}
     >
-      <div className='relative'>{children}</div>
+      <div className='relative z-50' id={id}>
+        {children}
+      </div>
     </NotificationContext.Provider>
   );
 }

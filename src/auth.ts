@@ -41,23 +41,21 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        // Store user data in the token
-        token.email = user.email;
-        token.token = user.token;
-
-        // Also set the token in the cookie for server components
-        const { setToken } = await import('./lib/utils/cookies');
-        await setToken(user.token);
+        token = {
+          ...token,
+          ...user,
+        };
       }
       return token;
     },
     session: ({ session, token }) => {
-      session._id = token._id;
-      session.email = token.email || '';
-      session.role = token.role;
-      session.firstName = token.firstName;
-      session.lastName = token.lastName;
-      // Do not expose token to client side
+      if (session.user) {
+        session._id = token._id;
+        session.email = token.email || '';
+        session.role = token.role;
+        session.firstName = token.firstName;
+        session.lastName = token.lastName;
+      }
       return session;
     },
   },

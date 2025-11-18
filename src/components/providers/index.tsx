@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import React from 'react';
 import { Toaster } from '../../components/ui/sonner';
+import AuthProvider from './auth-provider';
 import { QueryProvider } from './query-provider';
 import { ThemeProvider } from './theme-provider';
 
@@ -16,7 +17,12 @@ export default function Providers({
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <QueryProvider>
-        <ThemeProvider>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
           <Toaster
             richColors
             position='bottom-right'
@@ -25,7 +31,7 @@ export default function Providers({
               className: '!bg-emerald-50 !text-zinc-800 border border-gray-700',
             }}
           />
-          {children}
+          <AuthProvider>{children}</AuthProvider>
         </ThemeProvider>
       </QueryProvider>
     </NextIntlClientProvider>
