@@ -8,12 +8,10 @@ export default function RouteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <main className='min-h-screen flex flex-col justify-between '>
-        <Header />
-        {children}
-        <Footer />
-      </main>
-    </>
+    <div className='flex flex-col min-h-screen'>
+      <Header />
+      {children}
+      <Footer />
+    </div>
   );
 }

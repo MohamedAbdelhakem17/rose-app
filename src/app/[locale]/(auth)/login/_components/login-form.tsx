@@ -15,6 +15,7 @@ import { useMutation } from '@tanstack/react-query';
 import { signIn } from 'next-auth/react';
 
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils/utils';
 import { Loader2Icon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
@@ -78,7 +79,10 @@ export default function LoginForm() {
                 <Input
                   type='text'
                   placeholder='user@example.com'
-                  className={`${form.formState.errors.email?.message && 'border-red-600 dark:border-soft-pink-500 focus:ring-red-600 dark:focus:ring-soft-pink-600'}`}
+                  className={cn([
+                    form.formState.errors.password?.message &&
+                      'border-red-600 focus:ring-red-600',
+                  ])}
                   {...field}
                 />
               </FormControl>
@@ -103,7 +107,10 @@ export default function LoginForm() {
                   <Input
                     type='password'
                     placeholder='********'
-                    className={`${form.formState.errors.password?.message && 'border-red-600 dark:border-soft-pink-500 focus:ring-red-600 dark:focus:ring-soft-pink-600'}`}
+                    className={cn([
+                      form.formState.errors.password?.message &&
+                        'border-red-600 focus:ring-red-600',
+                    ])}
                     {...field}
                   />
                 </FormControl>

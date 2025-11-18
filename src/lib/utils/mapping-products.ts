@@ -14,7 +14,7 @@ import { getProductLabels } from '@/lib/constants/product-labels.constant';
 
 export function mappingProducts(
   products: ProductType[],
-  t: (key: string) => string
+  t: (_key: string) => string
 ): MappingProductType[] {
   const LABEL_RULES = getProductLabels(t);
 
@@ -35,6 +35,7 @@ export function mappingProducts(
       rateAvg: product.rateAvg,
       priceAfterDiscount: product.priceAfterDiscount,
       price: product.price,
+      rateCount: product.rateCount,
       labels,
     };
   });

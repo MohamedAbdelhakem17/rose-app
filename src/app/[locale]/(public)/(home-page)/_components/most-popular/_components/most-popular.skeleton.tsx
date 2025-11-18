@@ -1,5 +1,4 @@
-import { ProductSkelton } from '@/components/skeleton';
-
+import { ProductSkelton } from '@/components/skeletons';
 export default function BestSellingSkeleton() {
   return (
     <div className='col-span-3 flex gap-x-8'>
