@@ -10,14 +10,14 @@ export default function LowStockProducts({
   const t = useTranslations();
 
   return (
-    <div className='rounded-md bg-white p-6 space-y-6 max-h-[443px] overflow-y-auto col-span-full md:col-span-1'>
+    <div className='rounded-md bg-white p-6 space-y-6 col-span-full md:col-span-1'>
       {/* Label */}
       <h3 className='font-inter font-semibold text-zinc-800 text-2xl'>
         {t('low-stock-products-label')}
       </h3>
 
       {/* Products list */}
-      <ul className='divide-y'>
+      <ul className='divide-y max-h-[443px] overflow-y-auto pr-2'>
         {products?.map((product: LowStockProduct) => {
           const isLow = product.quantity < 5;
 
@@ -31,7 +31,7 @@ export default function LowStockProducts({
 
               {/* Count */}
               <span
-                className={cn(['text-lg font-medium', isLow && 'text-red-600'])}
+                className={cn(['text-md font-medium', isLow && 'text-red-600'])}
               >
                 {product.quantity} {t('products-count-label')}
               </span>

@@ -9,7 +9,7 @@ export default function TopSellingProducts({
   // Translation
   const t = useTranslations();
 
-  // Functions
+  // Function
   const getItemBackground = (index: number) => {
     switch (index) {
       case 0:
@@ -18,7 +18,6 @@ export default function TopSellingProducts({
         return 'bg-[linear-gradient(90deg,rgba(117,127,149,0.25)_0%,rgba(117,127,149,0.1)_100%)]';
       case 2:
         return 'bg-[linear-gradient(90deg,rgba(145,68,0,0.25)_0%,rgba(145,68,0,0.1)_100%)]';
-
       default:
         return 'bg-zinc-100';
     }
@@ -30,14 +29,14 @@ export default function TopSellingProducts({
   });
 
   return (
-    <div className='rounded-md bg-white p-6 space-y-6 max-h-[443px] overflow-y-auto col-span-full md:col-span-1'>
+    <div className='rounded-md bg-white p-6 space-y-6 col-span-full md:col-span-1'>
       {/* Label */}
       <h3 className='font-inter font-semibold text-zinc-800 text-2xl'>
         {t('top-selling-products-label')}
       </h3>
 
-      {/* Product List */}
-      <ul className='space-y-3'>
+      {/* Product list */}
+      <ul className='space-y-3 max-h-[443px] overflow-y-auto pr-2'>
         {products?.map((product: TopSellingProduct, index: number) => {
           return (
             <li
@@ -47,9 +46,9 @@ export default function TopSellingProducts({
                 getItemBackground(index),
               ])}
             >
-              {/* Price and title */}
-              <h4 className='flex items-center gap-1  font-inter'>
-                {/* Title */}
+              {/* Title  */}
+              <h4 className='flex items-center gap-1 font-inter'>
+                {/* Label */}
                 <span className='truncate max-w-[230px] inline-block text-base font-semibold'>
                   {product.title}
                 </span>
@@ -60,12 +59,12 @@ export default function TopSellingProducts({
                 </span>
               </h4>
 
-              {/* Sales count */}
+              {/* Sold count */}
               <p className='flex items-center gap-1 text-sm'>
                 {/* Count */}
                 <span className='font-bold'>{product.sold}</span>
 
-                {/* Label */}
+                {/*Label  */}
                 <span className='font-medium'>{t('sales-label-count')}</span>
               </p>
             </li>
