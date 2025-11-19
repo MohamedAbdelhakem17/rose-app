@@ -2,7 +2,7 @@ import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 
-const privatePages = ['/wishlist', '/checkout'];
+const privatePages = ['/wishlist', '/checkout', '/dashboard'];
 const handleI18nRouting = createMiddleware(routing);
 
 export default function middleware(req: NextRequest) {
