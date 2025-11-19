@@ -132,7 +132,6 @@
   "privacy-link": "سياسة الخصوصية",
   "faqs-link": "الأسئلة الشائعة",
   "login": "تسجيل الدخول",
-  "search-placeholder": "ما هي الهدية الرائعة التي تبحث عنها؟",
   "deliver-to": "<title>تسليم الى  </title><address>{city}</address>",
   "hello-user": "<title>مرحبا </title><name>{username}</name>",
   "profile-menu": {
@@ -168,5 +167,9 @@
   "rating-label": "التقييم: <value></value> من 5",
   "rating-count": "(<count></count> تقييم)",
   "show-all": "إظهار الكل",
-  "show-less": "عرض أقل"
+  "show-less": "عرض أقل",
+  "top-selling-products-label": "المنتجات الأكثر مبيعا",
+  "low-stock-products-label": "منتجات منخفضة المخزون",
+  "sales-label-count": "مبيعات",
+  "products-count-label": "منتجات"
 }
