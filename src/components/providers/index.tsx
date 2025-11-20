@@ -3,6 +3,7 @@ import React from 'react';
 import { Toaster } from '../../components/ui/sonner';
 import { QueryProvider } from './query-provider';
 import { ThemeProvider } from './theme-provider';
+import { SessionProvider } from 'next-auth/react';
 
 export default function Providers({
   children,

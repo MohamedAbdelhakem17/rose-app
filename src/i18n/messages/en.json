@@ -106,5 +106,18 @@
   "footer-discover": "Discover our website",
   "footer-title": "Get <span>20% </span> Off Discount Coupon",
   "footer-subtitle": "By subscribing to our newsletter",
-  "footer-subscribe-button": "Subscribe"
+  "footer-subscribe-button": "Subscribe",
+
+  "dashboard-header-breadcrumb-link-1": "dashboard",
+  "dashboard-header-breadcrumb-link-2": "overview",
+  "dashboard-header-breadcrumb-link-3": "category",
+  "dashboard-header-breadcrumb-link-4": "occasions",
+  "dashboard-header-breadcrumb-link-5": "products",
+
+  "dashboard-sidebar-image-alt": "Rose Logo",
+  "dashboard-sidebar-button-preview": "Preview website",
+  
+  "dashboard-sidebar-admin-menu-action-link-1": "account",
+  "dashboard-sidebar-admin-menu-action-link-2": "log out"
+
 }

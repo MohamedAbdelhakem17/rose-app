@@ -101,5 +101,17 @@
   "footer-discover": "تعرّف على موقعنا الإلكتروني",
   "footer-title": " احصل على كوبون خصم بنسبة <span>20%</span>",
   "footer-subtitle": "من خلال الاشتراك في نشرتنا الإخبارية",
-  "footer-subscribe-button": "اشترك الان"
+  "footer-subscribe-button": "اشترك الان",
+  
+  "dashboard-header-breadcrumb-link-1": "لوحه الاعدادات",
+  "dashboard-header-breadcrumb-link-2": "الملخص",
+  "dashboard-header-breadcrumb-link-3": "الفئات",
+  "dashboard-header-breadcrumb-link-4": "المناسبات",
+  "dashboard-header-breadcrumb-link-5": "المنتجات",
+
+  "dashboard-sidebar-image-alt": "صوره روز",
+  "dashboard-sidebar-button-preview": "معاينة الموقع",
+
+  "dashboard-sidebar-admin-menu-action-link-1": "اعدادات الحساب",
+  "dashboard-sidebar-admin-menu-action-link-2": "تسجيل الخروج"
 }
