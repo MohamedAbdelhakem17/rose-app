@@ -137,7 +137,6 @@
   "privacy-link": "Privacy Policy",
   "faqs-link": "FAQs",
   "login": "Login",
-  "search-placeholder": "What awesome gift are you looking for?",
   "deliver-to": "<title>Deliver to </title><address>{city}</address>",
   "hello-user": "<title>Hello</title><name>{username}</name>",
   "profile-menu": {
@@ -173,5 +172,9 @@
   "rating-label": "Rating: <value></value>/5",
   "rating-count": "(<count></count> ratings)",
   "show-all": "Show All",
-  "show-less": "Show Less"
+  "show-less": "Show Less",
+  "top-selling-products-label": "Top Selling Products",
+  "low-stock-products-label": "Low Stock Products",
+  "sales-label-count": "Sales",
+  "products-count-label": "Products"
 }
