@@ -1,7 +1,6 @@
 'use server';
 
 import { REQUEST_HEADERS } from '@/lib/constants/request-headers.constant';
-import { USER_ROLES } from '@/lib/constants/user-roles.constant';
 import { getToken } from '@/lib/utils/get-token';
 
 export async function getProductStatistics(): Promise<
@@ -14,18 +13,13 @@ export async function getProductStatistics(): Promise<
       return { error: 'Unauthorized: Missing token.' };
     }
 
-    if (token.role !== USER_ROLES.ADMIN) {
-      return { error: 'Unauthorized: Admins only.' };
-    }
-
     const API_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/statistics/products`;
 
     const response = await fetch(API_URL, {
       method: 'GET',
       headers: {
         ...REQUEST_HEADERS,
-        // Authorization: `Bearer ${token.token}`,
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjhlZTA3YWY3ZmVlNjhhNGMyZWJhZmJhIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjI0MjQzMDl9.0tYKHrz6liDX-0U_XLsrroB7ISnmChOip5evszIyiag`,
+        Authorization: `Bearer ${token.token}`,
       },
       cache: 'no-store',
     });

@@ -15,7 +15,6 @@ import { useMutation } from '@tanstack/react-query';
 import { signIn } from 'next-auth/react';
 
 import { Button } from '@/components/ui/button';
-import { USER_ROLES } from '@/lib/constants/user-roles.constant';
 import { cn } from '@/lib/utils/utils';
 import { Loader2Icon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -37,25 +36,9 @@ export default function LoginForm() {
       });
 
       if (response?.error) throw new Error(response.error);
-
-      if (response?.ok) {
-        const session = await fetch('/api/auth/session').then(res =>
-          res.json()
-        );
-
-        const role = session?.role;
-
-        if (!role) throw new Error('User role not found');
-
-        if (role === USER_ROLES.ADMIN) {
-          window.location.href = '/dashboard';
-          return;
-        }
-
-        const callbackUrl =
-          new URLSearchParams(window.location.search).get('callbackUrl') || '/';
-
-        window.location.href = callbackUrl;
+      if (response?.url) {
+        window.location.href =
+          new URLSearchParams(location.search).get('callbackUrl') || '/';
       }
 
       return response;
