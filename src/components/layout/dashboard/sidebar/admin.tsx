@@ -26,7 +26,7 @@ export default function Admin() {
   const firstName = session.data?.firstName ?? 'A';
   const avatarBg = randomColor(firstName);
   const firstLetter = firstName.charAt(0).toUpperCase();
-  const hasImage = session.data?.image && session.data.image !== '';
+  const hasImage = session.data?.photo && session.data.photo !== '';
   const RTL: boolean = locale === 'ar';
 
   return (
@@ -36,7 +36,7 @@ export default function Admin() {
         <div className='flex justify-center items-center rounded-full overflow-hidden w-12 h-12'>
           {hasImage ? (
             <Image
-              src={session.data?.image === undefined && '/assets/logo1.svg'}
+              src={session.data?.photo}
               alt={firstName}
               width={54}
               height={54}
@@ -71,7 +71,7 @@ export default function Admin() {
         <div
           className={cn(
             ' absolute bottom-0  w-56 rounded-xl font-inter bg-white dark:bg-zinc-700 border border-zinc-100',
-            RTL ? '-left-56' : '-right-56'
+            RTL ? '-left-60' : '-right-60'
           )}
         >
           {/* Header */}
@@ -84,6 +84,7 @@ export default function Admin() {
           <Link
             href={'/account'}
             className=' flex justify-start items-center gap-2 font-medium capitalize p-2 hover:bg-zinc-200 dark:hover:bg-zinc-500 border-b-zinc-100 border-b'
+            onClick={() => setToggle(false)}
           >
             <User size={16} />
             {t('dashboard-sidebar-admin-menu-action-link-1')}
@@ -91,7 +92,10 @@ export default function Admin() {
 
           <div
             className=' flex justify-start items-center gap-2 font-medium capitalize p-2 cursor-pointer hover:bg-maroon-300 border-b-zinc-100 border-b rounded-b-xl'
-            onClick={() => signOut()}
+            onClick={() => {
+              signOut();
+              setToggle(false);
+            }}
           >
             <LogOut size={16} />
             <p>{t('dashboard-sidebar-admin-menu-action-link-2')}</p>
