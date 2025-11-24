@@ -26,7 +26,7 @@ export default async function RelatedProducts({
   if (payload.message != 'success') {
     throw new Error(payload.message);
   }
-  console.log(payload);
+  // console.log(payload);
   return (
     <Section>
       <SectionTitle title={t('related-products-header')} />

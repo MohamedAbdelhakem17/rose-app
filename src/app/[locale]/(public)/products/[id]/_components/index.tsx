@@ -1,6 +1,6 @@
 import { fetchProductById } from '@/lib/apis/products';
-import ProductFeatures from './_components/product-features';
-import ProductImages from './_components/product-gallery';
+import ProductFeatures from './product-features';
+import ProductImages from './product-gallery';
 
 // --- Props ---
 interface ProductDetailsProps {
