@@ -8,7 +8,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { Link } from '@/i18n/navigation';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 

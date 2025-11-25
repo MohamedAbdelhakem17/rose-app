@@ -27,10 +27,9 @@ export default function Admin() {
   const avatarBg = randomColor(firstName);
   const firstLetter = firstName.charAt(0).toUpperCase();
   const hasImage = session.data?.photo && session.data.photo !== '';
-  const RTL: boolean = locale === 'ar';
 
   return (
-    <div className=' relative flex justify-center items-end gap-5 border-t border-t-black/10 mx-6 mt-80'>
+    <div className=' relative flex justify-center items-end gap-5 border-t border-t-black/10 mx-6 pt-4 mt-auto'>
       <div className=' flex justify-center items-end gap-2.5'>
         {/* Avatar */}
         <div className='flex justify-center items-center rounded-full overflow-hidden w-12 h-12'>
@@ -55,7 +54,7 @@ export default function Admin() {
         {/* Admin Information */}
         <div>
           <h3 className=' font-bold'>{`${session.data?.firstName} ${session.data?.lastName}`}</h3>
-          <p className=' font-semibold text-zinc-300 text-xs'>
+          <p className=' font-semibold text-zinc-400 text-xs'>
             {session.data?.email}
           </p>
         </div>
@@ -71,7 +70,7 @@ export default function Admin() {
         <div
           className={cn(
             ' absolute bottom-0  w-56 rounded-xl font-inter bg-white dark:bg-zinc-700 border border-zinc-100',
-            RTL ? '-left-60' : '-right-60'
+            locale === 'ar' ? '-left-60' : '-right-60'
           )}
         >
           {/* Header */}
@@ -93,7 +92,7 @@ export default function Admin() {
           <div
             className=' flex justify-start items-center gap-2 font-medium capitalize p-2 cursor-pointer hover:bg-maroon-300 border-b-zinc-100 border-b rounded-b-xl'
             onClick={() => {
-              signOut();
+              signOut({ callbackUrl: '/login' });
               setToggle(false);
             }}
           >

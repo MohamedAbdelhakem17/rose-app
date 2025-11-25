@@ -13,7 +13,7 @@ export default function Sidebar() {
   // Translate
   const t = useTranslations();
   return (
-    <aside className='fixed bg-white dark:bg-zinc-700 border-r w-80 border-r-black/10 dark:border-r-white/20 p-6 h-screen'>
+    <aside className='fixed flex flex-col justify-start bg-white dark:bg-zinc-700 border-r w-80 border-r-black/10 dark:border-r-white/20 p-6 h-screen'>
       <div className=' flex flex-col items-baseline  gap-6 px-8'>
         {/* Logo */}
         <div className='flex justify-center items-center w-full'>
