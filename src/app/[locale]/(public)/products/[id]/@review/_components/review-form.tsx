@@ -1,7 +1,6 @@
 'use client';
 
 import { Input } from '@/components/ui/Input';
-import RatingIcon from '@/components/shared/rating-icon';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/Textarea';
 import { cn } from '@/lib/utils/utils';
@@ -21,15 +20,13 @@ import { useLocale, useTranslations } from 'next-intl';
 
 type ReviewFormProps = {
   className?: string;
-  children?: React.ReactElement;
 };
-export default function ReviewForm({ className, children }: ReviewFormProps) {
+export default function ReviewForm({ className }: ReviewFormProps) {
   //Local
   const local = useLocale();
 
   // Variables
   const { id } = useParams();
-  const RTL: boolean = local === 'ar';
 
   // Translate
   const t = useTranslations();
@@ -38,7 +35,7 @@ export default function ReviewForm({ className, children }: ReviewFormProps) {
   const form = useForm<AddReview>({
     defaultValues: {
       product: id,
-      rating: 0.5,
+      rating: 0,
       title: '',
       comment: '',
     },
@@ -60,7 +57,7 @@ export default function ReviewForm({ className, children }: ReviewFormProps) {
       <form
         className={cn(
           'relative flex flex-col gap-3 mt-4 first-letter:uppercase ',
-          RTL
+          local === 'ar'
             ? 'pr-5 border-r border-r-zinc-200 dark:border-r-zinc-700'
             : 'pl-5 border-l border-l-zinc-200 dark:border-l-zinc-700',
           'capitalize font-inter font-medium w-[404px]',
@@ -148,7 +145,6 @@ export default function ReviewForm({ className, children }: ReviewFormProps) {
         >
           {t('rating-button')}
         </Button>
-        {/* {children} */}
       </form>
     </Form>
   );

@@ -111,5 +111,7 @@
   "rating-form-comment": "تعليق:",
   "rating-form-comment-placeholder": "ما رأيك بهذا المنتج؟",
   "rating-button": "اضف المراجعة",
+  "rating-unauthorize-p": "يجب عليك تسجيل الدخول للتقييم",
+  "rating-unauthorize-button": "سجل دخول الان",
   "related-products-header": "المنتجات ذات الصلة"
 }

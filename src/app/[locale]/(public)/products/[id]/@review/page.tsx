@@ -68,7 +68,7 @@ export default async function ProductReview({ params }: ProductReviewProps) {
         </div>
 
         {/* Review form */}
-        {session ? <ReviewForm /> : <ReviewFormUnauthenticated />}
+        {session === null ? <ReviewFormUnauthenticated /> : <ReviewForm />}
       </div>
     </Section>
   );

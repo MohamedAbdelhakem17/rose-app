@@ -6,9 +6,14 @@ import React from 'react';
 type ReviewGeneralRateProps = {
   payload: SuccessResponse<Review>;
 };
-export default async function ReviewGeneralRate({ payload }: ReviewGeneralRateProps) {
+export default async function ReviewGeneralRate({
+  payload,
+}: ReviewGeneralRateProps) {
   // Translate
   const t = await getTranslations();
+
+  console.log(payload.reviews);
+  
 
   return payload.reviews.map(el => (
     <div
@@ -17,7 +22,9 @@ export default async function ReviewGeneralRate({ payload }: ReviewGeneralRatePr
     >
       <h2 className=' first-letter:uppercase'>{t('general-rate')}</h2>
       <div className=' flex justify-start items-center gap-1'>
-        <h3 className=' font-bold text-2xl'>{el.rating}</h3>
+        <h3 className=' font-bold text-2xl'>
+          {el.rating === undefined ? '0' : el.rating}
+        </h3>
         <span className=' font-medium text-sm text-zinc-500'>
           (
           {payload.metadata.totalItems > 1

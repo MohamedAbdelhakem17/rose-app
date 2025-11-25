@@ -30,7 +30,7 @@ export default async function RelatedProducts({
   return (
     <Section>
       <SectionTitle title={t('related-products-header')} />
-      {/* <ProductSliderList products={payload.similarProducts} /> */}
+      <ProductSliderList products={payload.similarProducts} />
     </Section>
   );
 }
