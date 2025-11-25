@@ -12,6 +12,7 @@ declare module 'next-auth' {
     email: string;
     gender: string;
     phone: string;
+    photo: string;
     role: string;
     token: string;
   }

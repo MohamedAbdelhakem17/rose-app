@@ -1,40 +1,46 @@
+import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import createMiddleware from 'next-intl/middleware';
-import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 
 const privatePages = ['/wishlist', '/orders', '/profile'];
 const authPages = ['/login', '/forgot-password', '/register'];
 
+//  Otherwise, continue with i18n routing
 const handleI18nRouting = createMiddleware(routing);
 
-export default async function middleware(req: NextRequest) {
-  const token = await getToken({ req });
-  const pathname = req.nextUrl.pathname;
+export async function middleware(req: NextRequest) {
+  const { nextUrl } = req;
 
-  //  Normalize path to remove locale prefix (e.g. /en/wishlist → /wishlist)
-  const normalizedPath = (() => {
-    const localePattern = new RegExp(
-      `^/(${routing.locales.join('|')})(/|$)`,
-      'i'
-    );
-    return pathname.replace(localePattern, '/');
-  })();
+  // Remove locale prefix (/en, /ar)
+  const pathname = nextUrl.pathname.replace(/^\/(en|ar)/, '');
+  console.log('pathname: ' + pathname);
 
-  //  Redirect unauthenticated users trying to access private pages
-  if (!token && privatePages.includes(normalizedPath)) {
-    const url = new URL('/login', req.nextUrl.origin);
-    url.searchParams.set('callbackUrl', normalizedPath);
+  // Check if route starts with /dashboard
+  const isDashboardRoute = pathname.startsWith('/dashboard');
 
-    return NextResponse.redirect(url);
+  const isDashboard = pathname === '/dashboard';
+  if (isDashboard) {
+    return NextResponse.redirect(new URL('/dashboard/overview', req.url));
   }
 
-  // Redirect logged-in users trying to access auth pages
-  if (token && authPages.includes(normalizedPath)) {
-    return NextResponse.redirect(new URL('/', req.nextUrl.origin));
+  // Get session (NextAuth v4)
+  const token = await getToken({
+    req,
+  });
+  console.log('token: ' + token?.role);
+
+  // UNAUTHENTICATED -> redirect home
+  if ((isDashboardRoute || privatePages.includes(pathname)) && !token) {
+    return NextResponse.redirect(new URL('/', req.url));
   }
 
-  //  Otherwise, continue with i18n routing
+  // AUTHENTICATED but NOT ADMIN → redirect home
+  if (isDashboardRoute && token?.role !== 'admin') {
+    return NextResponse.redirect(new URL('/', req.url));
+  }
+
+  // Continue with intl routing
   return handleI18nRouting(req);
 }
 

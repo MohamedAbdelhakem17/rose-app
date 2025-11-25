@@ -9,7 +9,13 @@ export default async function ProductStatisticsContent() {
 
   // Error or unauthorized
   if (!payload || 'error' in payload) {
-    return redirect('/');
+    return (
+      <div className=' flex justify-center items-center'>
+        <p className=' text-center text-4xl text-maroon-500 h-screen mt-auto'>
+          {payload.error}
+        </p>
+      </div>
+    );
   }
 
   return (

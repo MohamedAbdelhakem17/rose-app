@@ -171,5 +171,17 @@
   "top-selling-products-label": "المنتجات الأكثر مبيعا",
   "low-stock-products-label": "منتجات منخفضة المخزون",
   "sales-label-count": "مبيعات",
-  "products-count-label": "منتجات"
+  "products-count-label": "منتجات",
+
+  "dashboard-header-breadcrumb-link-1": "لوحه الاعدادات",
+  "dashboard-header-breadcrumb-link-2": "الملخص",
+  "dashboard-header-breadcrumb-link-3": "الفئات",
+  "dashboard-header-breadcrumb-link-4": "المناسبات",
+  "dashboard-header-breadcrumb-link-5": "المنتجات",
+
+  "dashboard-sidebar-image-alt": "صوره روز",
+  "dashboard-sidebar-button-preview": "معاينة الموقع",
+
+  "dashboard-sidebar-admin-menu-action-link-1": "اعدادات الحساب",
+  "dashboard-sidebar-admin-menu-action-link-2": "تسجيل الخروج"
 }
