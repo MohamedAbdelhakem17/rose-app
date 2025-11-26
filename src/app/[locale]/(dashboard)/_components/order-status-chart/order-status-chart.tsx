@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useChartData } from '../../../../../hooks/dashboard/use-chart-data';
 import { CustomTooltip } from './custom-tooltip';
 import { useStatistics } from '@/hooks/dashboard/use-orders-statistics';
