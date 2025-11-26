@@ -9,7 +9,7 @@ export async function getOccasions(
   params: GetProductsParams = {}
 ): Promise<GetOccasionsTypeResponse> {
   // Default params
-  const { limit = 50, page = 1, ...filters } = params;
+  const { limit = 10, page = 1, ...filters } = params;
 
   // Build query string dynamically
   const query = new URLSearchParams({
@@ -50,7 +50,8 @@ export async function getOccasions(
   // Map occasions
   const mappedPayload: GetOccasionsTypeResponse = {
     ...payload,
-    occasions: payload.occasions.filter(o => o.productsCount !== 0),
+    // occasions: payload.occasions.filter(o => o.productsCount !== 0),
+    occasions: payload.occasions,
   };
 
   return mappedPayload;
