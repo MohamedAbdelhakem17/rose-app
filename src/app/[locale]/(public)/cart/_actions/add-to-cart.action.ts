@@ -29,7 +29,6 @@ export async function addToCartAction(productId: string) {
 
     return data;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 }

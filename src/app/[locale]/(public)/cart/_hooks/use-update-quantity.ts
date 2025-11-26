@@ -22,9 +22,8 @@ export function useUpdateQuantity() {
     onSuccess: (_, { productTitle, quantity }) => {
       toast.success(`${productTitle} quantity updated to ${quantity}`);
     },
-    onError : (error)=>{
-      console.log(error)
-      toast.error('failed to update')
-    }
+    onError: () => {
+      toast.error('something went wrong');
+    },
   });
 }
