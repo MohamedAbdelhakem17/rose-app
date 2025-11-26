@@ -177,16 +177,18 @@
   "low-stock-products-label": "Low Stock Products",
   "sales-label-count": "Sales",
   "products-count-label": "Products",
-
   "dashboard-header-breadcrumb-link-1": "dashboard",
   "dashboard-header-breadcrumb-link-2": "overview",
   "dashboard-header-breadcrumb-link-3": "category",
   "dashboard-header-breadcrumb-link-4": "occasions",
   "dashboard-header-breadcrumb-link-5": "products",
-
   "dashboard-sidebar-image-alt": "Rose Logo",
   "dashboard-sidebar-button-preview": "Preview website",
-
   "dashboard-sidebar-admin-menu-action-link-1": "account",
-  "dashboard-sidebar-admin-menu-action-link-2": "log out"
+  "dashboard-sidebar-admin-menu-action-link-2": "log out",
+  "occasions-table-header-name": "Name",
+  "occasions-table-header-products": "Products",
+  "no-occasions-found-message": "No occasions found.",
+  "all-occasions-page-title": "All Occasions",
+  "add-occasion-button-label": "Add a new occasion"
 }
