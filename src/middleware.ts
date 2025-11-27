@@ -1,45 +1,23 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { getToken } from 'next-auth/jwt';
 import createMiddleware from 'next-intl/middleware';
+import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 
-const privatePages = ['/wishlist', '/orders', '/profile', '/dashboard'];
-// const authPages = ['/login', '/forgot-password', '/register'];
-
+const privatePages = ['/wishlist', '/checkout', '/dashboard', '/profile'];
 const handleI18nRouting = createMiddleware(routing);
 
-export async function middleware(req: NextRequest) {
-  const { nextUrl } = req;
+export default function middleware(req: NextRequest) {
+  const pathname = req.nextUrl.pathname;
+  const isPrivatePage = privatePages.some(p => pathname.includes(p));
 
-  // Remove locale prefix (/en, /ar)
-  const pathname = nextUrl.pathname.replace(/^\/(en|ar)/, '');
-  console.log('pathname: ' + pathname);
+  // Example: check if user has a token (customize this)
+  const token = req.cookies.get('token')?.value;
 
-  // Check if route starts with /dashboard
-  const isDashboardRoute = pathname.startsWith('/dashboard');
-
-  const isDashboard = pathname === '/dashboard';
-  if (isDashboard) {
-    return NextResponse.redirect(new URL('/dashboard/overview', req.url));
+  if (isPrivatePage && !token) {
+    // user not logged in → redirect to login
+    return NextResponse.redirect(new URL('/login', req.nextUrl.origin));
   }
 
-  // Get session (NextAuth v4)
-  const token = await getToken({
-    req,
-  });
-  console.log('token: ' + token?.role);
-
-  // UNAUTHENTICATED -> redirect home
-  if ((isDashboardRoute || privatePages.includes(pathname)) && !token) {
-    return NextResponse.redirect(new URL('/', req.url));
-  }
-
-  // AUTHENTICATED but NOT ADMIN → redirect home
-  if (isDashboardRoute && token?.role !== 'admin') {
-    return NextResponse.redirect(new URL('/', req.url));
-  }
-
-  // Continue with intl routing
+  // user logged in or public page → continue
   return handleI18nRouting(req);
 }
 

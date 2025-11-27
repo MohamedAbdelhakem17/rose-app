@@ -26,7 +26,6 @@ export default async function Home({
   const t = await getTranslations();
 
   const data = await getProductStatistics();
-  console.log(data);
 
   return (
     <main>
