@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { TableCell, TableRow } from '@/components/ui/table';
 import { Link } from '@/i18n/navigation';
 import { Pen } from 'lucide-react';
-// import { getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import DeleteOccasions from './delete-occasions';
 
 export default async function OccasionsList({
@@ -11,7 +11,7 @@ export default async function OccasionsList({
   occasion: OccasionsType;
 }) {
   // Translation
-  // const t = await getTranslations();
+  const t = await getTranslations();
   return (
     <>
       <TableRow>
@@ -34,10 +34,10 @@ export default async function OccasionsList({
           >
             <Link
               className='flex items-center gap-2  text-blue-700 '
-              href={`occasions/${occasion._id}`}
+              href={`occasions/${occasion._id}?name=update occasion: ${occasion.name}`}
             >
               <Pen className='h-4 w-4' />
-              Edit
+              {t('edit')}
             </Link>
           </Button>
 

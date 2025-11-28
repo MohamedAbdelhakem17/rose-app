@@ -199,5 +199,6 @@
   "delete": "يمسح",
   "deleting": "جارٍ الحذف..",
   "occasion-deleted-successfully": "تم حذف المناسبة بنجاح",
-  "something-went-wrong": "حدث خطأ ما"
+  "something-went-wrong": "حدث خطأ ما",
+  "edit": "يحرر"
 }
