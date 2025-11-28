@@ -13,7 +13,7 @@ import {
 import {
   occasionSchema,
   OccasionSchemaType,
-} from '@/lib/schemas/auth/dashboard/add-occasion.schema';
+} from '@/lib/schemas/auth/dashboard/occasion.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';

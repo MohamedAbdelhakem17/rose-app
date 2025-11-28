@@ -22,6 +22,9 @@ type GetOccasionsTypeResponse = ApiResponse<
   PaginatedResponse<{ occasions: OccasionsType[] }>
 >;
 
+/** Response: Get Single occasions */
+type GetOccasionTypeResponse = ApiResponse<{ occasion: OccasionsType }>;
+
 /** Response: create new occasions */
 type OccasionMutationResponse = ApiResponse<{
   occasions: OccasionsType;

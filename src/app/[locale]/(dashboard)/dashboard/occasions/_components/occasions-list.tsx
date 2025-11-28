@@ -34,7 +34,7 @@ export default async function OccasionsList({
           >
             <Link
               className='flex items-center gap-2  text-blue-700 '
-              href={'#'}
+              href={`occasions/${occasion._id}`}
             >
               <Pen className='h-4 w-4' />
               Edit

@@ -56,3 +56,37 @@ export async function getOccasions(
 
   return mappedPayload;
 }
+
+/**
+ * Fetch a single occasion by ID from the API
+ */
+export async function getOccasion(
+  id: string
+): Promise<GetOccasionTypeResponse> {
+  if (!id) {
+    throw new Error('Occasion ID is required');
+  }
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/occasions/${id}`,
+    {
+      method: 'GET',
+      headers: {
+        ...REQUEST_HEADERS,
+      },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch occasion with id: ${id}`);
+  }
+
+  const payload: GetOccasionTypeResponse | { error: string } =
+    await response.json();
+
+  if ('error' in payload) {
+    throw new Error(payload.error || 'Failed to fetch occasion');
+  }
+
+  return payload as GetOccasionTypeResponse;
+}
