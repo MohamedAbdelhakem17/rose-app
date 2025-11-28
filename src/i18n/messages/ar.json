@@ -185,5 +185,12 @@
   "occasions-table-header-products": "منتجات",
   "no-occasions-found-message": "لم يتم العثور على مناسبات.",
   "all-occasions-page-title": "جميع المناسبات",
-  "add-occasion-button-label": "أضف مناسبة جديدة"
+  "add-occasion-button-label": "أضف مناسبة جديدة",
+  "name": "اسم",
+  "occasion-image-input-label": "صورة ‏المناسبة‏",
+  "occasion-name": "اسم المناسبة",
+  "occasion-image": "صورة المناسبة",
+  "adding": "جارٍ الإضافة...",
+  "add-occasion": "أضف مناسبة",
+  "occasion-added-successfully-message": "تمت إضافة المناسبة بنجاح!"
 }

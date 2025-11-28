@@ -11,7 +11,7 @@ interface ErrorResponse {
   error: string;
 }
 
-type OccasionsResponse = OccasionMutationResponse | ErrorResponse;
+export type OccasionsResponse = OccasionMutationResponse | ErrorResponse;
 
 // ------------------------------------
 // Helper: Get Auth Token
@@ -79,7 +79,7 @@ async function addNewOccasionsAction(
   });
 }
 
-// Update existing occasion
+// Update existing occasion`
 async function updateOccasionsAction({
   id,
   dataPayload,

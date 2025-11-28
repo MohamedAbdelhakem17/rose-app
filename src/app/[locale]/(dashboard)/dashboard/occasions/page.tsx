@@ -1,19 +1,21 @@
 import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
 import { Plus } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import OccasionsContent from './_components/occasions.content';
 
 export default async function Page({
-  params: { page },
+  searchParams,
 }: {
-  params: { page: string };
+  searchParams: { page?: string; search?: string };
 }) {
   // Translation
   const t = await getTranslations();
 
-  // Variable
-  const currentPage = Number(page) || 1;
+  // Variables
+  const currentPage = Number(searchParams.page) || 1;
+  const search = searchParams.search ?? '';
 
   return (
     <main className='bg-zinc-50 p-5 min-h-screen'>
@@ -24,15 +26,20 @@ export default async function Page({
             {t('all-occasions-page-title')}
           </h1>
 
-          <Button className='flex items-center gap-2'>
-            <Plus />
-            {t('add-occasion-button-label')}
+          <Button>
+            <Link
+              href='occasions/add-occasion'
+              className='flex items-center gap-2'
+            >
+              <Plus />
+              {t('add-occasion-button-label')}
+            </Link>
           </Button>
         </div>
 
         {/* Content */}
         <Suspense fallback={'Loading ..'}>
-          <OccasionsContent page={currentPage} />
+          <OccasionsContent page={currentPage} search={search} />
         </Suspense>
       </section>
     </main>

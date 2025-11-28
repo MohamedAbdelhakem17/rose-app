@@ -33,10 +33,10 @@ const buttonVariants = cva(
           'border border-zinc-200 text-zinc-400 bg-white cursor-not-allowed',
 
         // Destructive variants
-        destructive: 'bg-red-500 text-white hover:bg-red-600 active:bg-red-700',
-        'destructive-outline':
-          'border border-red-500 text-red-500 bg-white hover:bg-red-50 active:bg-red-100',
-        'destructive-ghost': 'text-red-500 hover:bg-red-50 active:bg-red-100',
+        // destructive: 'bg-red-500 text-white hover:bg-red-600 active:bg-red-700',
+        // 'destructive-outline':
+        //   'border border-red-500 text-red-500 bg-white hover:bg-red-50 active:bg-red-100',
+        // 'destructive-ghost': 'text-red-500 hover:bg-red-50 active:bg-red-100',
 
         // Success variants
         success:
@@ -56,7 +56,8 @@ const buttonVariants = cva(
           'border border-blue-500 text-blue-500 bg-white hover:bg-blue-50 active:bg-blue-100',
 
         // Ghost variants
-        ghost: 'text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200 dark:text-zinc-100',
+        ghost:
+          'text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200 dark:text-zinc-100',
         'ghost-disabled': 'text-zinc-400 cursor-not-allowed',
 
         // Link variants

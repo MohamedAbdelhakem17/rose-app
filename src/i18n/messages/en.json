@@ -190,5 +190,12 @@
   "occasions-table-header-products": "Products",
   "no-occasions-found-message": "No occasions found.",
   "all-occasions-page-title": "All Occasions",
-  "add-occasion-button-label": "Add a new occasion"
+  "add-occasion-button-label": "Add a new occasion",
+  "name": "Name",
+  "occasion-image-input-label": "occasion Image",
+  "occasion-name": "Occasion Name",
+  "occasion-image": "Occasion Image",
+  "adding": "Adding...",
+  "add-occasion": "Add Occasion",
+  "occasion-added-successfully-message": "Occasion added successfully!"
 }
