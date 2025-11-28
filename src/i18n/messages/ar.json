@@ -192,5 +192,12 @@
   "occasion-image": "صورة المناسبة",
   "adding": "جارٍ الإضافة...",
   "add-occasion": "أضف مناسبة",
-  "occasion-added-successfully-message": "تمت إضافة المناسبة بنجاح!"
+  "occasion-added-successfully-message": "تمت إضافة المناسبة بنجاح!",
+  "are-you-sure-you-want-to-delete-this-occasions": "هل أنت متأكد أنك تريد حذف هذه المناسبات؟",
+  "confirm": "يتأكد",
+  "cancel": "يلغي",
+  "delete": "يمسح",
+  "deleting": "جارٍ الحذف..",
+  "occasion-deleted-successfully": "تم حذف المناسبة بنجاح",
+  "something-went-wrong": "حدث خطأ ما"
 }

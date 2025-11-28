@@ -197,5 +197,12 @@
   "occasion-image": "Occasion Image",
   "adding": "Adding...",
   "add-occasion": "Add Occasion",
-  "occasion-added-successfully-message": "Occasion added successfully!"
+  "occasion-added-successfully-message": "Occasion added successfully!",
+  "delete": "Delete",
+  "are-you-sure-you-want-to-delete-this-occasions": "Are you sure you want to delete this Occasions?",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "deleting": "Deleteing ..",
+  "occasion-deleted-successfully": "occasion deleted successfully",
+  "something-went-wrong": "something went wrong"
 }

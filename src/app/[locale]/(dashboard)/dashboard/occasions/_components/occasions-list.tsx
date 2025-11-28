@@ -1,8 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { TableCell, TableRow } from '@/components/ui/table';
 import { Link } from '@/i18n/navigation';
-import { Pen, Trash2 } from 'lucide-react';
+import { Pen } from 'lucide-react';
 // import { getTranslations } from 'next-intl/server';
+import DeleteOccasions from './delete-occasions';
 
 export default async function OccasionsList({
   occasion,
@@ -24,6 +25,7 @@ export default async function OccasionsList({
 
         {/* Actions */}
         <TableCell className='w-max whitespace-nowrap text-center flex items-center gap-x-5'>
+          {/* Edit action */}
           <Button
             type='button'
             variant='info-outline'
@@ -38,15 +40,9 @@ export default async function OccasionsList({
               Edit
             </Link>
           </Button>
-          <Button
-            type='button'
-            variant='destructive-outline'
-            size='sm'
-            className='flex items-center gap-2 bg-red-50 hover:bg-red-100 text-red-700 border-red-200'
-          >
-            <Trash2 className='h-4 w-4' />
-            Delete
-          </Button>
+
+          {/* Delete action */}
+          <DeleteOccasions occasionId={occasion._id} />
         </TableCell>
       </TableRow>
     </>
