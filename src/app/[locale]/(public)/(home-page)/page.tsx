@@ -7,7 +7,6 @@ import OccasionsSection from '@/components/features/OccasionsSection';
 import { Section } from '@/components/layout';
 import SectionName from '@/components/shared/section-name';
 import SectionTitle from '@/components/shared/sedtion-title';
-import { getProductStatistics } from '@/lib/apis/dashboard/products-statistics.api';
 import { getTranslations } from 'next-intl/server';
 import AutoSlider from '../../../../components/features/testimonials/auto-slider';
 import BestSelling from './_components/best-selling';
@@ -24,10 +23,6 @@ export default async function Home({
 }) {
   // Translate
   const t = await getTranslations();
-
-  const data = await getProductStatistics();
-  console.log(data);
-
   return (
     <main>
       <Section className='max-w-7xl mx-auto '>

@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import createMiddleware from 'next-intl/middleware';
+import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 
 const privatePages = ['/wishlist', '/orders', '/profile', '/dashboard'];
@@ -35,9 +35,9 @@ export async function middleware(req: NextRequest) {
   }
 
   // AUTHENTICATED but NOT ADMIN → redirect home
-  if (isDashboardRoute && token?.role !== 'admin') {
-    return NextResponse.redirect(new URL('/', req.url));
-  }
+  // if (isDashboardRoute && token?.role !== 'admin') {
+  //   return NextResponse.redirect(new URL('/', req.url));
+  // }
 
   // Continue with intl routing
   return handleI18nRouting(req);
