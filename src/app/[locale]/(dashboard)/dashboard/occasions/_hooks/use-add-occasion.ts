@@ -1,4 +1,5 @@
 'use client';
+
 import { addNewOccasionsAction } from '@/lib/actions/dashboard/occasions.action';
 import { useMutation } from '@tanstack/react-query';
 
@@ -13,7 +14,6 @@ const useAddOccasion = () => {
     mutationFn: async (payload: FormData) => {
       const data = await addNewOccasionsAction(payload);
 
-      console.log(data);
       return data;
     },
   });

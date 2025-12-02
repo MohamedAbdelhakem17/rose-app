@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+
 import {
   Dialog,
   DialogClose,
@@ -10,7 +11,6 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 
-import { useRouter } from '@/i18n/navigation';
 import { Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -25,9 +25,6 @@ export default function DeleteOccasions({
   // Translation
   const t = useTranslations();
 
-  //Navigation
-  const router = useRouter();
-
   // State
   const [open, setOpen] = useState(false);
 
@@ -40,7 +37,6 @@ export default function DeleteOccasions({
         toast.success(t('occasion-deleted-successfully'));
 
         setOpen(false);
-        router.refresh();
       },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onError: (err: any) => {
@@ -55,7 +51,7 @@ export default function DeleteOccasions({
         <Button
           variant='destructive-outline'
           size='sm'
-          className='flex items-center gap-2'
+          className='flex items-center gap-2 bg-red-100 text-red-600 font-inter font-medium'
         >
           <Trash2 className='h-4 w-4' />
           {t('delete')}

@@ -18,22 +18,22 @@ export default function OccasionsTable({
   const t = useTranslations();
 
   return (
-    <Table className='table-auto w-full '>
+    <Table className='table-fixed w-full '>
       {/* Table header */}
       <TableHeader>
         <TableRow>
-          {/* Occasion Name */}
-          <TableHead className='w-max whitespace-nowrap'>
+          {/* occasion name  */}
+          <TableHead className='w-[15%] whitespace-nowrap'>
             {t('occasions-table-header-name')}
           </TableHead>
 
-          {/* occasions products count */}
-          <TableHead className='w-full whitespace-nowrap'>
+          {/* Product count */}
+          <TableHead className='whitespace-nowrap w-[75%]'>
             {t('occasions-table-header-products')}
           </TableHead>
 
-          {/* Actions*/}
-          <TableHead className='w-max whitespace-nowrap' />
+          {/* Actions */}
+          <TableHead className='w-[10%] whitespace-nowrap text-right' />
         </TableRow>
       </TableHeader>
 

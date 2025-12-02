@@ -22,7 +22,7 @@ const TableHeader = React.forwardRef<
   <thead
     ref={ref}
     className={cn(
-      '[&_tr]:border-y bg-zinc-50 [&_tr]:hover:bg-zinc-50',
+      '[&_tr]:border-b rounded-t-md bg-zinc-50 [&_tr]:hover:bg-zinc-50',
       className
     )}
     {...props}
@@ -79,7 +79,7 @@ const TableHead = React.forwardRef<
   <th
     ref={ref}
     className={cn(
-      'h-8 px-3 text-left align-middle font-semibold text-gray-600',
+      'h-10 px-3 text-left align-middle font-semibold text-gray-600',
       className
     )}
     {...props}

@@ -1,6 +1,7 @@
 'use server';
 
 import { getToken } from '@/lib/utils/get-token';
+import { revalidateTag } from 'next/cache';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/occasions`;
 
@@ -56,6 +57,9 @@ async function fetchWithAuth(
     if ('error' in payload) {
       return { error: payload.error };
     }
+
+    // Revalidate data
+    revalidateTag('occasions');
 
     return payload;
   } catch (err: unknown) {

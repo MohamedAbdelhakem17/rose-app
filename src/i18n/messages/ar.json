@@ -200,5 +200,10 @@
   "deleting": "جارٍ الحذف..",
   "occasion-deleted-successfully": "تم حذف المناسبة بنجاح",
   "something-went-wrong": "حدث خطأ ما",
-  "edit": "يحرر"
+  "edit": "يحرر",
+  "view-occasion-image-button-label": "شاهد صورة المناسبة",
+  "updating-occasion-button-label": "جارٍ التحديث..",
+  "update-occasion-label": "تحديث المناسبة",
+  "occasion-name-placeholder": "أدخل اسم المناسبة",
+  "update-occasion-form-label": "مناسبة التحديث: {occasion}"
 }

@@ -31,6 +31,9 @@ export async function getOccasions(
       headers: {
         ...REQUEST_HEADERS,
       },
+      next: {
+        tags: ['get-occasions'],
+      },
     }
   );
 
@@ -73,6 +76,9 @@ export async function getOccasion(
       method: 'GET',
       headers: {
         ...REQUEST_HEADERS,
+      },
+      next: {
+        tags: ['occasions', id],
       },
     }
   );

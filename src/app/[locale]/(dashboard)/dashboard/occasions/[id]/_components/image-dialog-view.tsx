@@ -1,8 +1,11 @@
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Image as ImageIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 export default function ImageDialogView({ imageUrl }: { imageUrl: string }) {
+  // Translation
+  const t = useTranslations();
   return (
     <>
       <Dialog>
@@ -10,7 +13,7 @@ export default function ImageDialogView({ imageUrl }: { imageUrl: string }) {
           {/* Icon */}
           <ImageIcon />
           {/* Label */}
-          View occasion image
+          {t('view-occasion-image-button-label')}
         </DialogTrigger>
 
         {/* Dialog content */}

@@ -2,6 +2,7 @@
 
 import { Input } from '@/components/shared/Input';
 import { Button } from '@/components/ui/button';
+
 import {
   Form,
   FormControl,
@@ -10,13 +11,15 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+
 import {
   occasionEditSchema,
   OccasionEditSchemaType,
 } from '@/lib/schemas/auth/dashboard/occasion.schema';
+
+import { useRouter } from '@/i18n/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import useEditOccasion from './../../_hooks/use-edit-occasion';
@@ -66,12 +69,10 @@ export default function OccasionEditForm({
           setTimeout(() => {
             router.push('/dashboard/occasions');
           }, 1000);
-
-          router.refresh();
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (err: any) => {
-          toast.error(err?.message || 'Something went wrong!');
+          toast.error(err?.message || t('something-went-wrong'));
         },
       }
     );
@@ -102,7 +103,7 @@ export default function OccasionEditForm({
                 <FormControl>
                   <Input
                     type='text'
-                    placeholder='Enter occasion name'
+                    placeholder={t('occasion-name-placeholder')}
                     {...field}
                   />
                 </FormControl>
@@ -115,15 +116,16 @@ export default function OccasionEditForm({
 
           {/* Image */}
           <ImageDialogView imageUrl={image} />
+
           {/* Submit */}
           <Button
             type='submit'
             className='w-full !mt-16'
             disabled={(isSubmitted && !isValid) || isPending}
             loading={isPending}
-            loadingText={'Updating..'}
+            loadingText={t('updating-occasion-button-label')}
           >
-            Update Occasion
+            {t('update-occasion-label')}
           </Button>
         </form>
       </Form>

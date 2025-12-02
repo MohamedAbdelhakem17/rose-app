@@ -204,6 +204,12 @@
   "cancel": "Cancel",
   "deleting": "Deleteing ..",
   "occasion-deleted-successfully": "occasion deleted successfully",
-  "something-went-wrong": "something went wrong",
-  "edit": "Edit"
+  "something-went-wrong": "Something went wrong!",
+  "edit": "Edit",
+  "view-occasion-image-button-label": "View occasion image",
+  "updating-occasion-button-label": "Updating..",
+  "update-occasion-label": "Update Occasion",
+  "occasion-name-placeholder": "Enter occasion name",
+  "failed-occasion-fetch": "Error: Failed to fetch occasion.",
+  "update-occasion-form-label": "Update Occasion: {occasion}"
 }

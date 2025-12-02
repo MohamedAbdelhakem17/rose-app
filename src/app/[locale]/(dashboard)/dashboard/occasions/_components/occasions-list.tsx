@@ -16,10 +16,12 @@ export default async function OccasionsList({
     <>
       <TableRow>
         {/* Occasion Name */}
-        <TableCell className='whitespace-nowrap'>{occasion.name}</TableCell>
+        <TableCell className='whitespace-nowrap font-semibold font-inter '>
+          {occasion.name}
+        </TableCell>
 
         {/* Occasions product count */}
-        <TableCell className='w-full whitespace-nowrap '>
+        <TableCell className='whitespace-nowrap font-semibold font-inter'>
           {occasion.productsCount}
         </TableCell>
 
@@ -30,7 +32,7 @@ export default async function OccasionsList({
             type='button'
             variant='info-outline'
             size='sm'
-            className=' bg-blue-50 hover:bg-blue-100  border-blue-200'
+            className=' bg-blue-50 hover:bg-blue-100  border-blue-200 border-none font-inter font-medium'
           >
             <Link
               className='flex items-center gap-2  text-blue-700 '
