@@ -1,4 +1,4 @@
-import { getProductStatistics } from '@/lib/apis/dashboard/products-statistics.api';
+import { getProductStatistics } from '@/lib/apis/dashbaord/products-statistics.api';
 import { redirect } from 'next/navigation';
 import LowStockProducts from './low-stock-products';
 import TopSellingProducts from './top-selling-products';

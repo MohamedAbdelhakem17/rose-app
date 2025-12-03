@@ -1,28 +1,33 @@
 'use server';
 
+import { getToken } from '@/lib/utils/get-token';
 import { revalidatePath } from 'next/cache';
 
 export async function addToCartAction(productId: string) {
-  const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjhlZTA3YWY3ZmVlNjhhNGMyZWJhZmJhIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjIyNzU2MTl9.MQWALjbJZjxiOu-SdCj29ZXhPqcpZcYPRVsacqW8Jfc';
-
   try {
+    const jwt = await getToken();
+
+    if (!jwt || !jwt?.token) {
+      throw new Error('Unauthorized');
+    }
+
     const response = await fetch(`${process.env.BASE_URL}/cart`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${jwt.token}`,
       },
-
       body: JSON.stringify({
         product: productId,
         quantity: 1,
       }),
       cache: 'no-cache',
     });
+
     if (!response.ok) {
-      throw new Error('failed add item to add to cart');
+      throw new Error('Failed to add item to cart');
     }
+
     const data = await response.json();
 
     revalidatePath('/cart');

@@ -1,11 +1,20 @@
-export async function getCategories(searchQuery?: string) {
-  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+interface GetCategoriesOptions {
+  search?: string;
+  page?: number;
+  limit?: number;
+}
 
-  // Build URL with search query parameter if provided
+export async function getCategories(options: GetCategoriesOptions = {}) {
+  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const { search, page = 1, limit = 10 } = options;
+
+  // Build URL with query parameters
   const url = new URL(`${baseURL}/api/v1/categories`);
-  if (searchQuery && searchQuery.trim()) {
-    url.searchParams.append('search', searchQuery.trim());
+  if (search && search.trim()) {
+    url.searchParams.append('search', search.trim());
   }
+  url.searchParams.append('page', String(page));
+  url.searchParams.append('limit', String(limit));
 
   const res = await fetch(url.toString(), {
     cache: 'no-store',

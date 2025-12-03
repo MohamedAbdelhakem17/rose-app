@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/Input';
@@ -10,8 +9,6 @@ import { Upload } from 'lucide-react';
 import { useCreateCategory } from '@/hooks/use-create-category';
 
 export default function AddCategoryPage() {
-  // TRANSLATIONS
-  const t = useTranslations();
   const [categoryName, setCategoryName] = useState('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -65,7 +62,7 @@ export default function AddCategoryPage() {
       <div className='bg-white rounded-2xl shadow-sm border border-zinc-100'>
         <div className='px-6 pt-6'>
           <h1 className='text-lg font-semibold text-zinc-900'>
-            {t('category-add-title')}
+            Add a New Category
           </h1>
         </div>
 
@@ -73,13 +70,12 @@ export default function AddCategoryPage() {
           {/* Name Field */}
           <div className='space-y-2'>
             <Label htmlFor='category-name' className='text-sm font-medium'>
-              {t('category-add-name-label')}{' '}
-              <span className='text-red-500'>*</span>
+              Name <span className='text-red-500'>*</span>
             </Label>
             <Input
               id='category-name'
               type='text'
-              placeholder={t('category-add-name-placeholder')}
+              placeholder='Enter category name'
               value={categoryName}
               onChange={event => setCategoryName(event.target.value)}
               required
@@ -91,17 +87,14 @@ export default function AddCategoryPage() {
           {/* Category Image Field */}
           <div className='space-y-2'>
             <Label htmlFor='category-image' className='text-sm font-medium'>
-              {t('category-add-image-label')}{' '}
-              <span className='text-red-500'>*</span>
+              Category image <span className='text-red-500'>*</span>
             </Label>
             <div className='relative flex items-center'>
               <Input
                 id='category-image'
                 type='text'
                 placeholder={
-                  selectedFile
-                    ? selectedFile.name
-                    : t('category-add-image-placeholder')
+                  selectedFile ? selectedFile.name : 'No file selected'
                 }
                 value={selectedFile ? selectedFile.name : ''}
                 readOnly
@@ -125,7 +118,7 @@ export default function AddCategoryPage() {
                 className='absolute right-2 flex items-center gap-2'
               >
                 <Upload className='h-4 w-4' />
-                {t('category-add-upload-button')}
+                Upload file
               </Button>
             </div>
           </div>
@@ -145,9 +138,9 @@ export default function AddCategoryPage() {
             className='w-full rounded-lg'
             disabled={isPending}
             loading={isPending}
-            loadingText={t('category-add-loading')}
+            loadingText='Creating...'
           >
-            {t('category-add-submit')}
+            Add Category
           </Button>
         </form>
       </div>
