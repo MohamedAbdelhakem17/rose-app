@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { Image as ImageIcon, Upload } from 'lucide-react';
 
@@ -21,18 +22,14 @@ interface EditCategoryFormProps {
   category: Category;
 }
 
-/**
- * Edit Category Form Component
- *
- * Client component that handles:
- * - Category name editing
- * - Optional image replacement
- * - Image preview modal
- * - Form submission via Server Action
- *
- * Receives pre-fetched category data from server component
- */
 export function EditCategoryForm({ category }: EditCategoryFormProps) {
+  // HOOKS
+  const pathname = usePathname();
+
+  // Extract category ID from URL pathname
+  // URL format: /en/dashboard/category/edit/[id]
+  const categoryId = pathname.split('/').pop() || '';
+
   // STATE
   const [categoryName, setCategoryName] = useState(category.name);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -70,35 +67,35 @@ export function EditCategoryForm({ category }: EditCategoryFormProps) {
       return;
     }
 
-    // Prepare update data
-    const updateData: {
-      id: string;
-      name: string;
-      image?: string;
-      imageName?: string;
-    } = {
-      id: category._id,
-      name: categoryName.trim(),
-    };
+    // Validate category ID exists
+    if (!categoryId) {
+      console.error('Category ID is missing from URL');
+      return;
+    }
 
-    // Only include image if a new file was selected
+    // If a new file was selected, read it and submit with image
     if (selectedFile) {
       const reader = new FileReader();
       reader.onloadend = () => {
         const base64String = reader.result as string;
-        updateData.image = base64String;
-        updateData.imageName = selectedFile.name;
 
-        // Call mutation
-        updateCategory(updateData);
+        updateCategory({
+          id: categoryId,
+          name: categoryName.trim(),
+          image: base64String,
+          imageName: selectedFile.name,
+        });
       };
       reader.onerror = () => {
         console.error('Error reading file');
       };
       reader.readAsDataURL(selectedFile);
     } else {
-      // Call mutation without image if no new file selected
-      updateCategory(updateData);
+      // Submit without image if no new file selected
+      updateCategory({
+        id: categoryId,
+        name: categoryName.trim(),
+      });
     }
   };
 

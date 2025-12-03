@@ -9,7 +9,6 @@ interface PageProps {
 export default async function CategoriesPage(props: PageProps) {
   return (
     <Suspense fallback={<CategorySkeleton />}>
-      {/* @ts-expect-error Async Server Component */}
       <CategoriesContent searchParams={props.searchParams} />
     </Suspense>
   );
