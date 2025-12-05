@@ -1,3 +1,5 @@
+import { getToken } from '@/lib/utils/get-token';
+
 export interface Cart {
   _id: string;
   user: string;
@@ -37,6 +39,7 @@ export interface Product {
   rateCount: number;
   id: string;
 }
+
 export interface CartResponse {
   message: string;
   numOfCartItems: number;
@@ -44,25 +47,29 @@ export interface CartResponse {
 }
 
 export async function fetchCart(): Promise<CartResponse> {
-  const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjhlZTA3YWY3ZmVlNjhhNGMyZWJhZmJhIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjIyNzU2MTl9.MQWALjbJZjxiOu-SdCj29ZXhPqcpZcYPRVsacqW8Jfc';
-
   try {
+    const jwt = await getToken();
+
+    if (!jwt || !jwt.token) {
+      throw new Error('Unauthorized');
+    }
+
     const response = await fetch(`${process.env.BASE_URL}/cart`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${jwt.token}`,
       },
       cache: 'no-store',
       next: { tags: ['cart-data'] },
     });
+
     if (!response.ok) {
       throw new Error('Failed to fetch cart data');
     }
+
     const data: CartResponse = await response.json();
     return data;
-
   } catch (error) {
     console.error('Error fetching cart data:', error);
     throw new Error('An error occurred while fetching cart data');
