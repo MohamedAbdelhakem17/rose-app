@@ -1,6 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
+import { getToken } from 'next-auth/jwt';
 
 const privatePages = ['/wishlist', '/checkout', '/dashboard', '/profile'];
 const handleI18nRouting = createMiddleware(routing);

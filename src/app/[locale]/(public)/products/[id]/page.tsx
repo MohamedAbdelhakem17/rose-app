@@ -1,4 +1,4 @@
-import ProductDetails from './_components/product-details';
+import ProductDetails from './_components';
 
 export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;

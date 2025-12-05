@@ -6,11 +6,11 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
-  gender: 'male' | 'female';
+  gender: string;
   phone: string;
-  photo: string;
-  role: 'user' | 'admin';
-  createdAt: string;
+  photo?: string;
+  role: string;
+  createdAt?: string;
 }
 
 // Success response

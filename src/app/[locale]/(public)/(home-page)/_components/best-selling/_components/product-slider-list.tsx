@@ -36,7 +36,7 @@ export default function ProductSliderList({
         {products.map(product => (
           //  Slider items
           <CarouselItem key={product._id} className='basis-1/3 h-full'>
-            <ProductItem product={product} />
+            <ProductItem product={products} />
           </CarouselItem>
         ))}
       </CarouselContent>
