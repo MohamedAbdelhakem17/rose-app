@@ -2,13 +2,12 @@
 
 import { API_HEADER } from '@/lib/constants/api-header.constant';
 import { AddReview } from '@/lib/types/review';
+import { getToken } from '@/lib/utils/get-token';
 
 export default async function addReview(body: AddReview) {
   try {
     // Token
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjhjM2MzOTlhOGJjYTMwN2Y5ZTM2OTdkIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NTc2NjAwNTd9.kItrgR8UMmfTI-TyNExypZd9Eu1ZWISHZS8UbR6dgwo';
-
+    const token = await getToken();
     // Fetch
     const response = await fetch(`${process.env.BASE_URL}/reviews`, {
       method: 'POST',

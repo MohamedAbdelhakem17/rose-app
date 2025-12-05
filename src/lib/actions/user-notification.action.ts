@@ -1,20 +1,22 @@
 'use server';
 
+import { getToken } from '@/lib/utils/get-token';
 import {
+  DeleteAllNotificationResponseType,
+  DeleteSingleNotificationResponseType,
   MakeNotificationReaddResponseType,
   ToggleNotificationResponseType,
-  DeleteSingleNotificationResponseType,
-  DeleteAllNotificationResponseType,
 } from '../types/user-notification';
 
-const DUMMY_TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjhlN2EwNzE3ZmVlNjhhNGMyZWEwOGRiIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjAwNDgyNTB9.BtyWO-wcNnjs2wVfHg2mQkfCr4kNFq3Xy-SQY9FW0LU';
+async function getAuthHeaders() {
+  const token = await getToken();
+  if (!token) throw new Error('User not authenticated');
 
-const HEADERS = {
-  'Content-Type': 'application/json',
-  Authorization: 'Bearer ' + DUMMY_TOKEN,
-};
-
+  return {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token.token}`,
+  };
+}
 /**
  * Handles marking notifications as read (single or all).
  * @param endpoint - API endpoint (e.g. "/mark-read" or "/mark-all-read")
@@ -24,11 +26,13 @@ const manageNotificationRead = async (
   endpoint: string,
   body: { notificationIds: string[] } | null
 ) => {
+  const headers = await getAuthHeaders();
+
   const API_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/notifications${endpoint}`;
 
   const response = await fetch(API_URL, {
     method: 'POST',
-    headers: HEADERS,
+    headers,
     body: body ? JSON.stringify(body) : null,
   });
 
@@ -42,11 +46,12 @@ const manageNotificationRead = async (
  * @param endpoint - API endpoint (e.g. "/{id}" or "/clear-all")
  */
 const manageNotificationDelete = async <T>(endpoint: string): Promise<T> => {
+  const headers = await getAuthHeaders();
   const API_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/notifications/${endpoint}`;
 
   const response = await fetch(API_URL, {
     method: 'DELETE',
-    headers: HEADERS,
+    headers,
   });
 
   const payload: T = await response.json();
@@ -103,11 +108,12 @@ async function deleteNotificationAction(id: string) {
 // --------------------------------------
 
 async function toggleNotificationAction(id: string) {
+  const headers = await getAuthHeaders();
   const API_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/notifications/${id}/toggle`;
 
   const response = await fetch(API_URL, {
     method: 'PATCH',
-    headers: HEADERS,
+    headers,
     body: null,
   });
 
@@ -121,9 +127,9 @@ async function toggleNotificationAction(id: string) {
 // --------------------------------------
 
 export {
-  markNotificationReadAction,
-  markAllNotificationReadAction,
-  deleteNotificationAction,
   clearAllNotificationsAction,
+  deleteNotificationAction,
+  markAllNotificationReadAction,
+  markNotificationReadAction,
   toggleNotificationAction,
 };

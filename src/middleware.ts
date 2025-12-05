@@ -3,29 +3,25 @@ import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 import { getToken } from 'next-auth/jwt';
 
-// Variables
-const privatePages = ['/wishlist'];
+const privatePages = ['/wishlist', '/checkout', '/dashboard', '/profile'];
 const handleI18nRouting = createMiddleware(routing);
 
-// Functions
 export default function middleware(req: NextRequest) {
-  const publicPathnameRegex = RegExp(
-    `^(/(${routing.locales.join('|')}))?(${privatePages
-      .flatMap(p => (p === '/' ? ['', '/'] : p))
-      .join('|')})/?$`,
-    'i'
-  );
-  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
+  const pathname = req.nextUrl.pathname;
+  const isPrivatePage = privatePages.some(p => pathname.includes(p));
 
-  if (isPublicPage) {
+  // Example: check if user has a token (customize this)
+  const token = req.cookies.get('token')?.value;
+
+  if (isPrivatePage && !token) {
+    // user not logged in → redirect to login
     return NextResponse.redirect(new URL('/login', req.nextUrl.origin));
-  } else {
-    return handleI18nRouting(req);
   }
+
+  // user logged in or public page → continue
+  return handleI18nRouting(req);
 }
 
-// Configuration matcher
 export const config = {
-  // Match only internationalized pathnames
   matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
 };

@@ -40,6 +40,7 @@ declare type MappingProductType = Pick<
   | 'rateAvg'
   | 'priceAfterDiscount'
   | 'price'
+  | 'rateCount'
 > & {
   labels: { name: string; variant: string }[];
 };

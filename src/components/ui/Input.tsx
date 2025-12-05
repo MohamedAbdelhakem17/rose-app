@@ -1,36 +1,58 @@
-import { cn } from '@/lib/utils/utils';
 import * as React from 'react';
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  error?: boolean;
-  helperText?: string;
-}
+import { cn } from '@/lib/utils/utils';
+import { Eye, EyeOff } from 'lucide-react';
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, error, helperText, ...props }, ref) => {
-    return (
-      <div className='w-full'>
-        <input
-          type={type}
-          className={cn(
-            'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
-            error && 'border-destructive focus-visible:ring-destructive',
-            className
-          )}
-          ref={ref}
-          {...props}
-        />
-        {helperText && (
-          <p
-            className={cn(
-              'mt-1 text-xs',
-              error ? 'text-destructive' : 'text-muted-foreground'
-            )}
-          >
-            {helperText}
-          </p>
+const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
+  ({ className, type, ...props }, ref) => {
+    // Sate
+    const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
+
+    // Function
+    const togglePasswordVisibility = () => {
+      setIsPasswordVisible(prev => !prev);
+    };
+
+    // Variables
+    const IS_PASSWORD = type === 'password';
+
+    // Base Element
+    const inputElement = (
+      <input
+        type={isPasswordVisible ? 'text' : type}
+        className={cn(
+          'flex w-full border border-input bg-transparent px-3 py-3 text-base transition-colors file:border-0 rounded-md file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-gray-200 shadow-none dark:bg-zinc-700 dark:text-zinc-400 dark:border-zinc-500',
+          'aria-[invalid=true]:border-red-600',
+          'focus-visible:outline-none',
+          'aria-[invalid=true]:focus-visible:ring-0',
+          'aria-[invalid=false]:focus-visible:ring-1 aria-[invalid=false]:focus-visible:ring-maroon-600',
+          className
         )}
+        ref={ref}
+        {...props}
+      />
+    );
+
+    // Return default input
+    if (!IS_PASSWORD) {
+      return inputElement;
+    }
+    // Return Password input
+    return (
+      <div className='relative'>
+        {inputElement}
+        <button
+          type='button'
+          onClick={togglePasswordVisibility}
+          aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
+          className='absolute end-2 top-2/4 -translate-y-1/2'
+        >
+          {isPasswordVisible ? (
+            <EyeOff strokeWidth={1} className='w-4 h-4' />
+          ) : (
+            <Eye strokeWidth={1} className='w-4 h-4' />
+          )}
+        </button>
       </div>
     );
   }
@@ -38,4 +60,3 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 Input.displayName = 'Input';
 
 export { Input };
-
