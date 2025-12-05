@@ -9,7 +9,7 @@ export async function getOccasions(
   params: GetProductsParams = {}
 ): Promise<GetOccasionsTypeResponse> {
   // Default params
-  const { limit = 50, page = 1, ...filters } = params;
+  const { limit = 10, page = 1, ...filters } = params;
 
   // Build query string dynamically
   const query = new URLSearchParams({
@@ -31,6 +31,9 @@ export async function getOccasions(
       headers: {
         ...REQUEST_HEADERS,
       },
+      next: {
+        tags: ['get-occasions'],
+      },
     }
   );
 
@@ -50,8 +53,46 @@ export async function getOccasions(
   // Map occasions
   const mappedPayload: GetOccasionsTypeResponse = {
     ...payload,
-    occasions: payload.occasions.filter(o => o.productsCount !== 0),
+    // occasions: payload.occasions.filter(o => o.productsCount !== 0),
+    occasions: payload.occasions,
   };
 
   return mappedPayload;
+}
+
+/**
+ * Fetch a single occasion by ID from the API
+ */
+export async function getOccasion(
+  id: string
+): Promise<GetOccasionTypeResponse> {
+  if (!id) {
+    throw new Error('Occasion ID is required');
+  }
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/occasions/${id}`,
+    {
+      method: 'GET',
+      headers: {
+        ...REQUEST_HEADERS,
+      },
+      next: {
+        tags: ['occasions', id],
+      },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch occasion with id: ${id}`);
+  }
+
+  const payload: GetOccasionTypeResponse | { error: string } =
+    await response.json();
+
+  if ('error' in payload) {
+    throw new Error(payload.error || 'Failed to fetch occasion');
+  }
+
+  return payload as GetOccasionTypeResponse;
 }

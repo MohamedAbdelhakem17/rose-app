@@ -1,8 +1,6 @@
 'use server';
 
 import { getToken } from '@/lib/utils/cookies';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/auth';
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
 
