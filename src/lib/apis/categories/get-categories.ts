@@ -6,6 +6,6 @@ export async function getCategories() {
 
   if (!res.ok) throw new Error('Failed to fetch categories');
 
-  const data = await res.json(); // ✅ await this
+  const data: SuccessResponse<Category> = await res.json(); // ✅ await this
   return data; // now returns actual JSON, not a Promise
 }

@@ -15,8 +15,8 @@ export interface Product {
   quantity: number;
   category: string;
   occasion: string;
-  createdAt: string; 
-  updatedAt: string; 
+  createdAt: string;
+  updatedAt: string;
   __v: number;
   isSuperAdmin: boolean;
   sold: number;
