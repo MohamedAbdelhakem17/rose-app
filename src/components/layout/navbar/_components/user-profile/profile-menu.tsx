@@ -10,7 +10,6 @@ import {
 import { Link } from '@/i18n/navigation';
 import {
   ChevronDown,
-  LayoutDashboard,
   LogOut,
   MapPinHouse,
   ScrollText,
@@ -41,11 +40,6 @@ export default function ProfileMenu({ session }: ProfileMenuProps) {
       href: '/addresses',
     },
     { icon: <ScrollText />, label: t('profile-menu.orders'), href: '/orders' },
-    {
-      icon: <LayoutDashboard />,
-      label: t('profile-menu.dashboard'),
-      href: '/dashboard',
-    },
   ];
 
   return (

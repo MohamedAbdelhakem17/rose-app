@@ -193,8 +193,8 @@ const Pages = () => {
 /* ----------------- Export Compound ----------------- */
 const Pagination = Object.assign(
   ({ totalPages, pathname }: { totalPages: number; pathname: string }) => {
-    if (totalPages <= 1) return null;
-
+    // Always show pagination, even with a single page
+    // Navigation buttons will be disabled when appropriate
     return (
       <Root totalPages={totalPages} pathname={pathname}>
         <First />

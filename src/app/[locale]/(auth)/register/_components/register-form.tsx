@@ -56,7 +56,6 @@ export default function RegisterForm() {
 
   // Functions
   const onSubmit = async (data: RegisterFormData) => {
-    console.log(data, 'data');
     await signUp(data, {
       onSuccess: () => {
         toast.success('Registration successful!');

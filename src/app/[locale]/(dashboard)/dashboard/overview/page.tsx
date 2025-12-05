@@ -1,4 +1,4 @@
-import { AreaChart } from 'lucide-react';
+import AreaChart from '../../_components/area-chart/area-chart';
 import OrdersStatusChart from '../../_components/order-status-chart';
 import ProductStatisticsSection from './_components/product-statistics/index';
 

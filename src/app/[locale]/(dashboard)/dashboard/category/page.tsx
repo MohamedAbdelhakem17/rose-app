@@ -1,7 +1,15 @@
-import React from 'react'
+import { Suspense } from 'react';
+import CategorySkeleton from './category-skeleton';
+import CategoriesContent from './categories-content';
 
-export default function Page() {
+interface PageProps {
+  searchParams: Promise<{ search?: string; page?: string }>;
+}
+
+export default async function CategoriesPage(props: PageProps) {
   return (
-    <div>category page</div>
-  )
+    <Suspense fallback={<CategorySkeleton />}>
+      <CategoriesContent searchParams={props.searchParams} />
+    </Suspense>
+  );
 }
