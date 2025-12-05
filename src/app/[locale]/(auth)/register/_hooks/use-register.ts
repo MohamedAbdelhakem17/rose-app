@@ -14,5 +14,5 @@ export function useRegister() {
       return payload;
     },
   });
-  return { isPending, error, signUp:mutateAsync };
+  return { isPending, error, signUp: mutateAsync };
 }

@@ -2,14 +2,16 @@
 
 import { API_HEADER } from '@/lib/constants/api-header.constant';
 import { UserAddress } from '@/lib/types/modal/user-address';
+import { getToken } from '@/lib/utils/get-token';
 
 export async function updateAddress(id: string, body: BodyAddModal) {
   try {
+    const token = await getToken();
     const response = await fetch(`${process.env.BASE_URL}/addresses/${id}`, {
       method: 'PATCH',
       headers: {
         ...API_HEADER,
-        authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjhlZDAxZDc3ZmVlNjhhNGMyZWI3NzZlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjIzMTU5OTV9.B0kx-QA6YLX4RpKAaw0Md27W-wdIOK1qJJKU3M-iyeg`,
+        authorization: `Bearer ${token}`,
         body: JSON.stringify(body),
       },
     });

@@ -1,0 +1,208 @@
+
+> rose-app@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.30
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 2.4s
+ ✓ Compiled /src/middleware in 187ms (104 modules)
+ ○ Compiling /[locale]/dashboard/category ...
+ ✓ Compiled /[locale]/dashboard/category in 3.6s (1245 modules)
+ ✓ Compiled in 466ms (550 modules)
+ GET /en/dashboard/category 200 in 5718ms
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 643ms (924 modules)
+ GET /api/auth/session 200 in 1265ms
+ GET /api/auth/session 200 in 17ms
+ GET /api/auth/session 200 in 11ms
+ GET /api/auth/session 200 in 12ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 657ms (1461 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 805ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 54ms
+Fetch error details: {
+  message: 'fetch failed',
+  apiUrl: 'https://flower.elevateegy.com/api/v1/categories/673c46fd1159920171827c85',
+  hasToken: true
+}
+ POST /en/dashboard/category 200 in 10724ms
+API error response: Only super admins can delete this item
+Response status: 403
+ POST /en/dashboard/category 200 in 489ms
+API error response: Only super admins can delete this item
+Response status: 403
+ POST /en/dashboard/category 200 in 343ms
+ ✓ Compiled in 671ms (1245 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 607ms
+ ✓ Compiled in 401ms (1024 modules)
+ ⨯ src\app\[locale]\(dashboard)\dashboard\category\page.tsx (11:8) @ CategoriesContent
+ ⨯ ReferenceError: CategoriesContent is not defined
+    at CategoriesPage (dashboard/category/page.tsx:20:95)
+    at stringify (<anonymous>)
+digest: "3361557340"
+[0m [90m  9 |[39m   [36mreturn[39m ([0m
+[0m [90m 10 |[39m     [33m<[39m[33mSuspense[39m fallback[33m=[39m{[33m<[39m[33mCategorySkeleton[39m [33m/[39m[33m>[39m}[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 11 |[39m       [33m<[39m[33mCategoriesContent[39m searchParams[33m=[39m{props[33m.[39msearchParams} [33m/[39m[33m>[39m[0m
+[0m [90m    |[39m        [31m[1m^[22m[39m[0m
+[0m [90m 12 |[39m     [33m<[39m[33m/[39m[33mSuspense[39m[33m>[39m[0m
+[0m [90m 13 |[39m   )[33m;[39m[0m
+[0m [90m 14 |[39m }[0m
+ GET /en/dashboard/category?_rsc=15mf6 200 in 134ms
+ ✓ Compiled in 284ms (459 modules)
+ ⨯ src\app\[locale]\(dashboard)\dashboard\category\page.tsx (11:8) @ CategoriesContent
+ ⨯ ReferenceError: CategoriesContent is not defined
+    at CategoriesPage (dashboard/category/page.tsx:20:95)
+    at stringify (<anonymous>)
+digest: "3361557340"
+[0m [90m  9 |[39m   [36mreturn[39m ([0m
+[0m [90m 10 |[39m     [33m<[39m[33mSuspense[39m fallback[33m=[39m{[33m<[39m[33mCategorySkeleton[39m [33m/[39m[33m>[39m}[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 11 |[39m       [33m<[39m[33mCategoriesContent[39m searchParams[33m=[39m{props[33m.[39msearchParams} [33m/[39m[33m>[39m[0m
+[0m [90m    |[39m        [31m[1m^[22m[39m[0m
+[0m [90m 12 |[39m     [33m<[39m[33m/[39m[33mSuspense[39m[33m>[39m[0m
+[0m [90m 13 |[39m   )[33m;[39m[0m
+[0m [90m 14 |[39m }[0m
+ GET /en/dashboard/category?_rsc=15mf6 200 in 47ms
+ ✓ Compiled in 364ms (1024 modules)
+ ⨯ src\app\[locale]\(dashboard)\dashboard\category\page.tsx (11:8) @ CategoriesContent
+ ⨯ ReferenceError: CategoriesContent is not defined
+    at CategoriesPage (dashboard/category/page.tsx:20:95)
+    at stringify (<anonymous>)
+digest: "3361557340"
+[0m [90m  9 |[39m   [36mreturn[39m ([0m
+[0m [90m 10 |[39m     [33m<[39m[33mSuspense[39m fallback[33m=[39m{[33m<[39m[33mCategorySkeleton[39m [33m/[39m[33m>[39m}[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 11 |[39m       [33m<[39m[33mCategoriesContent[39m searchParams[33m=[39m{props[33m.[39msearchParams} [33m/[39m[33m>[39m[0m
+[0m [90m    |[39m        [31m[1m^[22m[39m[0m
+[0m [90m 12 |[39m     [33m<[39m[33m/[39m[33mSuspense[39m[33m>[39m[0m
+[0m [90m 13 |[39m   )[33m;[39m[0m
+[0m [90m 14 |[39m }[0m
+ GET /en/dashboard/category?_rsc=15mf6 200 in 80ms
+ ✓ Compiled in 517ms (1245 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /en/dashboard/category?_rsc=15mf6 200 in 486ms
+ GET /en/dashboard/category 200 in 643ms
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 651ms (924 modules)
+ GET /api/auth/session 200 in 802ms
+ GET /api/auth/session 200 in 13ms
+ GET /api/auth/session 200 in 10ms
+ GET /api/auth/session 200 in 12ms
+ ✓ Compiled in 435ms (1474 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 1861ms
+ ✓ Compiled in 394ms (1474 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 1761ms
+ ✓ Compiled in 394ms (1245 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 4288ms
+ ✓ Compiled /api/auth/[...nextauth] in 156ms (924 modules)
+ GET /api/auth/session 200 in 279ms
+ GET /api/auth/session 200 in 12ms
+ GET /api/auth/session 200 in 11ms
+ GET /api/auth/session 200 in 10ms
+ GET /en/dashboard/category 200 in 1849ms
+ ✓ Compiled in 509ms (1474 modules)
+Error fetching categories: TypeError: fetch failed
+    at node:internal/deps/undici/undici:13510:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getCategories (webpack-internal:///(rsc)/./src/lib/apis/categories/get-categories.ts:12:17)
+    at async CategoriesContent (webpack-internal:///(rsc)/./src/app/[locale]/(dashboard)/dashboard/category/categories-content.tsx:18:32) {
+  [cause]: ConnectTimeoutError: Connect Timeout Error (attempted address: flower.elevateegy.com:443, timeout: 10000ms)
+      at onConnectTimeout (node:internal/deps/undici/undici:2602:28)
+      at Immediate._onImmediate (node:internal/deps/undici/undici:2568:35)
+      at process.processImmediate (node:internal/timers:485:21)
+      at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+    code: 'UND_ERR_CONNECT_TIMEOUT'
+  }
+}
+ GET /en/dashboard/category?_rsc=15mf6 200 in 560ms
+ ✓ Compiled in 154ms (695 modules)
+Error fetching categories: TypeError: search.trim is not a function
+    at getCategories (webpack-internal:///(rsc)/./src/lib/apis/categories/get-categories.ts:10:26)
+    at CategoriesContent (webpack-internal:///(rsc)/./src/app/[locale]/(dashboard)/dashboard/category/categories-content.tsx:18:120)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 138ms
+ ✓ Compiled in 492ms (1245 modules)
+Error fetching categories: ReferenceError: paginatedCategories is not defined
+    at CategoriesContent (webpack-internal:///(rsc)/./src/app/[locale]/(dashboard)/dashboard/category/categories-content.tsx:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 559ms
+ ✓ Compiled in 376ms (1245 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 533ms
+ ✓ Compiled in 367ms (1245 modules)
+ ✓ Compiled in 449ms (1245 modules)
+Error fetching categories: TypeError: fetch failed
+    at node:internal/deps/undici/undici:13510:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getCategories (webpack-internal:///(rsc)/./src/lib/apis/categories/get-categories.ts:15:17)
+    at async CategoriesContent (webpack-internal:///(rsc)/./src/app/[locale]/(dashboard)/dashboard/category/categories-content.tsx:19:26) {
+  [cause]: ConnectTimeoutError: Connect Timeout Error (attempted address: flower.elevateegy.com:443, timeout: 10000ms)
+      at onConnectTimeout (node:internal/deps/undici/undici:2602:28)
+      at Immediate._onImmediate (node:internal/deps/undici/undici:2568:35)
+      at process.processImmediate (node:internal/timers:485:21)
+      at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+    code: 'UND_ERR_CONNECT_TIMEOUT'
+  }
+}
+ GET /en/dashboard/category?_rsc=15mf6 200 in 10831ms
+Error fetching categories: TypeError: fetch failed
+    at node:internal/deps/undici/undici:13510:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getCategories (webpack-internal:///(rsc)/./src/lib/apis/categories/get-categories.ts:15:17)
+    at async CategoriesContent (webpack-internal:///(rsc)/./src/app/[locale]/(dashboard)/dashboard/category/categories-content.tsx:19:26) {
+  [cause]: ConnectTimeoutError: Connect Timeout Error (attempted address: flower.elevateegy.com:443, timeout: 10000ms)
+      at onConnectTimeout (node:internal/deps/undici/undici:2602:28)
+      at Immediate._onImmediate (node:internal/deps/undici/undici:2568:35)
+      at process.processImmediate (node:internal/timers:485:21)
+      at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+    code: 'UND_ERR_CONNECT_TIMEOUT'
+  }
+}
+ GET /en/dashboard/category?_rsc=15mf6 200 in 10582ms
+ ✓ Compiled in 1033ms (1245 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 964ms
+ ⨯ ./src/app/[locale]/(dashboard)/dashboard/category/categories-client.tsx:4:1
+Module not found: Can't resolve 'lodash/debounce'
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mimport[39m { useState[33m,[39m useCallback[33m,[39m useEffect } [36mfrom[39m [32m'react'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { debounce } [36mfrom[39m [32m'lodash'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 5 |[39m [36mimport[39m { useRouter } [36mfrom[39m [32m'@/i18n/navigation'[39m[33m;[39m[0m
+[0m [90m 6 |[39m [36mimport[39m { useDeleteCategory } [36mfrom[39m [32m'@/hooks/use-delete-category'[39m[33m;[39m[0m
+[0m [90m 7 |[39m [36mimport[39m type { [33mCategory[39m } [36mfrom[39m [32m'@/lib/types/filters'[39m[33m;[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ ✓ Compiled in 638ms (1245 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 820ms
+ ✓ Compiled in 433ms (1245 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 1022ms (924 modules)
+ POST /api/auth/_log 200 in 1032ms
+ POST /api/auth/_log 200 in 1031ms
+ POST /api/auth/_log 200 in 1031ms
+ POST /api/auth/_log 200 in 1031ms
+ GET /en/dashboard/category 200 in 1728ms
+ GET /api/auth/session 200 in 21ms
+ GET /api/auth/session 200 in 10ms
+ GET /api/auth/session 200 in 13ms
+ GET /api/auth/session 200 in 13ms
+ ✓ Compiled in 461ms (1474 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 544ms
+ ✓ Compiled in 532ms (1474 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 2344ms
+ ✓ Compiled in 809ms (1245 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 594ms
+ ✓ Compiled in 849ms (1245 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 967ms
+ ✓ Compiled in 499ms (1245 modules)
+ GET /en/dashboard/category?_rsc=15mf6 200 in 383ms
+ ✓ Compiled in 537ms (1245 modules)
+ ✓ Compiled in 416ms (1245 modules)
+ ✓ Compiled in 562ms (1245 modules)
+ ✓ Compiled in 368ms (1245 modules)
+ ✓ Compiled in 901ms (1245 modules)
+ ✓ Compiled in 657ms (1245 modules)
+ ✓ Compiled in 684ms (1245 modules)
+ ✓ Compiled in 407ms (1245 modules)
+ ✓ Compiled in 529ms (1245 modules)
+ ✓ Compiled in 341ms (1245 modules)

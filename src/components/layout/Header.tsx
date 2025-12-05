@@ -5,13 +5,12 @@ import { Heart, LocationEdit, Search, ShoppingCart, User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
-import Notifications from './user-notifications';
-import { navigationItems } from '@/lib/constants/navigation';
 import { usePathname } from '@/i18n/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import Theme from '../shared/theme';
 import LanguageToggle from '../shared/language-toggle';
 import AddressModel from '../features/address-modal/address-model';
+import Notifications from './navbar/_components/user-notifications';
 
 interface HeaderProps {
   className?: string;

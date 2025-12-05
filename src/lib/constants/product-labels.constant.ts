@@ -10,7 +10,7 @@
  * @returns {{name: string, variant: string, condition: (p: ProductType) => boolean}[]}
  *          List of label configs to apply based on product data.
  */
-export function getProductLabels(t: (key: string) => string) {
+export function getProductLabels(t: (_key: string) => string) {
   return [
     {
       name: t('new-product-label'),
@@ -37,4 +37,3 @@ export function getProductLabels(t: (key: string) => string) {
     },
   ];
 }
-

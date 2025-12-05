@@ -7,10 +7,12 @@ import OccasionsSection from '@/components/features/OccasionsSection';
 import { Section } from '@/components/layout';
 import SectionName from '@/components/shared/section-name';
 import SectionTitle from '@/components/shared/sedtion-title';
+import { getTranslations } from 'next-intl/server';
 import AutoSlider from '../../../../components/features/testimonials/auto-slider';
 import BestSelling from './_components/best-selling';
 import MostPopular from './_components/most-popular/index';
-import { getTranslations } from 'next-intl/server';
+
+// src/app/[locale]/dashboard/_components/statistics.tsx
 
 export default async function Home({
   searchParams,
