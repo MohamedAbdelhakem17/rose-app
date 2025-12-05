@@ -41,6 +41,8 @@ declare type MappingProductType = Pick<
   | 'priceAfterDiscount'
   | 'price'
   | 'rateCount'
+  | 'quantity'
+  | 'sold'
 > & {
   labels: { name: string; variant: string }[];
 };

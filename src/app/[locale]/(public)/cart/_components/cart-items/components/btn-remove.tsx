@@ -7,13 +7,17 @@ import { useRemoveCartItem } from '../../../_hooks/use-remove-cart-item';
 
 interface RemoveElementProps {
   itemid: string;
-  productTitle:string
+  productTitle: string;
 }
-export default function RemoveElement({ itemid , productTitle}: RemoveElementProps) {
-  const { mutate, isPending } = useRemoveCartItem(itemid , productTitle);
+export default function RemoveElement({
+  itemid,
+  productTitle,
+}: RemoveElementProps) {
+  const { mutate, isPending } = useRemoveCartItem(itemid, productTitle);
 
   return (
     <Button
+      type='submit'
       onClick={() => mutate()}
       className=' h-10 p-2.5 capitalize font-medium text-sm  bg-red-600 text-white flex items-center gap-1 hover:bg-red-800'
     >
