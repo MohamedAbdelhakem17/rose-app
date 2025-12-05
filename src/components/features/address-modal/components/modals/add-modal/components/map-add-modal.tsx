@@ -66,7 +66,7 @@ export default function MapAddModal({ setModal }: MapAddModalProps) {
         </Map>
 
         <Button onClick={handleSave} className='mt-4 w-full'>
-          {t('')}
+          {t('add-modal-map-button')}
         </Button>
 
         {/* Display coordinates */}
