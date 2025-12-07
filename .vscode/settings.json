@@ -4,7 +4,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "files.autoSave": "off",
+  "files.autoSave": "afterDelay",
   "typescript.preferences.includePackageJsonAutoImports": "auto",
   "i18n-ally.localesPaths": ["src/i18n", "src/i18n/messages"],
   "i18n-ally.keystyle": "nested",
