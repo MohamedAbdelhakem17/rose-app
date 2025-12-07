@@ -1,12 +1,20 @@
 export async function getOccasion() {
-  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const res = await fetch(`${baseURL}/api/v1/occasions`, {
-    cache: 'no-store',
-  });
+  try {
+    // Fetch
+    const response = await fetch(`${process.env.BASE_URL}/api/v1/occasions`, {
+      cache: 'no-store',
+    });
 
-  if (!res.ok) throw new Error('Failed to fetch occasions');
+    // Payload
+    const payload: SuccessResponse<{ occasions: [OccasionsType] }> =
+      await response.json();
+    if (!response.ok)
+      throw new Error(payload.message || 'Failed to add product');
 
-  const data: SuccessResponse<{ occasions: [OccasionsType] }> =
-    await res.json(); // ✅ await this
-  return data; // now returns actual JSON, not a Promise
+    return payload;
+  } catch (err: any) {
+    throw new Error(
+      err.message || 'Something went wrong while adding the product'
+    );
+  }
 }

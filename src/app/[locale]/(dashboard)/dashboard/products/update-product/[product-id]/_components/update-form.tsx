@@ -108,9 +108,8 @@ export default function UpdateForm({ payload }: UpdateFormPros) {
           render={({ field }) => (
             <FormItem className=' w-full'>
               {/* Label */}
-              <FormLabel className='first-letter:uppercase'>
+              <FormLabel className='first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                 {t('dashboard-update-product-form-title-label')}
-                <span className=' text-red-600'>*</span>
               </FormLabel>
 
               {/* Field */}
@@ -137,9 +136,8 @@ export default function UpdateForm({ payload }: UpdateFormPros) {
           render={({ field }) => (
             <FormItem className=' w-full'>
               {/* Label */}
-              <FormLabel className='first-letter:uppercase'>
+              <FormLabel className='first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                 {t('dashboard-update-product-form-description-label')}
-                <span className=' text-red-600'>*</span>
               </FormLabel>
 
               {/* Field */}
@@ -171,9 +169,8 @@ export default function UpdateForm({ payload }: UpdateFormPros) {
             render={({ field }) => (
               <FormItem className=' w-full'>
                 {/* Label */}
-                <FormLabel className='first-letter:uppercase'>
+                <FormLabel className='first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                   {t('dashboard-update-product-form-price-label')}
-                  <span className=' text-red-600'>*</span>
                 </FormLabel>
 
                 {/* Field */}
@@ -259,9 +256,8 @@ export default function UpdateForm({ payload }: UpdateFormPros) {
           render={({ field }) => (
             <FormItem className='w-full'>
               {/* Label */}
-              <FormLabel className='first-letter:uppercase'>
+              <FormLabel className='first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                 {t('dashboard-update-product-form-quantity-label')}
-                <span className=' text-red-600'>*</span>
               </FormLabel>
 
               {/* Field */}
@@ -290,11 +286,14 @@ export default function UpdateForm({ payload }: UpdateFormPros) {
           control={form.control}
           render={({ field }) => (
             <FormItem className=' flex flex-col w-full'>
-              <FormLabel>
+              {/* Label */}
+              <FormLabel className=' first-letter: uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                 {t('dashboard-update-product-form-category-label')}
-                <span className=' text-red-600'>*</span>
               </FormLabel>
+
+              {/* Select */}
               <Select onValueChange={field.onChange} value={field.value}>
+                {/* Trigger */}
                 <SelectTrigger>
                   <SelectValue
                     placeholder={t(
@@ -302,6 +301,8 @@ export default function UpdateForm({ payload }: UpdateFormPros) {
                     )}
                   />
                 </SelectTrigger>
+
+                {/* Content */}
                 {isCategoryLoading ? (
                   <SelectContent>
                     <p>...Loading</p>
@@ -326,11 +327,14 @@ export default function UpdateForm({ payload }: UpdateFormPros) {
           control={form.control}
           render={({ field }) => (
             <FormItem className=' flex flex-col w-full'>
-              <FormLabel>
+              {/* Label */}
+              <FormLabel className=' first-letter: uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                 {t('dashboard-update-product-form-occasion-label')}
-                <span className=' text-red-600'>*</span>
               </FormLabel>
+
+              {/* Select */}
               <Select onValueChange={field.onChange} value={field.value}>
+                {/* Trigger */}
                 <SelectTrigger>
                   <SelectValue
                     placeholder={t(
@@ -338,6 +342,8 @@ export default function UpdateForm({ payload }: UpdateFormPros) {
                     )}
                   />
                 </SelectTrigger>
+
+                {/* Content */}
                 {isOccasionLoading ? (
                   <SelectContent>
                     <p>...Loading</p>

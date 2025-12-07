@@ -1,12 +1,19 @@
 export async function getCategories() {
-  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+  try {
+    // Fetch
+    const response = await fetch(`${process.env.BASE_URL}/api/v1/categories`, {
+      cache: 'no-store',
+    });
 
-  const res = await fetch(`${baseURL}/api/v1/categories`, {
-    cache: 'no-store',
-  });
+    // Payload
+    const payload: SuccessResponse<Category> = await response.json();
+    if (!response.ok)
+      throw new Error(payload.message || 'Failed to add product');
 
-  if (!res.ok) throw new Error('Failed to fetch categories');
-
-  const data: SuccessResponse<Category> = await res.json(); // ✅ await this
-  return data; // now returns actual JSON, not a Promise
+    return payload;
+  } catch (err: any) {
+    throw new Error(
+      err.message || 'Something went wrong while adding the product'
+    );
+  }
 }

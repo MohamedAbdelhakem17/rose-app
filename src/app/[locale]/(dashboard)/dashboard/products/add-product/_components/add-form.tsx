@@ -90,9 +90,8 @@ export default function AddForm() {
           render={({ field }) => (
             <FormItem className=' w-full'>
               {/* Label */}
-              <FormLabel className='first-letter:uppercase'>
+              <FormLabel className='first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                 {t('dashboard-add-product-form-title-label')}
-                <span className=' text-red-600'>*</span>
               </FormLabel>
 
               {/* Field */}
@@ -123,9 +122,8 @@ export default function AddForm() {
           render={({ field }) => (
             <FormItem className=' w-full'>
               {/* Label */}
-              <FormLabel className='first-letter:uppercase'>
+              <FormLabel className='first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                 {t('dashboard-add-product-form-description-label')}
-                <span className=' text-red-600'>*</span>
               </FormLabel>
 
               {/* Field */}
@@ -158,9 +156,8 @@ export default function AddForm() {
             render={({ field }) => (
               <FormItem className=' w-full'>
                 {/* Label */}
-                <FormLabel className='first-letter:uppercase'>
+                <FormLabel className='first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                   {t('dashboard-add-product-form-price-label')}
-                  <span className=' text-red-600'>*</span>
                 </FormLabel>
 
                 {/* Field */}
@@ -215,12 +212,9 @@ export default function AddForm() {
             render={({ field }) => (
               <FormItem className=' w-full'>
                 {/* Label */}
-                <label
-                  htmlFor='priceAfterDiscount'
-                  className='first-letter:uppercase text-sm'
-                >
+                <FormLabel className='first-letter:uppercase'>
                   {t('dashboard-add-product-form-price-after-discount-label')}
-                </label>
+                </FormLabel>
 
                 {/* Field */}
                 <FormControl>
@@ -245,9 +239,8 @@ export default function AddForm() {
           render={({ field }) => (
             <FormItem className='w-full'>
               {/* Label */}
-              <FormLabel className='first-letter:uppercase'>
+              <FormLabel className='first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                 {t('dashboard-add-product-form-quantity-label')}
-                <span className=' text-red-600'>*</span>
               </FormLabel>
 
               {/* Field */}
@@ -281,9 +274,8 @@ export default function AddForm() {
             render={({ field }) => (
               <FormItem className=' w-full'>
                 {/* Label */}
-                <FormLabel className='first-letter:uppercase'>
+                <FormLabel className='first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                   {t('dashboard-add-product-form-product-cover-image-label')}
-                  <span className=' text-red-600'>*</span>
                 </FormLabel>
 
                 {/* Field */}
@@ -311,9 +303,8 @@ export default function AddForm() {
             render={({ field }) => (
               <FormItem className=' w-full'>
                 {/* Label */}
-                <FormLabel className='first-letter:uppercase'>
+                <FormLabel className='first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                   {t('dashboard-add-product-form-product-gallery-label')}
-                  <span className=' text-red-600'>*</span>
                 </FormLabel>
 
                 {/* Field */}
@@ -331,11 +322,14 @@ export default function AddForm() {
           control={form.control}
           render={({ field }) => (
             <FormItem className=' flex flex-col w-full'>
-              <FormLabel>
+              {/* Label */}
+              <FormLabel className='first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                 {t('dashboard-add-product-form-category-label')}
-                <span className=' text-red-600'>*</span>
               </FormLabel>
+
+              {/* Select */}
               <Select onValueChange={field.onChange} value={field.value}>
+                {/* Trigger */}
                 <SelectTrigger>
                   <SelectValue
                     placeholder={t(
@@ -343,6 +337,8 @@ export default function AddForm() {
                     )}
                   />
                 </SelectTrigger>
+
+                {/* Content */}
                 {isCategoryLoading ? (
                   <SelectContent>
                     <p>...Loading</p>
@@ -357,6 +353,8 @@ export default function AddForm() {
                   </SelectContent>
                 )}
               </Select>
+
+              {/* Feedback */}
               <FormMessage />
             </FormItem>
           )}
@@ -368,11 +366,14 @@ export default function AddForm() {
           control={form.control}
           render={({ field }) => (
             <FormItem className=' flex flex-col w-full'>
-              <FormLabel>
+              {/* Label */}
+              <FormLabel className=' first-letter:uppercase after:content-["*"] after:text-red-600 after:ml-0.5'>
                 {t('dashboard-add-product-form-occasion-label')}
-                <span className=' text-red-600'>*</span>
               </FormLabel>
+
+              {/* Select */}
               <Select onValueChange={field.onChange} value={field.value}>
+                {/* Trigger */}
                 <SelectTrigger>
                   <SelectValue
                     placeholder={t(
@@ -380,6 +381,8 @@ export default function AddForm() {
                     )}
                   />
                 </SelectTrigger>
+
+                {/* Content */}
                 {isOccasionLoading ? (
                   <SelectContent>
                     <p>...Loading</p>
@@ -394,6 +397,8 @@ export default function AddForm() {
                   </SelectContent>
                 )}
               </Select>
+
+              {/* Feedback */}
               <FormMessage />
             </FormItem>
           )}

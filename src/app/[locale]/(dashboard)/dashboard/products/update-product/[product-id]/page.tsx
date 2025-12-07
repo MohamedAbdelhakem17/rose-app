@@ -3,21 +3,16 @@ import UpdateForm from './_components/update-form';
 import { Product } from '@/lib/types/products/products';
 import { getTranslations } from 'next-intl/server';
 
-export default async function Page({
-  params,
-}: {
-  params: { 'product-id': string };
-}) {
+export default async function Page({ params }: { params: { id: string } }) {
   // Params
-  const productId = params['product-id'];
+  const id = params.id;
 
   // Translate
   const t = await getTranslations();
 
   // Fetch
-  const response = await fetch(`${process.env.BASE_URL}/products/${productId}`);
-  const payload: SuccessResponse<Product> = await response.json();
-  console.log(payload);
+  const response = await fetch(`${process.env.BASE_URL}/products/${id}`);
+  const payload: SuccessResponse<{ product: Product }> = await response.json();
 
   return (
     <div className='mx-7'>

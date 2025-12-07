@@ -3,13 +3,23 @@
 import { getToken } from '@/lib/utils/get-token';
 
 export default async function updateProduct(id: string, data: FormData) {
-  // Token
-  const token = await getToken();
+  try {
+    // Token
+    const token = await getToken();
 
-  // Fetch
-  const request = await fetch(`${process.env.BASE_URL}/product/${id}`, {
-    method: 'PUT',
-    headers: { Authorization: 'Bearer ' + token },
-    body: data,
-  });
+    // Fetch
+    const response = await fetch(`${process.env.BASE_URL}/product/${id}`, {
+      method: 'PUT',
+      headers: { Authorization: 'Bearer ' + token },
+      body: data,
+    });
+
+    // Payload
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Failed to add product');
+  } catch (err: any) {
+    throw new Error(
+      err.message || 'Something went wrong while adding the product'
+    );
+  }
 }
