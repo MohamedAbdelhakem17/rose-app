@@ -2,6 +2,7 @@
 
 import { revalidateTag } from 'next/cache';
 
+// -- ACTION TO REMOVE A SPECIFIC PRODUCT -- //
 export async function removeProductAction(productId: string) {
   const token =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjdjMDYzOWQ4MzZlZThiZTcwNjE5MGE5Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzY0OTQ1ODA4fQ.q01IQqn76Tn-RB-yV-3T7aQBES_p-EmX7Jfu8MpQ_II';
