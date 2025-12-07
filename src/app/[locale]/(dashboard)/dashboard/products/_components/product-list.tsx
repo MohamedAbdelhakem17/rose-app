@@ -8,13 +8,13 @@ import {
 } from '@/components/ui/table';
 import { Pencil } from 'lucide-react';
 import Link from 'next/link';
-import { DeleteProduct } from './delete-product';
+import DeleteProduct from './delete-product';
 import { cn } from '@/lib/utils/utils';
 
 interface Iprops {
   products: ProductType[];
 }
-export async function ProductList({ products }: Iprops) {
+export default function ProductList({ products }: Iprops) {
   return (
     <Table className='mt-0.5'>
       <TableHeader>
@@ -35,9 +35,9 @@ export async function ProductList({ products }: Iprops) {
           >
             <TableCell className='font-semibold '>{product.title}</TableCell>
             <TableCell>{product.price}</TableCell>
-            <TableCell className={cn(
-              product.quantity <= 5 ? 'text-red-500' : '',
-            )}>
+            <TableCell
+              className={cn(product.quantity <= 5 ? 'text-red-500' : '')}
+            >
               {product.quantity <= 0 ? 0 : product.quantity}
             </TableCell>
             <TableCell>{product.sold}</TableCell>

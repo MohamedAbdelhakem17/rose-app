@@ -2,12 +2,12 @@
 
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import { removeProduct } from '../_actions/remove-specific-product.action';
+import { removeProductAction } from '../_actions/remove-specific-product.action';
 
-export function useRemoveProductItem(productId: string) {
+export default function useRemoveProductItem(productId: string) {
   return useMutation({
     mutationFn: async () => {
-      return await removeProduct(productId);
+      return await removeProductAction(productId);
     },
     onSuccess: () => {
       toast.success('Product removed successfully');
