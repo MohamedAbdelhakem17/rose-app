@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductHeader from './_components/product-header';
 import SearchInput from './_components/search-input';
-import { ProductList } from './_components/product-list';
+import ProductList from './_components/product-list';
 import Pagination from '@/components/shared/pagination';
 import { getProducts } from '@/lib/apis/dashbaord/products';
 
@@ -27,7 +27,7 @@ export default async function Page({ searchParams }: Iprops) {
       </section>
     );
   }
-  const { products, metadata } = data;  
+  const { products, metadata } = data;
   return (
     <section className='p-5 w-full bg-slate-50'>
       <div className=' bg-white rounded-lg p-6 min-h-[938px] flex flex-col gap-4'>

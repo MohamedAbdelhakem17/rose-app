@@ -6,15 +6,14 @@ import {
   DialogClose,
   DialogContent,
   DialogFooter,
-  DialogHeader,
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Trash, Trash2 } from 'lucide-react';
-import { useRemoveProductItem } from '../_hooks/use-remove-product-item';
+import useRemoveProductItem from '../_hooks/use-remove-product-item';
 
-export function DeleteProduct({ productId }: { productId: string }) {
-  console.log('DeleteProduct rendered with productId:', productId);
+export default function DeleteProduct({ productId }: { productId: string }) {
   const { mutate, isPending } = useRemoveProductItem(productId);
+
   return (
     <Dialog>
       <form>
@@ -25,8 +24,7 @@ export function DeleteProduct({ productId }: { productId: string }) {
           </button>
         </DialogTrigger>
         <DialogContent className='sm:max-w-lg mx-6'>
-          <DialogHeader className='mb-6'></DialogHeader>
-          <div className='mx-auto w-[105px] h-[105px]  flex items-center justify-center rounded-full bg-[#2E2E300D] p-[18px]'>
+          <div className='mx-auto mt-6 w-[105px] h-[105px]  flex items-center justify-center rounded-full bg-[#2E2E300D] p-[18px]'>
             <div className='w-[70px] h-[70px] bg-[#2E2E3026] rounded-full flex items-center justify-center '>
               <Trash size={29} className='stroke-slate-950' />
             </div>
