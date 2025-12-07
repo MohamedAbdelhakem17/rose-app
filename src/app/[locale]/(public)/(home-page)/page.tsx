@@ -26,6 +26,7 @@ export default async function Home({
 
   return (
     <main>
+
       <Section className='max-w-7xl mx-auto '>
         <HeroSection params={params} />
         <OccasionsSection />
